@@ -31,6 +31,8 @@ evaluation/scoreboard.csv
 # into actually exists in a fresh clone. Everything they put in it stays out of git.
 data/*
 !data/README.md
+# The viewer's cache is the tracking and homography re-encoded: derived from the gated data.
+viewer/cache/
 
 *.mp4
 *.gzip
