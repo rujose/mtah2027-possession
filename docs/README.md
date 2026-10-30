@@ -26,14 +26,16 @@ so that any team member, or a reviewer, can follow it without having been in the
 | version | idea | status | full match | public 5 min (check only) |
 |---|---|---|---|---|
 | [v1](models/v1-clues-and-decider.md) | per-frame clues + Viterbi decider with switch penalties | built 2026-10-30 | 173 possessions, mean 23.9 s | macroF1 0.72, spellF1 0.43 |
+| [v2](models/v2-whistle.md) | v1 + referee whistle from the audio, counted only if players slow down | built 2026-10-30 | 177 possessions, mean 22.9 s; dead 36.3 % | macroF1 0.79, spellF1 0.43 |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | macroF1 0.62, spellF1 0.33 |
 
 ## Reproduce
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exact versions
 .venv/bin/python tools/explore_data.py            # every number in data.md
 .venv/bin/python -m possession.v1                 # writes evaluation/results/v1.csv
+.venv/bin/python -m possession.v2                 # writes evaluation/results/v2.csv
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 ```

@@ -53,6 +53,36 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Why:** moving a setting because the public window looks better is tuning on it. Changes to the
   weights come from reasoning or from other matches' data.
 
+### 2026-10-30: ideas may come from looking at errors; settings may not
+
+- **What:** the whistle idea came from Jose watching a v1 error in the public 5 minutes (1st half
+  03:06). Using that to add a *kind* of clue (a referee's whistle means the ball is dead) is
+  football reasoning. Choosing the whistle detector's *thresholds* by how well they match the public
+  truth would be tuning, and is not allowed.
+- **Why:** the line in RULES.md is between understanding and fitting. Any thresholds get set from
+  audio alone or from other matches.
+
+### 2026-10-30: v2 built as proposed; exact dependency versions pinned
+
+- **What:** v2 = v1 + whistle clue with the slowdown test, settings exactly as planned. Our exact
+  library versions go in `requirements-team.txt`, and the audio is decoded with PyAV (which bundles
+  its own ffmpeg) instead of the system ffmpeg.
+- **Why:** the organisers have to regenerate our file byte for byte. A different numpy, pandas or
+  audio decoder could shift a number across a threshold.
+- **Not acted on:** the false alarm at 1st half 03:57 and the three 3-second dead stretches. They're
+  recorded in the v2 page. Changing settings because of the public-window one would be tuning.
+
+### 2026-10-30: notes while watching, but never labels
+
+- **What:** the viewer lets Jose pin free-text notes to frames (what he sees: tracking problems,
+  whistles, restarts, questions). It does **not** offer a row of his own H/A/D calls. Notes live in
+  `viewer/notes/notes.json` (gitignored) and no model code reads them.
+- **Why:** Jose asked to "add what you see" and compare with the data while watching. RULES.md:
+  "No hand labels on the provided game, in any amount and for any purpose: not for the submission,
+  not to train a model and not to validate one", and "watching is not the problem; turning what you
+  saw into labels, corrections, or rules and constants tied to specific frames of the game is."
+  Free-text notes stay on the watching side. A label row would be hand-labelling.
+
 ### 2026-10-30: a match viewer for diagnosis
 
 - **What:** a local web app (`python -m viewer.server`) showing video, tracking overlay, pitch map,

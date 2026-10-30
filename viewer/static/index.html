@@ -18,19 +18,65 @@
       <button data-step="25" title="Shift + →">+1 s</button>
       <button data-step="250" title="Alt + →">+10 s</button>
       <select id="rate" title="Playback speed">
-        <option value="0.25">0.25×</option><option value="0.5">0.5×</option>
+        <option value="0.1">0.1×</option><option value="0.25">0.25×</option><option value="0.5">0.5×</option>
         <option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option>
       </select>
       <form id="jump-form"><input id="jump" placeholder="frame, or 1h 12:30" title="J" autocomplete="off"></form>
+      <button id="review" title="R">Review mode</button>
+      <button id="fullscreen" title="F">Fullscreen</button>
     </div>
     <div class="clock" id="clock">loading…</div>
   </header>
 
+  <div class="watch" id="watch">
+    <span class="watch-title">Watch changes in</span>
+    <span id="watch-lanes" class="watch-lanes"></span>
+    <label>before a change
+      <select id="watch-mode">
+        <option value="off">do nothing</option>
+        <option value="slow" selected>slow down</option>
+        <option value="pause">slow down and pause</option>
+      </select>
+    </label>
+    <label>to
+      <select id="watch-rate"><option value="0.1" selected>0.1×</option><option value="0.25">0.25×</option><option value="0.5">0.5×</option></select>
+    </label>
+    <label>starting
+      <select id="watch-lead"><option value="1">1 s</option><option value="2" selected>2 s</option><option value="3">3 s</option><option value="5">5 s</option></select>
+      before
+    </label>
+    <span class="next-change" id="next-change"></span>
+  </div>
+
   <main class="stage">
-    <section class="video-wrap">
-      <video id="video" src="/video.mp4" preload="auto" muted playsinline></video>
-      <canvas id="overlay"></canvas>
-      <div class="badge" id="ball-badge" hidden>ball not tracked</div>
+    <section class="video-col">
+      <div class="video-wrap">
+        <video id="video" src="/video.mp4" preload="auto" muted playsinline></video>
+        <canvas id="overlay"></canvas>
+        <div class="badge" id="ball-badge" hidden>ball not tracked</div>
+        <div class="badge slow" id="slow-badge" hidden>slow motion: change ahead</div>
+      </div>
+      <canvas id="strip" title="Click to jump"></canvas>
+      <div class="legend">
+        <span><i class="sw H"></i>Barcelona (H)</span>
+        <span><i class="sw A"></i>Athletic (A)</span>
+        <span><i class="sw D"></i>dead ball (D)</span>
+        <span><i class="sw none"></i>no label (truth only covers the first 5 min)</span>
+        <span><i class="sw note"></i>your note</span>
+        <span class="zoom-note">window <b id="strip-zoom">±30 s</b> · <kbd>[</kbd><kbd>]</kbd> to zoom</span>
+      </div>
+      <section class="notes">
+        <form id="note-form" class="note-form">
+          <select id="note-kind" title="What kind of thing you saw">
+            <option>observation</option><option>tracking problem</option><option>whistle / stop</option>
+            <option>restart</option><option>model question</option>
+          </select>
+          <input id="note-text" placeholder="What you see at this moment (M)" autocomplete="off">
+          <button type="submit">Add note here</button>
+        </form>
+        <p class="note-rule">Notes are for understanding only. Never write labels: RULES.md bans hand labels on this match, even for comparing models.</p>
+        <ol id="note-list" class="note-list"></ol>
+      </section>
     </section>
     <aside class="side">
       <canvas id="pitch"></canvas>
@@ -60,7 +106,10 @@
     <span><kbd>Shift</kbd> 1 s</span>
     <span><kbd>Alt</kbd> 10 s</span>
     <span><kbd>[</kbd><kbd>]</kbd> zoom</span>
-    <span><kbd>N</kbd><kbd>P</kbd> next / previous v1 change</span>
+    <span><kbd>N</kbd><kbd>P</kbd> next / previous watched change</span>
+    <span><kbd>R</kbd> review mode</span>
+    <span><kbd>F</kbd> fullscreen</span>
+    <span><kbd>M</kbd> write a note</span>
     <span><kbd>J</kbd> jump</span>
   </footer>
 

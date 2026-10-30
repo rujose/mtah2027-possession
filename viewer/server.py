@@ -9,6 +9,7 @@ browser needs to seek in a 5 GB video whose index (the "moov" box) sits at the e
 
 import argparse
 import http.server
+import json
 import os
 import re
 import sys
@@ -21,6 +22,10 @@ PORT = 8765
 STATIC = os.path.join(ROOT, "viewer", "static")
 CACHE = os.path.join(ROOT, "viewer", "cache")
 CHUNK = 1 << 20  # bytes per write while streaming the video
+# Notes Jose writes while watching. For understanding only: no model code reads this file, and it is
+# gitignored (RULES.md forbids hand labels on this match for any purpose).
+NOTES = os.path.join(ROOT, "viewer", "notes", "notes.json")
+MAX_NOTES_BYTES = 1 << 20
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
          ".css": "text/css; charset=utf-8", ".json": "application/json", ".bin": "application/octet-stream",
          ".mp4": "video/mp4"}
@@ -33,11 +38,41 @@ class Handler(http.server.BaseHTTPRequestHandler):
             path = "/index.html"
         if path == "/video.mp4":
             return self.send_file(asset_paths()["video"])
+        if path == "/notes":
+            body = open(NOTES, "rb").read() if os.path.exists(NOTES) else b"[]"
+            return self.send_bytes(body, "application/json")
         folder, name = (CACHE, path[len("/cache/"):]) if path.startswith("/cache/") else (STATIC, path[1:])
         full = os.path.realpath(os.path.join(folder, name))
         if not full.startswith(os.path.realpath(folder) + os.sep) or not os.path.isfile(full):
             return self.send_error(404)
         self.send_file(full)
+
+    def do_POST(self):
+        """Replace the notes file with the posted list (the page always sends the whole list)."""
+        if self.path.split("?")[0] != "/notes":
+            return self.send_error(404)
+        length = int(self.headers.get("Content-Length", 0))
+        if length > MAX_NOTES_BYTES:
+            return self.send_error(413)
+        try:
+            notes = json.loads(self.rfile.read(length))
+            assert isinstance(notes, list)
+        except (ValueError, AssertionError):
+            return self.send_error(400, "expected a JSON list")
+        os.makedirs(os.path.dirname(NOTES), exist_ok=True)
+        temporary = NOTES + ".tmp"
+        with open(temporary, "w") as handle:
+            json.dump(notes, handle, indent=1)
+        os.replace(temporary, NOTES)  # atomic: a crash never leaves half a file
+        self.send_bytes(b'{"ok": true}', "application/json")
+
+    def send_bytes(self, body, content_type):
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        self.wfile.write(body)
 
     def send_file(self, full):
         size = os.path.getsize(full)

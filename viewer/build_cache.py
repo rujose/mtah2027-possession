@@ -13,7 +13,8 @@ from the gated data and must never be published):
     clues.bin        uint8 [clue lanes, frames] 0 = off, 1 = on / Barcelona, 2 = Athletic
 
 Label lanes are the public ground truth plus every CSV in evaluation/results/, so a new model
-shows up in the viewer as soon as it writes its file. Clue lanes are model v1's.
+shows up in the viewer as soon as it writes its file. Clue lanes are model v1's, plus v2's whistles
+(decoding the audio adds ~15 s to the build).
 """
 
 import glob
@@ -23,7 +24,8 @@ import os
 import numpy as np
 import pandas as pd
 
-from possession import v1
+from possession import v1, v2
+from possession.audio import whistle_events
 from possession.data import (FPS, HOME, AWAY, PITCH_LENGTH, PITCH_WIDTH, ROOT, graded_halves,
                              load_tags, load_tracking)
 from games import asset_paths
@@ -56,8 +58,19 @@ def label_lanes():
     return names, codes
 
 
+def whistle_lane(tracking):
+    """1 = a whistle v2 counts (its 3-s push towards dead), 2 = a whistle v2 ignores (no slowdown)."""
+    lane = np.zeros(len(tracking["ball"]), np.uint8)
+    for event in whistle_events(tracking):
+        if event["counted"]:
+            lane[event["start"]:event["start"] + v2.WHISTLE_WINDOW] = 1
+        else:
+            lane[event["start"]:max(event["end"], event["start"] + FPS // 2)] = 2
+    return lane
+
+
 def clue_lanes(tracking, tags):
-    """v1's clues as small integer lanes, plus ball visibility."""
+    """v1's clues as small integer lanes, plus ball visibility and v2's whistles."""
     clues = v1.compute_clues(tracking, tags, graded_halves())
     on_ball = np.zeros(len(clues["out"]), np.uint8)
     on_ball[clues["on_ball"][:, HOME] > 0] = 1
@@ -73,6 +86,7 @@ def clue_lanes(tracking, tags):
         ("B: players active", clues["active"].astype(np.uint8)),
         ("B: set-piece window", clues["set_piece"].astype(np.uint8)),
         ("C: tag says team", tag_team),
+        ("v2: whistle", whistle_lane(tracking)),
     ]
     return [name for name, _ in lanes], np.stack([lane for _, lane in lanes])
 

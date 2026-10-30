@@ -3,7 +3,7 @@
 // Data comes from viewer/cache (see viewer/build_cache.py for the encodings).
 
 const COLOR = { H: '#3b82f6', A: '#ef4444', D: '#9ca3af', clue: '#f59e0b', seen: '#22c55e', ball: '#facc15',
-  ungraded: 'rgba(255,255,255,0.05)', grid: '#262b32', text: '#e5e7ea', muted: '#8f98a3' };
+  ignored: '#6b7280', ungraded: 'rgba(255,255,255,0.05)', grid: '#262b32', text: '#e5e7ea', muted: '#8f98a3' };
 const LABEL_COLOR = [null, COLOR.H, COLOR.A, COLOR.D];
 const LABEL_TEXT = ['–', 'H', 'A', 'D'];
 // Kick-off frames, published in DATA.md and FAQ.md. Used only for the clock readout.
@@ -12,9 +12,16 @@ const ON_BALL_DISTANCE = 2.0;  // metres, same as model v1's clue A
 const MARGIN = 4;              // metres of grass drawn around the pitch map
 const LANE_W = 150;            // px reserved for lane names on the timelines
 
+const PAUSE_BEFORE = 6;        // frames before a watched change where "slow down and pause" stops
+const SLOW_AFTER = 25;         // frames after a change that stay in slow motion
+
 const $ = (id) => document.getElementById(id);
 const video = $('video');
-const S = { frame: 0, zoom: 30, playing: false };
+const S = {
+  frame: 0, zoom: 30, playing: false, notes: [],
+  // Change watch: which label lanes to watch, and what to do as a change approaches.
+  watch: { lanes: new Set(), mode: 'slow', slowRate: 0.1, lead: 2, userRate: 1, pausedFor: -1 },
+};
 
 // ------------------------------------------------------------------------------------------
 // Loading and data access
@@ -35,10 +42,147 @@ async function load() {
   S.graded = new Uint8Array(S.F);
   for (const [, first, last] of meta.halves) S.graded.fill(1, first, last + 1);
   S.lanes = buildLanes(meta);
-  S.v1 = meta.labelLanes.indexOf('v1');
+  for (const lane of S.lanes) if (lane.kind === 'label') lane.changes = laneChanges(lane);
+  buildWatchChips();
+  await loadNotes();
   $('loading').hidden = true;
   resize();
   seek(meta.halves[0][1]);
+}
+
+// ------------------------------------------------------------------------------------------
+// Change watch: slow down (and optionally pause) just before a watched lane changes label
+// ------------------------------------------------------------------------------------------
+
+function laneChanges(lane) {
+  // Frames where the label differs from the frame before, between two real labels (not X/none).
+  const out = [];
+  let previous = lane.value(0);
+  for (let f = 1; f < S.F; f++) {
+    const v = lane.value(f);
+    if (v !== previous && v && previous) out.push(f);
+    previous = v;
+  }
+  return Int32Array.from(out);
+}
+
+function upperBound(array, f) {
+  // Index of the first element > f.
+  let lo = 0, hi = array.length;
+  while (lo < hi) { const mid = (lo + hi) >> 1; if (array[mid] <= f) lo = mid + 1; else hi = mid; }
+  return lo;
+}
+
+const watchedLanes = () => S.lanes.filter((l) => l.kind === 'label' && S.watch.lanes.has(l.name));
+
+function nextWatched(f) {
+  let best = Infinity;
+  for (const lane of watchedLanes()) {
+    const i = upperBound(lane.changes, f);
+    if (i < lane.changes.length) best = Math.min(best, lane.changes[i]);
+  }
+  return best;
+}
+
+function previousWatched(f) {
+  let best = -Infinity;
+  for (const lane of watchedLanes()) {
+    const i = upperBound(lane.changes, f);
+    if (i > 0) best = Math.max(best, lane.changes[i - 1]);
+  }
+  return best;
+}
+
+function describeChange(f) {
+  return watchedLanes().filter((l) => l.value(f) !== l.value(f - 1))
+    .map((l) => `${l.name} ${LABEL_TEXT[l.value(f - 1)]}→${LABEL_TEXT[l.value(f)]}`).join(', ');
+}
+
+function buildWatchChips() {
+  const box = $('watch-lanes');
+  box.textContent = '';
+  for (const lane of S.lanes.filter((l) => l.kind === 'label')) {
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = !lane.name.startsWith('baseline');  // truth and our models by default
+    if (input.checked) S.watch.lanes.add(lane.name);
+    input.addEventListener('change', () => {
+      if (input.checked) S.watch.lanes.add(lane.name); else S.watch.lanes.delete(lane.name);
+      S.watch.pausedFor = -1;
+      render();
+    });
+    label.append(input, lane.name.replace(' (first 5 min)', ''));
+    box.append(label);
+  }
+}
+
+function watchTick(f) {
+  const w = S.watch;
+  const next = nextWatched(f);
+  const ahead = next - f;
+  const since = f - previousWatched(f);
+  $('next-change').textContent = Number.isFinite(next)
+    ? `next change in ${(ahead / S.fps).toFixed(1)} s · ${describeChange(next)}` : 'no more watched changes';
+  const slowZone = w.mode !== 'off' && (ahead <= w.lead * S.fps || since < SLOW_AFTER);
+  $('slow-badge').hidden = !(slowZone && !video.paused);
+  if (video.paused) return;
+  const rate = slowZone ? Math.min(w.slowRate, w.userRate) : w.userRate;
+  if (video.playbackRate !== rate) video.playbackRate = rate;
+  if (w.mode === 'pause' && ahead <= PAUSE_BEFORE && w.pausedFor !== next) {
+    w.pausedFor = next;  // pause once per change; pressing play continues through it slowly
+    video.pause();
+  }
+}
+
+function jumpToChange(direction) {
+  // Land `lead` seconds before the next / previous watched change, so pressing play runs into it.
+  const lead = S.watch.lead * S.fps;
+  const anchor = S.frame + lead;
+  const change = direction > 0 ? nextWatched(anchor) : previousWatched(anchor - 1);
+  if (!Number.isFinite(change)) return;
+  video.pause();
+  seek(change - lead);
+}
+
+// ------------------------------------------------------------------------------------------
+// Notes: what Jose sees, pinned to a frame. For understanding only (never labels; RULES.md).
+// ------------------------------------------------------------------------------------------
+
+async function loadNotes() {
+  try { S.notes = await fetch('/notes').then((r) => r.json()); } catch { S.notes = []; }
+  renderNotes();
+}
+
+function saveNotes() {
+  fetch('/notes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(S.notes) });
+}
+
+function shortClock(f) {
+  if (f >= S.meta.halves[0][1] && f <= S.meta.halves[0][2]) return `1h ${fmt((f - KICKOFF[1]) / S.fps)}`;
+  if (f >= S.meta.halves[1][1] && f <= S.meta.halves[1][2]) return `2h ${fmt(45 * 60 + (f - KICKOFF[2]) / S.fps)}`;
+  return `frame ${f}`;
+}
+
+function renderNotes() {
+  const list = $('note-list');
+  list.textContent = '';
+  S.notes.forEach((note, index) => {
+    const item = document.createElement('li');
+    item.dataset.frame = note.frame;
+    const time = Object.assign(document.createElement('span'), { className: 't', textContent: shortClock(note.frame) });
+    const kind = Object.assign(document.createElement('span'), { className: 'kind', textContent: note.kind });
+    const text = Object.assign(document.createElement('span'), { textContent: note.text });
+    const remove = Object.assign(document.createElement('button'), { textContent: 'delete', title: 'Delete this note' });
+    remove.addEventListener('click', (e) => { e.stopPropagation(); S.notes.splice(index, 1); saveNotes(); renderNotes(); render(); });
+    item.addEventListener('click', () => { video.pause(); seek(note.frame); });
+    item.append(time, kind, text, remove);
+    list.append(item);
+  });
+}
+
+function markNearNotes(f) {
+  for (const item of $('note-list').children) item.classList.toggle('near', Math.abs(Number(item.dataset.frame) - f) <= S.fps);
 }
 
 function buildLanes(meta) {
@@ -54,7 +198,8 @@ function buildLanes(meta) {
     name, kind: 'clue', value: (f) => S.clues[index * S.F + f],
     color: name === 'ball visible' ? (v) => (v ? COLOR.seen : null)
       : (name.startsWith('A:') || name.startsWith('C:')) ? (v) => [null, COLOR.H, COLOR.A][v]
-        : (v) => (v ? COLOR.clue : null),
+        : name.endsWith('whistle') ? (v) => [null, COLOR.clue, COLOR.ignored][v]
+          : (v) => (v ? COLOR.clue : null),
   }));
   return [...labelLanes, ...clueLanes];
 }
@@ -96,6 +241,7 @@ function ballSpeed(f) {
 // ------------------------------------------------------------------------------------------
 
 function seek(f) {
+  S.watch.pausedFor = -1;  // after a jump, the next change may pause again
   S.frame = Math.max(0, Math.min(S.F - 1, Math.round(f)));
   video.currentTime = (S.frame + 0.5) / S.fps;  // middle of the frame, so the right one is shown
   render();
@@ -129,24 +275,6 @@ function parseJump(text) {
   if (!m) return null;
   const half = Number(m[1]), seconds = Number(m[2]) * 60 + Number(m[3]);
   return KICKOFF[half] + (seconds - (half === 2 ? 45 * 60 : 0)) * S.fps;
-}
-
-function nextChange(lane, f) {
-  // First frame after f whose label differs from f's.
-  const v = lane.value, current = v(f);
-  let g = f + 1;
-  while (g < S.F && v(g) === current) g++;
-  return g < S.F ? g : f;
-}
-
-function previousChange(lane, f) {
-  // Start of the run that contains f - 1: the start of the current run, or of the one before it.
-  const v = lane.value;
-  let g = f - 1;
-  if (g < 0) return f;
-  const current = v(g);
-  while (g > 0 && v(g - 1) === current) g--;
-  return g;
 }
 
 // ------------------------------------------------------------------------------------------
@@ -298,7 +426,9 @@ function drawInfo(f, near) {
     .map((l) => `<div class="row"><span class="k">${l.name}</span>${chip(l.value(f), 'label')}</div>`).join('');
   const clueRows = S.lanes.filter((l) => l.kind === 'clue').map((l) => {
     const v = l.value(f);
-    const c = (l.name.startsWith('A:') || l.name.startsWith('C:')) ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0)) : chip(v);
+    const c = (l.name.startsWith('A:') || l.name.startsWith('C:')) ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
+      : l.name.endsWith('whistle') ? [chip(0), '<span class="chip on">counted</span>', '<span class="chip D">ignored</span>'][v]
+        : chip(v);
     return `<div class="row"><span class="k">${l.name}</span>${c}</div>`;
   }).join('');
   const speed = ballSpeed(f);
@@ -312,7 +442,7 @@ function drawInfo(f, near) {
     || '<div class="row"><span class="k">none</span></div>';
   $('info').innerHTML = `
     <div class="card"><h3>Labels at this frame</h3>${labelRows}</div>
-    <div class="card"><h3>v1 clues</h3>${clueRows}${ball}</div>
+    <div class="card"><h3>Clues</h3>${clueRows}${ball}</div>
     <div class="card tags"><h3>Smart Tagging</h3>${tags}</div>`;
 }
 
@@ -382,6 +512,7 @@ function drawOverview(f) {
   ctx.fillRect(LANE_W + (f - S.zoom * S.fps) * ppf, 0, Math.max(2, 2 * S.zoom * S.fps * ppf), h);
   ctx.fillStyle = '#fff';
   ctx.fillRect(LANE_W + f * ppf - 0.5, 0, 1.5, h);
+  for (const note of S.notes) ctx.fillRect(LANE_W + note.frame * ppf - 0.5, 0, 1, 4);  // note ticks on top
 }
 
 function drawDetail(f) {
@@ -398,11 +529,16 @@ function drawDetail(f) {
   laneRuns(ctx, UNGRADED, f0, f1, x0, ppf, 0, h - 18);
   for (const { lane, y } of layout) laneRuns(ctx, lane, f0, f1, x0, ppf, y, laneH);
   drawLaneNames(ctx, layout, laneH);
-  // Ticks: every 1, 5 or 10 seconds depending on the zoom.
+  drawTicks(ctx, f, span, ppf, h);
+}
+
+function drawTicks(ctx, f, span, ppf, h) {
+  // Seconds relative to the current frame along the bottom (every 1, 5 or 30 s), and the playhead.
   const step = (S.zoom <= 10 ? 1 : S.zoom <= 60 ? 5 : 30) * S.fps;
   ctx.fillStyle = COLOR.muted;
   ctx.font = '10px system-ui';
   ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
   for (let g = Math.ceil((f - span) / step) * step; g <= f + span; g += step) {
     const x = LANE_W + (g - (f - span)) * ppf;
     ctx.fillRect(x, h - 18, 1, 4);
@@ -416,18 +552,63 @@ function drawDetail(f) {
   ctx.fillRect(center - 0.75, 0, 1.5, h - 18);
 }
 
+const STRIP_NOW = 34;  // px on the right of the strip for each lane's label at the current frame
+
+function drawStrip(f) {
+  // Label lanes only (truth, our models, baselines) around the current frame, right under the video.
+  const laneH = 13, gap = 3;
+  const lanes = S.lanes.filter((l) => l.kind === 'label');
+  const layout = lanes.map((lane, i) => ({ lane, y: 5 + i * (laneH + gap) }));
+  const height = layout[layout.length - 1].y + laneH + 22;
+  const { ctx, w, h } = fitCanvas($('strip'), height);
+  ctx.clearRect(0, 0, w, h);
+  const span = S.zoom * S.fps;
+  const f0 = Math.max(0, f - span), f1 = Math.min(S.F, f + span + 1);
+  const ppf = (w - LANE_W - STRIP_NOW) / (2 * span + 1);
+  const x0 = LANE_W + (f0 - (f - span)) * ppf;
+  laneRuns(ctx, UNGRADED, f0, f1, x0, ppf, 0, h - 18);
+  for (const { lane, y } of layout) {
+    ctx.fillStyle = 'rgba(255,255,255,0.04)';  // empty lane background, so "no label" is visible
+    ctx.fillRect(LANE_W, y, w - LANE_W - STRIP_NOW, laneH);
+    laneRuns(ctx, lane, f0, f1, x0, ppf, y, laneH);
+    const v = lane.value(f);  // the label at the playhead, as a letter on the right
+    if (v) {
+      ctx.fillStyle = LABEL_COLOR[v];
+      ctx.fillRect(w - STRIP_NOW + 8, y, STRIP_NOW - 12, laneH);
+      ctx.fillStyle = v === 3 ? '#111' : '#fff';
+      ctx.font = '600 10px system-ui';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(LABEL_TEXT[v], w - STRIP_NOW + 8 + (STRIP_NOW - 12) / 2, y + laneH / 2 + 0.5);
+    }
+  }
+  drawLaneNames(ctx, layout, laneH);
+  drawTicks(ctx, f, span, ppf, h);
+  ctx.fillStyle = '#fff';  // notes as thin white marks across the lanes
+  for (const note of S.notes) {
+    if (note.frame < f - span || note.frame > f + span) continue;
+    ctx.fillRect(LANE_W + (note.frame - (f - span)) * ppf - 1, 0, 2, h - 18);
+  }
+}
+
 function render() {
   if (!S.meta) return;
   const f = S.frame;
   const near = nearestByTeam(f);
   drawOverlay(f, near);
-  drawPitch(f, near);
-  drawInfo(f, near);
-  drawOverview(f);
-  drawDetail(f);
+  drawStrip(f);
+  watchTick(f);
+  markNearNotes(f);
+  if (!document.body.classList.contains('review')) {  // hidden in review mode: skip the work
+    drawPitch(f, near);
+    drawInfo(f, near);
+    drawOverview(f);
+    drawDetail(f);
+  }
   const t = f / S.fps;
   $('clock').textContent = `frame ${f} · video ${fmt(t)}.${String(f % S.fps).padStart(2, '0')} · ${matchClock(f)}`;
   $('zoom-label').textContent = `±${S.zoom} s`;
+  $('strip-zoom').textContent = `±${S.zoom} s`;
 }
 
 function resize() {
@@ -456,7 +637,37 @@ $('play').addEventListener('click', togglePlay);
 document.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('click', () => {
   video.pause(); seek(S.frame + Number(b.dataset.step));
 }));
-$('rate').addEventListener('change', (e) => { video.playbackRate = Number(e.target.value); });
+$('rate').addEventListener('change', (e) => { S.watch.userRate = Number(e.target.value); video.playbackRate = S.watch.userRate; });
+$('watch-mode').addEventListener('change', (e) => { S.watch.mode = e.target.value; S.watch.pausedFor = -1; render(); });
+$('watch-rate').addEventListener('change', (e) => { S.watch.slowRate = Number(e.target.value); render(); });
+$('watch-lead').addEventListener('change', (e) => { S.watch.lead = Number(e.target.value); render(); });
+
+function toggleReview() {
+  document.body.classList.toggle('review');
+  requestAnimationFrame(resize);  // canvases follow the new layout
+}
+function toggleFullscreen() {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else document.documentElement.requestFullscreen().catch(() => {});
+}
+$('review').addEventListener('click', toggleReview);
+$('fullscreen').addEventListener('click', toggleFullscreen);
+document.addEventListener('fullscreenchange', () => requestAnimationFrame(resize));
+
+$('note-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const input = $('note-text');
+  const text = input.value.trim();
+  if (!text) { input.setCustomValidity('Write what you see first'); input.reportValidity(); return; }
+  S.notes.push({ frame: S.frame, kind: $('note-kind').value, text, written: new Date().toISOString() });
+  S.notes.sort((a, b) => a.frame - b.frame);
+  saveNotes();
+  renderNotes();
+  input.value = '';
+  input.blur();
+  render();
+});
+$('note-text').addEventListener('input', () => $('note-text').setCustomValidity(''));
 $('l-sound').addEventListener('change', (e) => { video.muted = !e.target.checked; });
 ['l-players', 'l-ball', 'l-numbers'].forEach((id) => $(id).addEventListener('change', render));
 $('jump-form').addEventListener('submit', (e) => {
@@ -476,6 +687,13 @@ $('overview').addEventListener('click', (e) => {
   if (x < 0) return;
   video.pause(); seek(x / S.overview.ppf);
 });
+$('strip').addEventListener('click', (e) => {
+  const w = $('strip').clientWidth;
+  const span = S.zoom * S.fps;
+  const x = e.offsetX - LANE_W;
+  if (x < 0 || e.offsetX > w - STRIP_NOW) return;
+  video.pause(); seek(S.frame - span + (x / (w - LANE_W - STRIP_NOW)) * (2 * span + 1));
+});
 $('detail').addEventListener('click', (e) => {
   const w = $('detail').clientWidth;
   const span = S.zoom * S.fps;
@@ -485,16 +703,21 @@ $('detail').addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) {
+    if (e.key === 'Escape') e.target.blur();
+    return;
+  }
   const step = e.altKey ? 250 : e.shiftKey ? 25 : 1;
-  const v1 = S.lanes && S.lanes.find((l) => l.name === 'v1');
   if (e.key === ' ') { e.preventDefault(); togglePlay(); }
   else if (e.key === 'ArrowRight') { e.preventDefault(); video.pause(); seek(S.frame + step); }
   else if (e.key === 'ArrowLeft') { e.preventDefault(); video.pause(); seek(S.frame - step); }
   else if (e.key === '[') zoom(0.5);
   else if (e.key === ']') zoom(2);
-  else if (e.key === 'n' && v1) { video.pause(); seek(nextChange(v1, S.frame)); }
-  else if (e.key === 'p' && v1) { video.pause(); seek(previousChange(v1, S.frame)); }
+  else if (e.key === 'n') jumpToChange(1);
+  else if (e.key === 'p') jumpToChange(-1);
+  else if (e.key === 'r') toggleReview();
+  else if (e.key === 'f') toggleFullscreen();
+  else if (e.key === 'm') { e.preventDefault(); video.pause(); $('note-text').focus(); }
   else if (e.key === 'j') { e.preventDefault(); $('jump').focus(); }
 });
 window.addEventListener('resize', resize);

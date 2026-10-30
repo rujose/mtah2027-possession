@@ -190,13 +190,20 @@ tag supports Athletic 11.6 %.
 2. **Too few possessions, probably.** Mean 23.9 s and 173 possessions over the match. The switch
    penalties lean towards merging. Short real possessions (the truth has one of 0.8 s) are lost.
 3. **Dead-ball detection is coarse.** "Stopped" is a blunt signal (team speed has no clean split), and
-   set-piece tags are late, early or missing.
+   set-piece tags are late, early or missing. Example, found by Jose in the viewer: at 1st half
+   03:06 (frame 15835) the referee whistles, and the truth is dead from 15889 to 16399 (20.4 s).
+   v1 keeps Barcelona until 16221, so 329 of those 511 dead frames come out as H. None of its
+   dead-ball clues fire: the ball stays visible and inside the pitch, players keep moving above
+   1.0 m/s for 13 s, and this restart has no set-piece tag. The whistle is in the audio
+   (`tools/find_whistles.py`).
 4. **Throw-ins**: team `N/A` in the tags, so clue C says nothing about who restarts.
 5. **The weights and penalties are judgement.** We have no legal data from this match to calibrate
    them.
 
 ## Next steps (not built; each needs its own explanation first)
 
+- **Whistle clue:** a referee's whistle is strong evidence the ball just went dead. It's on the
+  tactical timeline already (see [../data.md](../data.md), file 5).
 - **Calibrate the weights and penalties on other matches** that publish per-frame possession and
   ball-in-play (candidate: IDSSE Bundesliga, to verify). This is the only legal way to replace
   judgement with measurement.

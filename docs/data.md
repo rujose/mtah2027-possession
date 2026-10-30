@@ -185,11 +185,26 @@ track** (AAC).
 burned in at the top left and a "Media Coach" logo at the top right. Athletic plays in white,
 Barcelona in blue and red.
 
+**The audio is quiet but clean, and the referee's whistle is in it.** Loudness at five points across
+the match: mean −56 to −63 dB, peaks around −44 dB (normal audio sits around −15 to −30 dB). So it
+sounds almost silent unless turned up, but a whistle stands out as a narrow 2.5–4.5 kHz tone.
+`python tools/find_whistles.py 11000 7800` on the first 5 minutes finds:
+
+| tone at frame | what the public truth shows there |
+|---|---|
+| 11149 (3.9 kHz) | 1.4 s before the opening kick-off (11185) |
+| 15835, 15881, 15887 | the truth turns dead at **15889**: a stoppage (1st half 03:06–03:08) |
+| 16081 | inside that dead stretch |
+| 17113, 17450 | 17113 is in open play: probably the crowd whistling. 17450 is inside a dead stretch |
+| none | at 12851 and 18027 the ball went out. Nobody whistles for that, so no tone is expected |
+
+So the whistle marks fouls, kick-offs and similar stops, not balls going out, and crowd whistles
+cause false alarms. The thresholds in the script are eyeballed, not fitted.
+
 **How we could use it:**
-- Watching clips to understand what the model got wrong (the homography lets us draw the tracking
-  on top).
-- Later, maybe: our own ball detector for the long gaps, or **detecting the referee's whistle in
-  the audio** to find when play stops and restarts.
+- Watching clips to understand what the model got wrong (see [viewer.md](viewer.md)).
+- **A whistle clue for dead balls**, straight on the tactical timeline with no alignment needed.
+- Later, maybe: our own ball detector for the long gaps.
 
 ## 6–9. The broadcast set
 
@@ -210,11 +225,28 @@ Barcelona in blue and red.
 ball more often than the tactical camera, but fewer players. A third of its frames are replays or
 close-ups with almost nothing tracked.
 
-**How we could use it:** to fill tactical ball gaps, but only after lining it up in time, which is
-not provided. Two ways to do that by algorithm:
-- both trackings use the same pitch coordinates, so we can slide one along the other until player
-  positions match
-- read the burned-in match clock in both videos
+**Lining it up with the tactical video turned out to be easy** (`python tools/align_broadcast.py`).
+Both trackings give the ball in the same pitch coordinates, so the script slides one ball track
+along the other and keeps the shift where the two balls sit on top of each other:
+
+| | 1st half | 2nd half |
+|---|---|---|
+| broadcast frame = | tactical frame − **4,014** | tactical frame − **26,919** |
+| next-best shift is worse by | 5.63 m vs 36.9 m rms ball distance | 7.39 m vs 37.8 m |
+| shift holds in every 2-minute window | within ±2 frames in 100 % of 24 windows | in 96 % of 26 (one window off by 40 frames) |
+| ball distance at the shift (median) | 0.80 m | 0.74 m |
+
+The two halves need different shifts because the broadcast **cuts out half-time**: its first half
+ends 7 s before its second-half kick-off. Live play has no other jumps. Replays are cut in *on top
+of* live play, so the shift stays the same before and after them.
+
+**But it adds little for the ball.** When the tactical tracking has lost the ball (41 % of graded
+frames), the broadcast sees it on only **12–13 %** of those frames, and that's before removing
+replays. Both cameras lose the ball at the same moments. Its audio is normal TV loudness (mean −24 dB,
+probably commentary and crowd; not listened to), and the tactical audio already has the whistles.
+
+**How we could use it:** now cheap to use, so it's an option for the ball gaps or a second view of
+the players. It's a small gain, not the main lever.
 
 ## 10–11. The public ground truth (in the repo)
 
