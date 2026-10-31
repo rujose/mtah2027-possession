@@ -183,3 +183,28 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   not used to choose or to accept it (#10, #14).
 - **Result (label-free):** counted whistles followed by a stoppage 8/11 → 11/11; 488 frames changed.
   The two stoppages now last exactly 3 s; their true end is left to step 3 (restart shapes).
+
+### 2026-10-30: v6 built; restart team much better, ranking gain inside the noise
+
+- **What:** v6 = v5 + a clue for which team takes the restart, from a players-only layout model
+  trained on all 10 bench matches with four-way mirroring ([models/v6-restart-team.md](models/v6-restart-team.md)).
+  Jose's choices: aim at the restart team (timing later), one learned model, Smart Tagging's team as
+  a cross-check only, name v6. The family rule kept logistic regression (trees ahead by 0.004).
+- **Result:** the right team after a found stoppage rose from 62 % to 87 % (IDSSE) and 72 % to 84 %
+  (Metrica), but held-out spellF1 is 0.435 against v4/v5's 0.433 (better on 6/10; worse on Metrica).
+  On our match the model agrees with Smart Tagging's set-piece team on 23/25 tags, v6's decoded
+  first team on 14/25 (v5: 10/25).
+- **Corrected:** the clue does affect dead ball indirectly (dead share 46.3 % → 48.3 %).
+- **Open:** whether v6 replaces v5 as the main line, and why a much better restart team barely moves
+  spellF1.
+
+### 2026-10-30: v6 revised after the diagnosis
+
+- **What:** the diagnosis (v6 page) showed the decoder follows the restart clue (99 %), but the clue
+  made staying dead cheaper and fired in open play, so the gain right after restarts (+394) was
+  mostly lost elsewhere (−243). Jose approved two reasoned changes: only the unlikely team pays, by
+  the odds (no new constant); the clue waits for 2 s of dead-looking play (1 % of bench stoppages
+  are shorter). Weight and carry re-chosen with the same procedure: unchanged (1, 3 s).
+- **Result:** after restarts +429, elsewhere −62; held-out spellF1 0.443 against 0.433, better on
+  8/10, holding at 30 %/55 % damage and with merged labels. Dead share on our match back to 46.5 %.
+- **So:** the revised v6 is the best-supported version on the bench, by a small, consistent margin.

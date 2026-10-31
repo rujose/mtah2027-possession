@@ -181,3 +181,45 @@ The rules ask us to "ask before you build on it". One public issue could cover:
 5. Whether the PFF World Cup 2022 data and Metrica's sample data (no licence file) are acceptable.
 
 Only 1, 2 and 5 matter for the plan above; 3 and 4 only if we do video ball detection.
+
+## Resource check (2026-10-30, after v5)
+
+Jose asked whether we use the other-match sources, and to check them. Two forked sessions answered
+from their own work and the repo (no new web searches), plus one GitHub API read of SkillCorner's
+repository.
+
+### What is in use, and what isn't
+
+| source | status | how / why not |
+|---|---|---|
+| **IDSSE** (7 DFL matches, CC BY 4.0) | **in use** | the bench; v3's decoder settings; v4's training |
+| **Metrica sample games** (3) | **in use** | the convention check; the bench's second set; v4's training |
+| **SkillCorner open data** (MIT) | available, not used | Licence clear (GitHub: MIT; repo "SkillCorner Open Data with 10 matches of broadcast tracking data", last pushed 2026-09-14, folders `aggregates`, `bodypose`, `matches`, `matches.json`). Broadcast tracking at 10 fps: settings counted in frames (v3's minimum lengths, v4's time shifts) must become seconds; off-screen players are extrapolated; dead ball is only implied. **Sound for H against A on live frames, not for D.** Best concrete use: an unseen-match check for PathCRF (step 4), since PathCRF was trained on IDSSE |
+| **PFF World Cup 2022** (64 matches) | blocked | The volume play: 64 matches against our 10, which is what a learned model like v4's would want. Terms not found, so **ask the organisers first (grey zone G8)**. Its ball goes missing for camera-framing reasons rather than crowding; players carry jerseys (still to be fragmented); 29.97 fps to resample; fouls only in `events.json`; its possession convention unknown, so the convention check would be rerun on it |
+| DFL Bundesliga Data Shootout (Kaggle 2022) | not bench material | video with event times; no per-frame H/A/D; licence unverified |
+| SoccerTrack v1, ISSIA-CNR, SoccerNet-Tracking | not bench material | ball-detector training data only; licences unverified, non-commercial (G6), or under an NDA |
+| Link & Hoernig's and Vidal-Codina's tracking sets | not obtainable | private |
+
+**So the bench candidates stay four:** IDSSE and Metrica (in use), SkillCorner (usable now, with the
+limits above), PFF (after the organisers answer).
+
+### Points that apply to any source (from the forked sessions)
+
+- **The whistle, Smart Tagging and the broadcast can't be tuned on any tracking source:** none has
+  audio, tags or video. Their weights stay reasoned (v2, v3, v5 pages). Video sets with sound
+  (SoccerNet, SoccerTrack v2) are unchecked for audio.
+- **Never trust a loader's speed field:** our own file says km/h but holds m/s. Our code computes
+  speed from positions (v4's features) or converts explicitly (IDSSE km/h ÷ 3.6).
+- **Hand labels on other matches are allowed in any amount** ([../limitations.md](../limitations.md)
+  §3), as long as the technical document says what was labelled, how, by whom and how much. That's a
+  fallback for a source with good tracking but no labels.
+
+### The reports disagree here: settle before quoting a number
+
+- **SkillCorner's match count:** [datasets-and-code.md](datasets-and-code.md) §1.5 counted 20 match
+  folders; its README and repository description say 10.
+- **SoccerTrack v2's licence:** CC BY 4.0 in datasets-and-code.md, unverified in
+  [extensions.md](extensions.md).
+- **PFF's frame rate** (29.97 fps, read from a kloppy test fixture), its total size, and the names of
+  its foul fields: unverified.
+- **SkillCorner's possession labels:** whether they're made by people is unknown.

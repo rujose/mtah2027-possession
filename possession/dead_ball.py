@@ -60,22 +60,23 @@ def costs(p):
     return -np.log(1.0 - p), -np.log(p)
 
 
-def save(model):
+def save(model, name="dead_ball"):
+    """Also used for v6's restart model (name="restart"): same two families, same format."""
     os.makedirs(MODELS, exist_ok=True)
     if model["family"] == "logistic":
-        path = os.path.join(MODELS, "dead_ball_logistic.json")
+        path = os.path.join(MODELS, "{}_logistic.json".format(name))
         with open(path, "w") as handle:
             json.dump(model, handle, indent=1)
     else:
         import joblib
-        path = os.path.join(MODELS, "dead_ball_trees.joblib")
+        path = os.path.join(MODELS, "{}_trees.joblib".format(name))
         joblib.dump(model, path)
     return path
 
 
-def load(family):
+def load(family, name="dead_ball"):
     if family == "logistic":
-        with open(os.path.join(MODELS, "dead_ball_logistic.json")) as handle:
+        with open(os.path.join(MODELS, "{}_logistic.json".format(name))) as handle:
             return json.load(handle)
     import joblib
-    return joblib.load(os.path.join(MODELS, "dead_ball_trees.joblib"))
+    return joblib.load(os.path.join(MODELS, "{}_trees.joblib".format(name)))

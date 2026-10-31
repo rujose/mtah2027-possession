@@ -1,0 +1,421 @@
+{
+ "family": "logistic",
+ "weight": 1.0,
+ "carry_s": 3.0,
+ "bench_mean_spell_f1": 0.44415994748176335,
+ "bench_mean_possessions": 310.7,
+ "plain_best": {
+  "setting": [
+   "logistic",
+   0.25,
+   3.0
+  ],
+  "spell_f1": 0.4472967126337185
+ },
+ "held_out_mean": {
+  "logistic": 0.44310214252103997,
+  "trees": 0.43788539808471294
+ },
+ "restart_frame_accuracy": {
+  "logistic": 0.7453459331758353,
+  "trees": 0.8690668241646979
+ },
+ "folds": {
+  "logistic": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "logistic",
+     2.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.37132262051915943,
+    "v4_spell_f1": 0.370595690747782,
+    "possessions": 298,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.3648780487804878,
+    "v4_spell_f1": 0.36020151133501266,
+    "possessions": 320,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.43600000000000005,
+    "v4_spell_f1": 0.4181551976573939,
+    "possessions": 298,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.4315086782376502,
+    "v4_spell_f1": 0.4114911080711354,
+    "possessions": 293,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.42417582417582417,
+    "v4_spell_f1": 0.3898448519040903,
+    "possessions": 307,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.4101040118870728,
+    "v4_spell_f1": 0.3836363636363636,
+    "possessions": 272,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "logistic",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.452365930599369,
+    "v4_spell_f1": 0.44943089430894306,
+    "possessions": 264,
+    "true_possessions": 370
+   },
+   {
+    "held_out": "metrica1",
+    "setting": [
+     "logistic",
+     2.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.5555228276877762,
+    "v4_spell_f1": 0.5501501501501501,
+    "possessions": 325,
+    "true_possessions": 354
+   },
+   {
+    "held_out": "metrica2",
+    "setting": [
+     "logistic",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.5204301075268818,
+    "v4_spell_f1": 0.5261829652996846,
+    "possessions": 333,
+    "true_possessions": 318
+   },
+   {
+    "held_out": "metrica3",
+    "setting": [
+     "logistic",
+     2.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.46471337579617833,
+    "v4_spell_f1": 0.47034659820282415,
+    "possessions": 404,
+    "true_possessions": 381
+   }
+  ],
+  "trees": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "trees",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.38012422360248443,
+    "v4_spell_f1": 0.370595690747782,
+    "possessions": 294,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "trees",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.36185819070904646,
+    "v4_spell_f1": 0.36020151133501266,
+    "possessions": 318,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "trees",
+     0.25,
+     5.0
+    ],
+    "held_out_spell_f1": 0.43672883787661404,
+    "v4_spell_f1": 0.4181551976573939,
+    "possessions": 295,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "trees",
+     2.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.40591397849462363,
+    "v4_spell_f1": 0.4114911080711354,
+    "possessions": 288,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "trees",
+     0.25,
+     5.0
+    ],
+    "held_out_spell_f1": 0.41770401106500693,
+    "v4_spell_f1": 0.3898448519040903,
+    "possessions": 302,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "trees",
+     1.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.40476190476190477,
+    "v4_spell_f1": 0.3836363636363636,
+    "possessions": 271,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "trees",
+     0.25,
+     5.0
+    ],
+    "held_out_spell_f1": 0.45876777251184836,
+    "v4_spell_f1": 0.44943089430894306,
+    "possessions": 263,
+    "true_possessions": 370
+   },
+   {
+    "held_out": "metrica1",
+    "setting": [
+     "trees",
+     2.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.5313432835820895,
+    "v4_spell_f1": 0.5501501501501501,
+    "possessions": 316,
+    "true_possessions": 354
+   },
+   {
+    "held_out": "metrica2",
+    "setting": [
+     "trees",
+     2.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.5161695447409734,
+    "v4_spell_f1": 0.5261829652996846,
+    "possessions": 319,
+    "true_possessions": 318
+   },
+   {
+    "held_out": "metrica3",
+    "setting": [
+     "trees",
+     0.25,
+     5.0
+    ],
+    "held_out_spell_f1": 0.4654822335025381,
+    "v4_spell_f1": 0.47034659820282415,
+    "possessions": 407,
+    "true_possessions": 381
+   }
+  ]
+ },
+ "v4_v5_spell_f1": {
+  "J03WMX": 0.370595690747782,
+  "J03WN1": 0.36020151133501266,
+  "J03WOH": 0.4181551976573939,
+  "J03WOY": 0.4114911080711354,
+  "J03WPY": 0.3898448519040903,
+  "J03WQQ": 0.3836363636363636,
+  "J03WR9": 0.44943089430894306,
+  "metrica1": 0.5501501501501501,
+  "metrica2": 0.5261829652996846,
+  "metrica3": 0.47034659820282415
+ },
+ "checks": {
+  "restarts": {
+   "idsse": {
+    "v4_v5": {
+     "restarts": 696,
+     "found": 584,
+     "right_team_after_found": 0.6198630136986302,
+     "end_within_1s": 0.6044520547945206,
+     "end_within_3s": 0.8065068493150684
+    },
+    "v6": {
+     "restarts": 696,
+     "found": 584,
+     "right_team_after_found": 0.8732876712328768,
+     "end_within_1s": 0.6044520547945206,
+     "end_within_3s": 0.8047945205479452
+    }
+   },
+   "metrica": {
+    "v4_v5": {
+     "restarts": 286,
+     "found": 217,
+     "right_team_after_found": 0.7188940092165899,
+     "end_within_1s": 0.4700460829493088,
+     "end_within_3s": 0.7603686635944701
+    },
+    "v6": {
+     "restarts": 286,
+     "found": 217,
+     "right_team_after_found": 0.8525345622119815,
+     "end_within_1s": 0.4700460829493088,
+     "end_within_3s": 0.7557603686635944
+    }
+   }
+  },
+  "per_set": {
+   "idsse": {
+    "v6": 0.4131053154743718,
+    "v4_v5": 0.39762223109438866
+   },
+   "metrica": {
+    "v6": 0.5166207554990102,
+    "v4_v5": 0.5155599045508862
+   }
+  },
+  "levels": {
+   "30": {
+    "v6": 0.4491624594876691,
+    "v4_v5": 0.4398223728701899
+   },
+   "55": {
+    "v6": 0.3939450506326892,
+    "v4_v5": 0.3772239203908184
+   }
+  },
+  "accounting": {
+   "after_restart_before": 1871,
+   "after_restart_after": 2300,
+   "other_before": 5722,
+   "other_after": 5660,
+   "predicted_before": 2946,
+   "predicted_after": 3107,
+   "matched_05_before": 1524,
+   "matched_05_after": 1595,
+   "true": 4114
+  },
+  "follow_through": {
+   "clue_right_and_v6_right": 690,
+   "overridden": 5
+  },
+  "merged_labels": {
+   "v6": 0.45557704601655524,
+   "v4_v5": 0.4441143418429955
+  }
+ },
+ "model_file": "possession/models/restart_logistic.json",
+ "features": [
+  "this_beyond_touchline",
+  "this_on_touchline",
+  "this_beyond_goal_left",
+  "this_beyond_goal_right",
+  "this_corner_left",
+  "this_corner_right",
+  "this_six_left",
+  "this_six_right",
+  "this_area_left",
+  "this_area_right",
+  "this_centre_circle",
+  "this_share_left_half",
+  "this_mean_speed",
+  "this_spread",
+  "this_centre_along",
+  "this_on_touchline_past_2s",
+  "this_on_touchline_next_2s",
+  "this_corner_left_past_2s",
+  "this_corner_left_next_2s",
+  "this_corner_right_past_2s",
+  "this_corner_right_next_2s",
+  "this_six_left_past_2s",
+  "this_six_left_next_2s",
+  "this_six_right_past_2s",
+  "this_six_right_next_2s",
+  "this_area_left_past_2s",
+  "this_area_left_next_2s",
+  "this_area_right_past_2s",
+  "this_area_right_next_2s",
+  "this_centre_circle_past_2s",
+  "this_centre_circle_next_2s",
+  "other_beyond_touchline",
+  "other_on_touchline",
+  "other_beyond_goal_left",
+  "other_beyond_goal_right",
+  "other_corner_left",
+  "other_corner_right",
+  "other_six_left",
+  "other_six_right",
+  "other_area_left",
+  "other_area_right",
+  "other_centre_circle",
+  "other_share_left_half",
+  "other_mean_speed",
+  "other_spread",
+  "other_centre_along",
+  "other_on_touchline_past_2s",
+  "other_on_touchline_next_2s",
+  "other_corner_left_past_2s",
+  "other_corner_left_next_2s",
+  "other_corner_right_past_2s",
+  "other_corner_right_next_2s",
+  "other_six_left_past_2s",
+  "other_six_left_next_2s",
+  "other_six_right_past_2s",
+  "other_six_right_next_2s",
+  "other_area_left_past_2s",
+  "other_area_left_next_2s",
+  "other_area_right_past_2s",
+  "other_area_right_next_2s",
+  "other_centre_circle_past_2s",
+  "other_centre_circle_next_2s"
+ ]
+}
