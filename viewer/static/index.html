@@ -45,6 +45,8 @@
       <select id="watch-lead"><option value="1">1 s</option><option value="2" selected>2 s</option><option value="3">3 s</option><option value="5">5 s</option></select>
       before
     </label>
+    <label><input type="checkbox" id="watch-flash" checked> flash on the change frame</label>
+    <label>frame colour from <select id="frame-lane"><option value="">off</option></select></label>
     <span class="next-change" id="next-change"></span>
   </div>
 
@@ -55,6 +57,7 @@
         <canvas id="overlay"></canvas>
         <div class="badge" id="ball-badge" hidden>ball not tracked</div>
         <div class="badge slow" id="slow-badge" hidden>slow motion: change ahead</div>
+        <div class="badge change" id="change-badge" hidden></div>
       </div>
       <canvas id="strip" title="Click to jump"></canvas>
       <div class="legend">

@@ -28,20 +28,22 @@ CARRY = 3.0                # seconds the clue lasts after the last dead-looking 
 TAG_WINDOW = 15 * FPS      # frames after a set-piece tag starts in which the cross-check looks
 
 
+def build_costs(clues, p_dead, p_home, halves):
+    """v5's costs plus the restart clue (also used by v7)."""
+    cost = v5.build_costs(clues, p_dead)
+    on_h, on_a = restart.costs(restart.restart_belief(p_home, p_dead, halves, int(CARRY * FPS)), W_RESTART)
+    cost[:, v1.H] += on_h
+    cost[:, v1.A] += on_a
+    return cost
+
+
 def predict(tracking, tags, events, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH)):
     """Labels for every video frame, the clues, P(dead) and P(home restarts)."""
     halves = halves or graded_halves()
     model = dead_ball.load(FAMILY, name="restart")
     p_home = restart.p_home(model, restart.all_orientations(tracking, halves, pitch))
-
-    def build(clues, p_dead):
-        cost = v5.build_costs(clues, p_dead)
-        on_h, on_a = restart.costs(restart.restart_belief(p_home, p_dead, halves, int(CARRY * FPS)), W_RESTART)
-        cost[:, v1.H] += on_h
-        cost[:, v1.A] += on_a
-        return cost
-
-    labels, clues, p_dead = v4.predict(tracking, tags, events, halves, pitch=pitch, build=build)
+    labels, clues, p_dead = v4.predict(tracking, tags, events, halves, pitch=pitch,
+                                       build=lambda clues, p_dead: build_costs(clues, p_dead, p_home, halves))
     return labels, clues, p_dead, p_home
 
 

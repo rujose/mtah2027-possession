@@ -13,6 +13,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [bench.md](bench.md) | The test bench: 7 DFL matches plus 3 Metrica sample games, damaged to look like ours, where versions are compared and settings chosen |
 | [convention-check.md](convention-check.md) | Do Metrica's possessions change hands as often as DFL's, the bench's labels? (About 20 % less often, but v3's settings still win on Metrica's labels) |
 | [models/](models/) | One page per model version: why, how, every setting and where it comes from, expected failures, results |
+| [ideas.md](ideas.md) | Ideas waiting their turn, with where they came from |
 | [decisions.md](decisions.md) | Every decision we took, when, and why |
 | [viewer.md](viewer.md) | The match viewer: video + tracking + labels + clues on one frame; how to run it |
 
@@ -36,6 +37,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v4](models/v4-dead-ball.md) | v3 + a dead-ball probability learned from the players on the bench (gradient-boosted trees), replacing the "stopped / active" rules | built 2026-10-30 | 428 possessions, mean 8.0 s; dead 46.2 % | **0.433 ± 0.065** held-out over all 10 (v3 0.412), better on 8/10; stoppages found 81 % (v3 48 %) | macroF1 0.82, spellF1 0.44 |
 | [v5](models/v5-whistle-weight.md) | v4 with the counted whistle's weight = v2's 2.0 + the model's strongest live evidence (4.30) | built 2026-10-30 | 426 possessions; dead 46.3 %; counted whistles followed by a stoppage 11/11 (v4 8/11) | not benchable (no audio); same as v4 there | macroF1 0.82, spellF1 0.44 |
 | [v6](models/v6-restart-team.md) | v5 + who restarts, learned from the players' layout at stoppages (logistic regression); revised so only the unlikely team pays and the clue waits for 2 s of dead-looking play | built and revised 2026-10-30 | 439 possessions; dead 46.5 % | **0.443 ± 0.060** held-out (v4/v5 0.433), better on 8/10; right team after a stoppage 62 → 87 % (IDSSE), 72 → 85 % (Metrica) | macroF1 0.82, spellF1 0.44 |
+| [v7](models/v7-pathcrf.md) | v6 + PathCRF (a published players-only model, trained on other matches) for who has the ball, weight 0.5 on every live frame | built 2026-10-30 | 347 possessions; dead 46.9 % | **0.565** held-out on the 4 matches PathCRF never saw (v6 0.501), better on 4/4; changes caught inside ball gaps 8 % → 55 % | macroF1 0.86, spellF1 0.61 |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -60,6 +62,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v4                 # writes evaluation/results/v4.csv
 .venv/bin/python -m possession.v5                 # writes evaluation/results/v5.csv
 .venv/bin/python -m possession.v6                 # writes evaluation/results/v6.csv
+.venv/bin/python -m possession.v7                 # writes evaluation/results/v7.csv (downloads PathCRF's weights once)
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -76,4 +79,6 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.tune_decoder --set all  # the decoder search on all 10 matches
 .venv/bin/python -m bench.train_dead_ball         # v4's dead-ball model and settings -> possession/models/
 .venv/bin/python -m bench.train_restart           # v6's restart model and settings -> possession/models/
+.venv/bin/python -m bench.eval_pathcrf            # PathCRF on the bench, v7's settings, predictions for the viewer
+.venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)
 ```

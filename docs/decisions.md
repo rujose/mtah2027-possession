@@ -208,3 +208,19 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Result:** after restarts +429, elsewhere −62; held-out spellF1 0.443 against 0.433, better on
   8/10, holding at 30 %/55 % damage and with merged labels. Dead share on our match back to 46.5 %.
 - **So:** the revised v6 is the best-supported version on the bench, by a small, consistent margin.
+
+### 2026-10-30: v7 built (PathCRF); the viewer shows v6/v7's signals and the bench matches
+
+- **What:** v7 = v6 + PathCRF's estimate of who has the ball, from the players' movement, as a
+  clue where only the unlikely team pays. PathCRF is a published model trained by its authors on
+  other matches; its code is vendored unchanged (MPL-2.0), its weights downloaded at a pinned
+  commit with a hash check. Jose's choices: published weights, run at reproduction time, vendored
+  code, settings on the 4 matches it never saw, PyTorch pinned, name v7. Added while building:
+  PyTorch Geometric (imported by PathCRF's unchanged code).
+- **Result:** reproduced at 91.0 % on clean J03WR9 (paper 92.4 %); on the unseen matches with our
+  damage, right team inside ball gaps 85.7 % (v6 69.5 %), changes caught there 55 % (v6 8 %).
+  Held-out spellF1 0.565 against 0.501, better on 4/4, weight 0.5 on every live frame.
+- **Watch:** on our match v7 reports 347 possessions (v6 439), and PathCRF agrees with the direct
+  on-the-ball evidence 86 % there against 91 % on the bench: some domain shift.
+- **Viewer:** v6/v7's signals as lanes; the 10 bench matches viewable with their true labels and
+  out-of-sample predictions, without video (Jose asked for both).

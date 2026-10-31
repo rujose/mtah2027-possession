@@ -88,6 +88,9 @@ explains what has been done, with the numbers needed to judge it.
 - **Weight:** how much a clue counts against the others; also a setting we choose.
 - **Mirroring:** showing the model every example also with the teams swapped and the pitch flipped,
   so it can't learn "home usually restarts", only the shapes.
+- **PathCRF:** a published model (KDD 2026) that guesses who has the ball from the players'
+  movement alone, without the ball. We run its authors' trained version, which learned on other
+  matches.
 - **Clip and rounding:** probabilities are kept between 0.01 and 0.99 and rounded to 3 decimals,
   so one frame can't dominate, and tiny computer differences can't change a label.
 
@@ -157,6 +160,7 @@ changes one thing.
 | v4 | dead-ball probability from a trees model on 79 player features, replacing two hand rules | trained and chosen on the bench |
 | v5 | the whistle's weight restored (4.30), after Jose watched two whistles v4 missed | reasoning (formula), not tuned on those two |
 | v6 | which team restarts, from a model of the players' layout at stoppages | trained and chosen on the bench |
+| v7 | + PathCRF: who has the ball, from the players' movement, especially while the ball is missing | published model; its weight chosen on the 4 bench matches it never saw |
 
 ### The numbers to judge it by
 
@@ -169,6 +173,7 @@ changes one thing.
 | v3 | 0.369 | 0.512 | 0.412 |
 | v4 = v5 on the bench | 0.398 | 0.516 | 0.433 |
 | v6 (revised) | 0.413 | 0.517 | 0.443 |
+| v7 (on the 4 matches PathCRF never saw) | J03WR9 0.569 | 0.564 | 0.565 vs v6's 0.501 there |
 
 - **The big steps:**
   - **v3 (the decoder):** +0.14. v1 merged possessions: it found ~150 per match where there are
@@ -185,6 +190,7 @@ changes one thing.
 | | v1 | v2 | v3 | v4 | v5 | v6 |
 |---|---|---|---|---|---|---|
 | possessions | 173 | 177 | 429 | 428 | 426 | 439 |
+| (v7) | | | | | | 347 |
 | dead ball, share of time | 35.0 % | 36.3 % | 39.9 % | 46.2 % | 46.3 % | 46.5 % |
 
 For scale: Metrica's sample games, by their own events, have 304–358 possessions per 90 minutes.
@@ -231,10 +237,10 @@ pipeline works.
 
 ### Where it stands and what's next
 
-- **Best-supported version: v6 (revised)**, by a small, consistent margin over v5. v5 is committed;
-  v6 is not yet.
+- **Best-supported version: v7**, with the largest gain since v3 on the matches PathCRF never saw
+  (+0.064, 4 of 4). To watch: it reports fewer possessions on our match (347), and PathCRF is a
+  little less consistent with our tracking than with the bench's. v6 is committed; v7 is not yet.
 - **Next:**
-  - step 4, PathCRF, a model that guesses who has the ball when it's missing (41 % of frames);
   - step 5, counting a gain of possession only when the ball is actually touched.
 - **Outside the code:**
   - register 3–5 team members by **Nov 10**;

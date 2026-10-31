@@ -1,0 +1,117 @@
+{
+ "setting": {
+  "weight": 0.5,
+  "where": "live"
+ },
+ "folds": [
+  {
+   "held_out": "J03WR9",
+   "setting": [
+    0.5,
+    "live"
+   ],
+   "held_out_spell_f1": 0.5692307692307692,
+   "v6_spell_f1": 0.452365930599369
+  },
+  {
+   "held_out": "metrica1",
+   "setting": [
+    0.5,
+    "live"
+   ],
+   "held_out_spell_f1": 0.5712574850299401,
+   "v6_spell_f1": 0.5595273264401773
+  },
+  {
+   "held_out": "metrica2",
+   "setting": [
+    0.5,
+    "live"
+   ],
+   "held_out_spell_f1": 0.5528301886792453,
+   "v6_spell_f1": 0.5290322580645161
+  },
+  {
+   "held_out": "metrica3",
+   "setting": [
+    0.5,
+    "live"
+   ],
+   "held_out_spell_f1": 0.5670682730923694,
+   "v6_spell_f1": 0.46130268199233726
+  }
+ ],
+ "held_out_mean": 0.565096679008081,
+ "quality": {
+  "unseen": {
+   "gaps": {
+    "frames": 38604,
+    "pathcrf_right": 0.856543363382033,
+    "v6_right": 0.6953683556108176
+   },
+   "seen_ball": {
+    "frames": 293388,
+    "pathcrf_right": 0.9095259519816762,
+    "v6_right": 0.9063254120822938
+   }
+  },
+  "seen": {
+   "gaps": {
+    "frames": 126066,
+    "pathcrf_right": 0.8884869830089,
+    "v6_right": 0.6922405723985848
+   },
+   "seen_ball": {
+    "frames": 319347,
+    "pathcrf_right": 0.899651476293812,
+    "v6_right": 0.871187141260134
+   }
+  }
+ },
+ "checks": {
+  "unseen": {
+   "accounting": {
+    "after_restart_before": 986,
+    "after_restart_after": 1097,
+    "other_before": 2442,
+    "other_after": 2794,
+    "predicted_before": 1322,
+    "predicted_after": 1330,
+    "matched_05_before": 688,
+    "matched_05_after": 796,
+    "true": 1423
+   },
+   "changes_in_gaps": 152,
+   "caught_v6": 12,
+   "caught_v7": 84
+  },
+  "seen": {
+   "accounting": {
+    "after_restart_before": 1314,
+    "after_restart_after": 1811,
+    "other_before": 3218,
+    "other_after": 4831,
+    "predicted_before": 1785,
+    "predicted_after": 2160,
+    "matched_05_before": 907,
+    "matched_05_after": 1340,
+    "true": 2691
+   },
+   "changes_in_gaps": 651,
+   "caught_v6": 37,
+   "caught_v7": 353
+  }
+ },
+ "v6_spell_f1": {
+  "J03WMX": 0.3727047146401985,
+  "J03WN1": 0.3648780487804878,
+  "J03WOH": 0.43600000000000005,
+  "J03WOY": 0.4315086782376502,
+  "J03WPY": 0.42417582417582417,
+  "J03WQQ": 0.4101040118870728,
+  "J03WR9": 0.452365930599369,
+  "metrica1": 0.5595273264401773,
+  "metrica2": 0.5290322580645161,
+  "metrica3": 0.46130268199233726
+ }
+}

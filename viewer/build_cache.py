@@ -10,11 +10,14 @@ from the gated data and must never be published):
     ball.bin         int16 [frames, 2]         same encoding
     homography.bin   float32 [frames, 9]       pitch (0-1) -> pixel matrix, row by row
     labels.bin       uint8 [lanes, frames]     0 = X / none, 1 = H, 2 = A, 3 = D
-    clues.bin        uint8 [clue lanes, frames] 0 = off, 1 = on / Barcelona, 2 = Athletic
+    clues.bin        uint8 [clue lanes, frames] 0 = off, 1 = on / Barcelona, 2 = Athletic; except
+                     "v4: P(dead)" (a percentage, 0-100), and "v6: restart clue" and "v7: PathCRF"
+                     (0 = silent, otherwise 1 + P(Barcelona) in %)
 
 Label lanes are the public ground truth plus every CSV in evaluation/results/, so a new model
-shows up in the viewer as soon as it writes its file. Clue lanes are model v1's, plus v2's whistles
-(decoding the audio adds ~15 s to the build).
+shows up in the viewer as soon as it writes its file. Clue lanes are model v1's, v2's whistles,
+and the current model's (v7) learned signals: its dead-ball probability, its restart clue and
+PathCRF's estimate of who has the ball (decoding the audio and running v7 add ~2 min to the build).
 """
 
 import glob
@@ -24,7 +27,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from possession import v1, v2
+from possession import restart, v1, v2, v6, v7
 from possession.audio import whistle_events
 from possession.data import (FPS, HOME, AWAY, PITCH_LENGTH, PITCH_WIDTH, ROOT, graded_halves,
                              load_tags, load_tracking)
@@ -58,10 +61,10 @@ def label_lanes():
     return names, codes
 
 
-def whistle_lane(tracking):
+def whistle_lane(tracking, events):
     """1 = a whistle v2 counts (its 3-s push towards dead), 2 = a whistle v2 ignores (no slowdown)."""
     lane = np.zeros(len(tracking["ball"]), np.uint8)
-    for event in whistle_events(tracking):
+    for event in events:
         if event["counted"]:
             lane[event["start"]:event["start"] + v2.WHISTLE_WINDOW] = 1
         else:
@@ -69,8 +72,24 @@ def whistle_lane(tracking):
     return lane
 
 
+def percent_lane(p):
+    """0 where silent (NaN), otherwise 1 + P in %."""
+    return np.where(np.isnan(p), 0, 1 + np.round(np.nan_to_num(p) * 100)).astype(np.uint8)
+
+
+def model_lanes(tracking, tags, events):
+    """v7's learned signals: P(dead) in % (v4's dead-ball model), the restart clue where it is on,
+    and PathCRF's P(Barcelona has the ball) where its clue applies."""
+    _, _, p_dead, p_start, p_pathcrf = v7.predict(tracking, tags, events)
+    belief = restart.restart_belief(p_start, p_dead, graded_halves(), int(v6.CARRY * FPS))
+    return [("v4: P(dead)", np.round(p_dead * 100).astype(np.uint8)),
+            ("v6: restart clue", percent_lane(belief)),
+            ("v7: PathCRF", percent_lane(v7.pathcrf_belief(p_pathcrf, tracking["ball"])))]
+
+
 def clue_lanes(tracking, tags):
-    """v1's clues as small integer lanes, plus ball visibility and v2's whistles."""
+    """v1's clues as small integer lanes, plus ball visibility, v2's whistles and v6's signals."""
+    events = whistle_events(tracking)
     clues = v1.compute_clues(tracking, tags, graded_halves())
     on_ball = np.zeros(len(clues["out"]), np.uint8)
     on_ball[clues["on_ball"][:, HOME] > 0] = 1
@@ -86,8 +105,8 @@ def clue_lanes(tracking, tags):
         ("B: players active", clues["active"].astype(np.uint8)),
         ("B: set-piece window", clues["set_piece"].astype(np.uint8)),
         ("C: tag says team", tag_team),
-        ("v2: whistle", whistle_lane(tracking)),
-    ]
+        ("v2: whistle", whistle_lane(tracking, events)),
+    ] + model_lanes(tracking, tags, events)
     return [name for name, _ in lanes], np.stack([lane for _, lane in lanes])
 
 

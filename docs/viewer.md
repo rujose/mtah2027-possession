@@ -30,6 +30,39 @@ re-encoded, so it is derived from the gated data: it is gitignored and must neve
 Lane colours: blue = Barcelona / H, red = Athletic / A, grey = dead ball / D, orange = a clue is on,
 green = ball tracked.
 
+**The current model's learned signals** (added 2026-10-30), at the bottom of the clue lanes and in
+the side panel:
+
+| lane | what it shows | colours |
+|---|---|---|
+| **v4: P(dead)** | the dead-ball model's probability that play is stopped, frame by frame. The panel shows the number | nothing below 50 %; light grey 50–80 % ("looks dead"); grey above 80 % |
+| **v6: restart clue** | which team the restart model expects to take the next restart, and how sure it is. It's only on after 2 s of dead-looking play and for 3 s after, the same as in v6 | blue Barcelona, red Athletic; strong colour at 80 % or more, faded below; empty where the clue is silent |
+
+They're computed by running v6 when the cache is built (`python -m viewer.build_cache`, ~30 s), so
+they show what the model sees, not the labels it ends up with.
+
+## The bench matches (added 2026-10-30)
+
+The header's title is a **match picker**: our match, plus the 10 bench matches (7 IDSSE, 3 Metrica
+samples). A bench match opens at `http://localhost:8765/?match=<id>`.
+
+- **No video:** those matches have none. The page runs on its own clock, and play, pause, jump,
+  slow-down before a change and notes all work as before.
+- **Their true labels**, in the lane "truth (bench)". On other matches we may look at the answers
+  freely (RULES.md: the ban is on our match). So this is where to watch our models fail against the
+  truth.
+- **Models:** v1, v3 and the floor computed on the damaged tracking; v4 (= v5 there, no audio), v6
+  and v7 **out of sample**, each match predicted by models trained without it.
+- **Signals:** "ball visible", v1's clues, v4's P(dead), v6's restart clue, v7's PathCRF estimate.
+  There's no Smart Tagging or whistle on those matches.
+- **"clean tracking" toggle:** switches the dots between the damaged tracking the models see (41 %
+  ball missing, anonymous slots) and the tracking as published.
+- **Team names** are "home" and "away", and each match keeps its own notes.
+
+**Build:** `python -m bench.eval_pathcrf` (saves the out-of-sample predictions,
+`data/external/bench_predictions/`), then `python -m viewer.build_bench_cache` (~20 s, ~450 MB in
+`viewer/cache/bench/`, gitignored).
+
 ## Watching changes closely
 
 The bar under the header (**Watch changes in**) picks which label rows to watch: truth and our models
@@ -40,6 +73,15 @@ by default, baselines optional. Then choose what happens as one of them is about
 - **slow down and pause**: the same, and it also stops 6 frames (0.24 s) before the change. Press
   play to go through it in slow motion. It pauses once per change, and again if you jump back.
 - **do nothing**: plays at your chosen speed.
+
+Two more options in the same bar:
+
+- **flash on the change frame** (on by default): on the exact frame where a watched row changes
+  label, the video gets a yellow and white ring and a tag `change at this frame (15835): v2 A→D`.
+  The ring lasts that one frame only, so stepping with `←` `→` shows exactly where the change sits.
+  The tag stays for 1 s afterwards (`changed 3 frames ago …`), so a change isn't missed at normal speed.
+- **frame colour from**: paints a ring around the video in the label colour of the chosen row at
+  the current frame (blue Barcelona, red Athletic, grey dead ball). Off by default.
 
 On the right, the bar shows the next watched change and what it is, for example
 `next change in 1.4 s · v2 A→D`. `N` / `P` jump to 2 s (the lead time) before the next or previous

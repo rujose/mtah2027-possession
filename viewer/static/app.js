@@ -3,20 +3,50 @@
 // Data comes from viewer/cache (see viewer/build_cache.py for the encodings).
 
 const COLOR = { H: '#3b82f6', A: '#ef4444', D: '#9ca3af', clue: '#f59e0b', seen: '#22c55e', ball: '#facc15',
+  looksDead: 'rgba(156,163,175,0.4)', Hsoft: 'rgba(59,130,246,0.45)', Asoft: 'rgba(239,68,68,0.45)',
   ignored: '#6b7280', ungraded: 'rgba(255,255,255,0.05)', grid: '#262b32', text: '#e5e7ea', muted: '#8f98a3' };
 const LABEL_COLOR = [null, COLOR.H, COLOR.A, COLOR.D];
 const LABEL_TEXT = ['–', 'H', 'A', 'D'];
 // Kick-off frames, published in DATA.md and FAQ.md. Used only for the clock readout.
-const KICKOFF = { 1: 11185, 2: 113742 };
+let KICKOFF = { 1: 11185, 2: 113742 };  // a bench match's meta.json gives its own
 const ON_BALL_DISTANCE = 2.0;  // metres, same as model v1's clue A
 const MARGIN = 4;              // metres of grass drawn around the pitch map
 const LANE_W = 150;            // px reserved for lane names on the timelines
 
 const PAUSE_BEFORE = 6;        // frames before a watched change where "slow down and pause" stops
 const SLOW_AFTER = 25;         // frames after a change that stay in slow motion
+const CHANGE_NOTE = 25;        // frames after a change that its badge stays up (the ring is that frame only)
 
 const $ = (id) => document.getElementById(id);
-const video = $('video');
+// Which match: BAR-ATH (with video) by default; ?match=<id> opens a bench match, which has no video.
+const MATCH = new URLSearchParams(location.search).get('match');
+const BASE = MATCH ? `/cache/bench/${encodeURIComponent(MATCH)}/` : '/cache/';
+
+// Stands in for the <video> element on matches without video: the same few properties, methods and
+// events the page uses (play, pause, currentTime, playbackRate, muted, requestVideoFrameCallback),
+// driven by the screen's refresh instead of a decoder.
+class Clock extends EventTarget {
+  constructor() { super(); this.paused = true; this.playbackRate = 1; this.muted = true; this.duration = Infinity; this._t = 0; this._last = null; this._callbacks = []; }
+  get currentTime() { return this._t; }
+  set currentTime(t) { this._t = Math.max(0, Math.min(t, this.duration)); this._last = null; queueMicrotask(() => this.dispatchEvent(new Event('seeked'))); }
+  play() {
+    if (this.paused) { this.paused = false; this._last = null; this.dispatchEvent(new Event('play')); requestAnimationFrame((n) => this._tick(n)); }
+    return Promise.resolve();
+  }
+  pause() { if (!this.paused) { this.paused = true; this.dispatchEvent(new Event('pause')); } }
+  requestVideoFrameCallback(callback) { this._callbacks.push(callback); }
+  _tick(now) {
+    if (this.paused) return;
+    if (this._last !== null) this._t = Math.min(this.duration, this._t + ((now - this._last) / 1000) * this.playbackRate);
+    this._last = now;
+    const callbacks = this._callbacks; this._callbacks = [];
+    for (const callback of callbacks) callback(now, { mediaTime: this._t });
+    if (this._t >= this.duration) this.pause(); else requestAnimationFrame((n) => this._tick(n));
+  }
+}
+const video = MATCH ? new Clock() : $('video');
+if (MATCH) { $('video').removeAttribute('src'); $('video').load(); }   // don't download our video for a bench match
+const TEAM_NAME = MATCH ? ['home', 'away'] : ['Barça', 'Athletic'];   // bench matches: their own home and away
 const S = {
   frame: 0, zoom: 30, playing: false, notes: [],
   // Change watch: which label lanes to watch, and what to do as a change approaches.
@@ -27,18 +57,63 @@ const S = {
 // Loading and data access
 // ------------------------------------------------------------------------------------------
 
+async function buildMatchPicker(meta) {
+  // The header's title becomes a picker: BAR-ATH plus every bench match with a cache.
+  let bench = [];
+  try { bench = await fetch('/cache/bench/index.json').then((r) => (r.ok ? r.json() : [])); } catch { bench = []; }
+  if (!bench.length) return;
+  const select = document.createElement('select');
+  select.id = 'match';
+  select.title = 'Match';
+  select.append(new Option('BAR – ATH (ours, with video)', ''));
+  for (const m of bench) select.append(new Option(`${m.id} · ${m.title}`, m.id));
+  select.value = MATCH || '';
+  select.addEventListener('change', () => { location.search = select.value ? `?match=${encodeURIComponent(select.value)}` : ''; });
+  const brand = document.querySelector('.brand');
+  brand.textContent = '';
+  brand.append(select, Object.assign(document.createElement('span'), { textContent: MATCH ? 'bench match: true labels, no video' : 'match viewer' }));
+}
+
+function addCleanToggle() {
+  const label = document.createElement('label');
+  const input = Object.assign(document.createElement('input'), { type: 'checkbox', id: 'l-clean' });
+  input.addEventListener('change', () => {
+    const t = S.tracks[input.checked ? 'clean' : 'damaged'];
+    Object.assign(S, { players: t.players, ball: t.ball });
+    Object.assign(S.meta, { slots: t.slots, team: t.team });
+    render();
+  });
+  label.append(input, ' clean tracking (as published, before our damage)');
+  $('l-numbers').closest('label').after(label);
+}
+
 async function load() {
-  const meta = await fetch('/cache/meta.json').then((r) => r.json());
-  const names = ['players', 'ball', 'homography', 'labels', 'clues'];
-  const buffers = await Promise.all(names.map((n) => fetch(`/cache/${n}.bin`).then((r) => {
+  const meta = await fetch(`${BASE}meta.json`).then((r) => r.json());
+  const hasVideo = meta.video !== false;
+  const names = ['players', 'ball', 'labels', 'clues'].concat(hasVideo ? ['homography'] : [])
+    .concat(meta.clean ? ['players_clean', 'ball_clean'] : []);
+  const buffers = Object.fromEntries(await Promise.all(names.map((n) => fetch(`${BASE}${n}.bin`).then((r) => {
     if (!r.ok) throw new Error(`missing cache file ${n}.bin`);
-    return r.arrayBuffer();
-  })));
+    return r.arrayBuffer().then((b) => [n, b]);
+  }))));
   Object.assign(S, {
     meta, F: meta.frames, fps: meta.fps, L: meta.pitch[0], W: meta.pitch[1],
-    players: new Int16Array(buffers[0]), ball: new Int16Array(buffers[1]), H: new Float32Array(buffers[2]),
-    labels: new Uint8Array(buffers[3]), clues: new Uint8Array(buffers[4]),
+    players: new Int16Array(buffers.players), ball: new Int16Array(buffers.ball),
+    H: hasVideo ? new Float32Array(buffers.homography) : null,
+    labels: new Uint8Array(buffers.labels), clues: new Uint8Array(buffers.clues),
   });
+  if (meta.kickoff) KICKOFF = meta.kickoff;
+  if (!hasVideo) { document.body.classList.add('no-video'); video.duration = (S.F - 1) / S.fps; }
+  if (meta.clean) {
+    // A bench match: the damaged tracking the models see, and the clean original, one toggle apart.
+    S.tracks = {
+      damaged: { players: S.players, ball: S.ball, slots: meta.slots, team: meta.team },
+      clean: { players: new Int16Array(buffers.players_clean), ball: new Int16Array(buffers.ball_clean),
+               slots: meta.clean.slots, team: meta.clean.team },
+    };
+    addCleanToggle();
+  }
+  await buildMatchPicker(meta);
   S.graded = new Uint8Array(S.F);
   for (const [, first, last] of meta.halves) S.graded.fill(1, first, last + 1);
   S.lanes = buildLanes(meta);
@@ -114,6 +189,24 @@ function buildWatchChips() {
     });
     label.append(input, lane.name.replace(' (first 5 min)', ''));
     box.append(label);
+    $('frame-lane').append(new Option(lane.name.replace(' (first 5 min)', ''), lane.name));
+  }
+}
+
+function drawFrameState(f) {
+  // Ring around the video in the chosen lane's label colour, and the change-frame flash.
+  const wrap = document.querySelector('.video-wrap');
+  const lane = S.lanes.find((l) => l.name === $('frame-lane').value);
+  wrap.style.setProperty('--frame', (lane && LABEL_COLOR[lane.value(f)]) || 'transparent');
+  const last = previousWatched(f);  // latest watched change at or before this frame
+  const onChange = last === f && $('watch-flash').checked;
+  wrap.classList.toggle('flash', onChange);
+  const badge = $('change-badge');
+  badge.hidden = !$('watch-flash').checked || !(f - last <= CHANGE_NOTE);
+  badge.classList.toggle('now', onChange);
+  if (!badge.hidden) {
+    badge.textContent = onChange ? `change at this frame (${f}): ${describeChange(f)}`
+      : `changed ${f - last} frame${f - last === 1 ? '' : 's'} ago (${last}): ${describeChange(last)}`;
   }
 }
 
@@ -168,6 +261,7 @@ function renderNotes() {
   const list = $('note-list');
   list.textContent = '';
   S.notes.forEach((note, index) => {
+    if ((note.match || 'BAR-ATH') !== (MATCH || 'BAR-ATH')) return;   // each match keeps its own notes
     const item = document.createElement('li');
     item.dataset.frame = note.frame;
     const time = Object.assign(document.createElement('span'), { className: 't', textContent: shortClock(note.frame) });
@@ -196,7 +290,11 @@ function buildLanes(meta) {
     name: l.name, value: (f) => S.labels[l.index * S.F + f], color: (v) => LABEL_COLOR[v], kind: 'label' }));
   const clueLanes = meta.clueLanes.map((name, index) => ({
     name, kind: 'clue', value: (f) => S.clues[index * S.F + f],
-    color: name === 'ball visible' ? (v) => (v ? COLOR.seen : null)
+    // v6's learned signals: a probability in %, drawn in bands (strong / weak / nothing)
+    color: name === 'v4: P(dead)' ? (v) => (v > 80 ? COLOR.D : v > 50 ? COLOR.looksDead : null)
+      : (name === 'v6: restart clue' || name === 'v7: PathCRF') ? (v) => (v === 0 ? null : v - 1 >= 80 ? COLOR.H : v - 1 > 50 ? COLOR.Hsoft
+        : v - 1 <= 20 ? COLOR.A : v - 1 < 50 ? COLOR.Asoft : COLOR.muted)
+      : name === 'ball visible' ? (v) => (v ? COLOR.seen : null)
       : (name.startsWith('A:') || name.startsWith('C:')) ? (v) => [null, COLOR.H, COLOR.A][v]
         : name.endsWith('whistle') ? (v) => [null, COLOR.clue, COLOR.ignored][v]
           : (v) => (v ? COLOR.clue : null),
@@ -304,6 +402,7 @@ function dot(ctx, x, y, r, fill, stroke, width = 1.5) {
 }
 
 function drawOverlay(f, near) {
+  if (!S.H) return;  // no video on bench matches
   const { ctx, w, h } = fitCanvas($('overlay'));
   ctx.clearRect(0, 0, w, h);
   const b = ballAt(f);
@@ -370,7 +469,7 @@ function drawPitch(f, near) {
   ctx.font = '11px system-ui';
   ctx.textAlign = 'left';
   ctx.fillStyle = COLOR.H;
-  ctx.fillText(`Barcelona attacks ${ltr ? '→' : '←'}`, 6, h - 6);
+  if (!MATCH) ctx.fillText(`Barcelona attacks ${ltr ? '→' : '←'}`, 6, h - 6);   // bench matches carry no directions
 
   // Ball trail over the last second.
   ctx.strokeStyle = 'rgba(250,204,21,0.5)';
@@ -426,16 +525,18 @@ function drawInfo(f, near) {
     .map((l) => `<div class="row"><span class="k">${l.name}</span>${chip(l.value(f), 'label')}</div>`).join('');
   const clueRows = S.lanes.filter((l) => l.kind === 'clue').map((l) => {
     const v = l.value(f);
-    const c = (l.name.startsWith('A:') || l.name.startsWith('C:')) ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
+    const c = l.name === 'v4: P(dead)' ? `<span class="chip ${v > 50 ? 'D' : 'off'}">${v} %</span>`
+      : (l.name === 'v6: restart clue' || l.name === 'v7: PathCRF') ? (v ? `<span class="chip ${v - 1 > 50 ? 'H' : 'A'}">${v - 1 > 50 ? TEAM_NAME[0] + ' ' + (v - 1) : TEAM_NAME[1] + ' ' + (101 - v)} %</span>` : chip(0))
+      : (l.name.startsWith('A:') || l.name.startsWith('C:')) ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
       : l.name.endsWith('whistle') ? [chip(0), '<span class="chip on">counted</span>', '<span class="chip D">ignored</span>'][v]
         : chip(v);
     return `<div class="row"><span class="k">${l.name}</span>${c}</div>`;
   }).join('');
   const speed = ballSpeed(f);
   const ball = near
-    ? `<div class="row"><span class="k">ball speed</span><span>${speed == null ? '–' : speed.toFixed(1) + ' m/s'}</span></div>
-       <div class="row"><span class="k">nearest Barcelona</span><span>${near[0].d === Infinity ? '–' : near[0].d.toFixed(1) + ' m'}</span></div>
-       <div class="row"><span class="k">nearest Athletic</span><span>${near[1].d === Infinity ? '–' : near[1].d.toFixed(1) + ' m'}</span></div>`
+    ? `<div class="row"><span class="k">ball speed</span><span>${speed == null || Number.isNaN(speed) ? '–' : speed.toFixed(1) + ' m/s'}</span></div>
+       <div class="row"><span class="k">nearest ${TEAM_NAME[0]}</span><span>${near[0].d === Infinity ? '–' : near[0].d.toFixed(1) + ' m'}</span></div>
+       <div class="row"><span class="k">nearest ${TEAM_NAME[1]}</span><span>${near[1].d === Infinity ? '–' : near[1].d.toFixed(1) + ' m'}</span></div>`
     : '<div class="row"><span class="k">ball</span><span>not tracked</span></div>';
   const tags = S.meta.tags.filter((t) => t.start <= f && f < t.end)
     .map((t) => `<div class="row"><span class="k">${t.code.toLowerCase()}</span><span>${(t.Team || '').toLowerCase()}${t.Type ? ' · ' + t.Type.toLowerCase() : ''}</span></div>`).join('')
@@ -447,17 +548,17 @@ function drawInfo(f, near) {
 }
 
 function laneRuns(ctx, lane, f0, f1, x0, ppf, y, h) {
-  // One rectangle per run of equal values, at least 1 px wide so short events stay visible.
-  let start = f0, v = lane.value(f0);
+  // One rectangle per run of equal colour, at least 1 px wide so short events stay visible.
+  // (By colour, not value: the probability lanes change value every frame but colour rarely.)
+  let start = f0, color = lane.color(lane.value(f0));
   for (let f = f0 + 1; f <= f1; f++) {
-    const nv = f < f1 ? lane.value(f) : -1;
-    if (nv === v) continue;
-    const color = lane.color(v);
+    const next = f < f1 ? lane.color(lane.value(f)) : undefined;
+    if (next === color) continue;
     if (color) {
       ctx.fillStyle = color;
       ctx.fillRect(x0 + (start - f0) * ppf, y, Math.max(1, (f - start) * ppf), h);
     }
-    start = f; v = nv;
+    start = f; color = next;
   }
 }
 
@@ -598,6 +699,7 @@ function render() {
   drawOverlay(f, near);
   drawStrip(f);
   watchTick(f);
+  drawFrameState(f);
   markNearNotes(f);
   if (!document.body.classList.contains('review')) {  // hidden in review mode: skip the work
     drawPitch(f, near);
@@ -606,7 +708,7 @@ function render() {
     drawDetail(f);
   }
   const t = f / S.fps;
-  $('clock').textContent = `frame ${f} · video ${fmt(t)}.${String(f % S.fps).padStart(2, '0')} · ${matchClock(f)}`;
+  $('clock').textContent = `frame ${f} · ${MATCH ? 'time' : 'video'} ${fmt(t)}.${String(f % S.fps).padStart(2, '0')} · ${matchClock(f)}`;
   $('zoom-label').textContent = `±${S.zoom} s`;
   $('strip-zoom').textContent = `±${S.zoom} s`;
 }
@@ -641,6 +743,8 @@ $('rate').addEventListener('change', (e) => { S.watch.userRate = Number(e.target
 $('watch-mode').addEventListener('change', (e) => { S.watch.mode = e.target.value; S.watch.pausedFor = -1; render(); });
 $('watch-rate').addEventListener('change', (e) => { S.watch.slowRate = Number(e.target.value); render(); });
 $('watch-lead').addEventListener('change', (e) => { S.watch.lead = Number(e.target.value); render(); });
+$('watch-flash').addEventListener('change', render);
+$('frame-lane').addEventListener('change', render);
 
 function toggleReview() {
   document.body.classList.toggle('review');
@@ -659,7 +763,8 @@ $('note-form').addEventListener('submit', (e) => {
   const input = $('note-text');
   const text = input.value.trim();
   if (!text) { input.setCustomValidity('Write what you see first'); input.reportValidity(); return; }
-  S.notes.push({ frame: S.frame, kind: $('note-kind').value, text, written: new Date().toISOString() });
+  S.notes.push({ frame: S.frame, kind: $('note-kind').value, text, written: new Date().toISOString(),
+                 match: MATCH || 'BAR-ATH' });
   S.notes.sort((a, b) => a.frame - b.frame);
   saveNotes();
   renderNotes();
