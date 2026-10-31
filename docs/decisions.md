@@ -158,3 +158,16 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **So:** no v4; v3's settings stand. The bench now has a second set (`--set metrica|all`).
 - **Still unknown:** the truth's own convention (corrected tracking, not events). Nothing public
   measures it.
+
+### 2026-10-30: v4 built; the dead-ball model is gradient-boosted trees
+
+- **What:** v4 = v3 with v1's "stopped / active" rules replaced by P(dead) from a players-only
+  model trained on all 10 bench matches ([models/v4-dead-ball.md](models/v4-dead-ball.md)). Jose's
+  choices: try logistic regression and trees, keep logistic unless trees win by more than 0.01;
+  scikit-learn 1.9.1 pinned; no ball features; replace rather than add; name v4.
+- **Result:** trees won by 0.013 held out, so scikit-learn and the committed model file are needed
+  at run time. Held-out spellF1 0.433 against v3's 0.412 (better on 8/10; on all 7 IDSSE, level on
+  Metrica). Stoppages found rose from 48 % to 81 % with almost no new false ones.
+- **Not acted on:** on our match two whistles that v2 counts are no longer followed by a stoppage
+  (frames 23697, 54740), and stoppages are fewer and longer than the bench suggests (74 over 106
+  min). Both recorded as open questions on the v4 page.

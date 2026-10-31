@@ -32,6 +32,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v1](models/v1-clues-and-decider.md) | per-frame clues + Viterbi decider with switch penalties | built 2026-10-30 | 173 possessions, mean 23.9 s | 0.224 ± 0.034 (148 / 437), without its tag clues | macroF1 0.72, spellF1 0.43 |
 | [v2](models/v2-whistle.md) | v1 + referee whistle from the audio, counted only if players slow down | built 2026-10-30 | 177 possessions, mean 22.9 s; dead 36.3 % | can't be benched (no audio) | macroF1 0.79, spellF1 0.43 |
 | [v3](models/v3-decoder.md) | v2's clues + a decoder with minimum lengths and lower switch prices, settings chosen on the bench | built 2026-10-30 | 429 possessions, mean 8.9 s; dead 39.9 % | **0.369 ± 0.026** held-out (280 / 437), better than v1 on 7/7; Metrica's games: **0.512** (344 / 351) | macroF1 0.70, spellF1 0.34 |
+| [v4](models/v4-dead-ball.md) | v3 + a dead-ball probability learned from the players on the bench (gradient-boosted trees), replacing the "stopped / active" rules | built 2026-10-30 | 428 possessions, mean 8.0 s; dead 46.2 % | **0.433 ± 0.065** held-out over all 10 (v3 0.412), better on 8/10; stoppages found 81 % (v3 48 %) | macroF1 0.82, spellF1 0.44 |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -53,6 +54,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v1                 # writes evaluation/results/v1.csv
 .venv/bin/python -m possession.v2                 # writes evaluation/results/v2.csv
 .venv/bin/python -m possession.v3                 # writes evaluation/results/v3.csv
+.venv/bin/python -m possession.v4                 # writes evaluation/results/v4.csv
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -67,4 +69,5 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.convention              # Metrica vs DFL convention -> bench/results/convention.csv
 .venv/bin/python -m bench.run --set metrica       # the bench on Metrica's games
 .venv/bin/python -m bench.tune_decoder --set all  # the decoder search on all 10 matches
+.venv/bin/python -m bench.train_dead_ball         # v4's dead-ball model and settings -> possession/models/
 ```
