@@ -171,3 +171,15 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Not acted on:** on our match two whistles that v2 counts are no longer followed by a stoppage
   (frames 23697, 54740), and stoppages are fewer and longer than the bench suggests (74 over 106
   min). Both recorded as open questions on the v4 page.
+
+### 2026-10-30: v5, the whistle gets its weight back
+
+- **What:** Jose watched frames 23697 and 54740 in the viewer, the two counted whistles v4 no longer
+  followed with a stoppage: both were real stoppages. The cause: the dead-ball model, confident play
+  goes on (P = 0.01), outweighed the whistle (2.30 against 2.0 per frame). v5 sets the whistle to
+  v2's 2.0 plus the model's strongest live evidence (0.5 × −log 0.01), 4.30, as a formula.
+- **Why it is within the rules:** the viewing gave the idea; the value comes from the costs, applies
+  to all 11 counted whistles alike, and was set before looking at the result. The two frames were
+  not used to choose or to accept it (#10, #14).
+- **Result (label-free):** counted whistles followed by a stoppage 8/11 → 11/11; 488 frames changed.
+  The two stoppages now last exactly 3 s; their true end is left to step 3 (restart shapes).

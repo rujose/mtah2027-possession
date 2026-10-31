@@ -65,8 +65,11 @@ def switch_matrix():
     return switch
 
 
-def predict(tracking, tags, events, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH)):
-    """Labels for every video frame (H/A/D on graded frames, X elsewhere), the clues, and P(dead)."""
+def predict(tracking, tags, events, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH), build=None):
+    """Labels for every video frame (H/A/D on graded frames, X elsewhere), the clues, and P(dead).
+
+    `build` replaces build_costs (v5 passes its own); None means v4's.
+    """
     halves = halves or graded_halves()
     clues = v1.compute_clues(tracking, tags, halves, pitch)
     clues["whistle"] = v2.whistle_mask(events, len(clues["out"]))
@@ -75,7 +78,7 @@ def predict(tracking, tags, events, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDT
     if model["features"] != names:
         raise ValueError("the saved model's features differ from possession/features.py")
     p = dead_ball.predict(model, X)
-    cost = build_costs(clues, p)
+    cost = (build or build_costs)(clues, p)
     switch = switch_matrix()
     labels = np.full(len(cost), "X", dtype="<U1")
     for _, first, last in halves:
@@ -84,12 +87,12 @@ def predict(tracking, tags, events, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDT
     return labels, clues, p
 
 
-def compare(labels, before, events):
-    """Against v3, with no ground truth: possessions, dead ball, and the whistle check."""
+def compare(labels, before, events, names=("v3", "v4")):
+    """Against the earlier version, with no ground truth: possessions, dead ball, and the whistle check."""
     graded = labels != "X"
     changed = (labels != before) & graded
-    print("frames that differ from v3: {} ({:.2f}% of graded)".format(changed.sum(), 100 * changed[graded].mean()))
-    for name, values in (("v3", before), ("v4", labels)):
+    print("frames that differ from the earlier version: {} ({:.2f}% of graded)".format(changed.sum(), 100 * changed[graded].mean()))
+    for name, values in zip(names, (before, labels)):
         lengths, stoppages = [], []
         for _, first, last in graded_halves():
             half = values[first:last + 1]

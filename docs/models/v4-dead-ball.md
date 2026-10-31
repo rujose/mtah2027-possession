@@ -287,3 +287,82 @@ used to choose anything.
 2. **Stoppage count on our match** (74, long). A check worth making before step 3, since restart
    shapes would add evidence exactly at the ends of stoppages.
 
+
+## Proposal (2026-10-30): give the whistle back its weight
+
+**Built as option A: [v5](v5-whistle-weight.md).** Counted whistles followed by a stoppage went from 8/11 to 11/11.
+
+**What Jose saw.** Watching frames 23697 and 54740 in the viewer, both whistles were real
+stoppages, so v4 is wrong there.
+
+### Why v4 loses them (measured on v4's own output; no labels)
+
+Around the 11 whistles v2 counts (whistle + players slow down by ≥ 0.5 m/s):
+
+| whistle (frame) | players' speed before → after | P(dead), 3 s after | P(dead), 3–30 s after | v4 dead frames in the next 30 s |
+|---|---|---|---|---|
+| 15835 | 3.01 → 1.66 | 0.15 | 0.69 | 581 |
+| 17113 | 3.84 → 1.60 | 0.22 | 0.81 | 726 |
+| **23697** | 3.22 → **2.12** | **0.01** | 0.42 | **0** |
+| 31173 | 2.64 → 1.32 | 0.63 | 0.22 | 200 |
+| **54740** | 4.09 → **2.37** | **0.01** | 0.02 | **0** |
+| 74237 | 2.50 → 1.62 | 0.77 | 0.95 | 750 |
+| 88695 | 2.34 → 1.25 | 0.64 | 0.98 | 750 |
+| 118563 | 2.79 → 1.17 | 0.73 | 0.92 | 750 |
+| 148019 | 3.29 → 2.27 | 0.09 | 0.24 | 137 |
+| 172217 | 2.67 → 1.19 | 0.55 | 0.94 | 726 |
+| 183807 | 1.78 → 0.88 | 0.96 | 0.56 | 499 |
+
+- **The two lost whistles are the "players keep jogging" kind.** Players still averaged over 2 m/s
+  afterwards, and the model sits at its floor, P = 0.01: fully confident play goes on.
+- **The arithmetic.** At P = 0.01, a frame called dead costs 0.5 × −log(0.01) = **2.30**. The
+  whistle adds only **2.0** against live, so for every frame of its 3 s window, dead is the dearer
+  answer even before the two switch prices (2 × 50 = 100). In v3 nothing argued that strongly for
+  live, so the whistle won.
+- **So the whistle's weight lost its meaning.** In v2 it was set to beat the switch prices with room
+  to spare (150 against 50). v4 added a clue that can cancel it.
+
+### The rule this stays within
+
+Jose's viewing supplies the **idea** ("a counted whistle should not be overruled by the model"), as
+watching 03:06 supplied the whistle itself in v2. Turning observations into general rules is allowed
+(#14).
+- **What it may not supply** is a constant tied to these frames, or a check that "it fixes 23697
+  and 54740" as the reason to accept it. That would make Jose's two observations into hand labels
+  used for validation (#10).
+- **So:** the new weight comes from reasoning about costs, it applies the same way to all 11
+  counted whistles, and it is set before looking at what it does.
+- **What we report afterwards** are label-free counts: dead ball after counted whistles, total
+  stoppages, possessions.
+
+### Options
+
+**A (recommended). The whistle keeps v2's weight on top of whatever the model can say against it.**
+- **New weight** = v2's 2.0 + the model's strongest live evidence, W_DEAD_BALL × −log(0.01)
+  = 2.0 + 2.30 = **4.30** per frame, for the same 3 s window.
+- **Written as that formula in the code,** so it keeps its meaning if the model's weight or clip
+  ever change.
+- **What it guarantees:** within its 3 s, a counted whistle always beats the model and both switch
+  prices, as it did in v2. Even at the model's floor, (4.30 − 2.30) × 75 = 150 > 100.
+- **What it doesn't:** after those 3 s the model decides when play restarts. Where it keeps saying
+  "live" (54740: P = 0.02 for 30 s), the stoppage will last only about 3 s. That still splits the
+  possessions at the right moment, but the restart lands too early.
+- **What it touches:** only the 11 counted whistles. Nothing else in the match changes.
+
+**B. Hold the stoppage until play visibly restarts.** After a counted whistle, the model's "live"
+evidence is ignored until the players' mean speed is back to where it was before the whistle (that
+event's measured "before" speed), with a 60 s cap: 90 % of bench stoppages last under 49 s.
+- **Better:** it gets the length of the stoppage right, not just its start.
+- **Worse:** it's a new rule with two more constants, and finding when a stoppage ends is exactly
+  what step 3 (restart shapes) is for. Building it now would duplicate that work.
+
+**C. Leave v4 as it is.** 2 stoppages out of ~100 in the match. The bench says v4 is better overall,
+and this may cost a possession or two.
+
+### Recommendation
+
+- **A now,** as **v5** (one change on top of v4).
+- **The end of stoppages** (B's job) goes to step 3, where restart shapes give the moment play
+  resumes and who restarts.
+- **No bench number** is possible: the bench has no audio. As with v2, the change rests on its
+  reasoning, and we report the label-free counts on our match.
