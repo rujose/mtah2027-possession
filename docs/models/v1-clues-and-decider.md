@@ -163,6 +163,21 @@ Clue coverage over graded frames: someone on the ball 27.0 %, ball out 1.6 %, st
 33.4 %, set-piece window 13.7 %, before 2nd-half kick-off 1.8 %, a tag supports Barcelona 27.0 %, a
 tag supports Athletic 11.6 %.
 
+### On the bench (7 other matches, tracking damaged to look like ours; added 2026-10-30)
+
+Full numbers in [../bench.md](../bench.md). There are no Smart Tagging clues on the bench, so v1
+runs without clue C, the set-piece window and the kick-off rule.
+
+| damage (ball missing) | v1 spellF1 | floor (`baseline_smooth50`) | v1 possessions found / true | v1 D F1 |
+|---|---|---|---|---|
+| 30 % | 0.224 ± 0.037 | 0.240 ± 0.020 | 154 / 437 | 0.73 |
+| **41 % (ours)** | **0.224 ± 0.034** | **0.217 ± 0.018** | **148 / 437** | 0.73 |
+| 55 % | 0.178 ± 0.030 | 0.183 ± 0.019 | 128 / 437 | 0.73 |
+
+A tie with the floor on the ranking metric, despite a much better dead ball. v1 merges: its
+possessions average 25–35 s where the true ones average 5.5–9.2 s. This confirms weakness 2 below
+("too few possessions, probably") with evidence that doesn't come from the public window.
+
 ### On the public 5 minutes (a check that nothing is broken, not a ranking)
 
 | submission | macroF1 | spellF1 | possessions (truth: 17) | mean duration (truth: 14.2 s) |

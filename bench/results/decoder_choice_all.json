@@ -1,0 +1,193 @@
+{
+ "setting": {
+  "team_price": 0.5,
+  "dead_price": 50.0,
+  "min_possession": 20.0,
+  "min_dead": 1.0
+ },
+ "bench_mean_spell_f1": 0.4119070393388607,
+ "bench_mean_possessions": 298.9,
+ "plain_best": {
+  "setting": {
+   "team_price": 0.25,
+   "dead_price": 5.0,
+   "min_possession": 20.0,
+   "min_dead": 50.0
+  },
+  "spell_f1": 0.4173773076156101
+ },
+ "fixed_settings_spell_f1": {
+  "v1": {
+   "J03WMX": 0.2171,
+   "J03WN1": 0.1515,
+   "J03WOH": 0.2324,
+   "J03WOY": 0.2336,
+   "J03WPY": 0.2415,
+   "J03WQQ": 0.2565,
+   "J03WR9": 0.2376,
+   "metrica1": 0.3822,
+   "metrica2": 0.3766,
+   "metrica3": 0.3918
+  },
+  "v3": {
+   "J03WMX": 0.3651,
+   "J03WN1": 0.3182,
+   "J03WOH": 0.3752,
+   "J03WOY": 0.3826,
+   "J03WPY": 0.3693,
+   "J03WQQ": 0.3696,
+   "J03WR9": 0.4046,
+   "metrica1": 0.5587,
+   "metrica2": 0.494,
+   "metrica3": 0.4818
+  }
+ },
+ "folds": [
+  {
+   "held_out": "J03WMX",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.3651307596513076,
+   "v1_spell_f1": 0.21714285714285717,
+   "possessions": 292,
+   "true_possessions": 511
+  },
+  {
+   "held_out": "J03WN1",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.3181932245922208,
+   "v1_spell_f1": 0.15146831530139102,
+   "possessions": 297,
+   "true_possessions": 500
+  },
+  {
+   "held_out": "J03WOH",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.37518037518037517,
+   "v1_spell_f1": 0.2324225865209472,
+   "possessions": 291,
+   "true_possessions": 402
+  },
+  {
+   "held_out": "J03WOY",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.38263229308005425,
+   "v1_spell_f1": 0.233605220228385,
+   "possessions": 281,
+   "true_possessions": 456
+  },
+  {
+   "held_out": "J03WPY",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.3692745376955903,
+   "v1_spell_f1": 0.2415492957746479,
+   "possessions": 282,
+   "true_possessions": 421
+  },
+  {
+   "held_out": "J03WQQ",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.3695976154992548,
+   "v1_spell_f1": 0.25648312611012425,
+   "possessions": 270,
+   "true_possessions": 401
+  },
+  {
+   "held_out": "J03WR9",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.4045528455284552,
+   "v1_spell_f1": 0.2375757575757576,
+   "possessions": 245,
+   "true_possessions": 370
+  },
+  {
+   "held_out": "metrica1",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.5586726998491705,
+   "v1_spell_f1": 0.38217054263565886,
+   "possessions": 309,
+   "true_possessions": 354
+  },
+  {
+   "held_out": "metrica2",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.49400630914826493,
+   "v1_spell_f1": 0.3765690376569038,
+   "possessions": 316,
+   "true_possessions": 318
+  },
+  {
+   "held_out": "metrica3",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.4818297331639136,
+   "v1_spell_f1": 0.3918063314711359,
+   "possessions": 406,
+   "true_possessions": 381
+  }
+ ],
+ "held_out_mean": 0.4119070393388607,
+ "held_out_sd": 0.07454118330241957,
+ "checks": {
+  "merged_labels": {
+   "chosen": 0.422612844786148,
+   "v1": 0.28406631410333577
+  },
+  "level_30": {
+   "chosen": 0.42750853371530545,
+   "v1": 0.2730303739552221
+  },
+  "level_55": {
+   "chosen": 0.3451070469394363,
+   "v1": 0.21927045758529157
+  }
+ }
+}

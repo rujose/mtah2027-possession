@@ -6,7 +6,11 @@ so that any team member, or a reviewer, can follow it without having been in the
 | page | what it answers |
 |---|---|
 | [challenge.md](challenge.md) | What is the task, how is it scored, what are the rules and dates? |
+| [limitations.md](limitations.md) | Every limit we work under, what's allowed but not obvious, grey zones to ask about, traps |
+| [research/](research/) | What models, data and advice exist for this problem, and what we take from it |
 | [data.md](data.md) | What is in every data file, measured, and which ones we use and how? |
+| [bench.md](bench.md) | The test bench: 7 DFL matches plus 3 Metrica sample games, damaged to look like ours, where versions are compared and settings chosen |
+| [convention-check.md](convention-check.md) | Do Metrica's possessions change hands as often as DFL's, the bench's labels? (About 20 % less often, but v3's settings still win on Metrica's labels) |
 | [models/](models/) | One page per model version: why, how, every setting and where it comes from, expected failures, results |
 | [decisions.md](decisions.md) | Every decision we took, when, and why |
 | [viewer.md](viewer.md) | The match viewer: video + tracking + labels + clues on one frame; how to run it |
@@ -23,11 +27,23 @@ so that any team member, or a reviewer, can follow it without having been in the
 
 ## Models
 
-| version | idea | status | full match | public 5 min (check only) |
-|---|---|---|---|---|
-| [v1](models/v1-clues-and-decider.md) | per-frame clues + Viterbi decider with switch penalties | built 2026-10-30 | 173 possessions, mean 23.9 s | macroF1 0.72, spellF1 0.43 |
-| [v2](models/v2-whistle.md) | v1 + referee whistle from the audio, counted only if players slow down | built 2026-10-30 | 177 possessions, mean 22.9 s; dead 36.3 % | macroF1 0.79, spellF1 0.43 |
-| floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | macroF1 0.62, spellF1 0.33 |
+| version | idea | status | full match | [bench](bench.md), 41 % damage: spellF1 (possessions found / true) | public 5 min (check only) |
+|---|---|---|---|---|---|
+| [v1](models/v1-clues-and-decider.md) | per-frame clues + Viterbi decider with switch penalties | built 2026-10-30 | 173 possessions, mean 23.9 s | 0.224 ± 0.034 (148 / 437), without its tag clues | macroF1 0.72, spellF1 0.43 |
+| [v2](models/v2-whistle.md) | v1 + referee whistle from the audio, counted only if players slow down | built 2026-10-30 | 177 possessions, mean 22.9 s; dead 36.3 % | can't be benched (no audio) | macroF1 0.79, spellF1 0.43 |
+| [v3](models/v3-decoder.md) | v2's clues + a decoder with minimum lengths and lower switch prices, settings chosen on the bench | built 2026-10-30 | 429 possessions, mean 8.9 s; dead 39.9 % | **0.369 ± 0.026** held-out (280 / 437), better than v1 on 7/7; Metrica's games: **0.512** (344 / 351) | macroF1 0.70, spellF1 0.34 |
+| floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
+
+## Data from other matches
+
+- **IDSSE**: Bassek, M., Rein, R., Weber, H., Memmert, D. (2025). An integrated dataset of
+  spatiotemporal and event data in elite soccer. *Scientific Data* 12, 195.
+  https://doi.org/10.1038/s41597-025-04505-y. Figshare article 28196177, licence CC BY 4.0. Used
+  for the [bench](bench.md) only: never as an input to the submission.
+- **Metrica Sports sample data**: three anonymised matches, tracking and events,
+  github.com/metrica-sports/sample-data (no licence file; the README asks users to acknowledge the
+  source). Used for the [convention check](convention-check.md) and as the bench's second set: never
+  as an input to the submission.
 
 ## Reproduce
 
@@ -36,6 +52,19 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python tools/explore_data.py            # every number in data.md
 .venv/bin/python -m possession.v1                 # writes evaluation/results/v1.csv
 .venv/bin/python -m possession.v2                 # writes evaluation/results/v2.csv
+.venv/bin/python -m possession.v3                 # writes evaluation/results/v3.csv
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
+
+# the bench (other matches; see bench.md)
+.venv/bin/python -m bench.idsse download          # once, 2.6 GB
+.venv/bin/python -m bench.idsse parse
+.venv/bin/python -m bench.measure                 # our tracking's faults -> bench/damage_stats.json
+.venv/bin/python -m bench.run                     # -> bench/results/scores.csv
+.venv/bin/python -m bench.tune_decoder            # v3's decoder settings -> bench/results/decoder_*
+.venv/bin/python -m bench.metrica download        # once, ~190 MB
+.venv/bin/python -m bench.metrica parse
+.venv/bin/python -m bench.convention              # Metrica vs DFL convention -> bench/results/convention.csv
+.venv/bin/python -m bench.run --set metrica       # the bench on Metrica's games
+.venv/bin/python -m bench.tune_decoder --set all  # the decoder search on all 10 matches
 ```

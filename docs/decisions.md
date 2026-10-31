@@ -90,3 +90,71 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Why:** Jose wants to see the match next to the data. Watching to understand failures is allowed
   (RULES.md). What stays off-limits is turning what we see on specific frames into labels, corrections
   or frame-specific constants.
+
+### 2026-10-30: limits mapped; other matches become our measuring stick
+
+- **What:** [limitations.md](limitations.md) lists every hard limit, what the rules and the
+  organisers' issue answers allow that isn't obvious, the metric's levers, open grey zones and traps.
+  The main consequence: there is no leaderboard and the public window may not choose between
+  versions (EVALUATION.md), so tracking-based clues are compared on **other matches** (allowed,
+  #10, #16), and clues only our match has (audio, video, Smart Tagging) by reasoning plus
+  label-free checks on our match.
+- **Why:** Jose asked for room to extend the work in ways that are allowed but not obvious.
+- **Open:** grey zones G1 (self-training with algorithmic pseudo-labels) and G2 (broadcast
+  commentary) would need a public question to the organisers before we build on them.
+
+### 2026-10-30: research survey done; nothing built from it yet
+
+- **What:** four research reports in [research/](research/) (models, data and code, practitioner
+  advice, extra signals) and a synthesis with a proposed order of work in
+  [research/README.md](research/README.md). The proposed core is: an IDSSE test bench, a duration-aware
+  decoder, then a dead-ball classifier trained on IDSSE. (A first draft put the broadcast ball fill
+  second; data.md had already measured it at 12–13 % of the gaps, so it became a side item.)
+- **Why:** Jose asked what models exist, what we can start from and what people recommend, all
+  documented.
+- **Not decided:** the order of work and any GitHub question to the organisers wait for Jose.
+
+### 2026-10-30: the bench is built; on it, v1 ties the floor because it merges
+
+- **What:** [bench.md](bench.md) built as approved (own parser, raw DFL labels plus a merged
+  sensitivity run, Metrica samples later, damage statistics committed). The damage model changed
+  while building: the ball became a seen ↔ missing chain whose chances depend on crowding, players
+  stopping, and the lines, because our ball is missing 83 % of the time while players stand still
+  and 29.5 % while they move. The bench reaches 66 % and 34 %; that gap is recorded as a known limit.
+- **Result:** at our damage level v1 scores spellF1 0.224 ± 0.034 against the floor's 0.217 ±
+  0.018, a tie. v1 finds ~148 possessions per match where there are ~437.
+- **Why it matters:** it is the first evidence about v1 that doesn't come from the public window,
+  and it points at the decoder (step 1) as the next change.
+- **Rules:** no BAR-ATH labels touched; only its input tracking fed the damage statistics. The
+  damage was not adjusted to reproduce the organisers' published baseline scores.
+
+### 2026-10-30: v3 built; decoder settings chosen on the bench
+
+- **What:** v3 = v2's clues + a decoder where a label must last a minimum number of frames, with
+  four settings chosen on the bench by leave-one-match-out and the cautious tie rule: team price
+  0.5 (v1: 15), dead-ball price 50 (25), minimum possession 0.8 s (none), no minimum stoppage. All 7
+  folds chose the same setting. Held-out spellF1 0.369 ± 0.026 against v1's 0.224, better on 7/7
+  matches, and the gain holds at 30 % and 55 % damage and with merged labels. The tag and set-piece
+  weights were rescaled with the prices so they keep v1's meaning (reasoning, not fitting).
+- **On our match:** 429 possessions (v2: 177), mean 8.9 s.
+- **Public 5 minutes, not acted on:** v3 0.335 against v2 0.427 (20 possessions against a true 17).
+  About 1.5 possessions; EVALUATION.md rules the window out for choosing versions. Recorded as a hint
+  for the convention risk, not as a reason to change anything.
+- **Open:** whether to widen the grid (two settings sit on its edges), and how to test Metrica's
+  convention on labelled data from another match.
+
+### 2026-10-30: convention check done; v3 stands
+
+- **What:** labels built from Metrica's public sample games (3 matches, events tagged by Metrica)
+  and from DFL's events with the same recipe, compared during live play
+  ([convention-check.md](convention-check.md)). Jose's choices: use the sample data now (no licence
+  file; Metrica's own public repo, checking only), a won challenge doesn't flip possession on its
+  own, and put the games on the bench regardless.
+- **Result:** like for like, Metrica's events change hands ~21 % less often than DFL's (52.8 against
+  67.1 per 10 live minutes); the fixed rule says "in between" (2 games inside DFL's range, 1 below).
+  On the bench, with Metrica's labels, v3 scores 0.512 against v1's 0.384 and finds 344 possessions
+  where there are 351. The decoder search picks v3's exact setting on Metrica's games alone and in
+  all 10 folds over all 10 matches.
+- **So:** no v4; v3's settings stand. The bench now has a second set (`--set metrica|all`).
+- **Still unknown:** the truth's own convention (corrected tracking, not events). Nothing public
+  measures it.

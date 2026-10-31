@@ -83,12 +83,13 @@ def ball_speed(ball):
     return step
 
 
-def ball_out(ball):
+def ball_out(ball, pitch=(PITCH_LENGTH, PITCH_WIDTH)):
     """True where the ball is visible and more than OUT_MARGIN beyond a pitch line."""
     x, y = ball[:, 0], ball[:, 1]
+    length, width = pitch
     with np.errstate(invalid="ignore"):
-        return ((x < -OUT_MARGIN) | (x > PITCH_LENGTH + OUT_MARGIN)
-                | (y < -OUT_MARGIN) | (y > PITCH_WIDTH + OUT_MARGIN))
+        return ((x < -OUT_MARGIN) | (x > length + OUT_MARGIN)
+                | (y < -OUT_MARGIN) | (y > width + OUT_MARGIN))
 
 
 # --------------------------------------------------------------------------------------------
@@ -194,9 +195,9 @@ def switch_matrix():
     return switch
 
 
-def compute_clues(tracking, tags, halves):
+def compute_clues(tracking, tags, halves, pitch=(PITCH_LENGTH, PITCH_WIDTH)):
     speed = ball_speed(tracking["ball"])
-    out = ball_out(tracking["ball"])
+    out = ball_out(tracking["ball"], pitch)
     on_ball, someone = clue_on_ball(tracking, speed, out)
     stopped, active = clue_team_speed(tracking)
     set_piece, before_kickoff, supports = clue_tags(tags, len(out), halves)
@@ -205,10 +206,13 @@ def compute_clues(tracking, tags, halves):
             "tag_supports": supports}
 
 
-def predict(tracking, tags):
-    """Labels for every video frame: H/A/D on graded frames, X elsewhere."""
-    halves = graded_halves()
-    clues = compute_clues(tracking, tags, halves)
+def predict(tracking, tags, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH)):
+    """Labels for every video frame: H/A/D on graded frames, X elsewhere.
+
+    halves and pitch default to BAR-ATH's; the test bench passes another match's (docs/bench.md).
+    """
+    halves = halves or graded_halves()
+    clues = compute_clues(tracking, tags, halves, pitch)
     cost = build_costs(clues)
     switch = switch_matrix()
     labels = np.full(len(cost), "X", dtype="<U1")

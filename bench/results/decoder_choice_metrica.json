@@ -1,0 +1,88 @@
+{
+ "setting": {
+  "team_price": 0.5,
+  "dead_price": 50.0,
+  "min_possession": 20.0,
+  "min_dead": 1.0
+ },
+ "bench_mean_spell_f1": 0.511502914053783,
+ "bench_mean_possessions": 343.6666666666667,
+ "plain_best": {
+  "setting": {
+   "team_price": 0.5,
+   "dead_price": 5.0,
+   "min_possession": 20.0,
+   "min_dead": 25.0
+  },
+  "spell_f1": 0.5174888705564995
+ },
+ "fixed_settings_spell_f1": {
+  "v1": {
+   "metrica1": 0.3822,
+   "metrica2": 0.3766,
+   "metrica3": 0.3918
+  },
+  "v3": {
+   "metrica1": 0.5587,
+   "metrica2": 0.494,
+   "metrica3": 0.4818
+  }
+ },
+ "folds": [
+  {
+   "held_out": "metrica1",
+   "setting": [
+    2.0,
+    25.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.513821138211382,
+   "v1_spell_f1": 0.38217054263565886,
+   "possessions": 261,
+   "true_possessions": 354
+  },
+  {
+   "held_out": "metrica2",
+   "setting": [
+    0.5,
+    25.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.49749999999999994,
+   "v1_spell_f1": 0.3765690376569038,
+   "possessions": 322,
+   "true_possessions": 318
+  },
+  {
+   "held_out": "metrica3",
+   "setting": [
+    0.5,
+    50.0,
+    20.0,
+    1.0
+   ],
+   "held_out_spell_f1": 0.4818297331639136,
+   "v1_spell_f1": 0.3918063314711359,
+   "possessions": 406,
+   "true_possessions": 381
+  }
+ ],
+ "held_out_mean": 0.49771695712509856,
+ "held_out_sd": 0.01599680599442885,
+ "checks": {
+  "merged_labels": {
+   "chosen": 0.5175922363888547,
+   "v1": 0.3916371785798538
+  },
+  "level_30": {
+   "chosen": 0.5288515459371196,
+   "v1": 0.3874054383568635
+  },
+  "level_55": {
+   "chosen": 0.4271410565860389,
+   "v1": 0.3153649880120068
+  }
+ }
+}
