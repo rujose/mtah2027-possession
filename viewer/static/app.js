@@ -295,7 +295,7 @@ function buildLanes(meta) {
       : (name === 'v6: restart clue' || name === 'v7: PathCRF') ? (v) => (v === 0 ? null : v - 1 >= 80 ? COLOR.H : v - 1 > 50 ? COLOR.Hsoft
         : v - 1 <= 20 ? COLOR.A : v - 1 < 50 ? COLOR.Asoft : COLOR.muted)
       : name === 'ball visible' ? (v) => (v ? COLOR.seen : null)
-      : (name.startsWith('A:') || name.startsWith('C:')) ? (v) => [null, COLOR.H, COLOR.A][v]
+      : (name.startsWith('A:') || name.startsWith('C:') || name === 'v8: keeper repaired' || name === 'v9: seen pass') ? (v) => [null, COLOR.H, COLOR.A][v]
         : name.endsWith('whistle') ? (v) => [null, COLOR.clue, COLOR.ignored][v]
           : (v) => (v ? COLOR.clue : null),
   }));
@@ -527,7 +527,7 @@ function drawInfo(f, near) {
     const v = l.value(f);
     const c = l.name === 'v4: P(dead)' ? `<span class="chip ${v > 50 ? 'D' : 'off'}">${v} %</span>`
       : (l.name === 'v6: restart clue' || l.name === 'v7: PathCRF') ? (v ? `<span class="chip ${v - 1 > 50 ? 'H' : 'A'}">${v - 1 > 50 ? TEAM_NAME[0] + ' ' + (v - 1) : TEAM_NAME[1] + ' ' + (101 - v)} %</span>` : chip(0))
-      : (l.name.startsWith('A:') || l.name.startsWith('C:')) ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
+      : (l.name.startsWith('A:') || l.name.startsWith('C:') || l.name === 'v8: keeper repaired' || l.name === 'v9: seen pass') ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
       : l.name.endsWith('whistle') ? [chip(0), '<span class="chip on">counted</span>', '<span class="chip D">ignored</span>'][v]
         : chip(v);
     return `<div class="row"><span class="k">${l.name}</span>${c}</div>`;

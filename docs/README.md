@@ -38,6 +38,8 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v5](models/v5-whistle-weight.md) | v4 with the counted whistle's weight = v2's 2.0 + the model's strongest live evidence (4.30) | built 2026-10-30 | 426 possessions; dead 46.3 %; counted whistles followed by a stoppage 11/11 (v4 8/11) | not benchable (no audio); same as v4 there | macroF1 0.82, spellF1 0.44 |
 | [v6](models/v6-restart-team.md) | v5 + who restarts, learned from the players' layout at stoppages (logistic regression); revised so only the unlikely team pays and the clue waits for 2 s of dead-looking play | built and revised 2026-10-30 | 439 possessions; dead 46.5 % | **0.443 ± 0.060** held-out (v4/v5 0.433), better on 8/10; right team after a stoppage 62 → 87 % (IDSSE), 72 → 85 % (Metrica) | macroF1 0.82, spellF1 0.44 |
 | [v7](models/v7-pathcrf.md) | v6 + PathCRF (a published players-only model, trained on other matches) for who has the ball, weight 0.5 on every live frame | built 2026-10-30 | 347 possessions; dead 46.9 % | **0.565** held-out on the 4 matches PathCRF never saw (v6 0.501), better on 4/4; changes caught inside ball gaps 8 % → 55 % | macroF1 0.86, spellF1 0.61 |
+| [v8](models/v8-keeper-repair.md) | v7 + a repair for keepers tracked as the other team (found by Jose: Barça's keeper in Athletic slot 45 for the last 230 s of the 2nd half) | built 2026-10-30 | 351 possessions; dead 46.8 %; 446 frames differ from v7 | equals v7 there: the rule never fires on the bench (0 false repairs, clean and at every damage level) | macroF1 0.86, spellF1 0.61 (window untouched) |
+| [v9](models/v9-restart-pass.md) | v8 + possessions after a stoppage start at the seen restart pass (Jose's observation) | built 2026-10-30 | 351 possessions; dead 46.0 %; 40 of 78 restart starts moved, 34 earlier | **0.561** held-out against v7's 0.556, better on **10/10**; moved starts within 0.2 s of the truth 20 % → 83 % | macroF1 0.86, spellF1 0.64 |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -63,6 +65,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v5                 # writes evaluation/results/v5.csv
 .venv/bin/python -m possession.v6                 # writes evaluation/results/v6.csv
 .venv/bin/python -m possession.v7                 # writes evaluation/results/v7.csv (downloads PathCRF's weights once)
+.venv/bin/python -m possession.v8                 # writes evaluation/results/v8.csv (v7 on the keeper-repaired tracking)
+.venv/bin/python -m possession.v9                 # writes evaluation/results/v9.csv (v8, restarts snapped to the seen pass)
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -80,5 +84,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.train_dead_ball         # v4's dead-ball model and settings -> possession/models/
 .venv/bin/python -m bench.train_restart           # v6's restart model and settings -> possession/models/
 .venv/bin/python -m bench.eval_pathcrf            # PathCRF on the bench, v7's settings, predictions for the viewer
+.venv/bin/python -m bench.keeper_repair           # the keeper repair never fires on the bench (false-repair check)
+.venv/bin/python -m bench.restart_timing          # v9's window, leave one match out (after bench.eval_pathcrf)
 .venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)
 ```

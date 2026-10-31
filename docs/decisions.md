@@ -224,3 +224,33 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   on-the-ball evidence 86 % there against 91 % on the bench: some domain shift.
 - **Viewer:** v6/v7's signals as lanes; the 10 bench matches viewable with their true labels and
   out-of-sample predictions, without video (Jose asked for both).
+
+### 2026-10-30: v8 built (keeper repair)
+
+- **What:** Jose saw a keeper tracked as the other team. A general rule (6-yard box, ball far, 5 s,
+  90 % of the piece inside the area; boxes from the Laws, the rest reasoned) moves such pieces to a
+  new slot of the defending team; v7 runs unchanged on top. Jose's choices: repair the whole piece,
+  name it v8.
+- **Result:** on our match, 1 piece repaired (Barça's keeper in Athletic slot 45, 230 s graded);
+  on the bench, 0 false repairs on clean tracking and at every damage level, so v8 equals v7 there.
+  446 frames differ from v7, possessions 347 → 351; the restart model's P(Barça restarts) inside
+  the piece 0.449 → 0.689.
+- **So:** kept because it fixes the input, not for a measured gain (the bench can't score it). The
+  viewer now draws the repaired tracking.
+- **Next (Jose's observation, same day):** possessions after a stoppage should start at the restart
+  pass. The bench's truth confirms it exactly; the ceiling for fixing it is +0.018 (ideas.md, idea 10).
+
+### 2026-10-30: v9 built (possessions start at the restart pass)
+
+- **What:** Jose saw our possessions after a stoppage start when the ball reaches the receiver; the
+  bench's truth starts them on the pass, exactly (698/698 IDSSE restarts). v9 moves each dead → team
+  change to the earliest seen pass by that team (player within 2 m, ball leaving him at over 4 m/s;
+  fixed by reasoning) within a window chosen on the bench. Snapping to the ball's reappearance was
+  tried and rejected: it hurt the IDSSE matches. Jose's choices: snap after decoding, earliest pass,
+  detector fixed by reasoning, adoption bar set in advance (better mean and at least 7/10), name v9.
+- **Result:** window 5 s back / 1 s ahead, picked by every fold. Held-out spellF1 0.5613 against
+  0.5557 (+0.0056), better on 10/10; macroF1 0.868 against 0.864; moved starts within 0.2 s of the
+  truth 20 % → 83 %. Adopted. On our match 40 of 78 starts move, 34 earlier (median −0.94 s).
+- **Watch:** the largest moves (up to −4.8 s) may be passes during the stoppage; they're listed on
+  the page for the viewer.
+

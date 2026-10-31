@@ -1,0 +1,74 @@
+{
+ "summary": {
+  "clean": {
+   "pieces_looked_at": 0,
+   "false_repairs": 0,
+   "matches": 10
+  },
+  "30": {
+   "pieces_looked_at": 0,
+   "false_repairs": 0,
+   "matches": 10
+  },
+  "41": {
+   "pieces_looked_at": 0,
+   "false_repairs": 0,
+   "matches": 10
+  },
+  "55": {
+   "pieces_looked_at": 0,
+   "false_repairs": 0,
+   "matches": 10
+  }
+ },
+ "pieces": {
+  "clean": {
+   "J03WMX": [],
+   "J03WN1": [],
+   "J03WOH": [],
+   "J03WOY": [],
+   "J03WPY": [],
+   "J03WQQ": [],
+   "J03WR9": [],
+   "metrica1": [],
+   "metrica2": [],
+   "metrica3": []
+  },
+  "30": {
+   "J03WMX": [],
+   "J03WN1": [],
+   "J03WOH": [],
+   "J03WOY": [],
+   "J03WPY": [],
+   "J03WQQ": [],
+   "J03WR9": [],
+   "metrica1": [],
+   "metrica2": [],
+   "metrica3": []
+  },
+  "41": {
+   "J03WMX": [],
+   "J03WN1": [],
+   "J03WOH": [],
+   "J03WOY": [],
+   "J03WPY": [],
+   "J03WQQ": [],
+   "J03WR9": [],
+   "metrica1": [],
+   "metrica2": [],
+   "metrica3": []
+  },
+  "55": {
+   "J03WMX": [],
+   "J03WN1": [],
+   "J03WOH": [],
+   "J03WOY": [],
+   "J03WPY": [],
+   "J03WQQ": [],
+   "J03WR9": [],
+   "metrica1": [],
+   "metrica2": [],
+   "metrica3": []
+  }
+ }
+}

@@ -161,6 +161,8 @@ changes one thing.
 | v5 | the whistle's weight restored (4.30), after Jose watched two whistles v4 missed | reasoning (formula), not tuned on those two |
 | v6 | which team restarts, from a model of the players' layout at stoppages | trained and chosen on the bench |
 | v7 | + PathCRF: who has the ball, from the players' movement, especially while the ball is missing | published model; its weight chosen on the 4 bench matches it never saw |
+| v8 | + keeper repair: a keeper tracked as the other team is given back to its own (Jose spotted it) | a general rule from the Laws and reasoning; never fires on the bench, so v8 = v7 there |
+| v9 | + each possession after a stoppage starts at the restart pass, when a pass is seen (Jose spotted ours were late) | the search window chosen on the bench, leaving each match out |
 
 ### The numbers to judge it by
 
@@ -191,6 +193,8 @@ changes one thing.
 |---|---|---|---|---|---|---|
 | possessions | 173 | 177 | 429 | 428 | 426 | 439 |
 | (v7) | | | | | | 347 |
+| (v8) | | | | | | 351 |
+| (v9) | | | | | | 351 |
 | dead ball, share of time | 35.0 % | 36.3 % | 39.9 % | 46.2 % | 46.3 % | 46.5 % |
 
 For scale: Metrica's sample games, by their own events, have 304–358 possessions per 90 minutes.
@@ -239,8 +243,14 @@ pipeline works.
 
 - **Best-supported version: v7**, with the largest gain since v3 on the matches PathCRF never saw
   (+0.064, 4 of 4). To watch: it reports fewer possessions on our match (347), and PathCRF is a
-  little less consistent with our tracking than with the bench's. v6 is committed; v7 is not yet.
-- **Next:**
+  little less consistent with our tracking than with the bench's.
+- **v8** = v7 on tracking where Barça's keeper, tracked as Athletic for the last 230 s, is given
+  back to Barça. The bench can't score it (the rule never fires there); it's kept because it fixes
+  the input.
+- **Current version: v9** = v8 with each possession after a stoppage starting at the restart pass,
+  where a pass is seen. Held-out on the bench 0.561 against v7's 0.556, better on 10 of 10.
+- **Next** (ideas.md):
+  - a dead-ball revision from Jose's answers;
   - step 5, counting a gain of possession only when the ball is actually touched.
 - **Outside the code:**
   - register 3–5 team members by **Nov 10**;

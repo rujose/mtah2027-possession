@@ -37,9 +37,16 @@ the side panel:
 |---|---|---|
 | **v4: P(dead)** | the dead-ball model's probability that play is stopped, frame by frame. The panel shows the number | nothing below 50 %; light grey 50–80 % ("looks dead"); grey above 80 % |
 | **v6: restart clue** | which team the restart model expects to take the next restart, and how sure it is. It's only on after 2 s of dead-looking play and for 3 s after, the same as in v6 | blue Barcelona, red Athletic; strong colour at 80 % or more, faded below; empty where the clue is silent |
+| **v7: PathCRF** | PathCRF's estimate of which team has the ball, where its clue applies (every frame v6 calls live) | as the restart clue |
+| **v8: keeper repaired** | where the keeper repair moved a piece of tracking to the other team, and to which (added with v8) | blue: given to Barcelona; red: given to Athletic |
+| **v9: seen pass** | the passes v9 can snap a restart to: a player next to the ball, the ball leaving him fast. Drawn over the 0.4 s it takes to see it (added with v9) | blue: Barcelona's pass; red: Athletic's |
 
-They're computed by running v6 when the cache is built (`python -m viewer.build_cache`, ~30 s), so
+They're computed by running v9 when the cache is built (`python -m viewer.build_cache`, ~1 min), so
 they show what the model sees, not the labels it ends up with.
+
+**The dots are the repaired tracking** (since v8): a keeper tracked as the other team is drawn in
+its own team's colour, as a new slot after the existing ones (slot 46 on our match: Barça's keeper,
+frames 184,439–190,198). Everything else is the tracking as delivered.
 
 ## The bench matches (added 2026-10-30)
 
@@ -54,6 +61,7 @@ samples). A bench match opens at `http://localhost:8765/?match=<id>`.
 - **Models:** v1, v3 and the floor computed on the damaged tracking; v4 (= v5 there, no audio), v6
   and v7 **out of sample**, each match predicted by models trained without it.
 - **Signals:** "ball visible", v1's clues, v4's P(dead), v6's restart clue, v7's PathCRF estimate.
+  No v8 lane: the keeper repair never fires on the bench, so v8 is v7 there.
   There's no Smart Tagging or whistle on those matches.
 - **"clean tracking" toggle:** switches the dots between the damaged tracking the models see (41 %
   ball missing, anonymous slots) and the tracking as published.
