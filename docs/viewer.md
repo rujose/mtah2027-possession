@@ -15,6 +15,9 @@ timelines of labels and clues, all locked to the same frame.
 > **Notes are off** there: they would be data created by hand on the provided game. The page hides
 > the form, and the server drops any note for our match.
 >
+> **A cache built before that date still has the old lanes** (v1–v9 over the video): the server
+> reuses `viewer/cache/` until it is rebuilt. Rebuild it once with `--rebuild` (below).
+>
 > **The bench matches keep everything below** (models, clues, notes): they are external data, with
 > no video. Everything below about model lanes on our match describes the viewer before that date.
 
@@ -54,6 +57,7 @@ the side panel:
 | **v7: PathCRF** | PathCRF's estimate of which team has the ball, where its clue applies (every frame v6 calls live) | as the restart clue |
 | **v8: keeper repaired** | where the keeper repair moved a piece of tracking to the other team, and to which (added with v8) | blue: given to Barcelona; red: given to Athletic |
 | **v9: seen pass** | the passes v9 can snap a restart to: a player next to the ball, the ball leaving him fast. Drawn over the 0.4 s it takes to see it (added with v9) | blue: Barcelona's pass; red: Athletic's |
+| **v11: touch** | the touches v11 can move a change of team to: a player within 2 m of the ball and the ball's velocity changing by 3 m/s or more. Drawn over the 0.2 s either side it takes to see it (added with v11; bench matches only) | blue: home's touch; red: away's |
 
 They're computed by running v9 when the cache is built (`python -m viewer.build_cache`, ~1 min), so
 they show what the model sees, not the labels it ends up with.
@@ -73,17 +77,22 @@ samples). A bench match opens at `http://localhost:8765/?match=<id>`.
   freely (RULES.md: the ban is on our match). So this is where to watch our models fail against the
   truth.
 - **Models:** v1, v3 and the floor computed on the damaged tracking; v4 (= v5 there, no audio), v6
-  and v7 **out of sample**, each match predicted by models trained without it.
-- **Signals:** "ball visible", v1's clues, v4's P(dead), v6's restart clue, v7's PathCRF estimate.
-  No v8 lane: the keeper repair never fires on the bench, so v8 is v7 there.
+  and v7 **out of sample**, each match predicted by models trained without it; v9 and v11 (added
+  2026-11-04) are that v7 with the restart snap and then the touch move, with the "all" set's
+  settings, exactly as `bench.touch_timing` scores them. Two lanes carry two names: **"v7 = v8"**
+  (the keeper repair never fires on the bench) and **"v9 = v10"** (no audio or tags there, so v10's
+  changes don't apply).
+- **Signals:** "ball visible", v1's clues, v4's P(dead), v6's restart clue, v7's PathCRF estimate,
+  v9's seen passes and v11's touches.
   There's no Smart Tagging or whistle on those matches.
 - **"clean tracking" toggle:** switches the dots between the damaged tracking the models see (41 %
   ball missing, anonymous slots) and the tracking as published.
 - **Team names** are "home" and "away", and each match keeps its own notes.
 
 **Build:** `python -m bench.eval_pathcrf` (saves the out-of-sample predictions,
-`data/external/bench_predictions/`), then `python -m viewer.build_bench_cache` (~20 s, ~450 MB in
-`viewer/cache/bench/`, gitignored).
+`data/external/bench_predictions/`), then `python -m viewer.build_bench_cache` (~25 s, ~450 MB in
+`viewer/cache/bench/`, gitignored). The server reads the cache on every request: reload the page, no
+restart needed.
 
 ## Watching changes closely
 

@@ -8,12 +8,16 @@ the homography (there is no video), plus the clean tracking next to the damaged 
     meta.json                  frames, halves, pitch, slots and teams (damaged and clean), lanes
     players.bin, ball.bin      the damaged tracking, as our models see it (41 %, as on the bench)
     players_clean.bin, ...     the tracking as published
-    labels.bin                 the match's own truth, the floor, v1, v3, v4 (= v5 here), v6, v7
-    clues.bin                  v1's clues on the damaged tracking, and v4/v6/v7's learned signals
+    labels.bin                 the match's own truth, the floor, v1, v3, v4 (= v5 here), v6, v7 (= v8),
+                               v9 (= v10), v11
+    clues.bin                  v1's clues on the damaged tracking, v4/v6/v7's learned signals, v9's
+                               seen passes and v11's touches
 
 v4, v6 and v7 come from bench/eval_pathcrf.py's out-of-sample run (each match predicted by models
-trained without it); v1, v3 and the floor need no training and are computed here. Derived from the
-bench data, so gitignored like the rest of viewer/cache.
+trained without it); v9 and v11 are that v7 with the restart snap and then the touch move, as
+bench/touch_timing.py scores them (the "all" set's settings). v1, v3 and the floor need no training
+and are computed here. On the bench the keeper repair never fires (v8 = v7) and there is no audio or
+tags (v10 = v9). Derived from the bench data, so gitignored like the rest of viewer/cache.
 """
 
 import json
@@ -25,7 +29,7 @@ from bench import degrade, labels, sets
 from bench.run import baseline, v1_without_tags
 from bench.train_restart import prepare_level
 from bench.tune_decoder import decode
-from possession import v1, v3
+from possession import passes, touches, v1, v3, v9, v11
 from possession.data import AWAY, HOME, ROOT
 
 # Params
@@ -50,6 +54,16 @@ def percent_lane(p):
     return np.where(np.isnan(p), 0, 1 + np.round(np.nan_to_num(p) * 100)).astype(np.uint8)
 
 
+def marks(found, before, after):
+    """1 / 2 from `before` frames before to `after` frames after each frame found for home / away:
+    the frames the detector needed to see it (v9's passes, v11's touches)."""
+    lane = np.zeros(len(found[HOME]), np.uint8)
+    for code, side in ((1, HOME), (2, AWAY)):
+        for k in np.flatnonzero(found[side]):
+            lane[max(k - before, 0):k + after + 1] = code
+    return lane
+
+
 def build(match, data, track, predicted):
     folder = os.path.join(OUT, match)
     os.makedirs(folder, exist_ok=True)
@@ -58,10 +72,16 @@ def build(match, data, track, predicted):
 
     clues = v1.compute_clues(track, [], halves, pitch)
     v3_letters = decode(v1.build_costs(clues), halves, (v3.SWITCH_TEAM, v3.SWITCH_DEAD, v3.MIN_POSSESSION, v3.MIN_DEAD))
+    starts = v9.seen_passes(track)
+    v9_letters, _ = v9.snap(predicted["v7"].astype(str), track, halves, v9.BACK, v9.AHEAD, starts)
+    setting = v11.SETTINGS["all"]
+    found = v11.seen_touches(track, setting["dv"])
+    v11_letters, _ = v11.move(v9_letters, track, halves, setting["dv"], setting["back"], setting["ahead"], found)
     label_lanes = [("truth (bench)", truth),
                    ("baseline_smooth50", baseline(50)(track, halves, pitch)),
                    ("v1", v1_without_tags(track, halves, pitch)), ("v3", v3_letters),
-                   ("v4", predicted["v4"]), ("v6", predicted["v6"]), ("v7", predicted["v7"])]
+                   ("v4", predicted["v4"]), ("v6", predicted["v6"]), ("v7 = v8", predicted["v7"]),
+                   ("v9 = v10", v9_letters), ("v11", v11_letters)]
     labels_bin = np.stack([np.vectorize(CODES.get)(np.asarray(l).astype(str)) for _, l in label_lanes]).astype(np.uint8)
 
     on_ball = np.zeros(len(clues["out"]), np.uint8)
@@ -73,7 +93,9 @@ def build(match, data, track, predicted):
                   ("B: players active", clues["active"].astype(np.uint8)),
                   ("v4: P(dead)", np.round(predicted["p_dead"] * 100).astype(np.uint8)),
                   ("v6: restart clue", percent_lane(predicted["restart_clue"])),
-                  ("v7: PathCRF", percent_lane(predicted["pathcrf_clue"]))]
+                  ("v7: PathCRF", percent_lane(predicted["pathcrf_clue"])),
+                  ("v9: seen pass", marks(starts, 0, passes.LOOK - 1)),
+                  ("v11: touch", marks(found, touches.LOOK, touches.LOOK))]
     clues_bin = np.stack([lane for _, lane in clue_lanes])
 
     encode(track["players"], pitch).tofile(os.path.join(folder, "players.bin"))
