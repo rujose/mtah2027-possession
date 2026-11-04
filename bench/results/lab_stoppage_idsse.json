@@ -1,0 +1,143 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.5027218934911242,
+   "base": 0.5031952662721892,
+   "macro_held_out": 0.8801832640567752,
+   "macro_base": 0.8779264191127932
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.5055432372505544,
+   "base": 0.5002217294900222,
+   "macro_held_out": 0.8570074804075696,
+   "macro_base": 0.8539720230879851
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.571584699453552,
+   "base": 0.5666666666666667,
+   "macro_held_out": 0.8719018908693444,
+   "macro_base": 0.8699067126665495
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.620388349514563,
+   "base": 0.6145631067961166,
+   "macro_held_out": 0.8696483759195353,
+   "macro_base": 0.8666388777545825
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.623404255319149,
+   "base": 0.6196808510638299,
+   "macro_held_out": 0.8992301327934671,
+   "macro_base": 0.8965284068822591
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.5537212449255751,
+   "base": 0.5542625169147497,
+   "macro_held_out": 0.8765244358203995,
+   "macro_base": 0.8758891373722486
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "back": 4.0,
+    "ahead": 2.0
+   },
+   "held_out": 0.5823863636363635,
+   "base": 0.5789772727272727,
+   "macro_held_out": 0.8915544083714941,
+   "macro_base": 0.8891889902179922
+  }
+ ],
+ "all": {
+  "held_out": 0.5656785776558401,
+  "base": 0.562509629990121,
+  "better": 5,
+  "matches": 7
+ },
+ "macro": {
+  "held_out": 0.8780071411769407,
+  "base": 0.8757215095849158
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.5656785776558401,
+   "base": 0.562509629990121,
+   "better": 5,
+   "matches": 7
+  }
+ },
+ "unseen": {
+  "held_out": 0.5823863636363635,
+  "base": 0.5789772727272727,
+  "better": 1,
+  "matches": 1
+ },
+ "chosen": {
+  "back": 4.0,
+  "ahead": 2.0
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true,
+ "offsets": {
+  "J03WMX": 3,
+  "J03WN1": 3,
+  "J03WOH": 3,
+  "J03WOY": 3,
+  "J03WPY": 3,
+  "J03WQQ": 3,
+  "J03WR9": 3
+ },
+ "d_f1": {
+  "held_out": 0.9311447465082372,
+  "base": 0.9277371531126797
+ }
+}

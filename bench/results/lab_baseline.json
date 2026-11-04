@@ -1,0 +1,62 @@
+{
+ "J03WMX": {
+  "spell_f1": 0.509988249118684,
+  "macro_f1": 0.8779027184582189,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WN1": {
+  "spell_f1": 0.5281767955801105,
+  "macro_f1": 0.8610559966716673,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WOH": {
+  "spell_f1": 0.5676037483266398,
+  "macro_f1": 0.8714503860011783,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WOY": {
+  "spell_f1": 0.6045400238948625,
+  "macro_f1": 0.8701862430334056,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WPY": {
+  "spell_f1": 0.6181347150259068,
+  "macro_f1": 0.8958960165444907,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WQQ": {
+  "spell_f1": 0.5623815967523681,
+  "macro_f1": 0.875563797810568,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WR9": {
+  "spell_f1": 0.58005698005698,
+  "macro_f1": 0.8872876393614314,
+  "source": "idsse",
+  "unseen": true
+ },
+ "metrica1": {
+  "spell_f1": 0.5934131736526946,
+  "macro_f1": 0.8574619416361244,
+  "source": "metrica",
+  "unseen": true
+ },
+ "metrica2": {
+  "spell_f1": 0.5811320754716981,
+  "macro_f1": 0.8432517365746843,
+  "source": "metrica",
+  "unseen": true
+ },
+ "metrica3": {
+  "spell_f1": 0.5820615796519412,
+  "macro_f1": 0.8653772687451796,
+  "source": "metrica",
+  "unseen": true
+ }
+}

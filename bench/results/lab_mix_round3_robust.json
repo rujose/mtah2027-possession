@@ -1,0 +1,2166 @@
+{
+ "robust": {
+  "kept": [
+   "robust",
+   "short",
+   "segments",
+   "timing"
+  ],
+  "steps": [
+   {
+    "chain": "robust",
+    "against_previous": null,
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5790834312573442,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9175232236757771,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.591186440677966,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.886162723741486,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.677384196185286,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9179935110673018,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6637785800240674,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9035622381323997,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6789610389610388,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9234259681429853,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6436363636363636,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.9153908560045392,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.661764705882353,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9281190820433873,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7563421828908554,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.9284069802628646,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7348837209302326,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.8968738563068408,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7416666666666666,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9278877175468633,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.6728687327112174,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9145346156924443,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6422563938034884,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7442975234959182,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7236643190925269,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+stoppage",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5800235017626322,
+       "base": 0.5790834312573442,
+       "macro_held_out": 0.9176905302472583,
+       "macro_base": 0.9175232236757771
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5902824858757061,
+       "base": 0.591186440677966,
+       "macro_held_out": 0.8863845595159671,
+       "macro_base": 0.886162723741486
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6752043596730244,
+       "base": 0.677384196185286,
+       "macro_held_out": 0.9179660423566851,
+       "macro_base": 0.9179935110673018
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6628158844765343,
+       "base": 0.6637785800240674,
+       "macro_held_out": 0.9036777445579288,
+       "macro_base": 0.9035622381323997
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6784415584415584,
+       "base": 0.6789610389610388,
+       "macro_held_out": 0.9235310058529095,
+       "macro_base": 0.9234259681429853
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6436363636363636,
+       "base": 0.6436363636363636,
+       "macro_held_out": 0.915346400056024,
+       "macro_base": 0.9153908560045392
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6623529411764707,
+       "base": 0.661764705882353,
+       "macro_held_out": 0.9279360068805608,
+       "macro_base": 0.9281190820433873
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7510324483775811,
+       "base": 0.7563421828908554,
+       "macro_held_out": 0.9271528723068765,
+       "macro_base": 0.9284069802628646
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7382059800664452,
+       "base": 0.7348837209302326,
+       "macro_held_out": 0.898087501804512,
+       "macro_base": 0.8968738563068408
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7416666666666666,
+       "base": 0.7416666666666666,
+       "macro_held_out": 0.9283394090626643,
+       "macro_base": 0.9278877175468633
+      }
+     ],
+     "all": {
+      "held_out": 0.6723662190152982,
+      "base": 0.6728687327112174,
+      "better": 3,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9146112072641385,
+      "base": 0.9145346156924443
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6418224421488984,
+       "base": 0.6422563938034884,
+       "better": 2,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7436350317035644,
+       "base": 0.7442975234959182,
+       "better": 1,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.723314509071791,
+      "base": 0.7236643190925269,
+      "better": 2,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": false,
+      "share": false,
+      "each_source": false,
+      "unseen": false
+     },
+     "passes": false
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5800235017626322,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9176905302472583,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5902824858757061,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8863845595159671,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6752043596730244,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9179660423566851,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6628158844765343,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9036777445579288,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6784415584415584,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9235310058529095,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6436363636363636,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.915346400056024,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6623529411764707,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9279360068805608,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7510324483775811,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.9271528723068765,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7382059800664452,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.898087501804512,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7416666666666666,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9283394090626643,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.6723662190152982,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9146112072641385,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6418224421488984,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7436350317035644,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.723314509071791,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+short",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5929142857142857,
+       "base": 0.5790834312573442,
+       "macro_held_out": 0.9185866847350974,
+       "macro_base": 0.9175232236757771
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6123076923076923,
+       "base": 0.591186440677966,
+       "macro_held_out": 0.8912299212899488,
+       "macro_base": 0.886162723741486
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6925133689839571,
+       "base": 0.677384196185286,
+       "macro_held_out": 0.9198970158967951,
+       "macro_base": 0.9179935110673018
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6844970414201184,
+       "base": 0.6637785800240674,
+       "macro_held_out": 0.9066337409016437,
+       "macro_base": 0.9035622381323997
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7024142312579416,
+       "base": 0.6789610389610388,
+       "macro_held_out": 0.9264289678154166,
+       "macro_base": 0.9234259681429853
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.644076433121019,
+       "base": 0.6436363636363636,
+       "macro_held_out": 0.9146860299251625,
+       "macro_base": 0.9153908560045392
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6794835007173601,
+       "base": 0.661764705882353,
+       "macro_held_out": 0.9298285914043242,
+       "macro_base": 0.9281190820433873
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7580459770114942,
+       "base": 0.7563421828908554,
+       "macro_held_out": 0.9296676882414486,
+       "macro_base": 0.9284069802628646
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7726114649681529,
+       "base": 0.7348837209302326,
+       "macro_held_out": 0.9006109469813621,
+       "macro_base": 0.8968738563068408
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7612732095490717,
+       "base": 0.7416666666666666,
+       "macro_held_out": 0.9298974417638064,
+       "macro_base": 0.9278877175468633
+      }
+     ],
+     "all": {
+      "held_out": 0.6900137205051093,
+      "base": 0.6728687327112174,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9167467028955005,
+      "base": 0.9145346156924443
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6583152219317678,
+       "base": 0.6422563938034884,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7639768838429063,
+       "base": 0.7442975234959182,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7428535380615198,
+      "base": 0.7236643190925269,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5929142857142857,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9185866847350974,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6123076923076923,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8912299212899488,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6925133689839571,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9198970158967951,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6844970414201184,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9066337409016437,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7024142312579416,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9264289678154166,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.644076433121019,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.9146860299251625,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6794835007173601,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9298285914043242,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7580459770114942,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.9296676882414486,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7726114649681529,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.9006109469813621,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7612732095490717,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9298974417638064,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.6900137205051093,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9167467028955005,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6583152219317678,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7639768838429063,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7428535380615198,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+short+segments",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5985849056603774,
+       "base": 0.5929142857142857,
+       "macro_held_out": 0.921999272179976,
+       "macro_base": 0.9185866847350974
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6153153153153154,
+       "base": 0.6123076923076923,
+       "macro_held_out": 0.8914525170447153,
+       "macro_base": 0.8912299212899488
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6997260273972603,
+       "base": 0.6925133689839571,
+       "macro_held_out": 0.9196659436648561,
+       "macro_base": 0.9198970158967951
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6947624847746651,
+       "base": 0.6844970414201184,
+       "macro_held_out": 0.9078307941446903,
+       "macro_base": 0.9066337409016437
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7140625,
+       "base": 0.7024142312579416,
+       "macro_held_out": 0.9264912601130174,
+       "macro_base": 0.9264289678154166
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6581673306772908,
+       "base": 0.644076433121019,
+       "macro_held_out": 0.9136791229958696,
+       "macro_base": 0.9146860299251625
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6863033873343152,
+       "base": 0.6794835007173601,
+       "macro_held_out": 0.9288750373697668,
+       "macro_base": 0.9298285914043242
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.768,
+       "base": 0.7580459770114942,
+       "macro_held_out": 0.926940309407268,
+       "macro_base": 0.9296676882414486
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7769600000000001,
+       "base": 0.7726114649681529,
+       "macro_held_out": 0.9011394682192782,
+       "macro_base": 0.9006109469813621
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7769230769230768,
+       "base": 0.7612732095490717,
+       "macro_held_out": 0.9291593640158348,
+       "macro_base": 0.9298974417638064
+      }
+     ],
+     "all": {
+      "held_out": 0.69888050280823,
+      "base": 0.6900137205051093,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9167233089155271,
+      "base": 0.9167467028955005
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.666703135879889,
+       "base": 0.6583152219317678,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7739610256410256,
+       "base": 0.7639768838429063,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.752046616064348,
+      "base": 0.7428535380615198,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5985849056603774,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.921999272179976,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6153153153153154,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8914525170447153,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6997260273972603,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9196659436648561,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6947624847746651,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9078307941446903,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7140625,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9264912601130174,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6581673306772908,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.9136791229958696,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6863033873343152,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9288750373697668,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.768,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.926940309407268,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7769600000000001,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.9011394682192782,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7769230769230768,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9291593640158348,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.69888050280823,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9167233089155271,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.666703135879889,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7739610256410256,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.752046616064348,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+short+segments+timing",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6,
+       "base": 0.5985849056603774,
+       "macro_held_out": 0.9223144584069604,
+       "macro_base": 0.921999272179976
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.618018018018018,
+       "base": 0.6153153153153154,
+       "macro_held_out": 0.8916110248230275,
+       "macro_base": 0.8914525170447153
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7013698630136986,
+       "base": 0.6997260273972603,
+       "macro_held_out": 0.9198547574214307,
+       "macro_base": 0.9196659436648561
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6957369062119367,
+       "base": 0.6947624847746651,
+       "macro_held_out": 0.9081341286293435,
+       "macro_base": 0.9078307941446903
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7109375,
+       "base": 0.7140625,
+       "macro_held_out": 0.9262542251537954,
+       "macro_base": 0.9264912601130174
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6602921646746347,
+       "base": 0.6581673306772908,
+       "macro_held_out": 0.9141531408248711,
+       "macro_base": 0.9136791229958696
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6857142857142857,
+       "base": 0.6863033873343152,
+       "macro_held_out": 0.928619831703385,
+       "macro_base": 0.9288750373697668
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7875555555555556,
+       "base": 0.768,
+       "macro_held_out": 0.93238540111241,
+       "macro_base": 0.926940309407268
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7865599999999999,
+       "base": 0.7769600000000001,
+       "macro_held_out": 0.9059485670814794,
+       "macro_base": 0.9011394682192782
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7868131868131868,
+       "base": 0.7769230769230768,
+       "macro_held_out": 0.9331535720176077,
+       "macro_base": 0.9291593640158348
+      }
+     ],
+     "all": {
+      "held_out": 0.7032997480001316,
+      "base": 0.69888050280823,
+      "better": 8,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9182429107174311,
+      "base": 0.9167233089155271
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6674383910903677,
+       "base": 0.666703135879889,
+       "better": 5,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7869762474562475,
+       "base": 0.7739610256410256,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.761660757020757,
+      "base": 0.752046616064348,
+      "better": 3,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9223144584069604,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.618018018018018,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8916110248230275,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7013698630136986,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9198547574214307,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6957369062119367,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9081341286293435,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7109375,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9262542251537954,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6602921646746347,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.9141531408248711,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6857142857142857,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.928619831703385,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7875555555555556,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.93238540111241,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7865599999999999,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.9059485670814794,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7868131868131868,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9331535720176077,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.7032997480001316,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9182429107174311,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6674383910903677,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7869762474562475,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.761660757020757,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+short+segments+timing+recall",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5979661016949153,
+       "base": 0.6,
+       "macro_held_out": 0.9180661015948727,
+       "macro_base": 0.9223144584069604
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6269911504424779,
+       "base": 0.618018018018018,
+       "macro_held_out": 0.8929282260137081,
+       "macro_base": 0.8916110248230275
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7256684491978609,
+       "base": 0.7013698630136986,
+       "macro_held_out": 0.922356367569153,
+       "macro_base": 0.9198547574214307
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6884386174016687,
+       "base": 0.6957369062119367,
+       "macro_held_out": 0.9051458193574419,
+       "macro_base": 0.9081341286293435
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7139175257731959,
+       "base": 0.7109375,
+       "macro_held_out": 0.9264535077433744,
+       "macro_base": 0.9262542251537954
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6520051746442432,
+       "base": 0.6602921646746347,
+       "macro_held_out": 0.913496870044598,
+       "macro_base": 0.9141531408248711
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6940665701881331,
+       "base": 0.6857142857142857,
+       "macro_held_out": 0.9282032868190567,
+       "macro_base": 0.928619831703385
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.8074179743223965,
+       "base": 0.7875555555555556,
+       "macro_held_out": 0.9349814887197948,
+       "macro_base": 0.93238540111241
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7780487804878049,
+       "base": 0.7865599999999999,
+       "macro_held_out": 0.9035112162001914,
+       "macro_base": 0.9059485670814794
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7926892950391645,
+       "base": 0.7868131868131868,
+       "macro_held_out": 0.9313682511462348,
+       "macro_base": 0.9331535720176077
+      }
+     ],
+     "all": {
+      "held_out": 0.7077209639191862,
+      "base": 0.7032997480001316,
+      "better": 6,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9176511135208425,
+      "base": 0.9182429107174311
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6712933699060707,
+       "base": 0.6674383910903677,
+       "better": 4,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7927186832831219,
+       "base": 0.7869762474562475,
+       "better": 2,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7680556550093748,
+      "base": 0.761660757020757,
+      "better": 3,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": false,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": false
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5979661016949153,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9180661015948727,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6269911504424779,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8929282260137081,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7256684491978609,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.922356367569153,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6884386174016687,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9051458193574419,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7139175257731959,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.9264535077433744,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6520051746442432,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.913496870044598,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6940665701881331,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9282032868190567,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.8074179743223965,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.9349814887197948,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7780487804878049,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.9035112162001914,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7926892950391645,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9313682511462348,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.7077209639191862,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9176511135208425,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6712933699060707,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7927186832831219,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7680556550093748,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   },
+   {
+    "chain": "robust+short+segments+timing+dead",
+    "against_previous": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5992949471210341,
+       "base": 0.6,
+       "macro_held_out": 0.9221562094918937,
+       "macro_base": 0.9223144584069604
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.619484882418813,
+       "base": 0.618018018018018,
+       "macro_held_out": 0.8933152874683441,
+       "macro_base": 0.8916110248230275
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7001364256480219,
+       "base": 0.7013698630136986,
+       "macro_held_out": 0.9236479163760207,
+       "macro_base": 0.9198547574214307
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6935912938331319,
+       "base": 0.6957369062119367,
+       "macro_held_out": 0.9123150532547205,
+       "macro_base": 0.9081341286293435
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7132467532467532,
+       "base": 0.7109375,
+       "macro_held_out": 0.928447595331772,
+       "macro_base": 0.9262542251537954
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6590728476821192,
+       "base": 0.6602921646746347,
+       "macro_held_out": 0.9149770039178243,
+       "macro_base": 0.9141531408248711
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6837004405286343,
+       "base": 0.6857142857142857,
+       "macro_held_out": 0.9285044216514525,
+       "macro_base": 0.928619831703385
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7881481481481482,
+       "base": 0.7875555555555556,
+       "macro_held_out": 0.93203437269765,
+       "macro_base": 0.93238540111241
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7853035143769969,
+       "base": 0.7865599999999999,
+       "macro_held_out": 0.90648082275262,
+       "macro_base": 0.9059485670814794
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.784636488340192,
+       "base": 0.7868131868131868,
+       "macro_held_out": 0.9326344014963053,
+       "macro_base": 0.9331535720176077
+      }
+     ],
+     "all": {
+      "held_out": 0.7026615741343845,
+      "base": 0.7032997480001316,
+      "better": 3,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9194513084438602,
+      "base": 0.9182429107174311
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6669325129255012,
+       "base": 0.6674383910903677,
+       "better": 2,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7860293836217789,
+       "base": 0.7869762474562475,
+       "better": 1,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7604471478484929,
+      "base": 0.761660757020757,
+      "better": 1,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": false,
+      "share": false,
+      "each_source": false,
+      "unseen": false
+     },
+     "passes": false
+    },
+    "against_v11": {
+     "folds": [
+      {
+       "match": "J03WMX",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.5992949471210341,
+       "base": 0.509988249118684,
+       "macro_held_out": 0.9221562094918937,
+       "macro_base": 0.8779027184582189
+      },
+      {
+       "match": "J03WN1",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.619484882418813,
+       "base": 0.5281767955801105,
+       "macro_held_out": 0.8933152874683441,
+       "macro_base": 0.8610559966716673
+      },
+      {
+       "match": "J03WOH",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7001364256480219,
+       "base": 0.5676037483266398,
+       "macro_held_out": 0.9236479163760207,
+       "macro_base": 0.8714503860011783
+      },
+      {
+       "match": "J03WOY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6935912938331319,
+       "base": 0.6045400238948625,
+       "macro_held_out": 0.9123150532547205,
+       "macro_base": 0.8701862430334056
+      },
+      {
+       "match": "J03WPY",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7132467532467532,
+       "base": 0.6181347150259068,
+       "macro_held_out": 0.928447595331772,
+       "macro_base": 0.8958960165444907
+      },
+      {
+       "match": "J03WQQ",
+       "source": "idsse",
+       "unseen": false,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6590728476821192,
+       "base": 0.5623815967523681,
+       "macro_held_out": 0.9149770039178243,
+       "macro_base": 0.875563797810568
+      },
+      {
+       "match": "J03WR9",
+       "source": "idsse",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.6837004405286343,
+       "base": 0.58005698005698,
+       "macro_held_out": 0.9285044216514525,
+       "macro_base": 0.8872876393614314
+      },
+      {
+       "match": "metrica1",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7881481481481482,
+       "base": 0.5934131736526946,
+       "macro_held_out": 0.93203437269765,
+       "macro_base": 0.8574619416361244
+      },
+      {
+       "match": "metrica2",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.7853035143769969,
+       "base": 0.5811320754716981,
+       "macro_held_out": 0.90648082275262,
+       "macro_base": 0.8432517365746843
+      },
+      {
+       "match": "metrica3",
+       "source": "metrica",
+       "unseen": true,
+       "picked": {
+        "setting": "chain"
+       },
+       "held_out": 0.784636488340192,
+       "base": 0.5820615796519412,
+       "macro_held_out": 0.9326344014963053,
+       "macro_base": 0.8653772687451796
+      }
+     ],
+     "all": {
+      "held_out": 0.7026615741343845,
+      "base": 0.5727488937531886,
+      "better": 10,
+      "matches": 10
+     },
+     "macro": {
+      "held_out": 0.9194513084438602,
+      "base": 0.8705433744836949
+     },
+     "by_source": {
+      "idsse": {
+       "held_out": 0.6669325129255012,
+       "base": 0.5672688726793645,
+       "better": 7,
+       "matches": 7
+      },
+      "metrica": {
+       "held_out": 0.7860293836217789,
+       "base": 0.5855356095921113,
+       "better": 3,
+       "matches": 3
+      }
+     },
+     "unseen": {
+      "held_out": 0.7604471478484929,
+      "base": 0.5841659522083285,
+      "better": 4,
+      "matches": 4
+     },
+     "chosen": {
+      "setting": "chain"
+     },
+     "checks": {
+      "mean": true,
+      "share": true,
+      "each_source": true,
+      "unseen": true
+     },
+     "passes": true
+    }
+   }
+  ]
+ }
+}

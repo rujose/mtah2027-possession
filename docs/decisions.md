@@ -311,3 +311,23 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   statistics of them (the format check's label counts stay hidden). No setting, version choice or
   idea comes from what is seen there: those stay on the bench, whose matches show every version
   with their true labels.
+
+
+### 2026-11-04: the lab, and v12
+
+- **What:** Jose asked for versions built side by side by subagents, the valuable ones kept, the
+  rest discarded, the winners mixed, and the whole thing improving itself. One harness
+  (`bench/lab.py`), one bar fixed before any run (the held-out mean beats the chain without the
+  stage; at least 70 % of the matches better; no drop on either source or on the matches PathCRF
+  never saw), four rounds, ten builders ([lab.md](lab.md)). Kept: robust (a learned per-frame
+  model, the dead-time ball blanked), short, segments, timing (`all`) or recall and dead (`idsse`).
+  Discarded: the decoder re-chosen, stoppage on top of the learned model, polish (superseded).
+- **Result:** v12 = the lab's chain, **0.703 held out against v11's 0.573 (+0.131), 10/10**; IDSSE
+  set 0.670 against 0.563, 7/7. Built with the five recommended decisions on its page: robust as
+  the start, the full chain per set, Smart Tagging off (no model has seen it), the models committed
+  (trained on bench data only), and the port checked frame for frame on two bench matches (0
+  frames differ).
+- **Rule made explicit:** each bench set gets the stages that pass on it.
+- **Open:** whether our seen ball is carried around in stoppages (robust's remaining exposure; a
+  label-free check exists in lab/learned.md, not run); the gain on our match will be smaller than
+  the bench's.

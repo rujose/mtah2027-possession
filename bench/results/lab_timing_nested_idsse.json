@@ -1,0 +1,115 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.52105,
+   "base": 0.5148325358851675
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 2.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.57798,
+   "base": 0.5757094211123722
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.59476,
+   "base": 0.5953103448275863
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 2.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.65988,
+   "base": 0.6534161490683229
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.6723,
+   "base": 0.6686015831134565
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.57843,
+   "base": 0.5704394141145139
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 2.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.63039,
+   "base": 0.622286541244573
+  }
+ ],
+ "summary": {
+  "all": {
+   "held_out": 0.60497,
+   "base": 0.6000851413379988,
+   "better": 6,
+   "matches": 7
+  },
+  "idsse": {
+   "held_out": 0.60497,
+   "base": 0.6000851413379988,
+   "better": 6,
+   "matches": 7
+  },
+  "PathCRF-unseen": {
+   "held_out": 0.63039,
+   "base": 0.622286541244573,
+   "better": 1,
+   "matches": 1
+  }
+ }
+}

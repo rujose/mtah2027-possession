@@ -1,0 +1,160 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.50553,
+   "base": 0.5025125628140704
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.58369,
+   "base": 0.576978417266187
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.60816,
+   "base": 0.5991561181434599
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.63037,
+   "base": 0.6277486910994765
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.66504,
+   "base": 0.6639566395663958
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.59805,
+   "base": 0.5863319386331939
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.62636,
+   "base": 0.6201550387596899
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "rule": "learned",
+    "features": "all",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.70078,
+   "base": 0.6662480376766091
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.69605,
+   "base": 0.6671052631578948
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "rule": "learned",
+    "features": "no_pathcrf",
+    "window": 3.0,
+    "p_min": 0.35
+   },
+   "held_out": 0.67773,
+   "base": 0.6462882096069869
+  }
+ ],
+ "summary": {
+  "all": {
+   "held_out": 0.629176,
+   "base": 0.6156480916723964,
+   "better": 10,
+   "matches": 10
+  },
+  "idsse": {
+   "held_out": 0.6024571428571429,
+   "base": 0.5966913437546391,
+   "better": 7,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.69152,
+   "base": 0.6598805034804969,
+   "better": 3,
+   "matches": 3
+  },
+  "PathCRF-unseen": {
+   "held_out": 0.67523,
+   "base": 0.6499491373002952,
+   "better": 4,
+   "matches": 4
+  }
+ }
+}

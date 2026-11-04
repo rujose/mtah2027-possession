@@ -1,0 +1,582 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.52018779342723,
+   "base": 0.5025125628140704,
+   "macro_held_out": 0.8788201112211632,
+   "macro_base": 0.8788229941655089
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6011273957158962,
+   "base": 0.576978417266187,
+   "macro_held_out": 0.871469176692058,
+   "macro_base": 0.8689972205729948
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6253751705320599,
+   "base": 0.5991561181434599,
+   "macro_held_out": 0.8769092606230822,
+   "macro_base": 0.8755832663478292
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6525798525798525,
+   "base": 0.6277486910994765,
+   "macro_held_out": 0.8778310516528051,
+   "macro_base": 0.8746021624429892
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.672538860103627,
+   "base": 0.6639566395663958,
+   "macro_held_out": 0.9040000502122965,
+   "macro_base": 0.9057015950298931
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.5811320754716982,
+   "base": 0.5863319386331939,
+   "macro_held_out": 0.8803404859082175,
+   "macro_base": 0.881780871582845
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6332326283987916,
+   "base": 0.6201550387596899,
+   "macro_held_out": 0.8960717928423456,
+   "macro_base": 0.8946726902773939
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6961651917404129,
+   "base": 0.6662480376766091,
+   "macro_held_out": 0.8721654439807844,
+   "macro_base": 0.8685676737369002
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6722222222222222,
+   "base": 0.6671052631578948,
+   "macro_held_out": 0.8544849858391673,
+   "macro_base": 0.8553496040764633
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.6743484224965707,
+   "base": 0.6462882096069869,
+   "macro_held_out": 0.8718469449228712,
+   "macro_base": 0.8705007755837455
+  }
+ ],
+ "all": {
+  "held_out": 0.632890961268836,
+  "base": 0.6156480916723964,
+  "better": 9,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.878393930389479,
+  "base": 0.8774578853816564
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.6123105394613079,
+   "base": 0.5966913437546391,
+   "better": 6,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.680911945486402,
+   "base": 0.6598805034804969,
+   "better": 3,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.6689921162144994,
+  "base": 0.6499491373002952,
+  "better": 4,
+  "matches": 4
+ },
+ "chosen": {
+  "features": "all",
+  "model": "hgb",
+  "p_min": 0.4
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true,
+ "possessions": 340.3,
+ "true_possessions": 411.4,
+ "held_out_actions": [
+  {
+   "match": "J03WMX",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.52018779342723,
+   "macro_f1": 0.8788201112211632,
+   "possessions": 341,
+   "true_possessions": 511,
+   "written": 30,
+   "written_right": 12,
+   "written_frames": 1461,
+   "proposals": 266,
+   "proposals_right": 56
+  },
+  {
+   "match": "J03WN1",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6011273957158962,
+   "macro_f1": 0.871469176692058,
+   "possessions": 387,
+   "true_possessions": 500,
+   "written": 30,
+   "written_right": 17,
+   "written_frames": 1188,
+   "proposals": 252,
+   "proposals_right": 57
+  },
+  {
+   "match": "J03WOH",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6253751705320599,
+   "macro_f1": 0.8769092606230822,
+   "possessions": 331,
+   "true_possessions": 402,
+   "written": 12,
+   "written_right": 9,
+   "written_frames": 480,
+   "proposals": 169,
+   "proposals_right": 28
+  },
+  {
+   "match": "J03WOY",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6525798525798525,
+   "macro_f1": 0.8778310516528051,
+   "possessions": 358,
+   "true_possessions": 456,
+   "written": 30,
+   "written_right": 19,
+   "written_frames": 1767,
+   "proposals": 226,
+   "proposals_right": 60
+  },
+  {
+   "match": "J03WPY",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.672538860103627,
+   "macro_f1": 0.9040000502122965,
+   "possessions": 351,
+   "true_possessions": 421,
+   "written": 21,
+   "written_right": 12,
+   "written_frames": 1113,
+   "proposals": 203,
+   "proposals_right": 38
+  },
+  {
+   "match": "J03WQQ",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.5811320754716982,
+   "macro_f1": 0.8803404859082175,
+   "possessions": 341,
+   "true_possessions": 401,
+   "written": 15,
+   "written_right": 6,
+   "written_frames": 926,
+   "proposals": 197,
+   "proposals_right": 17
+  },
+  {
+   "match": "J03WR9",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6332326283987916,
+   "macro_f1": 0.8960717928423456,
+   "possessions": 292,
+   "true_possessions": 370,
+   "written": 11,
+   "written_right": 6,
+   "written_frames": 890,
+   "proposals": 182,
+   "proposals_right": 29
+  },
+  {
+   "match": "metrica1",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6961651917404129,
+   "macro_f1": 0.8721654439807844,
+   "possessions": 324,
+   "true_possessions": 354,
+   "written": 25,
+   "written_right": 15,
+   "written_frames": 1319,
+   "proposals": 245,
+   "proposals_right": 32
+  },
+  {
+   "match": "metrica2",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6722222222222222,
+   "macro_f1": 0.8544849858391673,
+   "possessions": 330,
+   "true_possessions": 318,
+   "written": 22,
+   "written_right": 11,
+   "written_frames": 1247,
+   "proposals": 290,
+   "proposals_right": 24
+  },
+  {
+   "match": "metrica3",
+   "features": "all",
+   "model": "hgb",
+   "p_min": 0.4,
+   "spell_f1": 0.6743484224965707,
+   "macro_f1": 0.8718469449228712,
+   "possessions": 348,
+   "true_possessions": 381,
+   "written": 25,
+   "written_right": 14,
+   "written_frames": 1278,
+   "proposals": 360,
+   "proposals_right": 37
+  }
+ ],
+ "held_out_auc": [
+  {
+   "match": "J03WMX",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.7822278911564625
+  },
+  {
+   "match": "J03WMX",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.7903061224489796
+  },
+  {
+   "match": "J03WMX",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8338178294573644
+  },
+  {
+   "match": "J03WMX",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.8345445736434108
+  },
+  {
+   "match": "J03WN1",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.7331533963112911
+  },
+  {
+   "match": "J03WN1",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8137651821862348
+  },
+  {
+   "match": "J03WN1",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.7600170502983803
+  },
+  {
+   "match": "J03WN1",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.7922705314009661
+  },
+  {
+   "match": "J03WOH",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.8829787234042553
+  },
+  {
+   "match": "J03WOH",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8880445795339411
+  },
+  {
+   "match": "J03WOH",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8721751412429378
+  },
+  {
+   "match": "J03WOH",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.824858757062147
+  },
+  {
+   "match": "J03WOY",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.7884538152610442
+  },
+  {
+   "match": "J03WOY",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8271084337349397
+  },
+  {
+   "match": "J03WOY",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8051257253384914
+  },
+  {
+   "match": "J03WOY",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.7985170857511283
+  },
+  {
+   "match": "J03WPY",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.7665071770334929
+  },
+  {
+   "match": "J03WPY",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8279106858054227
+  },
+  {
+   "match": "J03WPY",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.7803271240345298
+  },
+  {
+   "match": "J03WPY",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.8053157655611087
+  },
+  {
+   "match": "J03WQQ",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.8375816993464053
+  },
+  {
+   "match": "J03WQQ",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8993464052287581
+  },
+  {
+   "match": "J03WQQ",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8728571428571428
+  },
+  {
+   "match": "J03WQQ",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.8842857142857145
+  },
+  {
+   "match": "J03WR9",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.7739463601532568
+  },
+  {
+   "match": "J03WR9",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8352490421455939
+  },
+  {
+   "match": "J03WR9",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8196774193548387
+  },
+  {
+   "match": "J03WR9",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.7903225806451613
+  },
+  {
+   "match": "metrica1",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.8713321596244131
+  },
+  {
+   "match": "metrica1",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.8840962441314554
+  },
+  {
+   "match": "metrica1",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.8725925925925926
+  },
+  {
+   "match": "metrica1",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.8848677248677248
+  },
+  {
+   "match": "metrica2",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.9080513784461153
+  },
+  {
+   "match": "metrica2",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.9359335839598997
+  },
+  {
+   "match": "metrica2",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.9270750988142292
+  },
+  {
+   "match": "metrica2",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.9116600790513835
+  },
+  {
+   "match": "metrica3",
+   "features": "all",
+   "model": "logistic",
+   "auc": 0.9215128441134633
+  },
+  {
+   "match": "metrica3",
+   "features": "all",
+   "model": "hgb",
+   "auc": 0.9460296209522215
+  },
+  {
+   "match": "metrica3",
+   "features": "no_pathcrf",
+   "model": "logistic",
+   "auc": 0.9389935661764706
+  },
+  {
+   "match": "metrica3",
+   "features": "no_pathcrf",
+   "model": "hgb",
+   "auc": 0.943359375
+  }
+ ]
+}

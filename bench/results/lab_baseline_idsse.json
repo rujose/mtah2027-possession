@@ -1,0 +1,44 @@
+{
+ "J03WMX": {
+  "spell_f1": 0.5031952662721892,
+  "macro_f1": 0.8779264191127932,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WN1": {
+  "spell_f1": 0.5002217294900222,
+  "macro_f1": 0.8539720230879851,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WOH": {
+  "spell_f1": 0.5666666666666667,
+  "macro_f1": 0.8699067126665495,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WOY": {
+  "spell_f1": 0.6145631067961166,
+  "macro_f1": 0.8666388777545825,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WPY": {
+  "spell_f1": 0.6196808510638299,
+  "macro_f1": 0.8965284068822591,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WQQ": {
+  "spell_f1": 0.5542625169147497,
+  "macro_f1": 0.8758891373722486,
+  "source": "idsse",
+  "unseen": false
+ },
+ "J03WR9": {
+  "spell_f1": 0.5789772727272727,
+  "macro_f1": 0.8891889902179922,
+  "source": "idsse",
+  "unseen": true
+ }
+}

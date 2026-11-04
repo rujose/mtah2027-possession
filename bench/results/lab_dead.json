@@ -1,0 +1,454 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.5172413793103449,
+   "base": 0.5025125628140704,
+   "macro_held_out": 0.892809107257507,
+   "macro_base": 0.8788229941655089
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.5817319098457888,
+   "base": 0.576978417266187,
+   "macro_held_out": 0.872752265692676,
+   "macro_base": 0.8689972205729948
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.6118620689655173,
+   "base": 0.5991561181434599,
+   "macro_held_out": 0.9002604192840179,
+   "macro_base": 0.8755832663478292
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.6413350449293966,
+   "base": 0.6277486910994765,
+   "macro_held_out": 0.8925605545933686,
+   "macro_base": 0.8746021624429892
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.5,
+    "min_len": 2.0
+   },
+   "held_out": 0.6803738317757009,
+   "base": 0.6639566395663958,
+   "macro_held_out": 0.917560460273967,
+   "macro_base": 0.9057015950298931
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.606275579809004,
+   "base": 0.5863319386331939,
+   "macro_held_out": 0.9015616917823969,
+   "macro_base": 0.881780871582845
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.6239031770045386,
+   "base": 0.6201550387596899,
+   "macro_held_out": 0.9126394474802594,
+   "macro_base": 0.8946726902773939
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.6714508580343213,
+   "base": 0.6662480376766091,
+   "macro_held_out": 0.8766859093062553,
+   "macro_base": 0.8685676737369002
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "ball",
+    "thr": 0.5,
+    "min_len": 2.0
+   },
+   "held_out": 0.6839546191247974,
+   "base": 0.6671052631578948,
+   "macro_held_out": 0.8639543703380778,
+   "macro_base": 0.8553496040764633
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "features": "ball",
+    "thr": 0.4,
+    "min_len": 2.0
+   },
+   "held_out": 0.6596291012838802,
+   "base": 0.6462882096069869,
+   "macro_held_out": 0.8877997094021652,
+   "macro_base": 0.8705007755837455
+  }
+ ],
+ "all": {
+  "held_out": 0.627775757008329,
+  "base": 0.6156480916723964,
+  "better": 10,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.8918583935410691,
+  "base": 0.8774578853816564
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.6089604273771846,
+   "base": 0.5966913437546391,
+   "better": 7,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.6716781928143329,
+   "base": 0.6598805034804969,
+   "better": 3,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.6597344388618844,
+  "base": 0.6499491373002952,
+  "better": 4,
+  "matches": 4
+ },
+ "chosen": {
+  "features": "ball",
+  "thr": 0.4,
+  "min_len": 2.0
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true,
+ "d_f1": {
+  "held_out": 0.9327917177784248,
+  "base": 0.9130771862827745
+ },
+ "held_out_auc": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "v4_p_dead": 0.9164663466447882,
+   "players": 0.9571308008723557,
+   "ball": 0.9975081291984205
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "v4_p_dead": 0.8350249269341375,
+   "players": 0.9408493808871374,
+   "ball": 0.9911955908582786
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "v4_p_dead": 0.9233758672154472,
+   "players": 0.9637506920941323,
+   "ball": 0.9943800690137593
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "v4_p_dead": 0.8987029966446837,
+   "players": 0.9552817563585854,
+   "ball": 0.9932490367777931
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "v4_p_dead": 0.9277569724813944,
+   "players": 0.9776785432872388,
+   "ball": 0.997090132437984
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "v4_p_dead": 0.9024606587256491,
+   "players": 0.9529399899859348,
+   "ball": 0.9914236482469994
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "v4_p_dead": 0.9246426309826675,
+   "players": 0.9576223115782533,
+   "ball": 0.9981912292082079
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "v4_p_dead": 0.8237627772768221,
+   "players": 0.9078552984331494,
+   "ball": 0.9742066765838324
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "v4_p_dead": 0.893639344092578,
+   "players": 0.9334084870258803,
+   "ball": 0.9818256610564028
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "v4_p_dead": 0.873970002399658,
+   "players": 0.9318440318929802,
+   "ball": 0.9800632513159662
+  }
+ ],
+ "held_out_actions": [
+  {
+   "match": "J03WMX",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.5172413793103449,
+   "macro_f1": 0.892809107257507,
+   "d_f1": 0.9426481450594486,
+   "possessions": 301,
+   "true_possessions": 511,
+   "written": 19,
+   "written_right": 17,
+   "written_s": 104.96,
+   "missed": 12,
+   "found": 11,
+   "found_same": 1,
+   "frames_changed": 2625,
+   "frames_right": 2414
+  },
+  {
+   "match": "J03WN1",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.5817319098457888,
+   "macro_f1": 0.872752265692676,
+   "d_f1": 0.9517391564145293,
+   "possessions": 343,
+   "true_possessions": 500,
+   "written": 14,
+   "written_right": 11,
+   "written_s": 96.28,
+   "missed": 11,
+   "found": 8,
+   "found_same": 1,
+   "frames_changed": 2438,
+   "frames_right": 1573
+  },
+  {
+   "match": "J03WOH",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.6118620689655173,
+   "macro_f1": 0.9002604192840179,
+   "d_f1": 0.9548884177893274,
+   "possessions": 323,
+   "true_possessions": 402,
+   "written": 23,
+   "written_right": 21,
+   "written_s": 171.12,
+   "missed": 17,
+   "found": 10,
+   "found_same": 7,
+   "frames_changed": 4293,
+   "frames_right": 3991
+  },
+  {
+   "match": "J03WOY",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.6413350449293966,
+   "macro_f1": 0.8925605545933686,
+   "d_f1": 0.9449137969705578,
+   "possessions": 323,
+   "true_possessions": 456,
+   "written": 23,
+   "written_right": 23,
+   "written_s": 117.44,
+   "missed": 16,
+   "found": 12,
+   "found_same": 4,
+   "frames_changed": 2951,
+   "frames_right": 2859
+  },
+  {
+   "match": "J03WPY",
+   "features": "ball",
+   "thr": 0.5,
+   "min_len": 2.0,
+   "spell_f1": 0.6803738317757009,
+   "macro_f1": 0.917560460273967,
+   "d_f1": 0.9625729285972342,
+   "possessions": 328,
+   "true_possessions": 421,
+   "written": 15,
+   "written_right": 13,
+   "written_s": 95.6,
+   "missed": 15,
+   "found": 11,
+   "found_same": 4,
+   "frames_changed": 2393,
+   "frames_right": 2131
+  },
+  {
+   "match": "J03WQQ",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.606275579809004,
+   "macro_f1": 0.9015616917823969,
+   "d_f1": 0.9465265931393247,
+   "possessions": 332,
+   "true_possessions": 401,
+   "written": 23,
+   "written_right": 21,
+   "written_s": 142.08,
+   "missed": 14,
+   "found": 12,
+   "found_same": 6,
+   "frames_changed": 3569,
+   "frames_right": 3276
+  },
+  {
+   "match": "J03WR9",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.6239031770045386,
+   "macro_f1": 0.9126394474802594,
+   "d_f1": 0.9574998808407874,
+   "possessions": 291,
+   "true_possessions": 370,
+   "written": 22,
+   "written_right": 17,
+   "written_s": 153.16,
+   "missed": 11,
+   "found": 11,
+   "found_same": 3,
+   "frames_changed": 3831,
+   "frames_right": 3320
+  },
+  {
+   "match": "metrica1",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.6714508580343213,
+   "macro_f1": 0.8766859093062553,
+   "d_f1": 0.9031978075850485,
+   "possessions": 287,
+   "true_possessions": 354,
+   "written": 11,
+   "written_right": 9,
+   "written_s": 70.72,
+   "missed": 15,
+   "found": 6,
+   "found_same": 1,
+   "frames_changed": 1780,
+   "frames_right": 1418
+  },
+  {
+   "match": "metrica2",
+   "features": "ball",
+   "thr": 0.5,
+   "min_len": 2.0,
+   "spell_f1": 0.6839546191247974,
+   "macro_f1": 0.8639543703380778,
+   "d_f1": 0.8719389657273282,
+   "possessions": 299,
+   "true_possessions": 318,
+   "written": 13,
+   "written_right": 12,
+   "written_s": 53.92,
+   "missed": 20,
+   "found": 9,
+   "found_same": 0,
+   "frames_changed": 1357,
+   "frames_right": 1256
+  },
+  {
+   "match": "metrica3",
+   "features": "ball",
+   "thr": 0.4,
+   "min_len": 2.0,
+   "spell_f1": 0.6596291012838802,
+   "macro_f1": 0.8877997094021652,
+   "d_f1": 0.8919914856606624,
+   "possessions": 320,
+   "true_possessions": 381,
+   "written": 20,
+   "written_right": 17,
+   "written_s": 106.88,
+   "missed": 27,
+   "found": 12,
+   "found_same": 0,
+   "frames_changed": 2681,
+   "frames_right": 2467
+  }
+ ]
+}

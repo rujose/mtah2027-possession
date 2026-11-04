@@ -191,7 +191,11 @@ def main():
             v4=decode(v4_cost(base[m], p_dead_of[m], dsetting["weight"]), halves, decoder),
             v6=v6_letters[m], v7=v7_letters[m], p_dead=p_dead_of[m],
             restart_clue=restart.restart_belief(p_start_of[m], p_dead_of[m], halves, int(rsetting["carry"] * v1.FPS)),
-            pathcrf_clue=belief)
+            pathcrf_clue=belief,
+            # For bench/lab.py: the decoder's inputs, so later versions can decode again.
+            v6_cost=v6_cost[m].astype(np.float32),
+            v7_cost=v7_cost(v6_cost[m], p_pc[m], missing[m], *setting).astype(np.float32),
+            p_start=p_start_of[m], p_pathcrf=p_pc[m])
     print("wrote bench/results/pathcrf_grid{0}.csv and pathcrf_choice{0}.json, and {1}".format(tag, os.path.relpath(predictions, ROOT)))
 
 

@@ -1,0 +1,500 @@
+{
+ "stoppage+short+segments+timing+recall": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.5173964497041419,
+    "base": 0.5025125628140704,
+    "macro_held_out": 0.8792637157572699,
+    "macro_base": 0.8788229941655089
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.6004504504504504,
+    "base": 0.576978417266187,
+    "macro_held_out": 0.8740472652986123,
+    "macro_base": 0.8689972205729948
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.6286501377410468,
+    "base": 0.5991561181434599,
+    "macro_held_out": 0.8787868015306227,
+    "macro_base": 0.8755832663478292
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.6569667077681874,
+    "base": 0.6277486910994765,
+    "macro_held_out": 0.8791409185809672,
+    "macro_base": 0.8746021624429892
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.6872727272727273,
+    "base": 0.6639566395663958,
+    "macro_held_out": 0.906763664943532,
+    "macro_base": 0.9057015950298931
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.5981157469717363,
+    "base": 0.5863319386331939,
+    "macro_held_out": 0.8843385036738932,
+    "macro_base": 0.881780871582845
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.6378378378378379,
+    "base": 0.6201550387596899,
+    "macro_held_out": 0.8969836853318652,
+    "macro_base": 0.8946726902773939
+   },
+   {
+    "match": "metrica1",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.7396449704142013,
+    "base": 0.6662480376766091,
+    "macro_held_out": 0.884421977565586,
+    "macro_base": 0.8685676737369002
+   },
+   {
+    "match": "metrica2",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.7020408163265307,
+    "base": 0.6671052631578948,
+    "macro_held_out": 0.8638025518594986,
+    "macro_base": 0.8553496040764633
+   },
+   {
+    "match": "metrica3",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall"
+    },
+    "held_out": 0.7043243243243242,
+    "base": 0.6462882096069869,
+    "macro_held_out": 0.8828424039875387,
+    "macro_base": 0.8705007755837455
+   }
+  ],
+  "all": {
+   "held_out": 0.6472700168811185,
+   "base": 0.6156480916723964,
+   "better": 10,
+   "matches": 10
+  },
+  "macro": {
+   "held_out": 0.8830391488529387,
+   "base": 0.8774578853816564
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6180985796780183,
+    "base": 0.5966913437546391,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "held_out": 0.7153367036883521,
+    "base": 0.6598805034804969,
+    "better": 3,
+    "matches": 3
+   }
+  },
+  "unseen": {
+   "held_out": 0.6959619872257234,
+   "base": 0.6499491373002952,
+   "better": 4,
+   "matches": 4
+  },
+  "chosen": {
+   "setting": "stoppage+short+segments+timing+recall"
+  },
+  "checks": {
+   "mean": true,
+   "share": true,
+   "each_source": true,
+   "unseen": true
+  },
+  "passes": true,
+  "against": "stoppage+short+segments",
+  "possessions": 338.8
+ },
+ "stoppage+short+segments+timing+recall+dead": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.5266355140186916,
+    "base": 0.5173964497041419,
+    "macro_held_out": 0.893238260681767,
+    "macro_base": 0.8792637157572699
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.6046927374301676,
+    "base": 0.6004504504504504,
+    "macro_held_out": 0.8779518466210942,
+    "macro_base": 0.8740472652986123
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.6407557354925776,
+    "base": 0.6286501377410468,
+    "macro_held_out": 0.9035498111526721,
+    "macro_base": 0.8787868015306227
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.6715151515151516,
+    "base": 0.6569667077681874,
+    "macro_held_out": 0.8970777627317688,
+    "macro_base": 0.8791409185809672
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.7026888604353394,
+    "base": 0.6872727272727273,
+    "macro_held_out": 0.9186676077931826,
+    "macro_base": 0.906763664943532
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.6211081794195251,
+    "base": 0.5981157469717363,
+    "macro_held_out": 0.9042350713834288,
+    "macro_base": 0.8843385036738932
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.6424778761061947,
+    "base": 0.6378378378378379,
+    "macro_held_out": 0.9147537939710478,
+    "macro_base": 0.8969836853318652
+   },
+   {
+    "match": "metrica1",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.7447058823529412,
+    "base": 0.7396449704142013,
+    "macro_held_out": 0.8926719835614848,
+    "macro_base": 0.884421977565586
+   },
+   {
+    "match": "metrica2",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.7137984496124031,
+    "base": 0.7020408163265307,
+    "macro_held_out": 0.8725559420419131,
+    "macro_base": 0.8638025518594986
+   },
+   {
+    "match": "metrica3",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+timing+recall+dead"
+    },
+    "held_out": 0.7180722891566266,
+    "base": 0.7043243243243242,
+    "macro_held_out": 0.9002949592531163,
+    "macro_base": 0.8828424039875387
+   }
+  ],
+  "all": {
+   "held_out": 0.6586450675539618,
+   "base": 0.6472700168811185,
+   "better": 10,
+   "matches": 10
+  },
+  "macro": {
+   "held_out": 0.8974997039191475,
+   "base": 0.8830391488529387
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6299820077739496,
+    "base": 0.6180985796780183,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "held_out": 0.7255255403739903,
+    "base": 0.7153367036883521,
+    "better": 3,
+    "matches": 3
+   }
+  },
+  "unseen": {
+   "held_out": 0.7047636243070413,
+   "base": 0.6959619872257234,
+   "better": 4,
+   "matches": 4
+  },
+  "chosen": {
+   "setting": "stoppage+short+segments+timing+recall+dead"
+  },
+  "checks": {
+   "mean": true,
+   "share": true,
+   "each_source": true,
+   "unseen": true
+  },
+  "passes": true,
+  "against": "stoppage+short+segments+timing+recall",
+  "possessions": 349.2
+ },
+ "stoppage+short+segments+dead+timing+recall": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.5522935779816514,
+    "base": 0.5173964497041419,
+    "macro_held_out": 0.8964653411876379,
+    "macro_base": 0.8792637157572699
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.5993340732519423,
+    "base": 0.6004504504504504,
+    "macro_held_out": 0.876439506063391,
+    "macro_base": 0.8740472652986123
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.6431266846361186,
+    "base": 0.6286501377410468,
+    "macro_held_out": 0.9037207818609426,
+    "macro_base": 0.8787868015306227
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.6795646916565901,
+    "base": 0.6569667077681874,
+    "macro_held_out": 0.8979751484377047,
+    "macro_base": 0.8791409185809672
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.6964285714285714,
+    "base": 0.6872727272727273,
+    "macro_held_out": 0.9179473316805987,
+    "macro_base": 0.906763664943532
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.6202898550724637,
+    "base": 0.5981157469717363,
+    "macro_held_out": 0.9035553357888725,
+    "macro_base": 0.8843385036738932
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.6453879941434846,
+    "base": 0.6378378378378379,
+    "macro_held_out": 0.9157274221851955,
+    "macro_base": 0.8969836853318652
+   },
+   {
+    "match": "metrica1",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.7420289855072464,
+    "base": 0.7396449704142013,
+    "macro_held_out": 0.8935084117144413,
+    "macro_base": 0.884421977565586
+   },
+   {
+    "match": "metrica2",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.7153374233128834,
+    "base": 0.7020408163265307,
+    "macro_held_out": 0.872710393524499,
+    "macro_base": 0.8638025518594986
+   },
+   {
+    "match": "metrica3",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "stoppage+short+segments+dead+timing+recall"
+    },
+    "held_out": 0.7202127659574468,
+    "base": 0.7043243243243242,
+    "macro_held_out": 0.8995870361774024,
+    "macro_base": 0.8828424039875387
+   }
+  ],
+  "all": {
+   "held_out": 0.66140046229484,
+   "base": 0.6472700168811185,
+   "better": 9,
+   "matches": 10
+  },
+  "macro": {
+   "held_out": 0.8977636708620687,
+   "base": 0.8830391488529387
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6337750640244032,
+    "base": 0.6180985796780183,
+    "better": 6,
+    "matches": 7
+   },
+   "metrica": {
+    "held_out": 0.7258597249258588,
+    "base": 0.7153367036883521,
+    "better": 3,
+    "matches": 3
+   }
+  },
+  "unseen": {
+   "held_out": 0.7057417922302653,
+   "base": 0.6959619872257234,
+   "better": 4,
+   "matches": 4
+  },
+  "chosen": {
+   "setting": "stoppage+short+segments+dead+timing+recall"
+  },
+  "checks": {
+   "mean": true,
+   "share": true,
+   "each_source": true,
+   "unseen": true
+  },
+  "passes": true,
+  "against": "stoppage+short+segments+timing+recall",
+  "possessions": 354.8
+ }
+}

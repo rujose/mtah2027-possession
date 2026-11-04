@@ -15,6 +15,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [models/](models/) | One page per model version: why, how, every setting and where it comes from, expected failures, results |
 | [ideas.md](ideas.md) | Ideas waiting their turn, with where they came from |
 | [decisions.md](decisions.md) | Every decision we took, when, and why |
+| [lab.md](lab.md) | The lab (2026-11-04): candidate versions built side by side by subagents, judged on one bar, the winners chained; one page per candidate in [lab/](lab/) |
 | [viewer.md](viewer.md) | The match viewer: video + tracking + labels + clues on one frame; how to run it |
 
 ## Conventions
@@ -42,7 +43,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v9](models/v9-restart-pass.md) | v8 + possessions after a stoppage start at the seen restart pass (Jose's observation) | built 2026-10-30 | 351 possessions; dead 46.0 %; 40 of 78 restart starts moved, 34 earlier | **0.561** held-out against v7's 0.556, better on **10/10**; moved starts within 0.2 s of the truth 20 % → 83 % | macroF1 0.86, spellF1 0.64 |
 | [v10](models/v10-clean-base.md) | v9 made clean for the 2026-11-03 clarification: no whistle, no set-piece window, IDSSE-only twins ready, viewer without our output on our match | built 2026-11-03 | Jose's run | **equals v9** there (0 frames differ on 3 matches; no audio or tags on the bench); IDSSE-only twins keep every stage's gain | Jose's run |
 | [v11](models/v11-touch-line.md) | v10 + each change of team moved onto the new team's seen touch | built 2026-11-03 | Jose's run | **0.571** held-out against v9's 0.561, better on **10/10** (IDSSE only 7/7); moved changes within 0.2 s of the truth 31 % → 70 % | Jose's run |
-| [v12–v13](models/v11-touch-line.md#v12-short-possessions-at-clear-touches-judged-separately) | short possessions at clear touches (v12), the decoder re-chosen (v13) | proposed 2026-11-03 | — | probe: v12 fragile; v13 unmeasured | — |
+| [v12](models/v12-lab-chain.md) | the lab's chain: a learned per-frame model (robust to the frozen dead-time ball) decoded, then short possessions at clear touches, a check on each possession, and each change of team on the best touch (`idsse`: recall and dead in place of timing) | built 2026-11-04 | Jose's run | **0.703** held-out against v11's 0.573 (**+0.131**), better on **10/10**; IDSSE set 0.670 against 0.563, 7/7; the port gives the lab's letters on every frame of two bench matches | Jose's run |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -72,6 +73,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v9                 # writes evaluation/results/v9.csv (v8, restarts snapped to the seen pass)
 .venv/bin/python -m possession.v10                # writes evaluation/results/v10.csv (v9 without whistle and set-piece window); Jose runs it
 .venv/bin/python -m possession.v11                # writes evaluation/results/v11.csv (v10, team changes on the touch); Jose runs it
+.venv/bin/python -m possession.v12                # writes evaluation/results/v12.csv (the lab's chain); prints only the path and SHA-256
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -94,6 +96,12 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.check_v10               # v10 equals v9 where there's no audio or tags
 .venv/bin/python -m bench.touch_timing            # v11's ΔV and window, leave one match out (after bench.restart_timing)
 .venv/bin/python -m bench.check_v11               # v11 end to end on a bench match
+.venv/bin/python -m bench.lab --build             # the lab's per-match cache (after bench.eval_pathcrf); docs/lab.md
+.venv/bin/python -m bench.lab_<candidate>         # one lab candidate, judged leave one match out (docs/lab/<candidate>.md)
+.venv/bin/python -m bench.lab_mix --round 3 --starts robust   # the chain, each stage against the chain without it
+.venv/bin/python -m bench.lab_budget              # the error budget: what each kind of error still costs
+.venv/bin/python -m bench.train_v12               # v12's models -> possession/models/v12_<set>.joblib
+.venv/bin/python -m bench.check_v12               # v12's port gives the lab's letters on bench matches
 # the same stages with --set idsse (and touch_timing): the IDSSE-only twins (bench/chain.py)
 .venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)
 ```

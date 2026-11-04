@@ -165,6 +165,7 @@ changes one thing.
 | v9 | + each possession after a stoppage starts at the restart pass, when a pass is seen (Jose spotted ours were late) | the search window chosen on the bench, leaving each match out |
 | v10 | v9 made clean for the organisers' 2026-11-03 clarification: no whistle, no set-piece window (both were set on our match); IDSSE-only settings ready behind a switch | each stage's settings, chosen again on the 7 IDSSE matches for the switch |
 | v11 | + each change of team moved onto the new team's touch: a player of it within 2 m while the ball changes speed or course | the touch's strength and the search window chosen on the bench, leaving each match out |
+| v12 | the lab's chain: a classifier trained on the bench gives P(home / away / dead) for every frame in place of v1's hand weights; then short possessions where the other team clearly touches the ball, a check on each possession (merge it or flip its team), and each change of team moved to the touch a ranker trusts most | ten candidates built by subagents, each trained and judged leaving each match out; a stage kept only if it beat the chain without it |
 
 ### The numbers to judge it by
 
@@ -253,11 +254,13 @@ pipeline works.
   seen. Held-out on the bench 0.561 against v7's 0.556, better on 10 of 10.
 - **v10** = v9 without anything set on our match (the whistle, the set-piece window), after the
   organisers' clarification. Equal to v9 on the bench.
-- **Current version: v11** = v10 with each change of team on the new team's touch. Held-out on the
-  bench 0.571 against v9's 0.561, better on 10 of 10 (7 of 7 on IDSSE alone).
-- **Next** ([models/v11-touch-line.md](models/v11-touch-line.md), ideas.md):
-  - v12, short possessions where the other team clearly touches the ball;
-  - v13, the decoder's settings chosen again now that touches place the changes.
+- **v11** = v10 with each change of team on the new team's touch. Held-out on the bench 0.571
+  against v9's 0.561, better on 10 of 10 (7 of 7 on IDSSE alone).
+- **Current version: v12** = the lab's chain ([lab.md](lab.md), [models/v12-lab-chain.md](models/v12-lab-chain.md)).
+  Held-out on the bench **0.703 against v11's 0.573**, better on 10 of 10 (IDSSE set 0.670 against
+  0.563, 7 of 7). Expect less on our match: some designs were explored on the bench's truth, and
+  many candidates were tried on the same 10 matches.
+- **Next:** what's left is mostly short possessions we still miss (`python -m bench.lab_budget`).
 - **Outside the code:**
   - register 3–5 team members by **Nov 10**;
   - decide where our public repository lives;

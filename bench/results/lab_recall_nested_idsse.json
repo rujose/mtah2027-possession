@@ -1,0 +1,120 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.5
+   },
+   "held_out": 0.52537,
+   "base": 0.5148325358851675,
+   "macro_held_out": 0.88263,
+   "macro_base": 0.8814663342933148
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "no_pathcrf",
+    "model": "hgb",
+    "p_min": 0.5
+   },
+   "held_out": 0.58746,
+   "base": 0.5757094211123722,
+   "macro_held_out": 0.86712,
+   "macro_base": 0.8652043835968334
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.61538,
+   "base": 0.5953103448275863,
+   "macro_held_out": 0.87609,
+   "macro_base": 0.8750521233436798
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.66427,
+   "base": 0.6534161490683229,
+   "macro_held_out": 0.87477,
+   "macro_base": 0.8726930220808171
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.67009,
+   "base": 0.6686015831134565,
+   "macro_held_out": 0.90452,
+   "macro_base": 0.9055475754770584
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "features": "no_pathcrf",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.5664,
+   "base": 0.5704394141145139,
+   "macro_held_out": 0.8773,
+   "macro_base": 0.8775023376284574
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "features": "all",
+    "model": "hgb",
+    "p_min": 0.4
+   },
+   "held_out": 0.62153,
+   "base": 0.622286541244573,
+   "macro_held_out": 0.89385,
+   "macro_base": 0.8940703856079879
+  }
+ ],
+ "all": {
+  "held_out": 0.6072142857142857,
+  "base": 0.6000851413379988,
+  "better": 5,
+  "matches": 7
+ },
+ "idsse": {
+  "held_out": 0.6072142857142857,
+  "base": 0.6000851413379988,
+  "better": 5,
+  "matches": 7
+ },
+ "PathCRF-unseen": {
+  "held_out": 0.62153,
+  "base": 0.622286541244573,
+  "better": 0,
+  "matches": 1
+ }
+}
