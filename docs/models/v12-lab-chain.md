@@ -69,6 +69,9 @@ never saw 0.7617 (+0.178, 4/4). macroF1 0.9182 against 0.8705.
 - **The deployment models** give the same letters twice on a bench match.
 - **Our match:** `python -m possession.v12` run twice gives the same file (SHA-256
   `bfd2548d…a88e24`), and the format check passes (199,319 rows). Its output was not looked at.
+- **Reproducibility** ([reproduce.md](../reproduce.md)): the same file from a clean clone and at 1, 4
+  and 8 threads. Since 2026-11-04 PathCRF runs in float64 here, so another CPU can't move it by its
+  last float32 bit; that changed no frame on two bench matches and not one byte of our file.
 - **The inputs** (`v12.inputs`) run on a bench match's damaged tracking; v7 decoded from them
   agrees with the lab's v7 on 96.5 % of graded frames. Not 100 %: v12's inputs come from the
   dead-ball and restart models trained on every bench match, the lab's from models trained without

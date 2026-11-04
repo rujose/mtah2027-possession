@@ -17,6 +17,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [decisions.md](decisions.md) | Every decision we took, when, and why |
 | [lab.md](lab.md) | The lab (2026-11-04): candidate versions built side by side by subagents, judged on one bar, the winners chained; one page per candidate in [lab/](lab/) |
 | [viewer.md](viewer.md) | The match viewer: video + tracking + labels + clues on one frame; how to run it |
+| [reproduce.md](reproduce.md) | How to regenerate our CSV byte for byte, what has been checked, and what could still break it |
 
 ## Conventions
 

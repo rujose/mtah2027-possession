@@ -2,6 +2,7 @@
 
     python -m bench.lab_budget                 # on round 1's mix (bench/lab_mix.py --save)
     python -m bench.lab_budget --labels v11    # on v11
+    python -m bench.lab_budget --labels v12    # on v12 (after bench/train_v12.py --oof-only)
 
 Each "oracle" fixes one kind of error with the truth and nothing else, so its gain is that error's
 share of what's left. Exploration only: the truth is read on every match, so nothing here may pick
@@ -9,11 +10,12 @@ a setting. It says where the next round should look.
 """
 
 import argparse
+import os
 
 import numpy as np
 import pandas as pd
 
-from bench import lab, lab_mix
+from bench import chain, lab, lab_mix, train_v12
 from possession.data import FPS
 
 # Params
@@ -137,12 +139,15 @@ def where(missed, truth):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("--labels", choices=("mix", "v11"), default="mix")
+    parser.add_argument("--labels", choices=("mix", "v11", "v12"), default="mix")
     parser.add_argument("--set", choices=("all", "idsse"), default="all", dest="which")
     args = parser.parse_args()
     rows, details = [], []
     for match in lab.each(args.which):
-        pred = lab_mix.kept_letters(match.id, args.which) if args.labels == "mix" else match.v11
+        if args.labels == "v12":
+            pred = np.load(os.path.join(train_v12.OOF + chain.suffix(args.which), "{}.npy".format(match.id)))
+        else:
+            pred = lab_mix.kept_letters(match.id, args.which) if args.labels == "mix" else match.v11
         pred = np.asarray(pred).astype("<U1")
         truth = match.truth_letters.astype("<U1")
         base = lab.score(match, pred)["spell_f1"]

@@ -3,8 +3,11 @@
 #   python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt
 numpy==2.5.4
 pandas==3.1.0
+python-dateutil==3.0.0      # pandas' own dependencies, pinned as installed (left out until 2026-11-04)
+six==1.17.0
+tzdata==2026.6
 av==19.0.2
-# v4's dead-ball model (training on the bench; at run time only if the trees were chosen)
+# v4's dead-ball model and v12's models (scikit-learn trees and logistic regressions, joblib files)
 scikit-learn==1.9.1
 scipy==1.18.1
 joblib==1.6.0

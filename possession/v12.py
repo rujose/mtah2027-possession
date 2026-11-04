@@ -35,6 +35,9 @@ MODELS = os.path.join(ROOT, "possession", "models", "v12_{}.joblib")
 # The chain kept on each bench set (docs/lab.md, rounds 3-4): each stage beat the chain without it.
 CHAIN = {"all": ("short", "segments", "timing"), "idsse": ("short", "segments", "recall", "dead")}
 SWAP = np.array([1, 0, 2])          # H <-> A on P's columns, as the robust model was trained
+# PathCRF's arithmetic: float64 makes it the same on any CPU to ~1e-16 (float32 differs by ~1e-7
+# between processors); on the bench the two give the same letters (docs/reproduce.md).
+PATHCRF_FLOAT64 = True
 
 
 def inputs(tracking, halves, pitch, which):
@@ -54,7 +57,8 @@ def inputs(tracking, halves, pitch, which):
     d, r, pc = chain.dead_ball(which), chain.restart(which), chain.pathcrf(which)
     v6_cost = cost_with_restart(base, p_dead, p_start, halves, r["weight"], r["carry"], d["weight"])
     live = np.isin(decode(v6_cost, halves, chain.decoder(which)), ["H", "A"])          # v7
-    p_pathcrf = pathcrf_adapter.p_home(pathcrf_adapter.load_model(), fixed, halves, pitch, live)
+    pathcrf = pathcrf_adapter.load_model()
+    p_pathcrf = pathcrf_adapter.p_home(pathcrf.double() if PATHCRF_FLOAT64 else pathcrf, fixed, halves, pitch, live)
     missing = np.isnan(fixed["ball"][:, 0])
     pred = {"p_dead": p_dead, "p_start": p_start, "p_pathcrf": p_pathcrf, "v6_cost": v6_cost.astype(np.float32),
             "v7_cost": v7_cost(v6_cost, p_pathcrf, missing, pc["weight"], pc["where"]).astype(np.float32),

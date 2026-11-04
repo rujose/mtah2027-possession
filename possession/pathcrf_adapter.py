@@ -131,10 +131,11 @@ def window_input(players, team, frames, left_side, pitch):
 
 
 def p_home_in_window(model, inputs, sides):
-    """P(home had the ball last) per step: the model's "prev" logits, softmax over real players."""
+    """P(home had the ball last) per step: the model's "prev" logits, softmax over real players.
+    The inputs are cast to the model's own precision (float32, or float64 after `model.double()`)."""
     import torch
     with torch.no_grad():
-        macro, _, _ = model(torch.tensor(inputs).unsqueeze(0))
+        macro, _, _ = model(torch.tensor(inputs, dtype=next(model.parameters()).dtype).unsqueeze(0))
     logits = macro[0, :, :, 0].numpy().astype(np.float64)            # [steps, 26]
     logits[:, sides == 0] = -np.inf                                  # pads and outside nodes
     logits -= logits.max(axis=1, keepdims=True)
