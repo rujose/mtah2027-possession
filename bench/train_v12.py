@@ -1,11 +1,14 @@
 """Train v12's models on every bench match of a set (docs/models/v12-lab-chain.md).
 
     python -m bench.train_v12 [--set all|idsse]   # ~15 min; writes possession/models/v12_<set>.joblib
+    python -m bench.train_v12 --oof-only          # only the chain's out-of-fold letters (for the viewer)
 
 The robust classifier learns from the set's IDSSE matches (as in the lab). Each post stage learns
 from what the stages before it write on the bench matches out of fold (each match's letters from
 models trained without it, as bench/lab_mix.py does), so its training input looks like what it will
 see on our match. Settings: each stage's choice on all the set's matches (bench/results/lab_*.json).
+The chain's out-of-fold letters on each bench match are saved too (data/external/v12_oof[_idsse]/,
+gitignored), for the viewer's bench matches (viewer/build_bench_cache.py).
 """
 
 import argparse
@@ -19,6 +22,7 @@ from bench import chain, lab, lab_dead, lab_mix, lab_recall, lab_robust, lab_seg
 from possession import v12
 
 # Params
+OOF = os.path.join(lab.ROOT, "data", "external", "v12_oof")
 REPORTS = {"robust": "lab_robust", "short": "lab_short", "segments": "lab_segments", "timing": "lab_timing",
            "recall": "lab_recall", "dead": "lab_dead"}
 
@@ -80,7 +84,9 @@ def fit_chain(matches, which, steps, settings):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--set", choices=("all", "idsse"), default="all", dest="which")
-    which = parser.parse_args().which
+    parser.add_argument("--oof-only", action="store_true", help="save the out-of-fold letters, train nothing")
+    args = parser.parse_args()
+    which = args.which
     lab_mix.cache_short_evidence()
     matches = list(lab.each(which))
     setting = chosen(which)
@@ -90,6 +96,13 @@ def main():
     print("the chain out of fold, with the chosen settings: spellF1 {:.4f} (v11 {:.4f})".format(
         np.mean([lab.score(m, final[m.id])["spell_f1"] for m in matches]),
         np.mean([b["spell_f1"] for b in lab.baseline(which).values()])), flush=True)
+    folder = OOF + chain.suffix(which)
+    os.makedirs(folder, exist_ok=True)
+    for m in matches:
+        np.save(os.path.join(folder, "{}.npy".format(m.id)), final[m.id])
+    print("wrote the out-of-fold letters to {}".format(os.path.relpath(folder, lab.ROOT)), flush=True)
+    if args.oof_only:
+        return
     models = fit_chain(matches, which, steps, setting)
     models.update({"which": which, "chain": v12.CHAIN[which], "settings": setting})
     path = v12.MODELS.format(which)

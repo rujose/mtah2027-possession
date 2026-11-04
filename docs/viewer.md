@@ -85,7 +85,9 @@ samples). A bench match opens at `http://localhost:8765/?match=<id>`.
 - **Models:** v1, v3 and the floor computed on the damaged tracking; v4 (= v5 there, no audio), v6
   and v7 **out of sample**, each match predicted by models trained without it; v9 and v11 (added
   2026-11-04) are that v7 with the restart snap and then the touch move, with the "all" set's
-  settings, exactly as `bench.touch_timing` scores them. Two lanes carry two names: **"v7 = v8"**
+  settings, exactly as `bench.touch_timing` scores them. v12 (added 2026-11-04) is its chain's
+  out-of-fold letters (`python -m bench.train_v12 --oof-only`: each match's models trained without
+  it), with v12's settings (they score 0.7036; the lab's 0.7033 used each match's own fold setting). Two lanes carry two names: **"v7 = v8"**
   (the keeper repair never fires on the bench) and **"v9 = v10"** (no audio or tags there, so v10's
   changes don't apply).
 - **Signals:** "ball visible", v1's clues, v4's P(dead), v6's restart clue, v7's PathCRF estimate,

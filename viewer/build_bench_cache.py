@@ -9,7 +9,7 @@ the homography (there is no video), plus the clean tracking next to the damaged 
     players.bin, ball.bin      the damaged tracking, as our models see it (41 %, as on the bench)
     players_clean.bin, ...     the tracking as published
     labels.bin                 the match's own truth, the floor, v1, v3, v4 (= v5 here), v6, v7 (= v8),
-                               v9 (= v10), v11
+                               v9 (= v10), v11, v12
     clues.bin                  v1's clues on the damaged tracking, v4/v6/v7's learned signals, v9's
                                seen passes and v11's touches
 
@@ -17,7 +17,9 @@ v4, v6 and v7 come from bench/eval_pathcrf.py's out-of-sample run (each match pr
 trained without it); v9 and v11 are that v7 with the restart snap and then the touch move, as
 bench/touch_timing.py scores them (the "all" set's settings). v1, v3 and the floor need no training
 and are computed here. On the bench the keeper repair never fires (v8 = v7) and there is no audio or
-tags (v10 = v9). Derived from the bench data, so gitignored like the rest of viewer/cache.
+tags (v10 = v9). v12 is its chain's out-of-fold letters (`python -m bench.train_v12 --oof-only`: each
+match's models trained without it), when saved. Derived from the bench data, so gitignored like the
+rest of viewer/cache.
 """
 
 import json
@@ -35,6 +37,7 @@ from possession.data import AWAY, HOME, ROOT
 # Params
 OUT = os.path.join(ROOT, "viewer", "cache", "bench")
 PREDICTIONS = os.path.join(ROOT, "data", "external", "bench_predictions")
+V12 = os.path.join(ROOT, "data", "external", "v12_oof")   # bench/train_v12.py --oof-only
 LEVEL = 41
 SCALE = 10000
 MISSING = -32768
@@ -82,6 +85,9 @@ def build(match, data, track, predicted):
                    ("v1", v1_without_tags(track, halves, pitch)), ("v3", v3_letters),
                    ("v4", predicted["v4"]), ("v6", predicted["v6"]), ("v7 = v8", predicted["v7"]),
                    ("v9 = v10", v9_letters), ("v11", v11_letters)]
+    v12_path = os.path.join(V12, "{}.npy".format(match))
+    if os.path.exists(v12_path):
+        label_lanes.append(("v12", np.load(v12_path)))
     labels_bin = np.stack([np.vectorize(CODES.get)(np.asarray(l).astype(str)) for _, l in label_lanes]).astype(np.uint8)
 
     on_ball = np.zeros(len(clues["out"]), np.uint8)
