@@ -83,7 +83,7 @@ def add_team_clue(cost, belief, weight):
 
 def predict(tracking, tags, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH), bench_set=None):
     """(labels for every video frame, what went into them: keeper pieces, snap moves, P(dead),
-    P(home restarts), PathCRF's P(home))."""
+    P(home restarts), PathCRF's P(home), the repaired tracking)."""
     halves = halves or graded_halves()
     setting = SETTINGS[bench_set or BENCH_SET]
     if setting is None:
@@ -117,7 +117,8 @@ def predict(tracking, tags, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH), benc
     moves = []
     if RESTART_SNAP:                                                                # v9
         labels, moves = v9.snap(labels, fixed, halves, setting["back"], setting["ahead"])
-    return labels, {"pieces": pieces, "moves": moves, "p_dead": p_dead, "p_start": p_start, "p_pathcrf": p_pathcrf}
+    return labels, {"pieces": pieces, "moves": moves, "p_dead": p_dead, "p_start": p_start, "p_pathcrf": p_pathcrf,
+                    "fixed": fixed}
 
 
 def main():

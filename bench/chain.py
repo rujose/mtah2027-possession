@@ -13,7 +13,7 @@ import json
 import os
 
 from bench import sets
-from possession import v3, v4, v6, v7
+from possession import v3, v4, v6, v7, v9
 from possession.data import ROOT
 
 # Params
@@ -76,6 +76,14 @@ def pathcrf(which):
         return {"weight": v7.W_PATHCRF, "where": v7.WHERE}
     c = _choice("pathcrf", which)["setting"]
     return {"weight": c["weight"], "where": c["where"]}
+
+
+def restart_snap(which):
+    """v9's window (s before, s after the change) to look for the restart pass."""
+    if which == "all":
+        return v9.BACK, v9.AHEAD
+    c = _choice("restart_timing", which)["chosen"]
+    return c["back"], c["ahead"]
 
 
 def predictions(which):

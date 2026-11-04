@@ -163,6 +163,8 @@ changes one thing.
 | v7 | + PathCRF: who has the ball, from the players' movement, especially while the ball is missing | published model; its weight chosen on the 4 bench matches it never saw |
 | v8 | + keeper repair: a keeper tracked as the other team is given back to its own (Jose spotted it) | a general rule from the Laws and reasoning; never fires on the bench, so v8 = v7 there |
 | v9 | + each possession after a stoppage starts at the restart pass, when a pass is seen (Jose spotted ours were late) | the search window chosen on the bench, leaving each match out |
+| v10 | v9 made clean for the organisers' 2026-11-03 clarification: no whistle, no set-piece window (both were set on our match); IDSSE-only settings ready behind a switch | each stage's settings, chosen again on the 7 IDSSE matches for the switch |
+| v11 | + each change of team moved onto the new team's touch: a player of it within 2 m while the ball changes speed or course | the touch's strength and the search window chosen on the bench, leaving each match out |
 
 ### The numbers to judge it by
 
@@ -247,11 +249,15 @@ pipeline works.
 - **v8** = v7 on tracking where Barça's keeper, tracked as Athletic for the last 230 s, is given
   back to Barça. The bench can't score it (the rule never fires there); it's kept because it fixes
   the input.
-- **Current version: v9** = v8 with each possession after a stoppage starting at the restart pass,
-  where a pass is seen. Held-out on the bench 0.561 against v7's 0.556, better on 10 of 10.
-- **Next** (ideas.md):
-  - a dead-ball revision from Jose's answers;
-  - step 5, counting a gain of possession only when the ball is actually touched.
+- **v9** = v8 with each possession after a stoppage starting at the restart pass, where a pass is
+  seen. Held-out on the bench 0.561 against v7's 0.556, better on 10 of 10.
+- **v10** = v9 without anything set on our match (the whistle, the set-piece window), after the
+  organisers' clarification. Equal to v9 on the bench.
+- **Current version: v11** = v10 with each change of team on the new team's touch. Held-out on the
+  bench 0.571 against v9's 0.561, better on 10 of 10 (7 of 7 on IDSSE alone).
+- **Next** ([models/v11-touch-line.md](models/v11-touch-line.md), ideas.md):
+  - v12, short possessions where the other team clearly touches the ball;
+  - v13, the decoder's settings chosen again now that touches place the changes.
 - **Outside the code:**
   - register 3–5 team members by **Nov 10**;
   - decide where our public repository lives;

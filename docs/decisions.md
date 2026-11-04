@@ -276,3 +276,20 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Open:** the organisers' answer on items A and E, Metrica's samples, and v9's origin. Jose emails
   them.
 
+
+### 2026-11-03: v11, each change of team on the new team's touch
+
+- **What:** after v10, each change from one team to the other moves to the nearest seen touch by the
+  new team: a player of it within 2 m while the ball's velocity changes by at least ΔV. Frames move
+  only between the change and the touch, and never swallow a possession. On the bench the truth
+  changes team at the new team's touch (a new-team player within 2 m at all 2,349 IDSSE changes),
+  and ours were ±0.6 s off. Jose's choices: all seven recommended options on the page (move after
+  decoding, nearest touch, distance and look fixed by reasoning, ΔV and window chosen on the bench,
+  same bar as v9, both bench sets).
+- **Result:** ΔV 3 m/s, ±1 s (IDSSE only: 2 s back / 1 s ahead). Held-out spellF1 0.5711 against
+  v9's 0.5613 (+0.0098), better on 10/10; IDSSE only 0.5607 against 0.5497, 7/7. Moved changes within
+  0.2 s of the truth 31 % → 70 %. It also gains without v9's snap and at 30 % and 55 % damage.
+  Adopted.
+- **Noted:** the probe's looser rule, which could swallow a short possession, scored 0.0018 more by
+  removing 28 possessions in 10 matches. That changes the number of possessions, so it's left to
+  v12's judging, not folded into v11.
