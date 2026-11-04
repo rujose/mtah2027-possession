@@ -21,7 +21,7 @@ timelines of labels and clues, all locked to the same frame.
 > **`--models` brings our versions back on our match** (Jose's call, 2026-11-04,
 > [decisions.md](decisions.md)): a label lane for every CSV in `evaluation/results/`, to see the
 > versions run. Nothing seen there may choose a setting or a version: that stays on the bench.
-> Claude never opens it.
+> Claude may build it (the build prints only lane names) but never opens it.
 >
 > **The bench matches keep everything below** (models, clues, notes): they are external data, with
 > no video. Everything below about model lanes on our match describes the viewer before that date.

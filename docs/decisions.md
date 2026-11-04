@@ -305,6 +305,9 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   looking is not checking, as long as nothing seen there changes a model. Claude flagged item B of
   the audit ([limitations.md](limitations.md), section 0: "our output checked against the video"),
   and Jose decided. Not asked of the organisers.
-- **How we keep it apart:** Jose runs it and watches it; Claude never builds that cache, opens our
-  match in the viewer or reads its lanes. No setting, version choice or idea comes from what is
-  seen there: those stay on the bench, whose matches show every version with their true labels.
+- **How we keep it apart:** Jose watches it. Claude may run the commands that write the CSVs and
+  build the cache, whose output is only file paths, hashes, row counts and lane names (Jose's call,
+  same day); it never opens our match in the viewer, reads the CSVs or the lanes, or prints
+  statistics of them (the format check's label counts stay hidden). No setting, version choice or
+  idea comes from what is seen there: those stay on the bench, whose matches show every version
+  with their true labels.
