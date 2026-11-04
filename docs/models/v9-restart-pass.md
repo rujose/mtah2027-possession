@@ -211,6 +211,9 @@ the ball is leaving 100 %, arriving 0 %, and never above 8 m/s in the 2 s before
   earlier. 1,409 frames differ (0.89 % of graded).
 - **The whistle check:** 74 → 73 of 86 whistles followed by dead within 3 s; counted ones still
   11/11. One restart now starts within 3 s of a whistle.
+> **2026-11-03:** the organisers' clarification forbids checking our output against the video, so the
+> moments listed here are not to be watched against it ([../limitations.md](../limitations.md), section 0).
+
 - **The largest moves, to watch in the viewer.** They're near the 5 s limit, where a pass during
   the stoppage could be mistaken for the restart (failure mode 1):
 

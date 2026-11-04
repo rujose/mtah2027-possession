@@ -22,7 +22,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from bench import degrade, sets
+from bench import chain, degrade, sets
 from bench.run import score
 from bench.train_restart import prepare_level
 from possession import v9
@@ -33,9 +33,8 @@ BACKS = (1, 2, 3, 5)            # s
 AHEADS = (1, 2, 3)              # s
 LEVEL = 41
 OTHER_LEVELS = (30, 55)
-MIN_BETTER = 7                  # of 10, held out
+MIN_BETTER = 0.7                # share of the matches, held out (7 of 10)
 NEAR = 10 * FPS                 # a predicted change and a true one this close are the same restart
-PREDICTIONS = os.path.join(ROOT, "data", "external", "bench_predictions")
 RESULTS = os.path.join(ROOT, "bench", "results")
 LETTERS = np.array(["H", "A", "D", "X"])
 
@@ -73,8 +72,11 @@ def timing(moves, truth):
 
 
 def main():
+    which = chain.which_set("v9's settings on the bench")
+    tag = chain.suffix(which)
     stats = degrade.load_stats()
-    matches = sets.matches("all")
+    matches = chain.matches(which)
+    min_better = int(np.ceil(MIN_BETTER * len(matches) - 1e-9))
     data = {m: sets.load(m) for m in matches}
     convention = truth_convention(data, matches)
     print("truth (IDSSE, clean ball), at {} starts: leaving {:.0%}, arriving {:.0%}, above 8 m/s before {:.0%}".format(
@@ -83,9 +85,9 @@ def main():
     prepared, scale = prepare_level(LEVEL, matches, data, stats)
     rows, inputs = [], {}
     for m in matches:
-        path = os.path.join(PREDICTIONS, "{}.npz".format(m))
+        path = os.path.join(chain.predictions(which), "{}.npz".format(m))
         if not os.path.exists(path):
-            raise FileNotFoundError("{}: run `python -m bench.eval_pathcrf` first".format(path))
+            raise FileNotFoundError("{}: run `python -m bench.eval_pathcrf --set {}` first".format(path, which))
         with np.load(path) as z:
             pred = z["v7"].astype(str)
         codes = sets.truth(m, data[m])
@@ -101,7 +103,7 @@ def main():
                          "macro_f1": s["macro_f1"], "moved": len(moves) / max(len(changes(pred)), 1)})
         print("{}: grid scored".format(m), flush=True)
     grid = pd.DataFrame(rows)
-    grid.to_csv(os.path.join(RESULTS, "restart_timing_grid.csv"), index=False, float_format="%.5f")
+    grid.to_csv(os.path.join(RESULTS, "restart_timing_grid{}.csv".format(tag)), index=False, float_format="%.5f")
 
     snaps = grid[grid.back > 0]
     v7 = grid[grid.back == 0].set_index("match")
@@ -117,13 +119,13 @@ def main():
     held_mean = np.mean([f["held_out"] for f in folds])
     v7_mean = np.mean([f["v7"] for f in folds])
     better = sum(f["held_out"] > f["v7"] for f in folds)
-    adopted = bool(held_mean > v7_mean and better >= MIN_BETTER)
+    adopted = bool(held_mean > v7_mean and better >= min_better)
     overall = snaps.groupby(["back", "ahead"]).spell_f1.mean()
     chosen = max(overall.index, key=lambda s: (round(overall[s], 6), -(s[0] + s[1])))
-    print("held out: {:.4f} against v7 {:.4f} ({:+.4f}), better on {}/10; macroF1 {:.4f} against {:.4f}".format(
-        held_mean, v7_mean, held_mean - v7_mean, better,
+    print("held out: {:.4f} against v7 {:.4f} ({:+.4f}), better on {}/{}; macroF1 {:.4f} against {:.4f}".format(
+        held_mean, v7_mean, held_mean - v7_mean, better, len(matches),
         np.mean([f["macro_held_out"] for f in folds]), np.mean([f["macro_v7"] for f in folds])))
-    print("chosen on all 10: back {} s / ahead {} s; adopted: {}".format(chosen[0], chosen[1], adopted))
+    print("chosen on all {}: back {} s / ahead {} s; adopted: {}".format(len(matches), chosen[0], chosen[1], adopted))
 
     before, after = [], []
     for m in matches:
@@ -149,18 +151,18 @@ def main():
         scores = np.array(scores)
         sensitivity[str(level)] = {"snap": scores[:, 0].mean(), "v7": scores[:, 1].mean(),
                                    "better": int((scores[:, 0] > scores[:, 1]).sum())}
-        print("pass detector on tracking damaged at {} %: {:.4f} against v7 {:.4f}, better on {}/10".format(
-            level, *scores.mean(axis=0), sensitivity[str(level)]["better"]))
+        print("pass detector on tracking damaged at {} %: {:.4f} against v7 {:.4f}, better on {}/{}".format(
+            level, *scores.mean(axis=0), sensitivity[str(level)]["better"], len(matches)))
 
-    with open(os.path.join(RESULTS, "restart_timing_choice.json"), "w") as handle:
+    with open(os.path.join(RESULTS, "restart_timing_choice{}.json".format(tag)), "w") as handle:
         json.dump({"truth_convention": convention, "folds": folds, "held_out": held_mean, "v7": v7_mean,
-                   "better": better, "min_better": MIN_BETTER, "adopted": adopted,
+                   "better": better, "min_better": min_better, "adopted": adopted,
                    "chosen": {"back": int(chosen[0]), "ahead": int(chosen[1])},
                    "timing": {"moved": len(before), "within_02_before": float(np.mean(before <= 0.2)),
                               "within_02_after": float(np.mean(after <= 0.2)),
                               "median_before": float(np.median(before)), "median_after": float(np.median(after))},
                    "sensitivity": sensitivity}, handle, indent=1, default=float)
-    print("wrote bench/results/restart_timing_grid.csv and restart_timing_choice.json")
+    print("wrote bench/results/restart_timing_grid{0}.csv and restart_timing_choice{0}.json".format(tag))
 
 
 if __name__ == "__main__":

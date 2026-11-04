@@ -96,6 +96,9 @@ are the same.
   Barça's goal look like Barça's restarts (goal kicks).
 - The labels move both ways, mostly as boundary shifts under 2 s. Without labels we can't say which
   is right. The repair is kept because it fixes the input, not because of a measured gain.
+> **2026-11-03:** the organisers' clarification forbids checking our output against the video, so the
+> moments listed here are not to be watched against it ([../limitations.md](../limitations.md), section 0).
+
 - **The one change worth watching:** frames 189,127–189,272 (5.8 s), where v7 said dead or Barça and
   v8 says Athletic. Smaller ones: 184,819–184,901 (H → A), 186,345–186,390 (A → H) and 186,290–186,325
   (A → D).

@@ -1,8 +1,22 @@
 # The match viewer
 
 A local web app that plays the tactical video with the tracking drawn on top, a 2D pitch map, and
-timelines of every model's labels and v1's clues, all locked to the same frame. It's for seeing
-*why* a model got a moment wrong, not for scoring.
+timelines of labels and clues, all locked to the same frame.
+
+> **Since 2026-11-03, our match shows no model output.** The organisers' clarification forbids
+> checking our output against the video ([limitations.md](limitations.md), section 0). So for our
+> match the viewer shows only what we may inspect to understand what counts as possession:
+> - the video;
+> - the tracking **as delivered**, not repaired;
+> - Smart Tagging;
+> - the public truth (first 5 minutes);
+> - whether the ball is tracked.
+>
+> **Notes are off** there: they would be data created by hand on the provided game. The page hides
+> the form, and the server drops any note for our match.
+>
+> **The bench matches keep everything below** (models, clues, notes): they are external data, with
+> no video. Everything below about model lanes on our match describes the viewer before that date.
 
 ## Run it
 

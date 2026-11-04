@@ -120,6 +120,12 @@ async function load() {
   for (const lane of S.lanes) if (lane.kind === 'label') lane.changes = laneChanges(lane);
   buildWatchChips();
   await loadNotes();
+  if (meta.notes === false) {
+    // Our match: no notes since the organisers' clarification of 2026-11-03 (manually created data).
+    S.notesOff = true;
+    $('note-form').hidden = true;
+    document.querySelector('.note-rule').textContent = 'Notes are off on our match: the organisers do not allow data created by hand on the provided game (clarification of 2026-11-03).';
+  }
   $('loading').hidden = true;
   resize();
   seek(meta.halves[0][1]);
@@ -760,6 +766,7 @@ document.addEventListener('fullscreenchange', () => requestAnimationFrame(resize
 
 $('note-form').addEventListener('submit', (e) => {
   e.preventDefault();
+  if (S.notesOff) return;
   const input = $('note-text');
   const text = input.value.trim();
   if (!text) { input.setCustomValidity('Write what you see first'); input.reportValidity(); return; }
@@ -822,7 +829,7 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'p') jumpToChange(-1);
   else if (e.key === 'r') toggleReview();
   else if (e.key === 'f') toggleFullscreen();
-  else if (e.key === 'm') { e.preventDefault(); video.pause(); $('note-text').focus(); }
+  else if (e.key === 'm' && !S.notesOff) { e.preventDefault(); video.pause(); $('note-text').focus(); }
   else if (e.key === 'j') { e.preventDefault(); $('jump').focus(); }
 });
 window.addEventListener('resize', resize);

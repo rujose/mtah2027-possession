@@ -1,0 +1,88 @@
+{
+ "setting": {
+  "weight": 1.0,
+  "where": "live"
+ },
+ "folds": [
+  {
+   "held_out": "J03WR9",
+   "setting": [
+    1.0,
+    "live"
+   ],
+   "held_out_spell_f1": 0.5721590909090909,
+   "v6_spell_f1": 0.4722662440570523
+  }
+ ],
+ "held_out_mean": 0.5721590909090909,
+ "held_out": false,
+ "quality": {
+  "unseen": {
+   "gaps": {
+    "frames": 22673,
+    "pathcrf_right": 0.8887222687778414,
+    "v6_right": 0.7040532792308032
+   },
+   "seen_ball": {
+    "frames": 60034,
+    "pathcrf_right": 0.9151480827531066,
+    "v6_right": 0.8980411100376453
+   }
+  },
+  "seen": {
+   "gaps": {
+    "frames": 125864,
+    "pathcrf_right": 0.8888323905167482,
+    "v6_right": 0.6962912349837921
+   },
+   "seen_ball": {
+    "frames": 318648,
+    "pathcrf_right": 0.8989417790163441,
+    "v6_right": 0.8674148276468078
+   }
+  }
+ },
+ "checks": {
+  "unseen": {
+   "accounting": {
+    "after_restart_before": 229,
+    "after_restart_after": 288,
+    "other_before": 516,
+    "other_after": 719,
+    "predicted_before": 261,
+    "predicted_after": 334,
+    "matched_05_before": 151,
+    "matched_05_after": 202,
+    "true": 370
+   },
+   "changes_in_gaps": 94,
+   "caught_v6": 11,
+   "caught_v7": 52
+  },
+  "seen": {
+   "accounting": {
+    "after_restart_before": 1301,
+    "after_restart_after": 1776,
+    "other_before": 3118,
+    "other_after": 4719,
+    "predicted_before": 1753,
+    "predicted_after": 2103,
+    "matched_05_before": 880,
+    "matched_05_after": 1314,
+    "true": 2691
+   },
+   "changes_in_gaps": 651,
+   "caught_v6": 27,
+   "caught_v7": 333
+  }
+ },
+ "v6_spell_f1": {
+  "J03WMX": 0.35687732342007433,
+  "J03WN1": 0.37372986369268896,
+  "J03WOH": 0.41205164992826404,
+  "J03WOY": 0.4096514745308311,
+  "J03WPY": 0.4189679218967921,
+  "J03WQQ": 0.42507462686567166,
+  "J03WR9": 0.4722662440570523
+ }
+}

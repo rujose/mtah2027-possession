@@ -79,3 +79,65 @@ match used):
 4. step 5 with idea 8;
 5. idea 7 if the bench shows room beyond PathCRF.
 
+## v10 candidates (2026-11-03)
+
+### Where v9's remaining spellF1 is (bench only)
+
+An exploration run over the 10 bench matches, using external data only. Each "oracle" fixes **one**
+kind of error with the true labels and nothing else, so its gain is that error's share of what's
+left. v9 is 0.561 (window chosen on these same matches); it predicts 349 possessions per match
+against 411 true.
+
+| error kind | spellF1 if fixed | gain |
+|---|---|---|
+| **missed possessions** (a true possession with no predicted one of its team at IoU ≥ 0.3) | 0.812 | **+0.250** |
+| **team-change timing** (H ↔ A changes moved onto the true ones) | 0.658 | **+0.096** |
+| **team of each possession** (the majority true team) | 0.616 | +0.054 |
+| spurious possessions (predicted, no true match: merged away) | 0.604 | +0.043 |
+| missed stoppages | 0.584 | +0.022 |
+| stoppage start timing (team → D) | 0.576 | +0.015 |
+| restart timing (D → team), left after v9 | 0.575 | +0.013 |
+| false stoppages | 0.564 | +0.003 |
+
+**The missed possessions:**
+- **How many:** 1,443 of 4,114 (35 %).
+- **Short:** median 1.6 s (quartiles 0.9 / 3.0 s); 60 % under 2 s, 91 % under 5 s.
+- **The ball is seen:** median 100 % of their frames.
+- **A player of that team** is within 2 m of the ball at some point in 66 % of them.
+- **Where:** 52 % sit between two possessions of the other team (a brief interception or a loose
+  touch); 48 % next to a stoppage.
+
+**Team changes:** of 2,180 matched to a true one, the lag is centred (median 0) but wide
+(quartiles −0.52 / +0.64 s): 29 % more than 0.5 s late, 26 % more than 0.5 s early.
+
+**So:** most of what's left is **short possessions and the exact moment the ball changes team**.
+Both are about **touches**, which we don't detect yet: who touched the ball, and when.
+
+### The variants
+
+Every one is trained and tuned on external data only, and none needs Claude to see our match
+(Jose runs our match). Each is one change, scored with the same leave-one-out procedure, and can
+be run on IDSSE alone if Metrica's samples turn out not to be usable.
+
+| | variant | attacks | ceiling | how | effort |
+|---|---|---|---|---|---|
+| **10a** | **Touch detector + team changes at the touch.** Find touches from the ball's path: the ball changes course or speed with a player within ~2 m. Move each H ↔ A change to the first seen touch by the new team, as v9 does for restarts | team-change timing | part of +0.096 | extend `possession/passes.py` (passes are touches that send the ball away; add receptions, interceptions, deflections); window chosen on the bench | ~4 h |
+| **10b** | **Short possessions from touches.** Where the other team touches the ball between two possessions of one team (A–B–A), insert the short possession, if the touch is clear | missed possessions (the 52 % between other-team possessions) | part of +0.250 | on 10a's touches; a minimum touch clarity chosen on the bench; checked against spurious possessions | ~3 h after 10a |
+| **10c** | **A learned per-frame model in place of the hand weights.** One classifier, P(H / A / D) per frame, trained on the bench from every signal we have (nearest players to the ball, ball speed and course, ball seen, touches, PathCRF, the dead-ball and restart models). Its −log P becomes the decoder's cost; the decoder's settings are chosen again | team of each possession, spurious and missed possessions | part of +0.054 / +0.043 / +0.250 | the bench's usual out-of-sample training (as v4 and v6); replaces v1's judgement weights, the weakest part left | ~1 day |
+| **10d** | **The decoder re-chosen for short possessions.** With touches as evidence, a shorter minimum possession (now 0.8 s) and a cheaper team switch may now pay | missed possessions | part of +0.250 | the v3 search again, with 10a/10b's evidence in | ~1 h, after 10a |
+| **10e** | **Stoppage start at the ball going out.** v9's mirror: move each team → D change to the moment the ball is seen crossing a line | stoppage start timing | +0.015 | check the truth's convention first (as with v9); snap window chosen on the bench | ~2 h |
+| **10f** | **Dead-ball revision** (ideas 1, 2, 5, 6): ball-relative movement, "no ball" learned on damaged IDSSE, deceleration | missed stoppages | +0.022 | retrain v4's model with the new features, same procedure | ~4 h |
+| **10g** | **Built as [v10](models/v10-clean-base.md) (2026-11-03).** **Clean base for the rules** (audit items B–D): whistle and set-piece settings set again without our match, or those clues dropped; v5's weight reverted; IDSSE-only retraining if needed | compliance, not score | — | the bench can't score the whistle or tags (no audio, no tags): judged by the rules, not by points | ~3 h |
+| 10h | Restart timing when the pass isn't seen (ball reappearing, the taker's movement) | restart timing left | +0.013 | after 10a | ~2 h |
+| 10i | `X` where we're unsure | macroF1 only (the tie-breaker) | small | X is forward-filled for spellF1, so it can only change macroF1 | ~1 h |
+
+**Proposed order:**
+1. **10g** first, because the submission has to be clean whatever else we build.
+2. **10a → 10b → 10d**: the touch line attacks the two biggest errors, and each step is measured
+   before the next.
+3. **10c** if time allows: the largest change, and the one that retires the hand weights.
+4. **10e** and **10f** as quick extras.
+
+**Deadline check:** submission 2026-11-17; team registration by 2026-11-10. 10g plus the touch
+line fit in about 3 days.
+

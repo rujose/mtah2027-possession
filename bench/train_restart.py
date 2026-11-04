@@ -21,7 +21,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 import pandas as pd
 
-from bench import degrade, labels, sets
+from bench import chain, degrade, labels, sets
 from bench.run import score
 from bench.train_dead_ball import pick, training_rows, v4_cost
 from bench.tune_decoder import decode
@@ -80,9 +80,10 @@ def match_pass(match, data, level, prepared, scale, stats):
     return dnames, Xd, base, restart.all_orientations(track, data["halves"], data["pitch"])
 
 
-def cost_with_restart(base, p_dead, p_home, halves, weight, carry):
-    """v4's bench costs plus the restart clue (docs/models/v6-restart-team.md, piece 3)."""
-    cost = v4_cost(base, p_dead, v4.W_DEAD_BALL)
+def cost_with_restart(base, p_dead, p_home, halves, weight, carry, dead_weight=None):
+    """v4's bench costs plus the restart clue (docs/models/v6-restart-team.md, piece 3).
+    `dead_weight` is v4's weight unless a set's own chain gives another (bench/chain.py)."""
+    cost = v4_cost(base, p_dead, v4.W_DEAD_BALL if dead_weight is None else dead_weight)
     on_h, on_a = restart.costs(restart.restart_belief(p_home, p_dead, halves, int(carry * v1.FPS)), weight)
     cost[:, v1.H] += on_h
     cost[:, v1.A] += on_a
@@ -98,8 +99,8 @@ def _score_setting(setting):
     rows = []
     for m in _work["matches"]:
         cost = cost_with_restart(_work["base"][m], _work["p_dead"][m], _work["p_home"][family][m],
-                                 _work["halves"][m], weight, carry)
-        letters = decode(cost, _work["halves"][m], DECODER)
+                                 _work["halves"][m], weight, carry, _work["dead_weight"])
+        letters = decode(cost, _work["halves"][m], _work["decoder"])
         for variant, gt in _work["truth"][m].items():
             rows.append({"family": family, "weight": weight, "carry": carry, "labels": variant,
                          "match": m, **score(gt, letters)})
@@ -200,8 +201,11 @@ def summed_restarts(reports):
 
 
 def main():
+    which = chain.which_set("v6's restart model and settings on the bench")
+    tag = chain.suffix(which)
+    dsetting, decoder = chain.dead_ball(which), chain.decoder(which)
     stats = degrade.load_stats()
-    matches = sets.matches("all")
+    matches = chain.matches(which)
     data = {m: sets.load(m) for m in matches}
     truth, who = {}, {}
     for m in matches:
@@ -223,7 +227,7 @@ def main():
     dead_models, start_models = {}, {f: {} for f in FAMILIES}
     for held in matches:
         others = [m for m in matches if m != held]
-        dead_models[held] = dead_ball.fit("trees", np.concatenate([dead_rows[m][0] for m in others]),
+        dead_models[held] = dead_ball.fit(dsetting["family"], np.concatenate([dead_rows[m][0] for m in others]),
                                           np.concatenate([dead_rows[m][1] for m in others]), dnames)
         for family in FAMILIES:
             start_models[family][held] = dead_ball.fit(
@@ -255,14 +259,15 @@ def main():
     # The grid.
     settings = list(itertools.product(FAMILIES, WEIGHTS, CARRIES))
     payload = {"matches": matches, "base": base, "p_dead": p_dead, "p_home": p_home,
-               "halves": {m: data[m]["halves"] for m in matches}, "truth": truth}
+               "halves": {m: data[m]["halves"] for m in matches}, "truth": truth,
+               "decoder": decoder, "dead_weight": dsetting["weight"]}
     with ProcessPoolExecutor(WORKERS, initializer=_init, initargs=(payload,)) as pool:
         grid = pd.DataFrame([r for result in pool.map(_score_setting, settings) for r in result])
     os.makedirs(RESULTS, exist_ok=True)
-    grid.to_csv(os.path.join(RESULTS, "restart_grid.csv"), index=False, float_format="%.4f")
+    grid.to_csv(os.path.join(RESULTS, "restart_grid{}.csv".format(tag)), index=False, float_format="%.4f")
 
     # v4 / v5 on the same matches and probabilities, as the reference.
-    v4_letters = {m: decode(v4_cost(base[m], p_dead[m], v4.W_DEAD_BALL), data[m]["halves"], DECODER) for m in matches}
+    v4_letters = {m: decode(v4_cost(base[m], p_dead[m], dsetting["weight"]), data[m]["halves"], decoder) for m in matches}
     v4_score = {m: score(truth[m]["raw"], v4_letters[m])["spell_f1"] for m in matches}
 
     folds = {f: [] for f in FAMILIES}
@@ -293,10 +298,10 @@ def main():
 
     # Checks.
     v6_letters = {m: decode(cost_with_restart(base[m], p_dead[m], p_home[family][m], data[m]["halves"],
-                                              setting[1], setting[2]), data[m]["halves"], DECODER)
+                                              setting[1], setting[2], dsetting["weight"]), data[m]["halves"], decoder)
                   for m in matches}
     checks = {"restarts": {}, "per_set": {}, "levels": {}}
-    for name in ("idsse", "metrica"):
+    for name in sorted({sets.source(m) for m in matches}, key=("idsse", "metrica").index):
         ms = [m for m in matches if sets.source(m) == name]
         checks["restarts"][name] = {
             "v4_v5": summed_restarts([restart_report(truth[m]["raw"], v4_letters[m]) for m in ms]),
@@ -323,16 +328,16 @@ def main():
             _, Xd, b, oriented = match_pass(m, data[m], level, prepared[m], scale[sets.source(m)], stats)
             pd_ = dead_ball.predict(dead_models[m], Xd)
             ph = restart.p_home(start_models[family][m], oriented)
-            v6s.append(score(truth[m]["raw"], decode(cost_with_restart(b, pd_, ph, data[m]["halves"], setting[1], setting[2]),
-                                                     data[m]["halves"], DECODER))["spell_f1"])
-            v4s.append(score(truth[m]["raw"], decode(v4_cost(b, pd_, v4.W_DEAD_BALL), data[m]["halves"], DECODER))["spell_f1"])
+            v6s.append(score(truth[m]["raw"], decode(cost_with_restart(b, pd_, ph, data[m]["halves"], setting[1], setting[2], dsetting["weight"]),
+                                                     data[m]["halves"], decoder))["spell_f1"])
+            v4s.append(score(truth[m]["raw"], decode(v4_cost(b, pd_, dsetting["weight"]), data[m]["halves"], decoder))["spell_f1"])
         checks["levels"][str(level)] = {"v6": float(np.mean(v6s)), "v4_v5": float(np.mean(v4s))}
         del prepared
     print("checks: {}".format(json.dumps(checks, indent=1)), flush=True)
 
     final = dead_ball.fit(family, np.concatenate([start_rows[m][0] for m in matches]),
                           np.concatenate([start_rows[m][1] for m in matches]), rnames)
-    path = dead_ball.save(final, name="restart")
+    path = dead_ball.save(final, name="restart" + tag)
     choice = {"family": family, "weight": setting[1], "carry_s": setting[2],
               "bench_mean_spell_f1": float(chosen["spell_f1"]), "bench_mean_possessions": float(chosen["possessions"]),
               "plain_best": {"setting": [plain["family"], float(plain["weight"]), float(plain["carry"])],
@@ -340,10 +345,10 @@ def main():
               "held_out_mean": held_mean, "restart_frame_accuracy": quality, "folds": folds,
               "v4_v5_spell_f1": v4_score, "checks": checks, "model_file": os.path.relpath(path, ROOT),
               "features": rnames}
-    with open(os.path.join(RESULTS, "restart_choice.json"), "w") as handle:
+    with open(os.path.join(RESULTS, "restart_choice{}.json".format(tag)), "w") as handle:
         json.dump(choice, handle, indent=1)
-    print("wrote bench/results/restart_grid.csv, bench/results/restart_choice.json and {}".format(
-        os.path.relpath(path, ROOT)))
+    print("wrote bench/results/restart_grid{0}.csv, bench/results/restart_choice{0}.json and {1}".format(
+        tag, os.path.relpath(path, ROOT)))
 
 
 if __name__ == "__main__":

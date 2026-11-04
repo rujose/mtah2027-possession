@@ -1,0 +1,326 @@
+{
+ "family": "logistic",
+ "weight": 1.0,
+ "carry_s": 5.0,
+ "bench_mean_spell_f1": 0.4098027291987677,
+ "bench_mean_possessions": 287.7142857142857,
+ "plain_best": {
+  "setting": [
+   "logistic",
+   0.25,
+   3.0
+  ],
+  "spell_f1": 0.4191414556961847
+ },
+ "held_out_mean": {
+  "logistic": 0.4105283444373854,
+  "trees": 0.4070762185024388
+ },
+ "restart_frame_accuracy": {
+  "logistic": 0.7566965040450648,
+  "trees": 0.8598710177694324
+ },
+ "folds": {
+  "logistic": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "logistic",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.35687732342007433,
+    "v4_spell_f1": 0.37110266159695815,
+    "possessions": 296,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "logistic",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.37372986369268896,
+    "v4_spell_f1": 0.371964956195244,
+    "possessions": 307,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "logistic",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.41205164992826404,
+    "v4_spell_f1": 0.41874084919472915,
+    "possessions": 295,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "logistic",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.4096514745308311,
+    "v4_spell_f1": 0.4076502732240437,
+    "possessions": 290,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "logistic",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.4189679218967921,
+    "v4_spell_f1": 0.41412429378531074,
+    "possessions": 296,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "logistic",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.43343283582089553,
+    "v4_spell_f1": 0.3982008995502249,
+    "possessions": 269,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "logistic",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.46898734177215184,
+    "v4_spell_f1": 0.4427184466019417,
+    "possessions": 262,
+    "true_possessions": 370
+   }
+  ],
+  "trees": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "trees",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.36150000000000004,
+    "v4_spell_f1": 0.37110266159695815,
+    "possessions": 289,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "trees",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.3756218905472637,
+    "v4_spell_f1": 0.371964956195244,
+    "possessions": 304,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "trees",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.42349570200573067,
+    "v4_spell_f1": 0.41874084919472915,
+    "possessions": 296,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "trees",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.4140730717185385,
+    "v4_spell_f1": 0.4076502732240437,
+    "possessions": 283,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "trees",
+     1.0,
+     5.0
+    ],
+    "held_out_spell_f1": 0.40660247592847315,
+    "v4_spell_f1": 0.41412429378531074,
+    "possessions": 306,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "trees",
+     0.5,
+     5.0
+    ],
+    "held_out_spell_f1": 0.42268656716417913,
+    "v4_spell_f1": 0.3982008995502249,
+    "possessions": 269,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "trees",
+     2.0,
+     3.0
+    ],
+    "held_out_spell_f1": 0.4455538221528861,
+    "v4_spell_f1": 0.4427184466019417,
+    "possessions": 271,
+    "true_possessions": 370
+   }
+  ]
+ },
+ "v4_v5_spell_f1": {
+  "J03WMX": 0.37110266159695815,
+  "J03WN1": 0.371964956195244,
+  "J03WOH": 0.41874084919472915,
+  "J03WOY": 0.4076502732240437,
+  "J03WPY": 0.41412429378531074,
+  "J03WQQ": 0.3982008995502249,
+  "J03WR9": 0.4427184466019417
+ },
+ "checks": {
+  "restarts": {
+   "idsse": {
+    "v4_v5": {
+     "restarts": 696,
+     "found": 592,
+     "right_team_after_found": 0.6300675675675675,
+     "end_within_1s": 0.6452702702702703,
+     "end_within_3s": 0.8175675675675675
+    },
+    "v6": {
+     "restarts": 696,
+     "found": 592,
+     "right_team_after_found": 0.8885135135135135,
+     "end_within_1s": 0.6452702702702703,
+     "end_within_3s": 0.8141891891891891
+    }
+   }
+  },
+  "per_set": {
+   "idsse": {
+    "v6": 0.40980272919876776,
+    "v4_v5": 0.4035003400212075
+   }
+  },
+  "levels": {
+   "30": {
+    "v6": 0.4140812923632236,
+    "v4_v5": 0.4103438588213737
+   },
+   "55": {
+    "v6": 0.368313204810974,
+    "v4_v5": 0.3519365611309472
+   }
+  },
+  "accounting": {
+   "after_restart_before": 1244,
+   "after_restart_after": 1530,
+   "other_before": 3773,
+   "other_after": 3634,
+   "predicted_before": 1935,
+   "predicted_after": 2014,
+   "matched_05_before": 993,
+   "matched_05_after": 1031,
+   "true": 3061
+  },
+  "follow_through": {
+   "clue_right_and_v6_right": 523,
+   "overridden": 1
+  },
+  "merged_labels": {
+   "v6": 0.4246964983446447,
+   "v4_v5": 0.41641293365628496
+  }
+ },
+ "model_file": "possession/models/restart_idsse_logistic.json",
+ "features": [
+  "this_beyond_touchline",
+  "this_on_touchline",
+  "this_beyond_goal_left",
+  "this_beyond_goal_right",
+  "this_corner_left",
+  "this_corner_right",
+  "this_six_left",
+  "this_six_right",
+  "this_area_left",
+  "this_area_right",
+  "this_centre_circle",
+  "this_share_left_half",
+  "this_mean_speed",
+  "this_spread",
+  "this_centre_along",
+  "this_on_touchline_past_2s",
+  "this_on_touchline_next_2s",
+  "this_corner_left_past_2s",
+  "this_corner_left_next_2s",
+  "this_corner_right_past_2s",
+  "this_corner_right_next_2s",
+  "this_six_left_past_2s",
+  "this_six_left_next_2s",
+  "this_six_right_past_2s",
+  "this_six_right_next_2s",
+  "this_area_left_past_2s",
+  "this_area_left_next_2s",
+  "this_area_right_past_2s",
+  "this_area_right_next_2s",
+  "this_centre_circle_past_2s",
+  "this_centre_circle_next_2s",
+  "other_beyond_touchline",
+  "other_on_touchline",
+  "other_beyond_goal_left",
+  "other_beyond_goal_right",
+  "other_corner_left",
+  "other_corner_right",
+  "other_six_left",
+  "other_six_right",
+  "other_area_left",
+  "other_area_right",
+  "other_centre_circle",
+  "other_share_left_half",
+  "other_mean_speed",
+  "other_spread",
+  "other_centre_along",
+  "other_on_touchline_past_2s",
+  "other_on_touchline_next_2s",
+  "other_corner_left_past_2s",
+  "other_corner_left_next_2s",
+  "other_corner_right_past_2s",
+  "other_corner_right_next_2s",
+  "other_six_left_past_2s",
+  "other_six_left_next_2s",
+  "other_six_right_past_2s",
+  "other_six_right_next_2s",
+  "other_area_left_past_2s",
+  "other_area_left_next_2s",
+  "other_area_right_past_2s",
+  "other_area_right_next_2s",
+  "other_centre_circle_past_2s",
+  "other_centre_circle_next_2s"
+ ]
+}

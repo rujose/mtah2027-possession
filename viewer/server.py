@@ -57,6 +57,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             notes = json.loads(self.rfile.read(length))
             assert isinstance(notes, list)
+            # No notes on our match since the clarification of 2026-11-03 (manually created data).
+            notes = [n for n in notes if isinstance(n, dict) and n.get("match", "BAR-ATH") != "BAR-ATH"]
         except (ValueError, AssertionError):
             return self.send_error(400, "expected a JSON list")
         os.makedirs(os.path.dirname(NOTES), exist_ok=True)

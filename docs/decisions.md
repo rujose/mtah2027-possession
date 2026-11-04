@@ -20,6 +20,9 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 
 ### 2026-10-30: how we read the "no cloud LLM" clause
 
+> **Superseded 2026-11-03** by the organisers' clarification ("uploading the provided data to AI
+> services" is not allowed): see [limitations.md](limitations.md), section 0, item A.
+
 - **What:** we inspect the data normally (including with Claude). No LLM ever labels frames.
 - **Why:** Jose's reading: the clause targets extracting frames to an LLM as the labelling method.
 
@@ -253,4 +256,23 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   truth 20 % → 83 %. Adopted. On our match 40 of 78 starts move, 34 earlier (median −0.94 s).
 - **Watch:** the largest moves (up to −4.8 s) may be passes during the stoppage; they're listed on
   the page for the viewer.
+
+### 2026-11-03: the organisers' clarification, and v10
+
+- **What:** the organisers clarified the rules for everyone, overriding earlier answers: no checking
+  output against the video, no data made by hand on the match, no provided data to AI services,
+  tuning only on external data, datasets only with rights. Our audit ([limitations.md](limitations.md),
+  section 0) found five items.
+- **Done (v10):**
+  - the whistle and the set-piece window are dropped (calibrated on our audio and the public truth);
+  - IDSSE-only twins of every Metrica-trained stage are ready behind one switch;
+  - the viewer shows no model output on our match, and notes are off there;
+  - Claude no longer runs anything on our match or reads its output.
+
+  Jose's choices: all eight recommended options on the v10 page.
+- **Result:** v10 equals v9 wherever there's no audio or tags (0 frames differ on 3 bench matches).
+  The IDSSE-only twins keep each stage's gain, with PathCRF's weight 1.0 (chosen on one match) and
+  the restart carry 5 s.
+- **Open:** the organisers' answer on items A and E, Metrica's samples, and v9's origin. Jose emails
+  them.
 

@@ -19,13 +19,13 @@ import os
 import numpy as np
 import pandas as pd
 
-from bench import degrade, labels, sets
+from bench import chain, degrade, labels, sets
 from bench.run import score
 from bench.train_dead_ball import pick, training_rows, v4_cost
-from bench.train_restart import (DECODER, accounting, cost_with_restart, match_pass, prepare_level,
+from bench.train_restart import (accounting, cost_with_restart, match_pass, prepare_level,
                                  restart_labels, restart_rows)
 from bench.tune_decoder import decode
-from possession import dead_ball, pathcrf_adapter, restart, v1, v4, v6
+from possession import dead_ball, pathcrf_adapter, restart, v1
 from possession.data import ROOT
 
 # Params
@@ -34,7 +34,6 @@ WEIGHTS = (0.25, 0.5, 1, 2)
 WHERE = ("gaps", "live")       # only while the ball is missing, or on every live frame it answers
 LEVEL = 41
 RESULTS = os.path.join(ROOT, "bench", "results")
-PREDICTIONS = os.path.join(ROOT, "data", "external", "bench_predictions")   # for the viewer; gitignored
 pm = labels.pm
 LETTER = {"H": 0, "A": 1, "D": 2, "X": 3}
 
@@ -66,8 +65,12 @@ def changes_caught(gt, letters, ball_missing):
 
 
 def main():
+    which = chain.which_set("PathCRF on the bench, and v7's settings")
+    tag = chain.suffix(which)
+    dsetting, decoder, rsetting = chain.dead_ball(which), chain.decoder(which), chain.restart(which)
+    unseen = chain.unseen(which, UNSEEN)
     stats = degrade.load_stats()
-    matches = sets.matches("all")
+    matches = chain.matches(which)
     data = {m: sets.load(m) for m in matches}
     truth = {m: sets.truth(m, data[m]) for m in matches}
     who = {m: restart_labels(truth[m]) for m in matches}
@@ -82,17 +85,18 @@ def main():
     v6_cost, v6_letters, p_pc, missing, p_dead_of, p_start_of = {}, {}, {}, {}, {}, {}
     for held in matches:
         others = [m for m in matches if m != held]
-        dead_model = dead_ball.fit("trees", np.concatenate([dead_rows[m][0] for m in others]),
+        dead_model = dead_ball.fit(dsetting["family"], np.concatenate([dead_rows[m][0] for m in others]),
                                    np.concatenate([dead_rows[m][1] for m in others]), dnames)
-        start_model = dead_ball.fit(v6.FAMILY, np.concatenate([start_rows[m][0] for m in others]),
+        start_model = dead_ball.fit(rsetting["family"], np.concatenate([start_rows[m][0] for m in others]),
                                     np.concatenate([start_rows[m][1] for m in others]), rnames)
         _, Xd, _, oriented = match_pass(held, data[held], LEVEL, prepared[held], scale[sets.source(held)], stats)
         p_dead = dead_ball.predict(dead_model, Xd)
         p_start = restart.p_home(start_model, oriented)
         p_dead_of[held], p_start_of[held] = p_dead, p_start
         halves = data[held]["halves"]
-        v6_cost[held] = cost_with_restart(base[held], p_dead, p_start, halves, v6.W_RESTART, v6.CARRY)
-        v6_letters[held] = decode(v6_cost[held], halves, DECODER)
+        v6_cost[held] = cost_with_restart(base[held], p_dead, p_start, halves, rsetting["weight"], rsetting["carry"],
+                                          dsetting["weight"])
+        v6_letters[held] = decode(v6_cost[held], halves, decoder)
         # 2. PathCRF over v6's live stretches, on the damaged tracking.
         track = degrade.tracking(held, data[held], LEVEL, prepared[held], scale[sets.source(held)], stats)
         missing[held] = np.isnan(track["ball"][:, 0])
@@ -103,7 +107,7 @@ def main():
 
     # 3. Quality, against v6 on the same frames.
     quality = {}
-    for name, group in (("unseen", list(UNSEEN)), ("seen", [m for m in matches if m not in UNSEEN])):
+    for name, group in (("unseen", list(unseen)), ("seen", [m for m in matches if m not in unseen])):
         q = {}
         for zone in ("gaps", "seen_ball"):
             right_pc = right_v6 = n = 0
@@ -123,12 +127,12 @@ def main():
     rows = []
     for weight, where in itertools.product(WEIGHTS, WHERE):
         for m in matches:
-            letters = decode(v7_cost(v6_cost[m], p_pc[m], missing[m], weight, where), data[m]["halves"], DECODER)
+            letters = decode(v7_cost(v6_cost[m], p_pc[m], missing[m], weight, where), data[m]["halves"], decoder)
             for variant, gt in (("raw", truth[m]), ("merged", labels.merge_short(truth[m]))):
                 rows.append({"weight": weight, "where": where, "labels": variant, "match": m, **score(gt, letters)})
     grid = pd.DataFrame(rows)
     os.makedirs(RESULTS, exist_ok=True)
-    grid.to_csv(os.path.join(RESULTS, "pathcrf_grid.csv"), index=False, float_format="%.4f")
+    grid.to_csv(os.path.join(RESULTS, "pathcrf_grid{}.csv".format(tag)), index=False, float_format="%.4f")
     v6_score = {m: score(truth[m], v6_letters[m])["spell_f1"] for m in matches}
 
     def table(ms):
@@ -136,28 +140,30 @@ def main():
         return used.groupby(["weight", "where"], sort=False)[["spell_f1", "possessions"]].mean().reset_index()
 
     folds = []
-    for held in UNSEEN:
-        chosen = pick(table([m for m in UNSEEN if m != held]))
+    for held in unseen:
+        # With one unseen match (IDSSE only) the weight is chosen on that match: not held out.
+        chosen = pick(table([m for m in unseen if m != held] or [held]))
         row = grid[(grid["labels"] == "raw") & (grid["match"] == held) & (grid["weight"] == chosen["weight"])
                    & (grid["where"] == chosen["where"])].iloc[0]
         folds.append({"held_out": held, "setting": [float(chosen["weight"]), chosen["where"]],
                       "held_out_spell_f1": float(row["spell_f1"]), "v6_spell_f1": v6_score[held]})
         print("fold {}: picked {} -> {:.3f} (v6 {:.3f})".format(held, (chosen["weight"], chosen["where"]),
                                                                 row["spell_f1"], v6_score[held]), flush=True)
-    chosen = pick(table(list(UNSEEN)))
+    chosen = pick(table(list(unseen)))
     setting = (float(chosen["weight"]), chosen["where"])
-    seen = [m for m in matches if m not in UNSEEN]
+    seen = [m for m in matches if m not in unseen]
     seen_rows = grid[(grid["labels"] == "raw") & grid["match"].isin(seen) & (grid["weight"] == setting[0])
                      & (grid["where"] == setting[1])]
     held = np.array([f["held_out_spell_f1"] for f in folds])
-    print("held out on the unseen 4: {:.3f} (v6 {:.3f}), better on {}/4; chosen {}; on the 6 seen: {:.3f} (v6 {:.3f})".format(
-        held.mean(), np.mean([v6_score[m] for m in UNSEEN]), int((held > np.array([v6_score[m] for m in UNSEEN])).sum()),
-        setting, seen_rows["spell_f1"].mean(), np.mean([v6_score[m] for m in seen])), flush=True)
+    print("held out on the unseen {}: {:.3f} (v6 {:.3f}), better on {}/{}; chosen {}; on the {} seen: {:.3f} (v6 {:.3f})".format(
+        len(unseen), held.mean(), np.mean([v6_score[m] for m in unseen]),
+        int((held > np.array([v6_score[m] for m in unseen])).sum()), len(unseen),
+        setting, len(seen), seen_rows["spell_f1"].mean(), np.mean([v6_score[m] for m in seen])), flush=True)
 
     # Checks for the chosen setting.
-    v7_letters = {m: decode(v7_cost(v6_cost[m], p_pc[m], missing[m], *setting), data[m]["halves"], DECODER) for m in matches}
+    v7_letters = {m: decode(v7_cost(v6_cost[m], p_pc[m], missing[m], *setting), data[m]["halves"], decoder) for m in matches}
     checks = {}
-    for name, group in (("unseen", list(UNSEEN)), ("seen", seen)):
+    for name, group in (("unseen", list(unseen)), ("seen", seen)):
         sums = {}
         for m in group:
             for key, value in accounting(truth[m], v6_letters[m], v7_letters[m]).items():
@@ -168,24 +174,25 @@ def main():
                         "changes_in_gaps": sum(t[0] for t in t6),
                         "caught_v6": sum(t[1] for t in t6), "caught_v7": sum(t[1] for t in t7)}
     print("checks: {}".format(json.dumps(checks, indent=1)), flush=True)
-    with open(os.path.join(RESULTS, "pathcrf_choice.json"), "w") as handle:
+    with open(os.path.join(RESULTS, "pathcrf_choice{}.json".format(tag)), "w") as handle:
         json.dump({"setting": {"weight": setting[0], "where": setting[1]}, "folds": folds,
-                   "held_out_mean": float(held.mean()), "quality": quality, "checks": checks,
+                   "held_out_mean": float(held.mean()), "held_out": len(unseen) > 1, "quality": quality, "checks": checks,
                    "v6_spell_f1": v6_score}, handle, indent=1)
     # Out-of-sample predictions per match, for the bench viewer (viewer/build_bench_cache.py).
-    os.makedirs(PREDICTIONS, exist_ok=True)
+    predictions = chain.predictions(which)
+    os.makedirs(predictions, exist_ok=True)
     for m in matches:
         halves = data[m]["halves"]
         belief = p_pc[m].copy()
         if setting[1] == "gaps":
             belief[~missing[m]] = np.nan
         np.savez_compressed(
-            os.path.join(PREDICTIONS, "{}.npz".format(m)),
-            v4=decode(v4_cost(base[m], p_dead_of[m], v4.W_DEAD_BALL), halves, DECODER),
+            os.path.join(predictions, "{}.npz".format(m)),
+            v4=decode(v4_cost(base[m], p_dead_of[m], dsetting["weight"]), halves, decoder),
             v6=v6_letters[m], v7=v7_letters[m], p_dead=p_dead_of[m],
-            restart_clue=restart.restart_belief(p_start_of[m], p_dead_of[m], halves, int(v6.CARRY * v1.FPS)),
+            restart_clue=restart.restart_belief(p_start_of[m], p_dead_of[m], halves, int(rsetting["carry"] * v1.FPS)),
             pathcrf_clue=belief)
-    print("wrote bench/results/pathcrf_grid.csv and pathcrf_choice.json, and {}".format(os.path.relpath(PREDICTIONS, ROOT)))
+    print("wrote bench/results/pathcrf_grid{0}.csv and pathcrf_choice{0}.json, and {1}".format(tag, os.path.relpath(predictions, ROOT)))
 
 
 if __name__ == "__main__":

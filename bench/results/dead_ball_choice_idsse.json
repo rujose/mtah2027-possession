@@ -1,0 +1,360 @@
+{
+ "family": "trees",
+ "weight": 0.5,
+ "dead_price": 50.0,
+ "min_dead": 1,
+ "bench_mean_spell_f1": 0.4035003400212075,
+ "bench_mean_possessions": 276.42857142857144,
+ "plain_best": {
+  "setting": [
+   "trees",
+   0.25,
+   25.0,
+   1.0
+  ],
+  "spell_f1": 0.4062625041592437
+ },
+ "held_out_mean": {
+  "logistic": 0.38878942404188,
+  "trees": 0.398927273186159
+ },
+ "classifier_quality": {
+  "logistic": {
+   "frame_precision": 0.9032451396979104,
+   "frame_recall": 0.8951236711386554,
+   "frame_f1": 0.8991660670632243
+  },
+  "trees": {
+   "frame_precision": 0.9296608931200755,
+   "frame_recall": 0.9199535524170317,
+   "frame_f1": 0.9247817492262831
+  }
+ },
+ "folds": {
+  "logistic": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.37204574332909784,
+    "v3_spell_f1": 0.3651307596513076,
+    "possessions": 276,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.34300518134715025,
+    "v3_spell_f1": 0.3181932245922208,
+    "possessions": 272,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.40175695461200583,
+    "v3_spell_f1": 0.37518037518037517,
+    "possessions": 281,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.39393103448275857,
+    "v3_spell_f1": 0.38263229308005425,
+    "possessions": 269,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.3937411095305832,
+    "v3_spell_f1": 0.3692745376955903,
+    "possessions": 282,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.3891238670694864,
+    "v3_spell_f1": 0.3695976154992548,
+    "possessions": 261,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "logistic",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.4279220779220779,
+    "v3_spell_f1": 0.4045528455284552,
+    "possessions": 246,
+    "true_possessions": 370
+   }
+  ],
+  "trees": [
+   {
+    "held_out": "J03WMX",
+    "setting": [
+     "trees",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.37110266159695815,
+    "v3_spell_f1": 0.3651307596513076,
+    "possessions": 278,
+    "true_possessions": 511
+   },
+   {
+    "held_out": "J03WN1",
+    "setting": [
+     "trees",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.371964956195244,
+    "v3_spell_f1": 0.3181932245922208,
+    "possessions": 299,
+    "true_possessions": 500
+   },
+   {
+    "held_out": "J03WOH",
+    "setting": [
+     "trees",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.41874084919472915,
+    "v3_spell_f1": 0.37518037518037517,
+    "possessions": 281,
+    "true_possessions": 402
+   },
+   {
+    "held_out": "J03WOY",
+    "setting": [
+     "trees",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.4076502732240437,
+    "v3_spell_f1": 0.38263229308005425,
+    "possessions": 276,
+    "true_possessions": 456
+   },
+   {
+    "held_out": "J03WPY",
+    "setting": [
+     "trees",
+     0.25,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.396,
+    "v3_spell_f1": 0.3692745376955903,
+    "possessions": 279,
+    "true_possessions": 421
+   },
+   {
+    "held_out": "J03WQQ",
+    "setting": [
+     "trees",
+     0.25,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.3843137254901961,
+    "v3_spell_f1": 0.3695976154992548,
+    "possessions": 262,
+    "true_possessions": 401
+   },
+   {
+    "held_out": "J03WR9",
+    "setting": [
+     "trees",
+     0.5,
+     50.0,
+     1.0
+    ],
+    "held_out_spell_f1": 0.4427184466019417,
+    "v3_spell_f1": 0.4045528455284552,
+    "possessions": 248,
+    "true_possessions": 370
+   }
+  ]
+ },
+ "v3_spell_f1": {
+  "J03WMX": 0.3651307596513076,
+  "J03WN1": 0.3181932245922208,
+  "J03WOH": 0.37518037518037517,
+  "J03WOY": 0.38263229308005425,
+  "J03WPY": 0.3692745376955903,
+  "J03WQQ": 0.3695976154992548,
+  "J03WR9": 0.4045528455284552
+ },
+ "checks": {
+  "dead_ball": {
+   "idsse": {
+    "v3": {
+     "tp": 285704,
+     "fp": 28147,
+     "fn": 163835,
+     "stoppages": 710,
+     "found": 369,
+     "merged": 65,
+     "false": 9,
+     "precision": 0.9103173161786963,
+     "recall": 0.6355488622789124
+    },
+    "v4": {
+     "tp": 410010,
+     "fp": 24878,
+     "fn": 39529,
+     "stoppages": 710,
+     "found": 605,
+     "merged": 34,
+     "false": 15,
+     "precision": 0.942794466621291,
+     "recall": 0.9120676960174757
+    }
+   }
+  },
+  "per_set": {
+   "idsse": {
+    "v4": 0.4035003400212075,
+    "v3": 0.3692230930324655
+   }
+  },
+  "merged_labels": {
+   "v4": 0.41641293365628496,
+   "v3": 0.38190739124213097
+  },
+  "levels": {
+   "30": {
+    "v4": 0.4103438588213737,
+    "v3": 0.3840758141916708
+   },
+   "55": {
+    "v4": 0.3519365611309472,
+    "v3": 0.30994961423374934
+   }
+  }
+ },
+ "model_file": "possession/models/dead_ball_idsse_trees.joblib",
+ "features": [
+  "speed_mean",
+  "speed_median",
+  "speed_p90",
+  "share_slow",
+  "share_fast",
+  "speed_gap_teams",
+  "spread_along",
+  "spread_across",
+  "team_centre_gap",
+  "compact_max",
+  "compact_min",
+  "near_touchline",
+  "near_goal_line",
+  "in_six_yard_box",
+  "in_penalty_area",
+  "near_corner",
+  "near_centre",
+  "outside_pitch",
+  "own_half_share",
+  "share_slow_past_1s",
+  "share_slow_next_1s",
+  "share_slow_past_4s",
+  "share_slow_next_4s",
+  "share_slow_past_20s",
+  "share_slow_next_20s",
+  "share_fast_past_1s",
+  "share_fast_next_1s",
+  "share_fast_past_4s",
+  "share_fast_next_4s",
+  "share_fast_past_20s",
+  "share_fast_next_20s",
+  "near_touchline_past_1s",
+  "near_touchline_next_1s",
+  "near_touchline_past_4s",
+  "near_touchline_next_4s",
+  "near_touchline_past_20s",
+  "near_touchline_next_20s",
+  "near_goal_line_past_1s",
+  "near_goal_line_next_1s",
+  "near_goal_line_past_4s",
+  "near_goal_line_next_4s",
+  "near_goal_line_past_20s",
+  "near_goal_line_next_20s",
+  "in_six_yard_box_past_1s",
+  "in_six_yard_box_next_1s",
+  "in_six_yard_box_past_4s",
+  "in_six_yard_box_next_4s",
+  "in_six_yard_box_past_20s",
+  "in_six_yard_box_next_20s",
+  "in_penalty_area_past_1s",
+  "in_penalty_area_next_1s",
+  "in_penalty_area_past_4s",
+  "in_penalty_area_next_4s",
+  "in_penalty_area_past_20s",
+  "in_penalty_area_next_20s",
+  "near_corner_past_1s",
+  "near_corner_next_1s",
+  "near_corner_past_4s",
+  "near_corner_next_4s",
+  "near_corner_past_20s",
+  "near_corner_next_20s",
+  "near_centre_past_1s",
+  "near_centre_next_1s",
+  "near_centre_past_4s",
+  "near_centre_next_4s",
+  "near_centre_past_20s",
+  "near_centre_next_20s",
+  "outside_pitch_past_1s",
+  "outside_pitch_next_1s",
+  "outside_pitch_past_4s",
+  "outside_pitch_next_4s",
+  "outside_pitch_past_20s",
+  "outside_pitch_next_20s",
+  "own_half_share_past_1s",
+  "own_half_share_next_1s",
+  "own_half_share_past_4s",
+  "own_half_share_next_4s",
+  "own_half_share_past_20s",
+  "own_half_share_next_20s"
+ ]
+}

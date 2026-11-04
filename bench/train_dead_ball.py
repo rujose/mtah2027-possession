@@ -21,7 +21,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 import pandas as pd
 
-from bench import degrade, labels, sets
+from bench import chain, degrade, labels, sets
 from bench.run import score
 from bench.tune_decoder import TIE, decode
 from possession import dead_ball, features, v1, v3
@@ -144,8 +144,10 @@ def summed_report(reports):
 
 
 def main():
+    which = chain.which_set("v4's dead-ball model and settings on the bench")
+    tag = chain.suffix(which)
     stats = degrade.load_stats()
-    matches = sets.matches("all")
+    matches = chain.matches(which)
     data = {m: sets.load(m) for m in matches}
     truth = {}
     for m in matches:
@@ -185,7 +187,7 @@ def main():
     with ProcessPoolExecutor(WORKERS, initializer=_init, initargs=(payload,)) as pool:
         grid = pd.DataFrame([r for result in pool.map(_score_setting, settings) for r in result])
     os.makedirs(RESULTS, exist_ok=True)
-    grid.to_csv(os.path.join(RESULTS, "dead_ball_grid.csv"), index=False, float_format="%.4f")
+    grid.to_csv(os.path.join(RESULTS, "dead_ball_grid{}.csv".format(tag)), index=False, float_format="%.4f")
 
     # v3 on the same matches, as the reference.
     v3_setting = (v3.SWITCH_TEAM, v3.SWITCH_DEAD, v3.MIN_POSSESSION, v3.MIN_DEAD)
@@ -225,7 +227,7 @@ def main():
     v4_letters = {m: decode(chosen_cost[m], data[m]["halves"], (v3.SWITCH_TEAM, setting[2], v3.MIN_POSSESSION, setting[3]))
                   for m in matches}
     checks = {"dead_ball": {}, "per_set": {}, "merged_labels": {}, "levels": {}}
-    for name in ("idsse", "metrica"):
+    for name in sorted({sets.source(m) for m in matches}, key=("idsse", "metrica").index):
         ms = [m for m in matches if sets.source(m) == name]
         checks["dead_ball"][name] = {
             "v3": summed_report([dead_ball_report(truth[m]["raw"], v3_letters[m]) for m in ms]),
@@ -253,7 +255,7 @@ def main():
     # The model for the submission: chosen family, all 10 matches.
     final = dead_ball.fit(family, np.concatenate([rows[m][0] for m in matches]),
                           np.concatenate([rows[m][1] for m in matches]), names)
-    path = dead_ball.save(final)
+    path = dead_ball.save(final, name="dead_ball" + tag)
     choice = {"family": family, "weight": float(setting[1]), "dead_price": float(setting[2]),
               "min_dead": int(setting[3]), "bench_mean_spell_f1": float(chosen["spell_f1"]),
               "bench_mean_possessions": float(chosen["possessions"]),
@@ -262,10 +264,10 @@ def main():
               "held_out_mean": held_mean, "classifier_quality": quality, "folds": folds,
               "v3_spell_f1": v3_score, "checks": checks, "model_file": os.path.relpath(path, ROOT),
               "features": names}
-    with open(os.path.join(RESULTS, "dead_ball_choice.json"), "w") as handle:
+    with open(os.path.join(RESULTS, "dead_ball_choice{}.json".format(tag)), "w") as handle:
         json.dump(choice, handle, indent=1)
-    print("wrote bench/results/dead_ball_grid.csv, bench/results/dead_ball_choice.json and {}".format(
-        os.path.relpath(path, ROOT)))
+    print("wrote bench/results/dead_ball_grid{0}.csv, bench/results/dead_ball_choice{0}.json and {1}".format(
+        tag, os.path.relpath(path, ROOT)))
 
 
 if __name__ == "__main__":
