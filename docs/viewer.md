@@ -18,6 +18,11 @@ timelines of labels and clues, all locked to the same frame.
 > **A cache built before that date still has the old lanes** (v1–v9 over the video): the server
 > reuses `viewer/cache/` until it is rebuilt. Rebuild it once with `--rebuild` (below).
 >
+> **`--models` brings our versions back on our match** (Jose's call, 2026-11-04,
+> [decisions.md](decisions.md)): a label lane for every CSV in `evaluation/results/`, to see the
+> versions run. Nothing seen there may choose a setting or a version: that stays on the bench.
+> Claude never opens it.
+>
 > **The bench matches keep everything below** (models, clues, notes): they are external data, with
 > no video. Everything below about model lanes on our match describes the viewer before that date.
 
@@ -26,6 +31,7 @@ timelines of labels and clues, all locked to the same frame.
 ```bash
 .venv/bin/python -m viewer.server              # then open http://localhost:8765
 .venv/bin/python -m viewer.server --rebuild    # after a model writes a new CSV to evaluation/results/
+.venv/bin/python -m viewer.server --models     # rebuild with our versions' lanes on our match (see above)
 ```
 
 The first start builds `viewer/cache/` (~4 s, ~47 MB). The cache is the tracking and homography

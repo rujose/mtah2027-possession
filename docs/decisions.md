@@ -293,3 +293,18 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Noted:** the probe's looser rule, which could swallow a short possession, scored 0.0018 more by
   removing 28 possessions in 10 matches. That changes the number of possessions, so it's left to
   v12's judging, not folded into v11.
+
+
+### 2026-11-04: our versions back on our match's viewer, behind a switch
+
+- **What:** `python -m viewer.server --models` rebuilds the cache with a label lane for every CSV in
+  `evaluation/results/` (the baselines, then v1, v2, ... v11 by number) on our match. Without the
+  switch the viewer is as v10 left it: video, tracking as delivered, tags, public truth, ball seen.
+  Notes stay off on our match either way.
+- **Why:** Jose's call, to see the versions run on the match. His reading of the clarification:
+  looking is not checking, as long as nothing seen there changes a model. Claude flagged item B of
+  the audit ([limitations.md](limitations.md), section 0: "our output checked against the video"),
+  and Jose decided. Not asked of the organisers.
+- **How we keep it apart:** Jose runs it and watches it; Claude never builds that cache, opens our
+  match in the viewer or reads its lanes. No setting, version choice or idea comes from what is
+  seen there: those stay on the bench, whose matches show every version with their true labels.

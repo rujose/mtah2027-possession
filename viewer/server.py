@@ -2,6 +2,7 @@
 
     python -m viewer.server              # http://localhost:8765
     python -m viewer.server --rebuild    # rebuild viewer/cache first (after a model writes a new CSV)
+    python -m viewer.server --models     # rebuild with our versions' labels on our match (Jose's call)
 
 Standard library only. The one thing the stock http.server lacks is HTTP Range requests, which a
 browser needs to seek in a 5 GB video whose index (the "moov" box) sits at the end of the file.
@@ -117,11 +118,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--rebuild", action="store_true", help="rebuild viewer/cache before serving")
+    parser.add_argument("--models", action="store_true",
+                        help="rebuild with a label lane per CSV in evaluation/results/ on our match")
     parser.add_argument("--port", type=int, default=PORT)
     args = parser.parse_args()
-    if args.rebuild or not os.path.exists(os.path.join(CACHE, "meta.json")):
+    if args.rebuild or args.models or not os.path.exists(os.path.join(CACHE, "meta.json")):
         from viewer.build_cache import build
-        build()
+        build(args.models)
     server = http.server.ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     print("viewer on http://localhost:{}".format(args.port), flush=True)
     server.serve_forever()
