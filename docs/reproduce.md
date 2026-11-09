@@ -16,8 +16,23 @@ python3.14 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # P
   bench by `bench/train_v12.py`; the bench data isn't needed to run v12). PathCRF's weights are
   downloaded once from the pinned commit into `data/external/pathcrf/` and refused if their SHA-256
   differs (`possession/pathcrf_adapter.py`).
-- **Expected SHA-256** of `evaluation/results/v12.csv` (bench set `all`, macOS arm64):
-  `bfd2548d764d0b95290939858fc4d0bc9481e89cc9bb03b441f759c826a88e24`.
+- **Expected SHA-256** of `evaluation/results/v12.csv` (bench set `all`, macOS arm64), since the
+  second-half kick-off was restored on 2026-11-09: `6219237a07110f7e4d0ee8b76f67c4125efb5e4418e35db018ea5032aa6a6067`
+  (before: `bfd2548d…a88e24`; the checks below were made on that version, and the change touches only
+  the frames before the second-half kick-off).
+
+## Does it behave on our match as on the bench? (label-free)
+
+```bash
+.venv/bin/python -m bench.transfer_check          # the bench's ranges (v12 out of fold)
+.venv/bin/python -m bench.transfer_check --ours   # Jose: our match against them, PASS / NEAR / WARN only
+```
+
+Other teams found bench gains that didn't carry over to the match. Three numbers need no truth: the share
+of graded frames called D, possessions per graded minute, and how often v12 names the team of the player
+with the ball clearly at his feet (within 1 m, the ball slower than 2 m/s over 0.2 s, nobody from the other
+team within 3 m). On the bench (v12 out of fold): **dead share 0.314–0.533, possessions per minute
+3.17–4.12, clear control 0.991–0.998**. `--ours` prints only where our match falls against those.
 
 ## What has been checked (2026-11-04)
 

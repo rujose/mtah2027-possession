@@ -69,6 +69,12 @@ never saw 0.7617 (+0.178, 4/4). macroF1 0.9182 against 0.8705.
 - **The deployment models** give the same letters twice on a bench match.
 - **Our match:** `python -m possession.v12` run twice gives the same file (SHA-256
   `bfd2548d…a88e24`), and the format check passes (199,319 rows). Its output was not looked at.
+- **The second-half kick-off, restored (2026-11-09).** The FAQ says the second half is graded from frame
+  110,808 but kicks off at 113,742, and "those 2,934 frames are graded and all of them are D". v1-v10 marked
+  them D from Smart Tagging's kick-off tag; turning Smart Tagging off in v12 dropped that too. v12 now marks
+  them D the same way, after the chain (the bench has no tags, so nothing there changes). On our match the
+  SHA-256 changed (`bfd2548d…` → `6219237a…`): v12 hadn't called all of those frames D. Found while
+  reading other teams' repos ([lab.md](../lab.md), round 6).
 - **Reproducibility** ([reproduce.md](../reproduce.md)): the same file from a clean clone and at 1, 4
   and 8 threads. Since 2026-11-04 PathCRF runs in float64 here, so another CPU can't move it by its
   last float32 bit; that changed no frame on two bench matches and not one byte of our file.
@@ -92,7 +98,8 @@ never saw 0.7617 (+0.178, 4/4). macroF1 0.9182 against 0.8705.
    it. The 4 matches it never saw hold (+0.178), and our match is one it never saw.
 4. **Our inputs come from models trained on all bench matches**, not out of fold, so they're a bit
    sharper than what the classifiers learned from. Small, the same for every version since v4.
-5. **Smart Tagging off.** v10 used its team hints on our match; v12 doesn't. The bench can't say
+5. **Smart Tagging off, except the kick-off.** v10 used its team hints on our match; v12 doesn't. The
+   second half's kick-off tag was restored on 2026-11-09 (below). The bench can't say
    what they were worth.
 6. **Metrica's samples** (audit item D): the `all` chain trains on them; `BENCH_SET = "idsse"`
    switches to the IDSSE-only chain and models.

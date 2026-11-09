@@ -1,0 +1,88 @@
+{
+ "ranges": {
+  "dead share": [
+   0.3142785595537037,
+   0.5325901908011388
+  ],
+  "possessions per minute": [
+   3.167359171718548,
+   4.121897980375951
+  ],
+  "clear control": [
+   0.9911164465786314,
+   0.9980994876879855
+  ]
+ },
+ "per_match": {
+  "J03WMX": {
+   "dead share": 0.42678139579493996,
+   "possessions per minute": 3.576150773805038,
+   "clear control": 0.993029277036447,
+   "truth: dead share": 0.41514862948474657,
+   "truth: possessions per minute": 5.251186912110271
+  },
+  "J03WN1": {
+   "dead share": 0.5325901908011388,
+   "possessions per minute": 4.121897980375951,
+   "clear control": 0.9920369894682763,
+   "truth: dead share": 0.516978546351043,
+   "truth: possessions per minute": 5.298069383516647
+  },
+  "J03WOH": {
+   "dead share": 0.4752722025449298,
+   "possessions per minute": 3.6293672657309015,
+   "clear control": 0.9911164465786314,
+   "truth: dead share": 0.4756730362790969,
+   "truth: possessions per minute": 4.394595303686212
+  },
+  "J03WOY": {
+   "dead share": 0.4614904304877364,
+   "possessions per minute": 3.9148004714598423,
+   "clear control": 0.9933073061907418,
+   "truth: dead share": 0.46479485884267835,
+   "truth: possessions per minute": 4.79878767469271
+  },
+  "J03WPY": {
+   "dead share": 0.4492890411802122,
+   "possessions per minute": 3.5086279418101243,
+   "clear control": 0.9922279792746114,
+   "truth: dead share": 0.44285997633556984,
+   "truth: possessions per minute": 4.319100478076205
+  },
+  "J03WQQ": {
+   "dead share": 0.4186518669429906,
+   "possessions per minute": 3.85682672380484,
+   "clear control": 0.9960384833050367,
+   "truth: dead share": 0.4074115704801714,
+   "truth: possessions per minute": 4.225648951491095
+  },
+  "J03WR9": {
+   "dead share": 0.43037940194809615,
+   "possessions per minute": 3.167359171718548,
+   "clear control": 0.9967144171376002,
+   "truth: dead share": 0.4188679245283019,
+   "truth: possessions per minute": 3.780396430760848
+  },
+  "metrica1": {
+   "dead share": 0.4207274181757996,
+   "possessions per minute": 3.4033074493469235,
+   "clear control": 0.9980994876879855,
+   "truth: dead share": 0.4073279726356151,
+   "truth: possessions per minute": 3.6619174378991217
+  },
+  "metrica2": {
+   "dead share": 0.41046076681118765,
+   "possessions per minute": 3.1879622545269064,
+   "clear control": 0.9977309562398703,
+   "truth: dead share": 0.3540125818243645,
+   "truth: possessions per minute": 3.379239989798521
+  },
+  "metrica3": {
+   "dead share": 0.3142785595537037,
+   "possessions per minute": 3.704064384638393,
+   "clear control": 0.9967364699483274,
+   "truth: dead share": 0.293354943273906,
+   "truth: possessions per minute": 3.9753479733724726
+  }
+ }
+}

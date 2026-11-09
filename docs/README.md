@@ -17,6 +17,8 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [decisions.md](decisions.md) | Every decision we took, when, and why |
 | [lab.md](lab.md) | The lab (2026-11-04): candidate versions built side by side by subagents, judged on one bar, the winners chained; one page per candidate in [lab/](lab/) |
 | [viewer.md](viewer.md) | The match viewer: video + tracking + labels + clues on one frame; how to run it |
+| [convention-audit.md](convention-audit.md) | Whether v12 answers the organisers' definition of possession, measured on the bench's rules-following labels |
+| [inside-v12.md](inside-v12.md) | How v12 works stage by stage, what each stage fixes and breaks, where the score is lost, and the leads to try |
 | [reproduce.md](reproduce.md) | How to regenerate our CSV byte for byte, what has been checked, and what could still break it |
 
 ## Conventions
@@ -103,6 +105,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.lab_budget              # the error budget: what each kind of error still costs
 .venv/bin/python -m bench.train_v12               # v12's models -> possession/models/v12_<set>.joblib
 .venv/bin/python -m bench.check_v12               # v12's port gives the lab's letters on bench matches
+.venv/bin/python -m bench.inside_v12              # an X-ray of v12 on the bench: docs/inside-v12.md
+.venv/bin/python -m bench.transfer_check --ours   # label-free checks of v12 on our match: PASS / NEAR / WARN (Jose)
 # the same stages with --set idsse (and touch_timing): the IDSSE-only twins (bench/chain.py)
 .venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)
 ```

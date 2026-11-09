@@ -11,7 +11,9 @@ robust is a per-frame classifier, P(H / A / D) from the tracking and those input
 standing still for 1 s blanked; its -log P is decoded, then v9's snap and v11's move. Each later stage
 is the lab's own code (bench/lab_*.py), with the models `python -m bench.train_v12` trained on the
 bench matches (possession/models/v12_<set>.joblib). `python -m bench.check_v12` shows the port gives
-the lab's letters on bench matches.
+the lab's letters on bench matches. Last, the second half's graded frames before its kick-off are D
+(FAQ: "those 2,934 frames are graded and all of them are D"), the kick-off found from Smart Tagging's
+tag as v1-v10 did; the bench has no tags, so there it changes nothing.
 """
 
 import hashlib
@@ -27,7 +29,7 @@ from bench.train_restart import cost_with_restart
 from bench.tune_decoder import decode
 from possession import dead_ball, features, pathcrf_adapter, repair, restart, v1, v9, v10, v11
 from possession import lab_learned_features as llf
-from possession.data import FPS, PITCH_LENGTH, PITCH_WIDTH, ROOT, graded_halves, load_tracking
+from possession.data import FPS, PITCH_LENGTH, PITCH_WIDTH, ROOT, graded_halves, load_tags, load_tracking
 
 # Params
 OUTPUT = os.path.join(ROOT, "evaluation", "results", "v12.csv")
@@ -117,23 +119,30 @@ def run_chain(match, models, which, settings=None):
     return np.asarray(letters).astype("<U1")
 
 
+def before_kickoff(tags, n_frames, halves):
+    """bool [frames]: the second half's graded frames before its kick-off tag (v1's clue)."""
+    return v1.clue_tags(tags or [], n_frames, halves)[1]
+
+
 def load_models(which):
     return joblib.load(MODELS.format(which))
 
 
 def predict(tracking, tags=None, halves=None, pitch=(PITCH_LENGTH, PITCH_WIDTH), bench_set=None):
-    """(labels for every video frame, {"pred": the inputs}). `tags` is accepted and not used: no bench
-    match has Smart Tagging, so no model has seen it."""
+    """(labels for every video frame, {"pred": the inputs}). Smart Tagging feeds no model (no bench match
+    has it); its second-half kick-off tag only marks the frames before kick-off as D."""
     halves = halves or graded_halves()
     which = bench_set or v10.BENCH_SET
     fixed, pred = inputs(tracking, halves, pitch, which)
     match = as_match(fixed, pred, halves, pitch)
-    return run_chain(match, load_models(which), which), {"pred": pred}
+    labels = run_chain(match, load_models(which), which)
+    labels[before_kickoff(tags, len(labels), halves)] = "D"
+    return labels, {"pred": pred}
 
 
 def main():
     """Only what Jose needs to check the file, as v10 and v11: no statistics about the match."""
-    labels, _ = predict(load_tracking())
+    labels, _ = predict(load_tracking(), load_tags())
     v1.write_submission(OUTPUT, labels)
     with open(OUTPUT, "rb") as handle:
         digest = hashlib.sha256(handle.read()).hexdigest()
