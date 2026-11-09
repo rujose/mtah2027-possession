@@ -1,0 +1,197 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.5856812933025404,
+   "base": 0.5790834312573442,
+   "macro_held_out": 0.9156598140159303,
+   "macro_base": 0.9175232236757771
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6031319910514541,
+   "base": 0.5907344632768361,
+   "macro_held_out": 0.8848384215565765,
+   "macro_base": 0.8861528142168725
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6922666666666666,
+   "base": 0.677384196185286,
+   "macro_held_out": 0.9189285124868509,
+   "macro_base": 0.9179935110673018
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6817307692307694,
+   "base": 0.6637785800240674,
+   "macro_held_out": 0.9047991903732715,
+   "macro_base": 0.903579523229738
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 1.0,
+    "switch_team": 16.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6848329048843188,
+   "base": 0.6789610389610388,
+   "macro_held_out": 0.9218910229936997,
+   "macro_base": 0.9234259681429853
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "alpha": 1.0,
+    "switch_team": 16.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6668367346938775,
+   "base": 0.6436363636363636,
+   "macro_held_out": 0.91464871626331,
+   "macro_base": 0.9153908560045392
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6788571428571429,
+   "base": 0.661764705882353,
+   "macro_held_out": 0.9276027104722825,
+   "macro_base": 0.9281190820433873
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "alpha": 0.5,
+    "switch_team": 8.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7724137931034483,
+   "base": 0.7563421828908554,
+   "macro_held_out": 0.9285084862715692,
+   "macro_base": 0.9284069802628646
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "alpha": 1.0,
+    "switch_team": 16.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.718622848200313,
+   "base": 0.7348837209302326,
+   "macro_held_out": 0.8900631658591244,
+   "macro_base": 0.8968810322350004
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "alpha": 1.0,
+    "switch_team": 16.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7163538873994637,
+   "base": 0.7416666666666666,
+   "macro_held_out": 0.9192374215654847,
+   "macro_base": 0.9278941416397813
+  }
+ ],
+ "all": {
+  "held_out": 0.6800728031389995,
+  "base": 0.6728235349711043,
+  "better": 8,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.91261774618581,
+  "base": 0.9145367132518247
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.6561910718123957,
+   "base": 0.6421918256033271,
+   "better": 7,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.7357968429010749,
+   "base": 0.7442975234959182,
+   "better": 1,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.721561917890092,
+  "base": 0.7236643190925269,
+  "better": 2,
+  "matches": 4
+ },
+ "chosen": {
+  "alpha": 1.0,
+  "switch_team": 16.0,
+  "switch_dead": 50.0,
+  "min_possession": 10.0
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": false,
+  "unseen": false
+ },
+ "passes": false
+}

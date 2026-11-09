@@ -1,0 +1,129 @@
+{
+ "possessions_per_90": [
+  {
+   "match": "J03WMX",
+   "IDSSE's labels": 472.61,
+   "control 0.2 s": 168.33,
+   "control 1 s": 123.01,
+   "DFL events, the rules": 413.42,
+   "frames changed, control 0.2 s": 12946,
+   "frames changed, control 1 s": 17791,
+   "frames changed, DFL events, the rules": 13890
+  },
+  {
+   "match": "J03WN1",
+   "IDSSE's labels": 476.83,
+   "control 0.2 s": 164.03,
+   "control 1 s": 126.84,
+   "DFL events, the rules": 436.77,
+   "frames changed, control 0.2 s": 12917,
+   "frames changed, control 1 s": 17655,
+   "frames changed, DFL events, the rules": 20578
+  },
+  {
+   "match": "J03WOH",
+   "IDSSE's labels": 395.51,
+   "control 0.2 s": 165.29,
+   "control 1 s": 128.89,
+   "DFL events, the rules": 363.05,
+   "frames changed, control 0.2 s": 10004,
+   "frames changed, control 1 s": 13854,
+   "frames changed, DFL events, the rules": 11751
+  },
+  {
+   "match": "J03WOY",
+   "IDSSE's labels": 431.89,
+   "control 0.2 s": 166.69,
+   "control 1 s": 134.49,
+   "DFL events, the rules": 416.74,
+   "frames changed, control 0.2 s": 12242,
+   "frames changed, control 1 s": 16445,
+   "frames changed, DFL events, the rules": 12381
+  },
+  {
+   "match": "J03WPY",
+   "IDSSE's labels": 388.72,
+   "control 0.2 s": 154.19,
+   "control 1 s": 120.96,
+   "DFL events, the rules": 361.02,
+   "frames changed, control 0.2 s": 11070,
+   "frames changed, control 1 s": 16697,
+   "frames changed, DFL events, the rules": 12815
+  },
+  {
+   "match": "J03WQQ",
+   "IDSSE's labels": 380.31,
+   "control 0.2 s": 166.92,
+   "control 1 s": 129.93,
+   "DFL events, the rules": 370.82,
+   "frames changed, control 0.2 s": 9954,
+   "frames changed, control 1 s": 13405,
+   "frames changed, DFL events, the rules": 10530
+  },
+  {
+   "match": "J03WR9",
+   "IDSSE's labels": 340.24,
+   "control 0.2 s": 145.29,
+   "control 1 s": 125.06,
+   "DFL events, the rules": 309.89,
+   "frames changed, control 0.2 s": 9368,
+   "frames changed, control 1 s": 13616,
+   "frames changed, DFL events, the rules": 13987
+  }
+ ],
+ "spell_f1": [
+  {
+   "version": "robust",
+   "IDSSE's labels": 0.6437,
+   "control 0.2 s": 0.4489,
+   "control 1 s": 0.3406,
+   "DFL events, the rules": 0.5019
+  },
+  {
+   "version": "+ short",
+   "IDSSE's labels": 0.6573,
+   "control 0.2 s": 0.4297,
+   "control 1 s": 0.325,
+   "DFL events, the rules": 0.4991
+  },
+  {
+   "version": "+ segments",
+   "IDSSE's labels": 0.6638,
+   "control 0.2 s": 0.4472,
+   "control 1 s": 0.3385,
+   "DFL events, the rules": 0.5082
+  },
+  {
+   "version": "v12",
+   "IDSSE's labels": 0.664,
+   "control 0.2 s": 0.4472,
+   "control 1 s": 0.3383,
+   "DFL events, the rules": 0.5084
+  },
+  {
+   "version": "v12 without short",
+   "IDSSE's labels": 0.6503,
+   "control 0.2 s": 0.4675,
+   "control 1 s": 0.3548,
+   "DFL events, the rules": 0.5118
+  }
+ ],
+ "short": {
+  "IDSSE's labels": {
+   "short helps (v12 vs without)": 6,
+   "mean gain of short": 0.01365219003443452
+  },
+  "control 0.2 s": {
+   "short helps (v12 vs without)": 0,
+   "mean gain of short": -0.02030931667239167
+  },
+  "control 1 s": {
+   "short helps (v12 vs without)": 0,
+   "mean gain of short": -0.016513120725458543
+  },
+  "DFL events, the rules": {
+   "short helps (v12 vs without)": 3,
+   "mean gain of short": -0.0033416277183641358
+  }
+ }
+}

@@ -1,0 +1,186 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 8.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.5785123966942148,
+   "base": 0.5790834312573442,
+   "macro_held_out": 0.9170190487809572,
+   "macro_base": 0.9175232236757771
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 8.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.5944572748267898,
+   "base": 0.5907344632768361,
+   "macro_held_out": 0.8864222675429211,
+   "macro_base": 0.8861528142168725
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 8.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.675208913649025,
+   "base": 0.677384196185286,
+   "macro_held_out": 0.9171214658079614,
+   "macro_base": 0.9179935110673018
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 8.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6606577344701584,
+   "base": 0.6637785800240674,
+   "macro_held_out": 0.9025867414807108,
+   "macro_base": 0.903579523229738
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6856410256410257,
+   "base": 0.6789610389610388,
+   "macro_held_out": 0.9243481234908453,
+   "macro_base": 0.9234259681429853
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6456774193548387,
+   "base": 0.6436363636363636,
+   "macro_held_out": 0.9158279771105877,
+   "macro_base": 0.9153908560045392
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6664748201438849,
+   "base": 0.661764705882353,
+   "macro_held_out": 0.9291939573084433,
+   "macro_base": 0.9281190820433873
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7745937961595274,
+   "base": 0.7563421828908554,
+   "macro_held_out": 0.9297680062560721,
+   "macro_base": 0.9284069802628646
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7319148936170212,
+   "base": 0.7348837209302326,
+   "macro_held_out": 0.8968225701543108,
+   "macro_base": 0.8968810322350004
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "a": 4.0,
+    "b": 2.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7604395604395604,
+   "base": 0.7416666666666666,
+   "macro_held_out": 0.9293355887482785,
+   "macro_base": 0.9278941416397813
+  }
+ ],
+ "all": {
+  "held_out": 0.6773577834996047,
+  "base": 0.6728235349711043,
+  "better": 6,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.9148445746681089,
+  "base": 0.9145367132518247
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.643804226397134,
+   "base": 0.6421918256033271,
+   "better": 4,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.755649416738703,
+   "base": 0.7442975234959182,
+   "better": 2,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.7333557675899984,
+  "base": 0.7236643190925269,
+  "better": 3,
+  "matches": 4
+ },
+ "chosen": {
+  "a": 4.0,
+  "b": 2.0,
+  "min_possession": 10.0
+ },
+ "checks": {
+  "mean": true,
+  "share": false,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": false
+}

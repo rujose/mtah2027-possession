@@ -1,0 +1,186 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.5868263473053892,
+   "base": 0.5790834312573442,
+   "macro_held_out": 0.9208300392503146,
+   "macro_base": 0.9175232236757771
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6189031505250876,
+   "base": 0.5907344632768361,
+   "macro_held_out": 0.8927969712348925,
+   "macro_base": 0.8861528142168725
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6683544303797468,
+   "base": 0.677384196185286,
+   "macro_held_out": 0.9174359212917075,
+   "macro_base": 0.9179935110673018
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6477132262051916,
+   "base": 0.6637785800240674,
+   "macro_held_out": 0.9036417733560742,
+   "macro_base": 0.903579523229738
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6798376184032476,
+   "base": 0.6789610389610388,
+   "macro_held_out": 0.9279213182709967,
+   "macro_base": 0.9234259681429853
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6586021505376345,
+   "base": 0.6436363636363636,
+   "macro_held_out": 0.916935200923145,
+   "macro_base": 0.9153908560045392
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6424778761061947,
+   "base": 0.661764705882353,
+   "macro_held_out": 0.9239399560317224,
+   "macro_base": 0.9281190820433873
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7615267175572519,
+   "base": 0.7563421828908554,
+   "macro_held_out": 0.9314004580144007,
+   "macro_base": 0.9284069802628646
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7508417508417508,
+   "base": 0.7348837209302326,
+   "macro_held_out": 0.9012136007605905,
+   "macro_base": 0.8968810322350004
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 8.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7621233859397418,
+   "base": 0.7416666666666666,
+   "macro_held_out": 0.9304629370239085,
+   "macro_base": 0.9278941416397813
+  }
+ ],
+ "all": {
+  "held_out": 0.6777206653801237,
+  "base": 0.6728235349711043,
+  "better": 7,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.9166578176157751,
+  "base": 0.9145367132518247
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.6432449713517846,
+   "base": 0.6421918256033271,
+   "better": 4,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.7581639514462482,
+   "base": 0.7442975234959182,
+   "better": 3,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.7292424326112348,
+  "base": 0.7236643190925269,
+  "better": 3,
+  "matches": 4
+ },
+ "chosen": {
+  "switch_team": 8.0,
+  "switch_dead": 25.0,
+  "min_possession": 10.0
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true
+}

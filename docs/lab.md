@@ -187,6 +187,40 @@ that *moves* in our stoppages would still fool it, as it would learned.
 0.6642). **Robust → short → segments passes on both sets**; the tail (timing on `all`; recall and
 dead on `idsse`) adds a few thousandths and depends on the set.
 
+### Round 5 (2026-11-06): two leads from the X-ray, both discarded
+
+[weighted](lab/weighted.md): robust trained possession by possession, and v12's chain without v9's snap
+and v11's move, each judged with every stage on its setting for that match.
+
+| against v12 (0.7033; IDSSE set 0.6699) | all 10 | better | IDSSE's 7 | Metrica's 3 | IDSSE set | better | verdict |
+|---|---|---|---|---|---|---|---|
+| no snap or move | +0.0022 | 6/10 | −0.0024 | +0.0129 | −0.0016 | 3/7 | fails |
+| weighted | −0.0067 | 4/10 | +0.0025 | −0.0282 | −0.0064 | 2/7 | fails |
+| weighted, no snap or move | −0.0023 | 5/10 | +0.0059 | −0.0213 | −0.0024 | 4/7 | fails |
+
+v12 stays. What's new: changes that favour one source hurt the other, and gains near 0.002 on this bench
+are noise (one comparison moved that much from settings alone).
+
+### Round 6 (2026-11-07 to 11-09): ideas from other teams' repos, and the switch price
+
+A survey of the challenge repo's 258 forks (102 pushed to; about five serious public contenders, all with
+a learned per-frame model and a Viterbi decoder) pointed at what we hadn't tried.
+
+| idea | where from | result | verdict |
+|---|---|---|---|
+| **the second half's kick-off** (FAQ: the 2,934 graded frames before it are all D) | several repos; v1-v10 had it from Smart Tagging's kick-off tag, v12 had dropped it | can't be measured on the bench (no tags); on our match the SHA-256 changed, so v12 hadn't called all of them D | **kept in v12**: the FAQ states the answer |
+| **label-free checks on our match**: dead share, possessions per minute, agreement at clear on-the-ball frames | animepuika, Barca-Hackathon | `bench/transfer_check.py`; bench ranges 0.314–0.533, 3.17–4.12, 0.991–0.998 | built; Jose runs `--ours` |
+| [**motion**](lab/motion.md): ball-free team movement | ZesterJ | chain +0.0031, 5/10, IDSSE −0.0014; IDSSE set −0.0044 | **discarded** |
+| **switch**: the team-switch price set frame by frame by a boundary model (`bench/lab_switch.py`) | lead 2 of inside-v12.md | start alone +0.0045, 6/10 (fails the share); every fold at the grid's edge; the IDSSE set and the chain were cut off | **discarded** |
+| broadcast cut-aways as dead ball | animepuika | the bench has no broadcast, so it can't be measured | not tried |
+| weighting external frames by how much they look like our match; spotting artefacts with a classifier | another public entry | needs our match's tracking in training: against the 2026-11-03 rules | not tried |
+
+**A pattern across rounds 5-6:** dropping snap and move (+0.013), the switch price (+0.011) and motion
+(+0.014) each helped Metrica's 3 matches and not IDSSE's 7. Metrica's labels follow the organisers' rules,
+and our match is Metrica-tracked, so this may mean something. But 3 matches, chosen after the fact, can't
+carry it: weighing the sources differently would have to be decided before a new test, never to rescue
+these.
+
 ### Where the lab stands
 
 | | `all` held out | vs v11 | `idsse` held out | vs v11 |
