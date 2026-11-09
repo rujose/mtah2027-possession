@@ -8,7 +8,8 @@ from what the stages before it write on the bench matches out of fold (each matc
 models trained without it, as bench/lab_mix.py does), so its training input looks like what it will
 see on our match. Settings: each stage's choice on all the set's matches (bench/results/lab_*.json).
 The chain's out-of-fold letters on each bench match are saved too (data/external/v12_oof[_idsse]/,
-gitignored), for the viewer's bench matches (viewer/build_bench_cache.py).
+gitignored; each stage's in a subfolder), for the viewer's bench matches (viewer/build_bench_cache.py)
+and bench/inside_v12.py.
 """
 
 import argparse
@@ -100,6 +101,10 @@ def main():
     os.makedirs(folder, exist_ok=True)
     for m in matches:
         np.save(os.path.join(folder, "{}.npy".format(m.id)), final[m.id])
+    for stage, letters in steps.items():
+        os.makedirs(os.path.join(folder, stage), exist_ok=True)
+        for m in matches:
+            np.save(os.path.join(folder, stage, "{}.npy".format(m.id)), letters[m.id])
     print("wrote the out-of-fold letters to {}".format(os.path.relpath(folder, lab.ROOT)), flush=True)
     if args.oof_only:
         return

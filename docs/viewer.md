@@ -102,6 +102,12 @@ samples). A bench match opens at `http://localhost:8765/?match=<id>`.
 `viewer/cache/bench/`, gitignored). The server reads the cache on every request: reload the page, no
 restart needed.
 
+**v12 from the inside** (added 2026-11-06; [inside-v12.md](inside-v12.md)): lanes **v12: robust, + short,
++ segments** (the chain after each stage), **errors: missed** and **errors: spurious** (v12's failures
+at IoU 0.3, in the team's colour), and **v12: P(dead), v12: P(home)** (the robust model before the
+decoder). The stage and error chips start unchecked. Leave only an error lane on and N / P walk
+through the failures. Build: `python -m bench.train_v12 --oof-only`, then `viewer.build_bench_cache`.
+
 ## Watching changes closely
 
 The bar under the header (**Watch changes in**) picks which label rows to watch: truth and our models

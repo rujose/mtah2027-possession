@@ -9,9 +9,10 @@ the homography (there is no video), plus the clean tracking next to the damaged 
     players.bin, ball.bin      the damaged tracking, as our models see it (41 %, as on the bench)
     players_clean.bin, ...     the tracking as published
     labels.bin                 the match's own truth, the floor, v1, v3, v4 (= v5 here), v6, v7 (= v8),
-                               v9 (= v10), v11, v12
+                               v9 (= v10), v11, v12 after each of its stages, and v12's errors: the
+                               true possessions it misses, the predicted ones with no true match
     clues.bin                  v1's clues on the damaged tracking, v4/v6/v7's learned signals, v9's
-                               seen passes and v11's touches
+                               seen passes, v11's touches, and v12's robust model (P(dead), P(home))
 
 v4, v6 and v7 come from bench/eval_pathcrf.py's out-of-sample run (each match predicted by models
 trained without it); v9 and v11 are that v7 with the restart snap and then the touch move, as
@@ -27,7 +28,7 @@ import os
 
 import numpy as np
 
-from bench import degrade, labels, sets
+from bench import degrade, inside_v12, lab_robust, labels, sets
 from bench.run import baseline, v1_without_tags
 from bench.train_restart import prepare_level
 from bench.tune_decoder import decode
@@ -67,6 +68,34 @@ def marks(found, before, after):
     return lane
 
 
+def v12_lanes(match, truth_codes, length):
+    """v12's label lanes on a bench match, when `python -m bench.train_v12 --oof-only` has saved them:
+    each stage's out-of-fold letters, then its errors at the metric's lowest bar (IoU 0.3)."""
+    if not os.path.exists(os.path.join(V12, "{}.npy".format(match))):
+        return []
+    stages = (("v12: robust", "robust"), ("v12: + short", "short"), ("v12: + segments", "segments"), ("v12", "timing"))
+    lanes = [(name, np.load(os.path.join(V12, stage, "{}.npy".format(match)))) for name, stage in stages]
+    t, p, overlaps, _ = inside_v12.spell_table(truth_codes, lanes[-1][1])
+    found, right = inside_v12.matched(overlaps, len(t), len(p), inside_v12.LOW)
+    for name, spells, ok in (("errors: missed", t, found), ("errors: spurious", p, right)):
+        lane = np.full(length, "X", dtype="<U1")
+        for (a, b, k), hit in zip(spells, ok):
+            if not hit:
+                lane[a:b] = "H" if k == 0 else "A"           # scorer codes: 0 H, 1 A
+        lanes.append((name, lane))
+    return lanes
+
+
+def v12_clues(match):
+    """The robust model's held-out P(dead) (%) and P(home | in play) (as percent_lane), when saved."""
+    try:
+        p = lab_robust.held_out_proba(match)
+    except FileNotFoundError:
+        return []
+    return [("v12: P(dead)", np.round(p[:, 2] * 100).astype(np.uint8)),
+            ("v12: P(home)", percent_lane(p[:, 0] / (p[:, 0] + p[:, 1])))]
+
+
 def build(match, data, track, predicted):
     folder = os.path.join(OUT, match)
     os.makedirs(folder, exist_ok=True)
@@ -85,9 +114,7 @@ def build(match, data, track, predicted):
                    ("v1", v1_without_tags(track, halves, pitch)), ("v3", v3_letters),
                    ("v4", predicted["v4"]), ("v6", predicted["v6"]), ("v7 = v8", predicted["v7"]),
                    ("v9 = v10", v9_letters), ("v11", v11_letters)]
-    v12_path = os.path.join(V12, "{}.npy".format(match))
-    if os.path.exists(v12_path):
-        label_lanes.append(("v12", np.load(v12_path)))
+    label_lanes += v12_lanes(match, sets.truth(match, data), len(truth))
     labels_bin = np.stack([np.vectorize(CODES.get)(np.asarray(l).astype(str)) for _, l in label_lanes]).astype(np.uint8)
 
     on_ball = np.zeros(len(clues["out"]), np.uint8)
@@ -101,7 +128,7 @@ def build(match, data, track, predicted):
                   ("v6: restart clue", percent_lane(predicted["restart_clue"])),
                   ("v7: PathCRF", percent_lane(predicted["pathcrf_clue"])),
                   ("v9: seen pass", marks(starts, 0, passes.LOOK - 1)),
-                  ("v11: touch", marks(found, touches.LOOK, touches.LOOK))]
+                  ("v11: touch", marks(found, touches.LOOK, touches.LOOK))] + v12_clues(match)
     clues_bin = np.stack([lane for _, lane in clue_lanes])
 
     encode(track["players"], pitch).tofile(os.path.join(folder, "players.bin"))

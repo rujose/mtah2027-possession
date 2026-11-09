@@ -137,11 +137,13 @@ async function load() {
 
 function laneChanges(lane) {
   // Frames where the label differs from the frame before, between two real labels (not X/none).
+  // On the bench's error lanes, where each error starts: they are empty between errors.
+  const starts = lane.name.startsWith('errors:');
   const out = [];
   let previous = lane.value(0);
   for (let f = 1; f < S.F; f++) {
     const v = lane.value(f);
-    if (v !== previous && v && previous) out.push(f);
+    if (v !== previous && v && (previous || starts)) out.push(f);
     previous = v;
   }
   return Int32Array.from(out);
@@ -186,7 +188,7 @@ function buildWatchChips() {
     const label = document.createElement('label');
     const input = document.createElement('input');
     input.type = 'checkbox';
-    input.checked = !lane.name.startsWith('baseline');  // truth and our models by default
+    input.checked = !/^(baseline|v12:|errors:)/.test(lane.name);  // truth and our models by default
     if (input.checked) S.watch.lanes.add(lane.name);
     input.addEventListener('change', () => {
       if (input.checked) S.watch.lanes.add(lane.name); else S.watch.lanes.delete(lane.name);
@@ -297,8 +299,8 @@ function buildLanes(meta) {
   const clueLanes = meta.clueLanes.map((name, index) => ({
     name, kind: 'clue', value: (f) => S.clues[index * S.F + f],
     // v6's learned signals: a probability in %, drawn in bands (strong / weak / nothing)
-    color: name === 'v4: P(dead)' ? (v) => (v > 80 ? COLOR.D : v > 50 ? COLOR.looksDead : null)
-      : (name === 'v6: restart clue' || name === 'v7: PathCRF') ? (v) => (v === 0 ? null : v - 1 >= 80 ? COLOR.H : v - 1 > 50 ? COLOR.Hsoft
+    color: name.endsWith('P(dead)') ? (v) => (v > 80 ? COLOR.D : v > 50 ? COLOR.looksDead : null)
+      : (name === 'v6: restart clue' || name === 'v7: PathCRF' || name === 'v12: P(home)') ? (v) => (v === 0 ? null : v - 1 >= 80 ? COLOR.H : v - 1 > 50 ? COLOR.Hsoft
         : v - 1 <= 20 ? COLOR.A : v - 1 < 50 ? COLOR.Asoft : COLOR.muted)
       : name === 'ball visible' ? (v) => (v ? COLOR.seen : null)
       : (name.startsWith('A:') || name.startsWith('C:') || name === 'v8: keeper repaired' || name === 'v9: seen pass' || name === 'v11: touch') ? (v) => [null, COLOR.H, COLOR.A][v]
@@ -531,8 +533,8 @@ function drawInfo(f, near) {
     .map((l) => `<div class="row"><span class="k">${l.name}</span>${chip(l.value(f), 'label')}</div>`).join('');
   const clueRows = S.lanes.filter((l) => l.kind === 'clue').map((l) => {
     const v = l.value(f);
-    const c = l.name === 'v4: P(dead)' ? `<span class="chip ${v > 50 ? 'D' : 'off'}">${v} %</span>`
-      : (l.name === 'v6: restart clue' || l.name === 'v7: PathCRF') ? (v ? `<span class="chip ${v - 1 > 50 ? 'H' : 'A'}">${v - 1 > 50 ? TEAM_NAME[0] + ' ' + (v - 1) : TEAM_NAME[1] + ' ' + (101 - v)} %</span>` : chip(0))
+    const c = l.name.endsWith('P(dead)') ? `<span class="chip ${v > 50 ? 'D' : 'off'}">${v} %</span>`
+      : (l.name === 'v6: restart clue' || l.name === 'v7: PathCRF' || l.name === 'v12: P(home)') ? (v ? `<span class="chip ${v - 1 > 50 ? 'H' : 'A'}">${v - 1 > 50 ? TEAM_NAME[0] + ' ' + (v - 1) : TEAM_NAME[1] + ' ' + (101 - v)} %</span>` : chip(0))
       : (l.name.startsWith('A:') || l.name.startsWith('C:') || l.name === 'v8: keeper repaired' || l.name === 'v9: seen pass' || l.name === 'v11: touch') ? (v ? `<span class="chip ${v === 1 ? 'H' : 'A'}">${v === 1 ? 'H' : 'A'}</span>` : chip(0))
       : l.name.endsWith('whistle') ? [chip(0), '<span class="chip on">counted</span>', '<span class="chip D">ignored</span>'][v]
         : chip(v);
