@@ -20,6 +20,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [convention-audit.md](convention-audit.md) | Whether v12 answers the organisers' definition of possession, measured on the bench's rules-following labels |
 | [inside-v12.md](inside-v12.md) | How v12 works stage by stage, what each stage fixes and breaks, where the score is lost, and the leads to try |
 | [reproduce.md](reproduce.md) | How to regenerate our CSV byte for byte, what has been checked, and what could still break it |
+| [field.md](field.md) | How we compare with other teams' public repos: which numbers can be compared, where we stand, ideas they use |
 
 ## Conventions
 
