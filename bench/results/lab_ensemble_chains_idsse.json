@@ -1,0 +1,189 @@
+{
+ "scores": {
+  "robust": {
+   "J03WMX": 0.58486,
+   "J03WN1": 0.63057,
+   "J03WOH": 0.71436,
+   "J03WOY": 0.70199,
+   "J03WPY": 0.72465,
+   "J03WQQ": 0.64826,
+   "J03WR9": 0.68434
+  },
+  "ensemble": {
+   "J03WMX": 0.59534,
+   "J03WN1": 0.62036,
+   "J03WOH": 0.69777,
+   "J03WOY": 0.70438,
+   "J03WPY": 0.7285,
+   "J03WQQ": 0.65248,
+   "J03WR9": 0.66295
+  }
+ },
+ "picks": {
+  "J03WMX": {
+   "start": "mean_robust+weighted",
+   "switch_team": 4.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WN1": {
+   "start": "mean_robust+weighted",
+   "switch_team": 4.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WOH": {
+   "start": "geo_robust+learned+weighted+motion",
+   "switch_team": 4.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WOY": {
+   "start": "geo_robust+learned+weighted+motion",
+   "switch_team": 8.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WPY": {
+   "start": "geo_robust+learned+weighted+motion",
+   "switch_team": 8.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WQQ": {
+   "start": "mean_robust+weighted",
+   "switch_team": 4.0,
+   "switch_dead": 25.0,
+   "min_possession": 10
+  },
+  "J03WR9": {
+   "start": "geo_robust+learned+weighted+motion",
+   "switch_team": 4.0,
+   "switch_dead": 10.0,
+   "min_possession": 10
+  }
+ },
+ "against_v12": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.595338512763596,
+    "base": 0.584858757062147,
+    "macro_held_out": 0.9167661047911165,
+    "macro_base": 0.9152405540039283
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6203644158628082,
+    "base": 0.6305676855895197,
+    "macro_held_out": 0.8902325244875108,
+    "macro_base": 0.8941513848997772
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6977719528178243,
+    "base": 0.7143631436314364,
+    "macro_held_out": 0.924939469826923,
+    "macro_base": 0.9235488509503225
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.704378698224852,
+    "base": 0.7019929660023447,
+    "macro_held_out": 0.9123449885204357,
+    "macro_base": 0.910444745723498
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7284974093264249,
+    "base": 0.7246451612903226,
+    "macro_held_out": 0.934999803712735,
+    "macro_base": 0.9329747303712838
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6524752475247525,
+    "base": 0.6482587064676617,
+    "macro_held_out": 0.9135127350822808,
+    "macro_base": 0.9119334693710287
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6629526462395543,
+    "base": 0.6843441466854725,
+    "macro_held_out": 0.9262019799169424,
+    "macro_base": 0.9252583848890813
+   }
+  ],
+  "all": {
+   "held_out": 0.6659684118228303,
+   "base": 0.6698615095327006,
+   "better": 4,
+   "matches": 7
+  },
+  "macro": {
+   "held_out": 0.9169996580482778,
+   "base": 0.916221731458417
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6659684118228303,
+    "base": 0.6698615095327006,
+    "better": 4,
+    "matches": 7
+   }
+  },
+  "unseen": {
+   "held_out": 0.6629526462395543,
+   "base": 0.6843441466854725,
+   "better": 0,
+   "matches": 1
+  },
+  "chosen": {
+   "setting": "chain"
+  },
+  "checks": {
+   "mean": false,
+   "share": false,
+   "each_source": false,
+   "unseen": false,
+   "gain": false
+  },
+  "passes": false
+ }
+}

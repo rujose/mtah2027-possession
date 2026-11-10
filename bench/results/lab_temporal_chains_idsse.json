@@ -1,0 +1,277 @@
+{
+ "scores": {
+  "robust": {
+   "J03WMX": 0.58486,
+   "J03WN1": 0.63057,
+   "J03WOH": 0.71436,
+   "J03WOY": 0.70199,
+   "J03WPY": 0.72465,
+   "J03WQQ": 0.64826,
+   "J03WR9": 0.68434
+  },
+  "temporal": {
+   "J03WMX": 0.64379,
+   "J03WN1": 0.6212,
+   "J03WOH": 0.70458,
+   "J03WOY": 0.67583,
+   "J03WPY": 0.72708,
+   "J03WQQ": 0.67908,
+   "J03WR9": 0.68796
+  },
+  "average": {
+   "J03WMX": 0.62954,
+   "J03WN1": 0.62603,
+   "J03WOH": 0.72097,
+   "J03WOY": 0.67853,
+   "J03WPY": 0.72801,
+   "J03WQQ": 0.66427,
+   "J03WR9": 0.68458
+  }
+ },
+ "against_v12": {
+  "temporal": {
+   "folds": [
+    {
+     "match": "J03WMX",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6437923250564335,
+     "base": 0.584858757062147,
+     "macro_held_out": 0.9281800752130186,
+     "macro_base": 0.9152405540039283
+    },
+    {
+     "match": "J03WN1",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6212021857923498,
+     "base": 0.6305676855895197,
+     "macro_held_out": 0.8943791319014913,
+     "macro_base": 0.8941513848997772
+    },
+    {
+     "match": "J03WOH",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.7045822102425875,
+     "base": 0.7143631436314364,
+     "macro_held_out": 0.9223657820989891,
+     "macro_base": 0.9235488509503225
+    },
+    {
+     "match": "J03WOY",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6758293838862559,
+     "base": 0.7019929660023447,
+     "macro_held_out": 0.9083451103823825,
+     "macro_base": 0.910444745723498
+    },
+    {
+     "match": "J03WPY",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.7270833333333334,
+     "base": 0.7246451612903226,
+     "macro_held_out": 0.9319382827175323,
+     "macro_base": 0.9329747303712838
+    },
+    {
+     "match": "J03WQQ",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6790816326530613,
+     "base": 0.6482587064676617,
+     "macro_held_out": 0.9216230443149437,
+     "macro_base": 0.9119334693710287
+    },
+    {
+     "match": "J03WR9",
+     "source": "idsse",
+     "unseen": true,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6879551820728291,
+     "base": 0.6843441466854725,
+     "macro_held_out": 0.9366585089871426,
+     "macro_base": 0.9252583848890813
+    }
+   ],
+   "all": {
+    "held_out": 0.6770751790052644,
+    "base": 0.6698615095327006,
+    "better": 4,
+    "matches": 7
+   },
+   "macro": {
+    "held_out": 0.9204985622307859,
+    "base": 0.916221731458417
+   },
+   "by_source": {
+    "idsse": {
+     "held_out": 0.6770751790052644,
+     "base": 0.6698615095327006,
+     "better": 4,
+     "matches": 7
+    }
+   },
+   "unseen": {
+    "held_out": 0.6879551820728291,
+    "base": 0.6843441466854725,
+    "better": 1,
+    "matches": 1
+   },
+   "chosen": {
+    "setting": "chain"
+   },
+   "checks": {
+    "mean": true,
+    "share": false,
+    "each_source": true,
+    "unseen": true
+   },
+   "passes": false
+  },
+  "average": {
+   "folds": [
+    {
+     "match": "J03WMX",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6295377677564825,
+     "base": 0.584858757062147,
+     "macro_held_out": 0.9233509492475473,
+     "macro_base": 0.9152405540039283
+    },
+    {
+     "match": "J03WN1",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6260303687635574,
+     "base": 0.6305676855895197,
+     "macro_held_out": 0.8939025396425754,
+     "macro_base": 0.8941513848997772
+    },
+    {
+     "match": "J03WOH",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.7209742895805142,
+     "base": 0.7143631436314364,
+     "macro_held_out": 0.9282364055055702,
+     "macro_base": 0.9235488509503225
+    },
+    {
+     "match": "J03WOY",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6785290628706998,
+     "base": 0.7019929660023447,
+     "macro_held_out": 0.9063169966610184,
+     "macro_base": 0.910444745723498
+    },
+    {
+     "match": "J03WPY",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.7280101394169836,
+     "base": 0.7246451612903226,
+     "macro_held_out": 0.9331400456729989,
+     "macro_base": 0.9329747303712838
+    },
+    {
+     "match": "J03WQQ",
+     "source": "idsse",
+     "unseen": false,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6642673521850899,
+     "base": 0.6482587064676617,
+     "macro_held_out": 0.920364919486003,
+     "macro_base": 0.9119334693710287
+    },
+    {
+     "match": "J03WR9",
+     "source": "idsse",
+     "unseen": true,
+     "picked": {
+      "setting": "chain"
+     },
+     "held_out": 0.6845827439886847,
+     "base": 0.6843441466854725,
+     "macro_held_out": 0.930543805237031,
+     "macro_base": 0.9252583848890813
+    }
+   ],
+   "all": {
+    "held_out": 0.6759902463660018,
+    "base": 0.6698615095327006,
+    "better": 5,
+    "matches": 7
+   },
+   "macro": {
+    "held_out": 0.9194079516361063,
+    "base": 0.916221731458417
+   },
+   "by_source": {
+    "idsse": {
+     "held_out": 0.6759902463660018,
+     "base": 0.6698615095327006,
+     "better": 5,
+     "matches": 7
+    }
+   },
+   "unseen": {
+    "held_out": 0.6845827439886847,
+    "base": 0.6843441466854725,
+    "better": 1,
+    "matches": 1
+   },
+   "chosen": {
+    "setting": "chain"
+   },
+   "checks": {
+    "mean": true,
+    "share": true,
+    "each_source": true,
+    "unseen": true
+   },
+   "passes": true
+  }
+ }
+}

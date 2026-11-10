@@ -1,0 +1,197 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.599063231850117,
+   "base": 0.5790834312573442,
+   "macro_held_out": 0.9224052461288794,
+   "macro_base": 0.9175232236757771
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.6103370786516854,
+   "base": 0.5907344632768361,
+   "macro_held_out": 0.8940827763508404,
+   "macro_base": 0.8861528142168725
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.67716955941255,
+   "base": 0.677384196185286,
+   "macro_held_out": 0.9199915643731237,
+   "macro_base": 0.9179935110673018
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.6660194174757281,
+   "base": 0.6637785800240674,
+   "macro_held_out": 0.9046222499745147,
+   "macro_base": 0.903579523229738
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.6889753566796368,
+   "base": 0.6789610389610388,
+   "macro_held_out": 0.9291431604197644,
+   "macro_base": 0.9234259681429853
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.669281045751634,
+   "base": 0.6436363636363636,
+   "macro_held_out": 0.9197900106614022,
+   "macro_base": 0.9153908560045392
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.6609970674486803,
+   "base": 0.661764705882353,
+   "macro_held_out": 0.9306897295939849,
+   "macro_base": 0.9281190820433873
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 20
+   },
+   "held_out": 0.7598802395209581,
+   "base": 0.7563421828908554,
+   "macro_held_out": 0.9280474052814203,
+   "macro_base": 0.9284069802628646
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.7453947368421053,
+   "base": 0.7348837209302326,
+   "macro_held_out": 0.8946569811598536,
+   "macro_base": 0.8968810322350004
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "start": "geo_robust+learned+weighted+motion",
+    "switch_team": 4.0,
+    "switch_dead": 50.0,
+    "min_possession": 10
+   },
+   "held_out": 0.7437241379310344,
+   "base": 0.7416666666666666,
+   "macro_held_out": 0.9261738473718716,
+   "macro_base": 0.9278941416397813
+  }
+ ],
+ "all": {
+  "held_out": 0.6820841871564131,
+  "base": 0.6728235349711043,
+  "better": 8,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.9169602971315655,
+  "base": 0.9145367132518247
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.653120393895719,
+   "base": 0.6421918256033271,
+   "better": 5,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.7496663714313659,
+   "base": 0.7442975234959182,
+   "better": 3,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.7274990454356945,
+  "base": 0.7236643190925269,
+  "better": 3,
+  "matches": 4
+ },
+ "chosen": {
+  "start": "geo_robust+learned+weighted+motion",
+  "switch_team": 4.0,
+  "switch_dead": 50.0,
+  "min_possession": 10
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true
+}

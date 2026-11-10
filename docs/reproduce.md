@@ -8,9 +8,17 @@ how to run it, what has been checked, and where it could still break.
 ```bash
 python3.14 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # Python 3.14.7
 # the organisers' data in data/tactical/ (and data/broadcast/), as DATA.md describes
-.venv/bin/python -m possession.v12        # writes evaluation/results/v12.csv; prints its SHA-256
-.venv/bin/python evaluation/validate_submission.py evaluation/results/v12.csv
+.venv/bin/python -m possession.v13        # writes evaluation/results/v13.csv; prints its SHA-256
+.venv/bin/python evaluation/validate_submission.py evaluation/results/v13.csv
 ```
+
+**v13 (since 2026-11-09)**: expected SHA-256 of `evaluation/results/v13.csv` (bench set `all`, macOS arm64):
+`3efbef53e4394c318815fa33d8284af9ab6f675667c09008dfdba2e51a54a7c4` (twice the same at the default threads, and
+the same with `OMP_NUM_THREADS=1`; format check passes).
+v13 adds a GRU in PyTorch, run in **float64** like PathCRF (float32 against float64 changed 0 letters on four
+bench matches, [v13](models/v13-temporal.md)), and the stoppage switch's models; everything it reads at run
+time is in `possession/models/` (`v13_all.joblib`, `v13_augment_all.joblib`) or the organisers' data. Not yet
+tried from a clean clone or on Linux. The sections below were checked on v12.
 
 - **Nothing else is needed at run time:** the models are in `possession/models/` (trained on the
   bench by `bench/train_v12.py`; the bench data isn't needed to run v12). PathCRF's weights are

@@ -1,0 +1,138 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.612037037037037,
+   "base": 0.5774078478002378,
+   "macro_held_out": 0.922316523242159,
+   "macro_base": 0.9169762553370523
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 10.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6108768035516093,
+   "base": 0.5927927927927928,
+   "macro_held_out": 0.8882389964523508,
+   "macro_base": 0.8831056755230212
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.698342541436464,
+   "base": 0.6653465346534654,
+   "macro_held_out": 0.9286842307744761,
+   "macro_base": 0.9170011354559241
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6686202686202686,
+   "base": 0.6439263803680981,
+   "macro_held_out": 0.9065199615647987,
+   "macro_base": 0.901900809688255
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 10.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.7084967320261437,
+   "base": 0.6710382513661202,
+   "macro_held_out": 0.9285336565715664,
+   "macro_base": 0.9247392448431121
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 50.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6735177865612648,
+   "base": 0.6457956015523932,
+   "macro_held_out": 0.9224123414847947,
+   "macro_base": 0.9132391149267889
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "switch_team": 2.0,
+    "switch_dead": 10.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6728862973760933,
+   "base": 0.6588579795021963,
+   "macro_held_out": 0.9302870960049076,
+   "macro_base": 0.9235956078937306
+  }
+ ],
+ "all": {
+  "held_out": 0.663539638086983,
+  "base": 0.6364521982907576,
+  "better": 7,
+  "matches": 7
+ },
+ "macro": {
+  "held_out": 0.9181418294421506,
+  "base": 0.9115082633811263
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.663539638086983,
+   "base": 0.6364521982907576,
+   "better": 7,
+   "matches": 7
+  }
+ },
+ "unseen": {
+  "held_out": 0.6728862973760933,
+  "base": 0.6588579795021963,
+  "better": 1,
+  "matches": 1
+ },
+ "chosen": {
+  "switch_team": 2.0,
+  "switch_dead": 50.0,
+  "min_possession": 10.0
+ },
+ "checks": {
+  "mean": true,
+  "share": true,
+  "each_source": true,
+  "unseen": true
+ },
+ "passes": true
+}

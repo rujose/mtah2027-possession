@@ -1,0 +1,526 @@
+{
+ "bar": "docs/lab.md round 7, a switch, against branch A",
+ "signal": {
+  "dead_at": 0.5,
+  "trim_end_s": 2.0,
+  "live_below": 0.2,
+  "moving": 0.3,
+  "look": 5,
+  "threshold": 0.1445
+ },
+ "all": {
+  "reproduction": {
+   "A normal vs lab_temporal_chains average": 4.6886446886107436e-06,
+   "B normal vs lab_carried_chains augment": 0.0,
+   "B stressed vs lab_carried_chains augment": 0.0
+  },
+  "gru_check max |diff|": 2.95639037695139e-08,
+  "refit_check max |diff|": 2.95639037695139e-08,
+  "threshold rule": {
+   "threshold on all matches": 0.14448409174273757,
+   "mean B - A by variant": {
+    "normal": -0.022347047988234458,
+    "p10": -0.013301898976544036,
+    "p25": 0.004470127719944506,
+    "p50": 0.04096879683260747,
+    "stressed": 0.10753335892594677
+   },
+   "mean signal by variant": {
+    "normal": 0.04516099999999999,
+    "p10": 0.09793500000000001,
+    "p25": 0.160127,
+    "p50": 0.274595,
+    "stressed": 0.5145670000000001
+   }
+  },
+  "left-out thresholds": {
+   "min": 0.13243000430161547,
+   "q25": 0.13934130727051494,
+   "median": 0.1430867657562179,
+   "q75": 0.14709323513608413,
+   "max": 0.16349863883755766,
+   "n": 10
+  },
+  "signal by variant": {
+   "normal": {
+    "all": {
+     "min": 0.02434,
+     "q25": 0.0290375,
+     "median": 0.03712,
+     "q75": 0.050627500000000006,
+     "max": 0.10046,
+     "n": 10
+    },
+    "idsse": {
+     "min": 0.02434,
+     "q25": 0.02621,
+     "median": 0.03248,
+     "q75": 0.03712,
+     "max": 0.04537,
+     "n": 7
+    },
+    "metrica": {
+     "min": 0.05238,
+     "q25": 0.061149999999999996,
+     "median": 0.06992,
+     "q75": 0.08518999999999999,
+     "max": 0.10046,
+     "n": 3
+    }
+   },
+   "p10": {
+    "all": {
+     "min": 0.05722,
+     "q25": 0.081295,
+     "median": 0.09942000000000001,
+     "q75": 0.1151175,
+     "max": 0.13711,
+     "n": 10
+    },
+    "idsse": {
+     "min": 0.05722,
+     "q25": 0.07591500000000001,
+     "median": 0.08905,
+     "q75": 0.10619,
+     "max": 0.12079,
+     "n": 7
+    },
+    "metrica": {
+     "min": 0.10444,
+     "q25": 0.105485,
+     "median": 0.10653,
+     "q75": 0.12182000000000001,
+     "max": 0.13711,
+     "n": 3
+    }
+   },
+   "p25": {
+    "all": {
+     "min": 0.13027,
+     "q25": 0.1383675,
+     "median": 0.144845,
+     "q75": 0.18519,
+     "max": 0.21227,
+     "n": 10
+    },
+    "idsse": {
+     "min": 0.13027,
+     "q25": 0.14175,
+     "median": 0.14554,
+     "q75": 0.189005,
+     "max": 0.21227,
+     "n": 7
+    },
+    "metrica": {
+     "min": 0.13697,
+     "q25": 0.137505,
+     "median": 0.13804,
+     "q75": 0.157355,
+     "max": 0.17667,
+     "n": 3
+    }
+   },
+   "p50": {
+    "all": {
+     "min": 0.22418,
+     "q25": 0.2406975,
+     "median": 0.257985,
+     "q75": 0.300275,
+     "max": 0.35566,
+     "n": 10
+    },
+    "idsse": {
+     "min": 0.24032,
+     "q25": 0.257985,
+     "median": 0.28244,
+     "q75": 0.32582500000000003,
+     "max": 0.35566,
+     "n": 7
+    },
+    "metrica": {
+     "min": 0.22418,
+     "q25": 0.22904,
+     "median": 0.2339,
+     "q75": 0.237865,
+     "max": 0.24183,
+     "n": 3
+    }
+   },
+   "stressed": {
+    "all": {
+     "min": 0.36042,
+     "q25": 0.487175,
+     "median": 0.512575,
+     "q75": 0.568175,
+     "max": 0.62453,
+     "n": 10
+    },
+    "idsse": {
+     "min": 0.48557,
+     "q25": 0.512575,
+     "median": 0.5453,
+     "q75": 0.595785,
+     "max": 0.62453,
+     "n": 7
+    },
+    "metrica": {
+     "min": 0.36042,
+     "q25": 0.39078,
+     "median": 0.42114,
+     "q75": 0.456565,
+     "max": 0.49199,
+     "n": 3
+    }
+   }
+  },
+  "by variant": {
+   "normal": {
+    "A": 0.7161768414304366,
+    "B": 0.6938297934422021,
+    "gate": 0.7161768414304366,
+    "gate - A": 0.0,
+    "B - A": -0.022347047988234503,
+    "better branch": "A",
+    "gate - better": 0.0,
+    "picked B": 0,
+    "matches": 10,
+    "gate better than A": 0,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.0,
+     "metrica": 0.0
+    },
+    "unseen gate - A": 0.0
+   },
+   "p10": {
+    "A": 0.7054184034975859,
+    "B": 0.6921165045210419,
+    "gate": 0.7012298202217228,
+    "gate - A": -0.004188583275863134,
+    "B - A": -0.013301898976543991,
+    "better branch": "A",
+    "gate - better": -0.004188583275863134,
+    "picked B": 1,
+    "matches": 10,
+    "gate better than A": 0,
+    "gate worse than A": 1,
+    "by source gate - A": {
+     "idsse": 0.0,
+     "metrica": -0.01396194425287737
+    },
+    "unseen gate - A": -0.010471458189658028
+   },
+   "p25": {
+    "A": 0.691282760614097,
+    "B": 0.6957528883340415,
+    "gate": 0.6911656027506045,
+    "gate - A": -0.0001171578634925341,
+    "B - A": 0.004470127719944483,
+    "better branch": "B",
+    "gate - better": -0.004587285583437017,
+    "picked B": 4,
+    "matches": 10,
+    "gate better than A": 2,
+    "gate worse than A": 2,
+    "by source gate - A": {
+     "idsse": 0.002112799722206809,
+     "metrica": -0.005320392230124593
+    },
+    "unseen gate - A": -0.003990294172593445
+   },
+   "p50": {
+    "A": 0.6572883144059952,
+    "B": 0.6982571112386028,
+    "gate": 0.6982571112386028,
+    "gate - A": 0.04096879683260757,
+    "B - A": 0.04096879683260757,
+    "better branch": "B",
+    "gate - better": 0.0,
+    "picked B": 10,
+    "matches": 10,
+    "gate better than A": 10,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.04864710226046176,
+     "metrica": 0.023052750834280784
+    },
+    "unseen gate - A": 0.02742159133290653
+   },
+   "stressed": {
+    "A": 0.598214310677984,
+    "B": 0.7057476696039309,
+    "gate": 0.7057476696039309,
+    "gate - A": 0.10753335892594684,
+    "B - A": 0.10753335892594684,
+    "better branch": "B",
+    "gate - better": 0.0,
+    "picked B": 10,
+    "matches": 10,
+    "gate better than A": 10,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.11388650832565239,
+     "metrica": 0.09270934365996701
+    },
+    "unseen gate - A": 0.09374253406076472
+   }
+  },
+  "part 1 (normal: A everywhere, or loses <= 0.002)": true,
+  "part 2 (stressed: B on >= 90 %, gain >= +0.02)": true,
+  "part 2 needs B on": 9,
+  "part 3 (each partial level within 0.005 of the better branch)": {
+   "p10": true,
+   "p25": true,
+   "p50": true
+  }
+ },
+ "idsse": {
+  "reproduction": {
+   "A normal vs lab_temporal_chains average": 4.289580514238445e-06,
+   "B normal vs lab_carried_chains augment": 0.0,
+   "B stressed vs lab_carried_chains augment": 0.0
+  },
+  "gru_check max |diff|": 2.95639037695139e-08,
+  "refit_check max |diff|": 2.95639037695139e-08,
+  "threshold rule": {
+   "threshold on all matches": 0.1723569532792753,
+   "mean B - A by variant": {
+    "normal": -0.015658192542030474,
+    "p10": -0.009330489050574067,
+    "p25": -0.0013041422897521748,
+    "p50": 0.019400279269024958,
+    "stressed": 0.05731413225861889
+   },
+   "mean signal by variant": {
+    "normal": 0.033019999999999994,
+    "p10": 0.08914,
+    "p25": 0.1641742857142857,
+    "p50": 0.29408142857142855,
+    "stressed": 0.5558585714285714
+   }
+  },
+  "left-out thresholds": {
+   "min": 0.13472031136220547,
+   "q25": 0.16180978544783825,
+   "median": 0.1783008721137368,
+   "q75": 0.1834873113250268,
+   "max": 0.19529756763873043,
+   "n": 7
+  },
+  "signal by variant": {
+   "normal": {
+    "all": {
+     "min": 0.02314,
+     "q25": 0.028935,
+     "median": 0.03138,
+     "q75": 0.035530000000000006,
+     "max": 0.04769,
+     "n": 7
+    },
+    "idsse": {
+     "min": 0.02314,
+     "q25": 0.028935,
+     "median": 0.03138,
+     "q75": 0.035530000000000006,
+     "max": 0.04769,
+     "n": 7
+    }
+   },
+   "p10": {
+    "all": {
+     "min": 0.06196,
+     "q25": 0.07502,
+     "median": 0.08572,
+     "q75": 0.09947500000000001,
+     "max": 0.12731,
+     "n": 7
+    },
+    "idsse": {
+     "min": 0.06196,
+     "q25": 0.07502,
+     "median": 0.08572,
+     "q75": 0.09947500000000001,
+     "max": 0.12731,
+     "n": 7
+    }
+   },
+   "p25": {
+    "all": {
+     "min": 0.1314,
+     "q25": 0.14200000000000002,
+     "median": 0.14464,
+     "q75": 0.18484499999999998,
+     "max": 0.21949,
+     "n": 7
+    },
+    "idsse": {
+     "min": 0.1314,
+     "q25": 0.14200000000000002,
+     "median": 0.14464,
+     "q75": 0.18484499999999998,
+     "max": 0.21949,
+     "n": 7
+    }
+   },
+   "p50": {
+    "all": {
+     "min": 0.24151,
+     "q25": 0.26114499999999996,
+     "median": 0.28755,
+     "q75": 0.33036,
+     "max": 0.3465,
+     "n": 7
+    },
+    "idsse": {
+     "min": 0.24151,
+     "q25": 0.26114499999999996,
+     "median": 0.28755,
+     "q75": 0.33036,
+     "max": 0.3465,
+     "n": 7
+    }
+   },
+   "stressed": {
+    "all": {
+     "min": 0.49305,
+     "q25": 0.51591,
+     "median": 0.55003,
+     "q75": 0.59643,
+     "max": 0.62325,
+     "n": 7
+    },
+    "idsse": {
+     "min": 0.49305,
+     "q25": 0.51591,
+     "median": 0.55003,
+     "q75": 0.59643,
+     "max": 0.62325,
+     "n": 7
+    }
+   }
+  },
+  "by variant": {
+   "normal": {
+    "A": 0.6759902463660018,
+    "B": 0.6603320538239713,
+    "gate": 0.6759902463660018,
+    "gate - A": 0.0,
+    "B - A": -0.01565819254203049,
+    "better branch": "A",
+    "gate - better": 0.0,
+    "picked B": 0,
+    "matches": 7,
+    "gate better than A": 0,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.0
+    },
+    "unseen gate - A": 0.0
+   },
+   "p10": {
+    "A": 0.6701547860993786,
+    "B": 0.6608242970488046,
+    "gate": 0.6701547860993786,
+    "gate - A": 0.0,
+    "B - A": -0.009330489050573987,
+    "better branch": "A",
+    "gate - better": 0.0,
+    "picked B": 0,
+    "matches": 7,
+    "gate better than A": 0,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.0
+    },
+    "unseen gate - A": 0.0
+   },
+   "p25": {
+    "A": 0.6645802391739878,
+    "B": 0.6632760968842356,
+    "gate": 0.6610297583721453,
+    "gate - A": -0.003550480801842504,
+    "B - A": -0.0013041422897521748,
+    "better branch": "A",
+    "gate - better": -0.003550480801842504,
+    "picked B": 3,
+    "matches": 7,
+    "gate better than A": 1,
+    "gate worse than A": 2,
+    "by source gate - A": {
+     "idsse": -0.0035504808018424244
+    },
+    "unseen gate - A": 0.0
+   },
+   "p50": {
+    "A": 0.6458412191313666,
+    "B": 0.6652414984003915,
+    "gate": 0.6652414984003915,
+    "gate - A": 0.019400279269024878,
+    "B - A": 0.019400279269024878,
+    "better branch": "B",
+    "gate - better": 0.0,
+    "picked B": 7,
+    "matches": 7,
+    "gate better than A": 7,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.019400279269024958
+    },
+    "unseen gate - A": 0.018920969041862246
+   },
+   "stressed": {
+    "A": 0.6117300644174752,
+    "B": 0.6690441966760942,
+    "gate": 0.6690441966760942,
+    "gate - A": 0.05731413225861892,
+    "B - A": 0.05731413225861892,
+    "better branch": "B",
+    "gate - better": 0.0,
+    "picked B": 7,
+    "matches": 7,
+    "gate better than A": 7,
+    "gate worse than A": 0,
+    "by source gate - A": {
+     "idsse": 0.05731413225861889
+    },
+    "unseen gate - A": 0.05327404293788818
+   }
+  },
+  "part 1 (normal: A everywhere, or loses <= 0.002)": true,
+  "part 2 (stressed: B on >= 90 %, gain >= +0.02)": true,
+  "part 2 needs B on": 7,
+  "part 3 (each partial level within 0.005 of the better branch)": {
+   "p10": true,
+   "p25": true,
+   "p50": true
+  }
+ },
+ "skillcorner": {
+  "signal": {
+   "min": 0.25395,
+   "q25": 0.3336875,
+   "median": 0.339905,
+   "q75": 0.38373,
+   "max": 0.48792,
+   "n": 20
+  },
+  "picked B": 20,
+  "matches": 20,
+  "gate - A": {
+   "A": 0.319031,
+   "gate": 0.411684,
+   "B": 0.411684,
+   "gain": 0.09265300000000001,
+   "better": 20
+  },
+  "gate retrained - A retrained": {
+   "A": 0.31230850000000004,
+   "gate": 0.4077265,
+   "B": 0.4077265,
+   "gain": 0.095418,
+   "better": 20
+  },
+  "part 4 (gain >= +0.02, 15 of 20 better)": true,
+  "v12": 0.30762999999999996
+ }
+}

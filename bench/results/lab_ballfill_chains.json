@@ -1,0 +1,192 @@
+{
+ "scores": {
+  "robust": {
+   "J03WMX": 0.6,
+   "J03WN1": 0.61802,
+   "J03WOH": 0.70137,
+   "J03WOY": 0.69574,
+   "J03WPY": 0.71094,
+   "J03WQQ": 0.66029,
+   "J03WR9": 0.68571,
+   "metrica1": 0.78756,
+   "metrica2": 0.78656,
+   "metrica3": 0.78681
+  },
+  "ballfill": {
+   "J03WMX": 0.5832,
+   "J03WN1": 0.633,
+   "J03WOH": 0.67752,
+   "J03WOY": 0.68473,
+   "J03WPY": 0.691,
+   "J03WQQ": 0.65629,
+   "J03WR9": 0.67824,
+   "metrica1": 0.79053,
+   "metrica2": 0.791,
+   "metrica3": 0.79724
+  }
+ },
+ "against_v12": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.5831952662721893,
+    "base": 0.6,
+    "macro_held_out": 0.9189876983869225,
+    "macro_base": 0.9223144584069604
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.632996632996633,
+    "base": 0.618018018018018,
+    "macro_held_out": 0.8940119752692914,
+    "macro_base": 0.8916110248230275
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6775172413793104,
+    "base": 0.7013698630136986,
+    "macro_held_out": 0.9193832749241585,
+    "macro_base": 0.9198547574214307
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.684729064039409,
+    "base": 0.6957369062119367,
+    "macro_held_out": 0.909646462812299,
+    "macro_base": 0.9081341286293435
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6910039113428944,
+    "base": 0.7109375,
+    "macro_held_out": 0.9232176377448954,
+    "macro_base": 0.9262542251537954
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6562905317769131,
+    "base": 0.6602921646746347,
+    "macro_held_out": 0.9183861754828806,
+    "macro_base": 0.9141531408248711
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6782352941176472,
+    "base": 0.6857142857142857,
+    "macro_held_out": 0.9308618450242392,
+    "macro_base": 0.928619831703385
+   },
+   {
+    "match": "metrica1",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7905325443786982,
+    "base": 0.7875555555555556,
+    "macro_held_out": 0.9357140391951985,
+    "macro_base": 0.93238540111241
+   },
+   {
+    "match": "metrica2",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7909967845659163,
+    "base": 0.7865599999999999,
+    "macro_held_out": 0.9051297933533581,
+    "macro_base": 0.9059485670814794
+   },
+   {
+    "match": "metrica3",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7972413793103448,
+    "base": 0.7868131868131868,
+    "macro_held_out": 0.9367243003745681,
+    "macro_base": 0.9331535720176077
+   }
+  ],
+  "all": {
+   "held_out": 0.6982738650179956,
+   "base": 0.7032997480001316,
+   "better": 4,
+   "matches": 10
+  },
+  "macro": {
+   "held_out": 0.9192063202567811,
+   "base": 0.9182429107174311
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6577097059892852,
+    "base": 0.6674383910903677,
+    "better": 1,
+    "matches": 7
+   },
+   "metrica": {
+    "held_out": 0.7929235694183197,
+    "base": 0.7869762474562475,
+    "better": 3,
+    "matches": 3
+   }
+  },
+  "unseen": {
+   "held_out": 0.7642515005931516,
+   "base": 0.761660757020757,
+   "better": 3,
+   "matches": 4
+  },
+  "chosen": {
+   "setting": "chain"
+  },
+  "checks": {
+   "mean": false,
+   "share": false,
+   "each_source": false,
+   "unseen": true
+  },
+  "passes": false
+ }
+}

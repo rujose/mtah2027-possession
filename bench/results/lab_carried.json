@@ -1,0 +1,1334 @@
+{
+ "bar": "docs/lab.md round 7, the robustness candidate",
+ "all": {
+  "robust normal chain: max |diff| against lab_temporal's": 4.444444444473561e-06,
+  "average normal chain from": "lab_temporal_chains",
+  "v12 normal (recomputed)": 0.7032997480001316,
+  "normal players": {
+   "all": {
+    "cand": 0.687504337914593,
+    "base": 0.7032997480001316,
+    "gain": -0.01579541008553862,
+    "better": 1,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6531257651254515,
+    "base": 0.6674383910903677,
+    "gain": -0.01431262596491613,
+    "better": 1,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.7677210077559229,
+    "base": 0.7869762474562475,
+    "gain": -0.019255239700324427,
+    "better": 0,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7475363179471197,
+    "base": 0.761660757020757,
+    "gain": -0.014124439073637252,
+    "better": 1,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": -0.02657004830917875,
+    "J03WN1": -0.016195694555603546,
+    "J03WOH": -0.02098043325013821,
+    "J03WOY": -0.013736906211936795,
+    "J03WPY": -0.011070655792276951,
+    "J03WQQ": -0.012902606441702935,
+    "J03WR9": 0.001267962806424272,
+    "metrica1": -0.013935923653715099,
+    "metrica2": -0.011809169435215927,
+    "metrica3": -0.03202062601204225
+   },
+   "passes_part1": false
+  },
+  "normal augment": {
+   "all": {
+    "cand": 0.6938297934422021,
+    "base": 0.7032997480001316,
+    "gain": -0.009469954557929549,
+    "better": 1,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6597942624944836,
+    "base": 0.6674383910903677,
+    "gain": -0.007644128595884052,
+    "better": 1,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.7732460323202117,
+    "base": 0.7869762474562475,
+    "gain": -0.01373021513603571,
+    "better": 0,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7504715343998104,
+    "base": 0.761660757020757,
+    "gain": -0.011189222620946543,
+    "better": 0,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": -0.015094339622641506,
+    "J03WN1": -0.00480413223974252,
+    "J03WOH": 0.00615407679478297,
+    "J03WOY": -0.018927090261016466,
+    "J03WPY": -0.007969758064516053,
+    "J03WQQ": -0.00930141170237575,
+    "J03WR9": -0.003566245075679042,
+    "metrica1": -0.011543561552557091,
+    "metrica2": -0.004712350081037209,
+    "metrica3": -0.02493473377451283
+   },
+   "passes_part1": false
+  },
+  "normal average_players vs average": {
+   "all": {
+    "cand": 0.6995300022694732,
+    "base": 0.716177,
+    "gain": -0.016646997730526924,
+    "better": 0,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6606441151335137,
+    "base": 0.67647,
+    "gain": -0.015825884866486253,
+    "better": 0,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.790263738920045,
+    "base": 0.8088266666666666,
+    "gain": -0.018562927746621827,
+    "better": 0,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7650350822965426,
+    "base": 0.7804125,
+    "gain": -0.015377417703457463,
+    "better": 0,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": -0.02624825622775795,
+    "J03WN1": -0.02240571106094802,
+    "J03WOH": -0.0194501687763714,
+    "J03WOY": -0.01537267326732683,
+    "J03WPY": -0.01179277997364947,
+    "J03WQQ": -0.009690717185385722,
+    "J03WR9": -0.005820887573964373,
+    "metrica1": -0.006793131618759385,
+    "metrica2": -0.014663553719008293,
+    "metrica3": -0.0342320979020978
+   }
+  },
+  "normal average_players vs robust": {
+   "all": {
+    "cand": 0.6995300022694732,
+    "base": 0.7032997480001316,
+    "gain": -0.0037697457306585247,
+    "better": 3,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6606441151335137,
+    "base": 0.6674383910903677,
+    "gain": -0.006794275956853938,
+    "better": 2,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.790263738920045,
+    "base": 0.7869762474562475,
+    "gain": 0.0032874914637974393,
+    "better": 1,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7650350822965426,
+    "base": 0.761660757020757,
+    "gain": 0.0033743252757855446,
+    "better": 2,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.000711743772242035,
+    "J03WN1": -0.0013137290789660971,
+    "J03WOH": -0.014450031790069984,
+    "J03WOY": -0.022469579479263535,
+    "J03WPY": -0.012650279973649425,
+    "J03WQQ": -0.0010228818600204193,
+    "J03WR9": 0.003634826711749861,
+    "metrica1": 0.0203113128256851,
+    "metrica2": -0.005733553719008189,
+    "metrica3": -0.004715284715284596
+   }
+  },
+  "normal average vs robust": {
+   "all": {
+    "cand": 0.716177,
+    "base": 0.7032997480001316,
+    "gain": 0.0128772519998684,
+    "better": 8,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.67647,
+    "base": 0.6674383910903677,
+    "gain": 0.009031608909632314,
+    "better": 5,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.8088266666666666,
+    "base": 0.7869762474562475,
+    "gain": 0.021850419210419265,
+    "better": 3,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7804125,
+    "base": 0.761660757020757,
+    "gain": 0.018751742979243008,
+    "better": 4,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.026959999999999984,
+    "J03WN1": 0.021091981981981922,
+    "J03WOH": 0.005000136986301418,
+    "J03WOY": -0.007096906211936704,
+    "J03WPY": -0.0008574999999999555,
+    "J03WQQ": 0.008667835325365303,
+    "J03WR9": 0.009455714285714234,
+    "metrica1": 0.027104444444444487,
+    "metrica2": 0.008930000000000105,
+    "metrica3": 0.029516813186813207
+   }
+  },
+  "v12 stressed": 0.57605306707665,
+  "v12 drop normal -> stressed": {
+   "all": {
+    "cand": 0.57605306707665,
+    "base": 0.7032997480001316,
+    "gain": -0.12724668092348157,
+    "better": 0,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.5439707471156493,
+    "base": 0.6674383910903677,
+    "gain": -0.1234676439747184,
+    "better": 0,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.6509118136523184,
+    "base": 0.7869762474562475,
+    "gain": -0.136064433803929,
+    "better": 0,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.6329127759018894,
+    "base": 0.761660757020757,
+    "gain": -0.12874798111886757,
+    "better": 0,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": -0.13159851301115244,
+    "J03WN1": -0.11319043181112143,
+    "J03WOH": -0.133009921068851,
+    "J03WOY": -0.16958710332100368,
+    "J03WPY": -0.10689981493943468,
+    "J03WQQ": -0.1031891006077823,
+    "J03WR9": -0.10679862306368326,
+    "metrica1": -0.13715935904208487,
+    "metrica2": -0.12387343283582075,
+    "metrica3": -0.14716050953388138
+   }
+  },
+  "stressed players": {
+   "all": {
+    "cand": 0.6475875924001402,
+    "base": 0.57605306707665,
+    "gain": 0.07153452532349025,
+    "better": 10,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6138464173155451,
+    "base": 0.5439707471156493,
+    "gain": 0.06987567019989582,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.7263170009308624,
+    "base": 0.6509118136523184,
+    "gain": 0.07540518727854391,
+    "better": 3,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7031697033608686,
+    "base": 0.6329127759018894,
+    "gain": 0.07025692745897921,
+    "better": 4,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.07128105269369212,
+    "J03WN1": 0.057915270935960605,
+    "J03WOH": 0.07558372002698344,
+    "J03WOY": 0.11840715913438338,
+    "J03WPY": 0.06441869077836082,
+    "J03WQQ": 0.046711649829605295,
+    "J03WR9": 0.05481214800028511,
+    "metrica1": 0.08314226502499089,
+    "metrica2": 0.06272597408994629,
+    "metrica3": 0.08034732272069456
+   },
+   "passes_part2": true
+  },
+  "stressed players start": {
+   "all": {
+    "cand": 0.6221716945535404,
+    "base": 0.4980245388742923,
+    "gain": 0.12414715567924794,
+    "better": 10,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.5945200697833221,
+    "base": 0.47253730911811925,
+    "gain": 0.12198276066520275,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.6866921523507165,
+    "base": 0.5574947416386964,
+    "gain": 0.12919741071202015,
+    "better": 3,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.6676886669325901,
+    "base": 0.5416504679937282,
+    "gain": 0.12603819893886192,
+    "better": 4,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.11173523814400438,
+    "J03WN1": 0.12205500555720056,
+    "J03WOH": 0.1181496047661697,
+    "J03WOY": 0.13543814629824802,
+    "J03WPY": 0.13189653222169762,
+    "J03WQQ": 0.1180442340497116,
+    "J03WR9": 0.11656056361938727,
+    "metrica1": 0.14615195779959445,
+    "metrica2": 0.13095557343344955,
+    "metrica3": 0.11048470090301643
+   }
+  },
+  "stressed augment": {
+   "all": {
+    "cand": 0.7057476696039309,
+    "base": 0.57605306707665,
+    "gain": 0.12969460252728082,
+    "better": 10,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.673367854501049,
+    "base": 0.5439707471156493,
+    "gain": 0.12939710738539958,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.7813005715106556,
+    "base": 0.6509118136523184,
+    "gain": 0.13038875785833712,
+    "better": 3,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7574040000615632,
+    "base": 0.6329127759018894,
+    "gain": 0.12449122415967365,
+    "better": 4,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.12759380158594635,
+    "J03WN1": 0.14177219082766312,
+    "J03WOH": 0.1514217770183175,
+    "J03WOY": 0.15866186175062214,
+    "J03WPY": 0.11150635639021189,
+    "J03WQQ": 0.10802514106135275,
+    "J03WR9": 0.10679862306368326,
+    "metrica1": 0.1454861564277058,
+    "metrica2": 0.11744163796402596,
+    "metrica3": 0.12823847918327957
+   },
+   "passes_part2": true
+  },
+  "stressed augment start": {
+   "all": {
+    "cand": 0.6761610714555831,
+    "base": 0.4980245388742923,
+    "gain": 0.17813653258129078,
+    "better": 10,
+    "matches": 10
+   },
+   "idsse": {
+    "cand": 0.6532813530434154,
+    "base": 0.47253730911811925,
+    "gain": 0.18074404392529614,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": {
+    "cand": 0.7295470810839747,
+    "base": 0.5574947416386964,
+    "gain": 0.17205233944527829,
+    "better": 3,
+    "matches": 3
+   },
+   "unseen": {
+    "cand": 0.7143568426048885,
+    "base": 0.5416504679937282,
+    "gain": 0.17270637461116037,
+    "better": 4,
+    "matches": 4
+   },
+   "per_match": {
+    "J03WMX": 0.15803104884513436,
+    "J03WN1": 0.19138363680693554,
+    "J03WOH": 0.1825992534781134,
+    "J03WOY": 0.180857458770031,
+    "J03WPY": 0.18767457625089612,
+    "J03WQQ": 0.18999385321715617,
+    "J03WR9": 0.17466848010880665,
+    "metrica1": 0.19548777721554322,
+    "metrica2": 0.16816402155098864,
+    "metrica3": 0.15250521956930296
+   }
+  },
+  "floor": {
+   "folds": {
+    "J03WMX": 0.75,
+    "J03WN1": 0.75,
+    "J03WOH": 0.75,
+    "J03WOY": 0.75,
+    "J03WPY": 0.75,
+    "J03WQQ": 0.75,
+    "J03WR9": 0.75,
+    "metrica1": 0.75,
+    "metrica2": 0.75,
+    "metrica3": 0.75
+   },
+   "chosen": 0.75,
+   "mean_by_w": {
+    "normal": {
+     "0.0": 0.67287,
+     "0.5": 0.67042,
+     "0.75": 0.66237,
+     "1.0": 0.65257,
+     "1.25": 0.64167,
+     "1.5": 0.63115,
+     "2.0": 0.61568
+    },
+    "stressed": {
+     "0.0": 0.49802,
+     "0.5": 0.5776,
+     "0.75": 0.62217,
+     "1.0": 0.62216,
+     "1.25": 0.61811,
+     "1.5": 0.61123,
+     "2.0": 0.60006
+    }
+   }
+  },
+  "p_dead diagnostics": {
+   "normal augment": {
+    "dead_seen": 0.827,
+    "dead_missing": 0.94,
+    "live": 0.069,
+    "dead_seen_argmax_d": 0.852,
+    "live_argmax_d": 0.055
+   },
+   "normal players": {
+    "dead_seen": 0.836,
+    "dead_missing": 0.947,
+    "live": 0.099,
+    "dead_seen_argmax_d": 0.869,
+    "live_argmax_d": 0.075
+   },
+   "normal robust": {
+    "dead_seen": 0.79,
+    "dead_missing": 0.946,
+    "live": 0.053,
+    "dead_seen_argmax_d": 0.807,
+    "live_argmax_d": 0.042
+   },
+   "stressed augment": {
+    "dead_seen": 0.943,
+    "dead_missing": 0.974,
+    "live": 0.058,
+    "dead_seen_argmax_d": 0.965,
+    "live_argmax_d": 0.044
+   },
+   "stressed players": {
+    "dead_seen": 0.635,
+    "dead_missing": 0.969,
+    "live": 0.096,
+    "dead_seen_argmax_d": 0.833,
+    "live_argmax_d": 0.071
+   },
+   "stressed robust": {
+    "dead_seen": 0.211,
+    "dead_missing": 0.966,
+    "live": 0.047,
+    "dead_seen_argmax_d": 0.209,
+    "live_argmax_d": 0.035
+   }
+  }
+ },
+ "idsse": {
+  "robust normal chain: max |diff| against lab_temporal's": 4.838709677379427e-06,
+  "average normal chain from": "lab_temporal_chains",
+  "v12 normal (recomputed)": 0.6698615095327006,
+  "normal players": {
+   "all": {
+    "cand": 0.6545525865490761,
+    "base": 0.6698615095327006,
+    "gain": -0.015308922983624598,
+    "better": 0,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6545525865490761,
+    "base": 0.6698615095327006,
+    "gain": -0.015308922983624598,
+    "better": 0,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6780346820809248,
+    "base": 0.6843441466854725,
+    "gain": -0.006309464604547732,
+    "better": 0,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": -0.022646775495326676,
+    "J03WN1": -0.02683552313068316,
+    "J03WOH": -0.009918699186991953,
+    "J03WOY": -0.020185884195262904,
+    "J03WPY": -0.01787432795698929,
+    "J03WQQ": -0.0033917863155704664,
+    "J03WR9": -0.006309464604547732
+   },
+   "passes_part1": false
+  },
+  "normal augment": {
+   "all": {
+    "cand": 0.6603320538239713,
+    "base": 0.6698615095327006,
+    "gain": -0.009529455708729397,
+    "better": 1,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6603320538239713,
+    "base": 0.6698615095327006,
+    "gain": -0.009529455708729397,
+    "better": 1,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6734463276836158,
+    "base": 0.6843441466854725,
+    "gain": -0.010897819001856712,
+    "better": 0,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.010141242937853012,
+    "J03WN1": -0.012465177410675654,
+    "J03WOH": -0.008096113658684345,
+    "J03WOY": -0.014049703590997331,
+    "J03WPY": -0.008991862454617583,
+    "J03WQQ": -0.022346756782127164,
+    "J03WR9": -0.010897819001856712
+   },
+   "passes_part1": false
+  },
+  "normal average_players vs average": {
+   "all": {
+    "cand": 0.6621132849565782,
+    "base": 0.67599,
+    "gain": -0.013876715043421741,
+    "better": 1,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6621132849565782,
+    "base": 0.67599,
+    "gain": -0.013876715043421741,
+    "better": 1,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6825899280575539,
+    "base": 0.68458,
+    "gain": -0.001990071942446048,
+    "better": 0,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": -0.032795813953488406,
+    "J03WN1": -0.020890813704496858,
+    "J03WOH": -0.01903094182825482,
+    "J03WOY": -0.006961372549019518,
+    "J03WPY": -0.020118667529107404,
+    "J03WQQ": 0.0046506762028608595,
+    "J03WR9": -0.001990071942446048
+   }
+  },
+  "normal average_players vs robust": {
+   "all": {
+    "cand": 0.6621132849565782,
+    "base": 0.6698615095327006,
+    "gain": -0.007748224576122406,
+    "better": 2,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6621132849565782,
+    "base": 0.6698615095327006,
+    "gain": -0.007748224576122406,
+    "better": 2,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6825899280575539,
+    "base": 0.6843441466854725,
+    "gain": -0.00175421862791858,
+    "better": 0,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.011885428984364621,
+    "J03WN1": -0.025428499294016582,
+    "J03WOH": -0.012424085459691203,
+    "J03WOY": -0.030424338551364283,
+    "J03WPY": -0.016753828819429994,
+    "J03WQQ": 0.02066196973519918,
+    "J03WR9": -0.00175421862791858
+   }
+  },
+  "normal average vs robust": {
+   "all": {
+    "cand": 0.67599,
+    "base": 0.6698615095327006,
+    "gain": 0.006128490467299337,
+    "better": 5,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.67599,
+    "base": 0.6698615095327006,
+    "gain": 0.006128490467299337,
+    "better": 5,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.68458,
+    "base": 0.6843441466854725,
+    "gain": 0.00023585331452746772,
+    "better": 1,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.04468124293785303,
+    "J03WN1": -0.004537685589519724,
+    "J03WOH": 0.006606856368563618,
+    "J03WOY": -0.023462966002344765,
+    "J03WPY": 0.003364838709677409,
+    "J03WQQ": 0.016011293532338322,
+    "J03WR9": 0.00023585331452746772
+   }
+  },
+  "v12 stressed": 0.6022865900052788,
+  "v12 drop normal -> stressed": {
+   "all": {
+    "cand": 0.6022865900052788,
+    "base": 0.6698615095327006,
+    "gain": -0.06757491952742177,
+    "better": 0,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6022865900052788,
+    "base": 0.6698615095327006,
+    "gain": -0.06757491952742177,
+    "better": 0,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6128851540616246,
+    "base": 0.6843441466854725,
+    "gain": -0.07145899262384792,
+    "better": 0,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": -0.06495134965473959,
+    "J03WN1": -0.0789478151791525,
+    "J03WOH": -0.07436314363143648,
+    "J03WOY": -0.07293313694251558,
+    "J03WPY": -0.061860351163740335,
+    "J03WQQ": -0.04850964749651998,
+    "J03WR9": -0.07145899262384792
+   }
+  },
+  "stressed players": {
+   "all": {
+    "cand": 0.6346953615295587,
+    "base": 0.6022865900052788,
+    "gain": 0.0324087715242798,
+    "better": 7,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6346953615295587,
+    "base": 0.6022865900052788,
+    "gain": 0.0324087715242798,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6440967283072546,
+    "base": 0.6128851540616246,
+    "gain": 0.031211574245630036,
+    "better": 1,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.03289633091034949,
+    "J03WN1": 0.04772006358303216,
+    "J03WOH": 0.02005509641873293,
+    "J03WOY": 0.0414856254856254,
+    "J03WPY": 0.022707417852692258,
+    "J03WQQ": 0.03078529217389636,
+    "J03WR9": 0.031211574245630036
+   },
+   "passes_part2": true
+  },
+  "stressed players start": {
+   "all": {
+    "cand": 0.5893177577871065,
+    "base": 0.4704048396988711,
+    "gain": 0.11891291808823531,
+    "better": 7,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.5893177577871065,
+    "base": 0.4704048396988711,
+    "gain": 0.11891291808823531,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6048226950354609,
+    "base": 0.4950444726810674,
+    "gain": 0.10977822235439355,
+    "better": 1,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.09401916100827817,
+    "J03WN1": 0.12667076981244751,
+    "J03WOH": 0.13502824858757057,
+    "J03WOY": 0.12859828172098853,
+    "J03WPY": 0.12567770131176592,
+    "J03WQQ": 0.11261804182220292,
+    "J03WR9": 0.10977822235439355
+   }
+  },
+  "stressed augment": {
+   "all": {
+    "cand": 0.6690441966760942,
+    "base": 0.6022865900052788,
+    "gain": 0.0667576066708153,
+    "better": 7,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6690441966760942,
+    "base": 0.6022865900052788,
+    "gain": 0.0667576066708153,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6701949860724234,
+    "base": 0.6128851540616246,
+    "gain": 0.05730983201079887,
+    "better": 1,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.09300312486892326,
+    "J03WN1": 0.07664792980217261,
+    "J03WOH": 0.05597855227882054,
+    "J03WOY": 0.06854782644256308,
+    "J03WPY": 0.0672023198605477,
+    "J03WQQ": 0.04861366143188106,
+    "J03WR9": 0.05730983201079887
+   },
+   "passes_part2": true
+  },
+  "stressed augment start": {
+   "all": {
+    "cand": 0.6442277349592874,
+    "base": 0.4704048396988711,
+    "gain": 0.17382289526041625,
+    "better": 7,
+    "matches": 7
+   },
+   "idsse": {
+    "cand": 0.6442277349592874,
+    "base": 0.4704048396988711,
+    "gain": 0.17382289526041625,
+    "better": 7,
+    "matches": 7
+   },
+   "metrica": null,
+   "unseen": {
+    "cand": 0.6538681948424069,
+    "base": 0.4950444726810674,
+    "gain": 0.1588237221613395,
+    "better": 1,
+    "matches": 1
+   },
+   "per_match": {
+    "J03WMX": 0.15450392837566224,
+    "J03WN1": 0.18651696839321807,
+    "J03WOH": 0.20037243947858474,
+    "J03WOY": 0.17490880829603406,
+    "J03WPY": 0.17371387288070406,
+    "J03WQQ": 0.16792052723737116,
+    "J03WR9": 0.1588237221613395
+   }
+  },
+  "floor": {
+   "folds": {
+    "J03WMX": 0.75,
+    "J03WN1": 0.75,
+    "J03WOH": 0.75,
+    "J03WOY": 0.75,
+    "J03WPY": 0.75,
+    "J03WQQ": 0.75,
+    "J03WR9": 0.75
+   },
+   "chosen": 0.75,
+   "mean_by_w": {
+    "normal": {
+     "0.0": 0.63653,
+     "0.5": 0.63416,
+     "0.75": 0.62665,
+     "1.0": 0.61638,
+     "1.25": 0.60725,
+     "1.5": 0.59947,
+     "2.0": 0.58686
+    },
+    "stressed": {
+     "0.0": 0.4704,
+     "0.5": 0.55229,
+     "0.75": 0.58932,
+     "1.0": 0.59101,
+     "1.25": 0.58921,
+     "1.5": 0.58485,
+     "2.0": 0.57641
+    }
+   }
+  },
+  "p_dead diagnostics": {
+   "normal augment": {
+    "dead_seen": 0.946,
+    "dead_missing": 0.939,
+    "live": 0.053,
+    "dead_seen_argmax_d": 0.974,
+    "live_argmax_d": 0.039
+   },
+   "normal players": {
+    "dead_seen": 0.958,
+    "dead_missing": 0.945,
+    "live": 0.084,
+    "dead_seen_argmax_d": 0.981,
+    "live_argmax_d": 0.062
+   },
+   "normal robust": {
+    "dead_seen": 0.957,
+    "dead_missing": 0.944,
+    "live": 0.047,
+    "dead_seen_argmax_d": 0.98,
+    "live_argmax_d": 0.036
+   },
+   "stressed augment": {
+    "dead_seen": 0.951,
+    "dead_missing": 0.974,
+    "live": 0.04,
+    "dead_seen_argmax_d": 0.972,
+    "live_argmax_d": 0.025
+   },
+   "stressed players": {
+    "dead_seen": 0.655,
+    "dead_missing": 0.97,
+    "live": 0.08,
+    "dead_seen_argmax_d": 0.847,
+    "live_argmax_d": 0.058
+   },
+   "stressed robust": {
+    "dead_seen": 0.203,
+    "dead_missing": 0.967,
+    "live": 0.038,
+    "dead_seen_argmax_d": 0.203,
+    "live_argmax_d": 0.026
+   }
+  }
+ },
+ "skillcorner": {
+  "matches": 20,
+  "v12": 0.30762999999999996,
+  "players": {
+   "mean": 0.39143399999999995,
+   "gain": 0.08380399999999999,
+   "better": 20,
+   "passes_part3": true,
+   "by_pool": {
+    "test": {
+     "gain": 0.083483,
+     "better": 10
+    },
+    "train": {
+     "gain": 0.08412499999999999,
+     "better": 10
+    }
+   }
+  },
+  "augment": {
+   "mean": 0.411684,
+   "gain": 0.10405400000000001,
+   "better": 20,
+   "passes_part3": true,
+   "by_pool": {
+    "test": {
+     "gain": 0.108604,
+     "better": 10
+    },
+    "train": {
+     "gain": 0.099504,
+     "better": 10
+    }
+   }
+  },
+  "players retrained": {
+   "mean": 0.3885805,
+   "gain": 0.08095050000000001,
+   "better": 20,
+   "passes_part3": true,
+   "by_pool": {
+    "test": {
+     "gain": 0.08181400000000001,
+     "better": 10
+    },
+    "train": {
+     "gain": 0.08008699999999999,
+     "better": 10
+    }
+   }
+  },
+  "augment retrained": {
+   "mean": 0.4077265,
+   "gain": 0.10009649999999999,
+   "better": 20,
+   "passes_part3": true,
+   "by_pool": {
+    "test": {
+     "gain": 0.10429,
+     "better": 10
+    },
+    "train": {
+     "gain": 0.095903,
+     "better": 10
+    }
+   }
+  },
+  "means": {
+   "augment segments": {
+    "spell_f1": 0.4119,
+    "macro_f1": 0.8392,
+    "possessions": 311.0,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8351,
+    "alive_dead_f1": 0.9484,
+    "d_f1": 0.9409,
+    "dead_called": 0.4648,
+    "dead_recall_ball_seen": 0.8796,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0517,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment short": {
+    "spell_f1": 0.4012,
+    "macro_f1": 0.839,
+    "possessions": 330.2,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8345,
+    "alive_dead_f1": 0.9486,
+    "d_f1": 0.941,
+    "dead_called": 0.4639,
+    "dead_recall_ball_seen": 0.8781,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0507,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment start": {
+    "spell_f1": 0.4035,
+    "macro_f1": 0.8392,
+    "possessions": 324.4,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8349,
+    "alive_dead_f1": 0.9486,
+    "d_f1": 0.941,
+    "dead_called": 0.4639,
+    "dead_recall_ball_seen": 0.8781,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0507,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment timing": {
+    "spell_f1": 0.4117,
+    "macro_f1": 0.839,
+    "possessions": 311.0,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8349,
+    "alive_dead_f1": 0.9484,
+    "d_f1": 0.9409,
+    "dead_called": 0.4648,
+    "dead_recall_ball_seen": 0.8796,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0517,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment retrained segments": {
+    "spell_f1": 0.4085,
+    "macro_f1": 0.839,
+    "possessions": 314.45,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8347,
+    "alive_dead_f1": 0.9485,
+    "d_f1": 0.941,
+    "dead_called": 0.4653,
+    "dead_recall_ball_seen": 0.8812,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0521,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment retrained short": {
+    "spell_f1": 0.4014,
+    "macro_f1": 0.8389,
+    "possessions": 329.65,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8344,
+    "alive_dead_f1": 0.9486,
+    "d_f1": 0.941,
+    "dead_called": 0.4639,
+    "dead_recall_ball_seen": 0.8781,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0507,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment retrained start": {
+    "spell_f1": 0.4035,
+    "macro_f1": 0.8392,
+    "possessions": 324.4,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8349,
+    "alive_dead_f1": 0.9486,
+    "d_f1": 0.941,
+    "dead_called": 0.4639,
+    "dead_recall_ball_seen": 0.8781,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0507,
+    "p_dead_ball_seen": 0.8642
+   },
+   "augment retrained timing": {
+    "spell_f1": 0.4077,
+    "macro_f1": 0.8388,
+    "possessions": 314.45,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8344,
+    "alive_dead_f1": 0.9485,
+    "d_f1": 0.941,
+    "dead_called": 0.4653,
+    "dead_recall_ball_seen": 0.8812,
+    "dead_recall_ball_missing": 0.9951,
+    "live_called_dead": 0.0521,
+    "p_dead_ball_seen": 0.8642
+   },
+   "players segments": {
+    "spell_f1": 0.3921,
+    "macro_f1": 0.8225,
+    "possessions": 305.85,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8347,
+    "alive_dead_f1": 0.9321,
+    "d_f1": 0.9186,
+    "dead_called": 0.4434,
+    "dead_recall_ball_seen": 0.7876,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0494,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players short": {
+    "spell_f1": 0.3797,
+    "macro_f1": 0.8214,
+    "possessions": 331.4,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8336,
+    "alive_dead_f1": 0.9318,
+    "d_f1": 0.9181,
+    "dead_called": 0.4424,
+    "dead_recall_ball_seen": 0.7841,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0487,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players start": {
+    "spell_f1": 0.3819,
+    "macro_f1": 0.8215,
+    "possessions": 326.05,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8339,
+    "alive_dead_f1": 0.9318,
+    "d_f1": 0.9181,
+    "dead_called": 0.4424,
+    "dead_recall_ball_seen": 0.7841,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0487,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players timing": {
+    "spell_f1": 0.3914,
+    "macro_f1": 0.8223,
+    "possessions": 305.85,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8345,
+    "alive_dead_f1": 0.9321,
+    "d_f1": 0.9186,
+    "dead_called": 0.4434,
+    "dead_recall_ball_seen": 0.7876,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0494,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players retrained segments": {
+    "spell_f1": 0.3894,
+    "macro_f1": 0.8221,
+    "possessions": 309.35,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8341,
+    "alive_dead_f1": 0.9321,
+    "d_f1": 0.9186,
+    "dead_called": 0.4437,
+    "dead_recall_ball_seen": 0.7878,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0496,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players retrained short": {
+    "spell_f1": 0.3796,
+    "macro_f1": 0.8213,
+    "possessions": 331.55,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8335,
+    "alive_dead_f1": 0.9318,
+    "d_f1": 0.9181,
+    "dead_called": 0.4424,
+    "dead_recall_ball_seen": 0.7841,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0487,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players retrained start": {
+    "spell_f1": 0.3819,
+    "macro_f1": 0.8215,
+    "possessions": 326.05,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8339,
+    "alive_dead_f1": 0.9318,
+    "d_f1": 0.9181,
+    "dead_called": 0.4424,
+    "dead_recall_ball_seen": 0.7841,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0487,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players retrained timing": {
+    "spell_f1": 0.3886,
+    "macro_f1": 0.8218,
+    "possessions": 309.35,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8337,
+    "alive_dead_f1": 0.9321,
+    "d_f1": 0.9186,
+    "dead_called": 0.4437,
+    "dead_recall_ball_seen": 0.7878,
+    "dead_recall_ball_missing": 0.9943,
+    "live_called_dead": 0.0496,
+    "p_dead_ball_seen": 0.6068
+   },
+   "players_w0.5 (post hoc) segments": {
+    "spell_f1": 0.3516,
+    "macro_f1": 0.7823,
+    "possessions": 322.25,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8319,
+    "alive_dead_f1": 0.8987,
+    "d_f1": 0.859,
+    "dead_called": 0.3716,
+    "dead_recall_ball_seen": 0.5242,
+    "dead_recall_ball_missing": 0.9905,
+    "live_called_dead": 0.0229,
+    "p_dead_ball_seen": 0.451
+   },
+   "players_w0.5 (post hoc) short": {
+    "spell_f1": 0.3398,
+    "macro_f1": 0.7805,
+    "possessions": 356.5,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8307,
+    "alive_dead_f1": 0.8978,
+    "d_f1": 0.8573,
+    "dead_called": 0.3701,
+    "dead_recall_ball_seen": 0.5181,
+    "dead_recall_ball_missing": 0.9905,
+    "live_called_dead": 0.0226,
+    "p_dead_ball_seen": 0.451
+   },
+   "players_w0.5 (post hoc) start": {
+    "spell_f1": 0.3418,
+    "macro_f1": 0.7808,
+    "possessions": 351.8,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8312,
+    "alive_dead_f1": 0.8978,
+    "d_f1": 0.8573,
+    "dead_called": 0.3701,
+    "dead_recall_ball_seen": 0.5181,
+    "dead_recall_ball_missing": 0.9905,
+    "live_called_dead": 0.0226,
+    "p_dead_ball_seen": 0.451
+   },
+   "players_w0.5 (post hoc) timing": {
+    "spell_f1": 0.3511,
+    "macro_f1": 0.7822,
+    "possessions": 322.25,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8318,
+    "alive_dead_f1": 0.8987,
+    "d_f1": 0.859,
+    "dead_called": 0.3716,
+    "dead_recall_ball_seen": 0.5242,
+    "dead_recall_ball_missing": 0.9905,
+    "live_called_dead": 0.0229,
+    "p_dead_ball_seen": 0.451
+   },
+   "v12 segments": {
+    "spell_f1": 0.3083,
+    "macro_f1": 0.7188,
+    "possessions": 377.7,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.831,
+    "alive_dead_f1": 0.8494,
+    "d_f1": 0.7525,
+    "dead_called": 0.2942,
+    "dead_recall_ball_seen": 0.1885,
+    "dead_recall_ball_missing": 0.9884,
+    "live_called_dead": 0.0149,
+    "p_dead_ball_seen": 0.1879
+   },
+   "v12 short": {
+    "spell_f1": 0.2914,
+    "macro_f1": 0.714,
+    "possessions": 439.4,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8296,
+    "alive_dead_f1": 0.8465,
+    "d_f1": 0.7451,
+    "dead_called": 0.2894,
+    "dead_recall_ball_seen": 0.1678,
+    "dead_recall_ball_missing": 0.9882,
+    "live_called_dead": 0.0145,
+    "p_dead_ball_seen": 0.1879
+   },
+   "v12 start": {
+    "spell_f1": 0.2926,
+    "macro_f1": 0.7141,
+    "possessions": 436.1,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8299,
+    "alive_dead_f1": 0.8465,
+    "d_f1": 0.7451,
+    "dead_called": 0.2894,
+    "dead_recall_ball_seen": 0.1678,
+    "dead_recall_ball_missing": 0.9882,
+    "live_called_dead": 0.0145,
+    "p_dead_ball_seen": 0.1879
+   },
+   "v12 timing": {
+    "spell_f1": 0.3076,
+    "macro_f1": 0.7187,
+    "possessions": 377.7,
+    "true_possessions": 320.55,
+    "team_acc_alive": 0.8308,
+    "alive_dead_f1": 0.8494,
+    "d_f1": 0.7525,
+    "dead_called": 0.2942,
+    "dead_recall_ball_seen": 0.1885,
+    "dead_recall_ball_missing": 0.9884,
+    "live_called_dead": 0.0149,
+    "p_dead_ball_seen": 0.1879
+   }
+  }
+ }
+}

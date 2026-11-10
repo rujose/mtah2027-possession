@@ -1,0 +1,370 @@
+{
+ "dead frames": 1372965,
+ "stoppages": 2079,
+ "stoppages a match": 103.95,
+ "seen share of dead frames": 0.46545104937125126,
+ "moving share of seen dead frames": 0.8798478361562825,
+ "beyond a line share of seen dead frames": 0.3113772361387564,
+ "blanked by robust's rule, share of seen dead frames": 0.08689175148032699,
+ "speed of the seen dead ball, quantiles 10/25/50/75/90 (m/s)": [
+  0.27,
+  0.59,
+  1.28,
+  2.81,
+  5.74
+ ],
+ "speed of the moving seen dead ball, quantiles": [
+  0.48,
+  0.79,
+  1.5,
+  3.15,
+  6.16
+ ],
+ "nearest player to the seen dead ball, quantiles (m)": [
+  0.68,
+  1.38,
+  2.88,
+  5.12,
+  8.14
+ ],
+ "beyond the line when beyond, quantiles (m)": [
+  0.68,
+  0.97,
+  1.54,
+  2.32,
+  3.28
+ ],
+ "stoppage length quantiles (s)": [
+  5.6,
+  10.88,
+  20.0,
+  34.0,
+  53.09
+ ],
+ "live": {
+  "seen": 0.98290941211385,
+  "moving": 0.992077066702176,
+  "beyond": 0.00619299784734238,
+  "near_median": 1.5790871271109268,
+  "speed_median": 5.470967969265046,
+  "blanked": 0.0021827030369342615
+ },
+ "by tenth of the stoppage": {
+  "0": {
+   "seen": 0.907,
+   "moving": 0.966,
+   "beyond": 0.31,
+   "near_median": 3.392,
+   "speed_median": 2.84
+  },
+  "1": {
+   "seen": 0.639,
+   "moving": 0.931,
+   "beyond": 0.402,
+   "near_median": 3.994,
+   "speed_median": 1.501
+  },
+  "2": {
+   "seen": 0.417,
+   "moving": 0.907,
+   "beyond": 0.401,
+   "near_median": 3.621,
+   "speed_median": 1.32
+  },
+  "3": {
+   "seen": 0.318,
+   "moving": 0.902,
+   "beyond": 0.421,
+   "near_median": 3.341,
+   "speed_median": 1.252
+  },
+  "4": {
+   "seen": 0.295,
+   "moving": 0.892,
+   "beyond": 0.399,
+   "near_median": 2.842,
+   "speed_median": 1.134
+  },
+  "5": {
+   "seen": 0.299,
+   "moving": 0.864,
+   "beyond": 0.362,
+   "near_median": 2.325,
+   "speed_median": 1.015
+  },
+  "6": {
+   "seen": 0.317,
+   "moving": 0.828,
+   "beyond": 0.33,
+   "near_median": 2.186,
+   "speed_median": 0.851
+  },
+  "7": {
+   "seen": 0.372,
+   "moving": 0.816,
+   "beyond": 0.264,
+   "near_median": 2.216,
+   "speed_median": 0.841
+  },
+  "8": {
+   "seen": 0.467,
+   "moving": 0.784,
+   "beyond": 0.21,
+   "near_median": 2.281,
+   "speed_median": 0.765
+  },
+  "9": {
+   "seen": 0.623,
+   "moving": 0.809,
+   "beyond": 0.133,
+   "near_median": 2.344,
+   "speed_median": 1.028
+  }
+ },
+ "by stoppage length (s)": {
+  "[0.0, 2.0)": {
+   "stoppages": 69,
+   "seen_mean": 0.916,
+   "seen_first": 0.899,
+   "seen_last": 0.928,
+   "fully_seen": 0.87,
+   "never_seen": 0.043,
+   "seen_runs": 0.957,
+   "still_tail_median": 0.0,
+   "frames": 1448,
+   "seen_frames": 0.927,
+   "moving": 0.972,
+   "beyond": 0.079
+  },
+  "[2.0, 5.0)": {
+   "stoppages": 101,
+   "seen_mean": 0.955,
+   "seen_first": 0.96,
+   "seen_last": 0.921,
+   "fully_seen": 0.921,
+   "never_seen": 0.04,
+   "seen_runs": 0.96,
+   "still_tail_median": 0.0,
+   "frames": 9271,
+   "seen_frames": 0.963,
+   "moving": 0.966,
+   "beyond": 0.386
+  },
+  "[5.0, 10.0)": {
+   "stoppages": 301,
+   "seen_mean": 0.982,
+   "seen_first": 0.99,
+   "seen_last": 0.963,
+   "fully_seen": 0.96,
+   "never_seen": 0.007,
+   "seen_runs": 0.993,
+   "still_tail_median": 0.0,
+   "frames": 56219,
+   "seen_frames": 0.983,
+   "moving": 0.954,
+   "beyond": 0.43
+  },
+  "[10.0, 20.0)": {
+   "stoppages": 565,
+   "seen_mean": 0.796,
+   "seen_first": 0.991,
+   "seen_last": 0.75,
+   "fully_seen": 0.646,
+   "never_seen": 0.005,
+   "seen_runs": 1.097,
+   "still_tail_median": 0.0,
+   "frames": 211308,
+   "seen_frames": 0.778,
+   "moving": 0.908,
+   "beyond": 0.438
+  },
+  "[40.0, inf)": {
+   "stoppages": 366,
+   "seen_mean": 0.318,
+   "seen_first": 0.981,
+   "seen_last": 0.861,
+   "fully_seen": 0.027,
+   "never_seen": 0.003,
+   "seen_runs": 2.087,
+   "still_tail_median": 0.0,
+   "frames": 605727,
+   "seen_frames": 0.285,
+   "moving": 0.82,
+   "beyond": 0.14
+  },
+  "[20.0, 40.0)": {
+   "stoppages": 677,
+   "seen_mean": 0.499,
+   "seen_first": 0.99,
+   "seen_last": 0.716,
+   "fully_seen": 0.176,
+   "never_seen": 0.001,
+   "seen_runs": 1.555,
+   "still_tail_median": 0.0,
+   "frames": 488992,
+   "seen_frames": 0.484,
+   "moving": 0.882,
+   "beyond": 0.319
+  }
+ },
+ "by restart kind": {
+  "centre": {
+   "stoppages": 63,
+   "seen": 0.328,
+   "length_median": 68.4,
+   "out_before": 0.238,
+   "still_tail_median": 0.0,
+   "beyond": 0.204,
+   "moving": 0.834
+  },
+  "corner": {
+   "stoppages": 113,
+   "seen": 0.447,
+   "length_median": 33.08,
+   "out_before": 0.115,
+   "still_tail_median": 0.0,
+   "beyond": 0.339,
+   "moving": 0.875
+  },
+  "field": {
+   "stoppages": 910,
+   "seen": 0.696,
+   "length_median": 20.72,
+   "out_before": 0.1,
+   "still_tail_median": 0.0,
+   "beyond": 0.177,
+   "moving": 0.866
+  },
+  "goal_area": {
+   "stoppages": 92,
+   "seen": 0.532,
+   "length_median": 28.56,
+   "out_before": 0.13,
+   "still_tail_median": 0.0,
+   "beyond": 0.217,
+   "moving": 0.88
+  },
+  "touchline": {
+   "stoppages": 540,
+   "seen": 0.895,
+   "length_median": 13.76,
+   "out_before": 0.237,
+   "still_tail_median": 0.0,
+   "beyond": 0.583,
+   "moving": 0.892
+  },
+  "unknown": {
+   "stoppages": 361,
+   "seen": 0.339,
+   "length_median": 21.8,
+   "out_before": 0.097,
+   "still_tail_median": 0.0,
+   "beyond": 0.299,
+   "moving": 0.925
+  }
+ },
+ "ball to the restart spot, median m, s before the restart": {
+  "0.2": 0.7898220394755522,
+  "0.5": 1.3890720588657282,
+  "1": 2.020286744349979,
+  "2": 2.9285359201050722,
+  "4": 3.940298157199706,
+  "8": 4.869941067882743,
+  "16": 6.0322180233009375
+ },
+ "still tail before the restart (s), quantiles": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "seen dead ball by s since the stoppage started": {
+  "[0.0, 1.0)": {
+   "seen": 0.985,
+   "moving": 0.984,
+   "beyond": 0.239,
+   "near_median": 3.03,
+   "speed_median": 4.808
+  },
+  "[1.0, 2.0)": {
+   "seen": 0.985,
+   "moving": 0.973,
+   "beyond": 0.383,
+   "near_median": 3.56,
+   "speed_median": 2.949
+  },
+  "[2.0, 4.0)": {
+   "seen": 0.98,
+   "moving": 0.954,
+   "beyond": 0.462,
+   "near_median": 3.616,
+   "speed_median": 1.689
+  },
+  "[4.0, 8.0)": {
+   "seen": 0.764,
+   "moving": 0.906,
+   "beyond": 0.42,
+   "near_median": 3.291,
+   "speed_median": 1.211
+  },
+  "[8.0, 16.0)": {
+   "seen": 0.36,
+   "moving": 0.869,
+   "beyond": 0.364,
+   "near_median": 2.262,
+   "speed_median": 1.099
+  },
+  "[16.0, inf)": {
+   "seen": 0.28,
+   "moving": 0.778,
+   "beyond": 0.127,
+   "near_median": 2.482,
+   "speed_median": 0.741
+  }
+ },
+ "seen dead ball by s until the restart": {
+  "[0.0, 1.0)": {
+   "seen": 0.763,
+   "moving": 0.943,
+   "beyond": 0.152,
+   "near_median": 1.927,
+   "speed_median": 2.6
+  },
+  "[1.0, 2.0)": {
+   "seen": 0.717,
+   "moving": 0.841,
+   "beyond": 0.263,
+   "near_median": 2.111,
+   "speed_median": 1.098
+  },
+  "[2.0, 4.0)": {
+   "seen": 0.672,
+   "moving": 0.828,
+   "beyond": 0.333,
+   "near_median": 2.36,
+   "speed_median": 0.919
+  },
+  "[4.0, 8.0)": {
+   "seen": 0.579,
+   "moving": 0.834,
+   "beyond": 0.364,
+   "near_median": 2.694,
+   "speed_median": 0.964
+  },
+  "[8.0, 16.0)": {
+   "seen": 0.489,
+   "moving": 0.873,
+   "beyond": 0.346,
+   "near_median": 2.992,
+   "speed_median": 1.172
+  },
+  "[16.0, inf)": {
+   "seen": 0.355,
+   "moving": 0.914,
+   "beyond": 0.293,
+   "near_median": 3.467,
+   "speed_median": 1.557
+  }
+ }
+}

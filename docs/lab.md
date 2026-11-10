@@ -221,6 +221,95 @@ and our match is Metrica-tracked, so this may mean something. But 3 matches, cho
 carry it: weighing the sources differently would have to be decided before a new test, never to rescue
 these.
 
+### Round 7 (from 2026-11-09): new directions, judged against v12
+
+Jose: many subagents, new approaches, more data, better data, pretrained models; keep what's best.
+
+- **The base is v12's chain** (robust -> short -> segments -> timing on `all`; robust -> short -> segments ->
+  recall -> dead on `idsse`), every stage on its setting for that match, refitted on each candidate's input:
+  **0.7033** on `all`, **0.6699** on `idsse` (`bench/lab_motion.py --chains` is the pattern).
+- **The bar, plus what rounds 5-6 taught:** the usual four checks against v12, on **both** sets, and a gain of
+  at least **+0.005**: smaller gains moved by 0.002 from settings alone.
+- **A start** (a new robust-like model or decoder) is judged first against robust (0.6728; `idsse` 0.6365),
+  then as a chain against v12. **A post stage** is judged as a chain against v12.
+- Every candidate writes `bench/lab_<name>.py`, `docs/lab/<name>.md` and `bench/results/lab_<name>*`; nothing
+  existing is edited; nothing reads our match.
+- **A robustness candidate** (added 2026-11-09 after the [SkillCorner test](lab/skillcorner.md), before any
+  such candidate ran): a fix for a failure the bench can't show (stoppages with the ball tracked and moving)
+  is judged against v12's chain on three things, all of which it must pass:
+  1. **the bench, both sets: no loss beyond noise**: the mean within 0.002 of v12's, and neither source nor
+     the unseen matches down by more than 0.005;
+  2. **a stressed bench** (the same matches, a SkillCorner-like ball put into the true stoppages, its recipe
+     fixed from SkillCorner's own statistics before anything is scored on it): a gain of at least +0.02 on
+     both sets, 70 % of matches better;
+  3. **SkillCorner's 20 matches**: a gain of at least +0.02, 15 of 20 better.
+
+  SkillCorner was a one-off untouched test; judging with it from here on makes it part of the bench.
+- **A switch** (added 2026-11-09 after `carried`, before the switch ran; Jose's go-ahead for v13 plus a
+  switch): per match, the program picks branch A (v13: the temporal `average` start and v12's post stages) or
+  branch B (`augment`'s chain) from a signal it computes on the tracking alone. The signal and its threshold
+  are fixed on external data, and nobody reads the signal on our match. It must pass, against branch A:
+  1. **the normal bench, both sets**: it picks A on every match, or else loses no more than 0.002;
+  2. **the stressed bench, both sets**: it picks B on at least 9 of 10 matches, a gain of at least +0.02;
+  3. **partly stressed benches** (10 %, 25 % and 50 % of the true stoppages stressed): at every level, within
+     0.005 of the better branch's mean, on both sets;
+  4. **SkillCorner's 20 matches**: a gain of at least +0.02, 15 of 20 better.
+
+**Results** (2026-11-09; builders ran in parallel, each judged as a chain against v12):
+
+| candidate | what | start against robust (`all`) | chain against v12, `all` | chain against v12, `idsse` | verdict |
+|---|---|---|---|---|---|
+| [hsmm](lab/hsmm.md) | a decoder that prices how long possessions last (semi-Markov) | +0.0003 | +0.0004, 4/10 | −0.0049, 1/7 | discarded |
+| [ballfill](lab/ballfill.md) | the missing ball filled in from the players | | −0.0050, 4/10 | −0.0048, 1/7 | discarded |
+| [ensemble](lab/ensemble.md) | robust, learned and motion averaged or stacked | +0.0093, 8/10 | +0.0043 | −0.0039 (J03WR9 −0.021) | discarded |
+| [temporal](lab/temporal.md), network alone | a bidirectional GRU over robust's 97 features, ±60 s of context | +0.0369, 9/10 | +0.0167, 9/10 | +0.0072, **4/7** | fails the share on `idsse` |
+| [**temporal, `average`**](lab/temporal.md) | the GRU's P averaged with robust's | +0.0301, 10/10 | **+0.0129, 8/10** | **+0.0061, 5/7** | **passes every check**: the first start since robust whose gain survives the chain |
+| [skillcorner](lab/skillcorner.md) | a test, not a candidate: v12 on 20 broadcast matches it has never seen | | | | v12 **0.308**, v11 0.366 (v12 worse on 19/20) |
+| [carried](lab/carried.md), `players` | a floor on P(dead) from v4's players-only model (robustness bar) | | −0.0158, 1/10 | −0.0153, 0/7 | fails part 1; stressed +0.072 / +0.032, SkillCorner 0.391 (20/20) |
+| [carried](lab/carried.md), `augment` | robust retrained with SkillCorner-like stoppage balls (robustness bar) | | −0.0095, 1/10 | −0.0095, 1/7 | fails part 1; stressed +0.130 / +0.067, **SkillCorner 0.412** (20/20, above v11 on all 20) |
+| [**gate**](lab/gate.md) | per match, `average`'s chain (A) or `augment`'s (B), from how often the ball is seen and moving where the players say dead (switch bar) | | A on 10/10: ±0 | A on 7/7: ±0 | **passes all four parts**: stressed B on 17/17, +0.108 / +0.057; partly stressed within 0.005 (narrowly: −0.0046 worst); SkillCorner B on 20/20, +0.093 |
+
+**Adopted (Jose, 2026-11-09): v13 = the `average` start, with the switch to `augment`'s chain**
+([v13](models/v13-temporal.md)).
+
+- **The frames limit recall, not the decoder (hsmm).** 43 % of the short possessions v12 misses have robust's P
+  favouring the other team, so no decoder can find them. That's why MBR decoding wasn't tried.
+- **The ball can't be recovered where it matters (ballfill).** 87 % of live missing-ball frames sit in gaps of
+  10 s or more, where any fill is 13–17 m off.
+- **The chain absorbs start gains (ensemble), unless the start is steadier over time (temporal).** The GRU's
+  frames are only a little better (log loss 0.190 against 0.199 on IDSSE), but its P doesn't flicker: 625–843
+  raw possessions a match against robust's 828–1161. So it does part of short's and segments' job, and the
+  stages add +0.010 on top of it against +0.031 on top of robust.
+- **`average` is narrow on `idsse`**: +0.0061 (bar +0.005), 5 of 7 (bar 5), J03WR9 +0.0002, and it's the better
+  of two variants tried there, so it's slightly flattered. J03WOY loses in every chain from it (−0.007 on
+  `all`, −0.024 on `idsse`). It reads robust's blanked features, so it shares robust's stoppage weakness.
+  Before it could replace robust in v12: deployment networks trained on every IDSSE match, run in float64
+  (as PathCRF since v12) so another CPU can't move the file, the post stages retrained on its output, and the
+  port checked frame for frame, as v12's was.
+- **SkillCorner: v12's first test on real tracking it has never seen, and it falls below v11.** Two causes,
+  both measured: stoppages where the ball stays tracked and moving (worth 0.17: with the truth's stoppages v12
+  scores 0.473), and team changes that don't sit on a touch in SkillCorner's own tracking (its labels' new
+  team is 2.1 m from the ball at the change, 0.6 m on IDSSE). The second is partly SkillCorner's labels and
+  broadcast positions; the first is v12's known failure mode 1, and it's what `carried` tried to fix. Our match's
+  ball is missing 83 % of the time the players stand still, which protects it, but whether our *seen* ball
+  moves in stoppages can only be checked label-free: `python -m bench.transfer_check --ours` (dead share).
+  On SkillCorner that check said NEAR more often than WARN, so a NEAR on the low side of the dead share is
+  worth taking seriously.
+- **Insurance has a price on the bench (carried).** A stressed bench (the bench's own stoppages given
+  SkillCorner's moving balls, recipe fixed from SkillCorner's statistics) costs v12 **−0.127** (0.7033 →
+  0.5761). Both fixes recover most of it and lift SkillCorner past v11, but both call more live frames dead
+  on the normal bench (robust's mean P(dead) on live frames 0.053; `augment` 0.069, `players` 0.099), and
+  there's nothing for them to win back there: where a true stoppage has no ball, robust is already at 0.95.
+  `augment` pays off if the chance that our ball moves through stoppages like SkillCorner's is above about
+  7–9 %. A gentler floor (w = 0.5, looked at afterwards, not judged) stays within part 1 but gains too little
+  on the stressed `idsse` set: no single fixed setting serves both worlds.
+- **More data:** SkillCorner's open data (20 matches, MIT) is the only new usable source. SoccerTrack v2
+  (10 matches, CC BY 4.0) needs a Hugging Face account. PFF's terms forbid "competitive or benchmarking"
+  use. No new DFL or Metrica releases.
+- **Pretrained models and methods surveyed, not built:** TranSPORTmer and BallRadar (in PathCRF's repo; 4–6
+  days to adapt), retraining PathCRF (3–5 days), MS-TCN++ or ASRF (temporal convolutions: the GRU covers that
+  direction). None fits before the freeze on 2026-11-12.
+
 ### Where the lab stands
 
 | | `all` held out | vs v11 | `idsse` held out | vs v11 |
@@ -229,7 +318,8 @@ these.
 | round 1's mix (stoppage → short → segments) | 0.6156 | +0.043 | 0.6001 | +0.038 |
 | round 2 (mix → timing → recall → dead) | 0.6586 | +0.086 | 0.6123 (no dead, recall) | +0.050 |
 | round 3 (learned → …) | 0.7019 | +0.129 | 0.6642 | +0.102 |
-| **round 4 (robust → …)** | **0.7033** | **+0.131** | **0.6699** | **+0.107** |
+| round 4 (robust → …): v12 | 0.7033 | +0.131 | 0.6699 | +0.107 |
+| **round 7 (average → …): v13** (the switch picks this branch on every normal bench match) | **0.7162** | **+0.144** | **0.6760** | **+0.114** |
 
 All of it is leave-one-match-out on 10 (or 7) bench matches, every stage judged against the chain
 without it. Two things flatter it: several candidates' design choices were explored on all 10

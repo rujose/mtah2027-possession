@@ -1,0 +1,55 @@
+match,source,ball,part,frames,seen,moving,beyond,blanked_of_seen,missing_after_blanking
+J03WMX,idsse,normal,dead,60598,0.4177,0.0088,0.4575,0.9908,0.9962
+J03WMX,idsse,normal,live,85369,0.7307,0.9861,0.0019,0.0049,0.2729
+J03WMX,idsse,stressed,dead,60598,0.4961,0.8959,0.5082,0.0655,0.5364
+J03WMX,idsse,stressed,live,85369,0.7307,0.9876,0.0019,0.0038,0.2721
+J03WMX,idsse,train stress,dead,60598,0.5634,0.8631,0.3545,0.0953,0.4903
+J03WMX,idsse,train stress,live,85369,0.7307,0.9875,0.0019,0.0038,0.2721
+J03WN1,idsse,normal,dead,73184,0.4442,0.0058,0.3148,0.9932,0.9970
+J03WN1,idsse,normal,live,68377,0.7014,0.9765,0.0033,0.0093,0.3051
+J03WN1,idsse,stressed,dead,73184,0.5077,0.8729,0.3606,0.0869,0.5364
+J03WN1,idsse,stressed,live,68377,0.7014,0.9782,0.0033,0.0068,0.3033
+J03WN1,idsse,train stress,dead,73184,0.4831,0.8721,0.4117,0.0893,0.5600
+J03WN1,idsse,train stress,live,68377,0.7014,0.9783,0.0033,0.0068,0.3033
+J03WOH,idsse,normal,dead,65269,0.4471,0.0066,0.3407,0.9934,0.9971
+J03WOH,idsse,normal,live,71945,0.7218,0.9743,0.0013,0.0151,0.2891
+J03WOH,idsse,stressed,dead,65269,0.4952,0.8583,0.3839,0.1100,0.5593
+J03WOH,idsse,stressed,live,71945,0.7218,0.9758,0.0013,0.0137,0.2881
+J03WOH,idsse,train stress,dead,65269,0.4775,0.8277,0.3779,0.1306,0.5849
+J03WOH,idsse,train stress,live,71945,0.7218,0.9758,0.0013,0.0137,0.2881
+J03WOY,idsse,normal,dead,66250,0.4196,0.0094,0.2718,0.9882,0.9950
+J03WOY,idsse,normal,live,76286,0.6552,0.9824,0.0020,0.0087,0.3506
+J03WOY,idsse,stressed,dead,66250,0.5440,0.8771,0.3511,0.0842,0.5018
+J03WOY,idsse,stressed,live,76286,0.6552,0.9841,0.0020,0.0072,0.3496
+J03WOY,idsse,train stress,dead,66250,0.5249,0.8549,0.3635,0.1078,0.5317
+J03WOY,idsse,train stress,live,76286,0.6552,0.9841,0.0020,0.0072,0.3496
+J03WPY,idsse,normal,dead,64751,0.4396,0.0077,0.3255,0.9925,0.9967
+J03WPY,idsse,normal,live,81460,0.7222,0.9782,0.0009,0.0105,0.2854
+J03WPY,idsse,stressed,dead,64751,0.4794,0.8591,0.3114,0.0954,0.5664
+J03WPY,idsse,stressed,live,81460,0.7222,0.9793,0.0009,0.0091,0.2844
+J03WPY,idsse,train stress,dead,64751,0.4551,0.8478,0.4310,0.1100,0.5950
+J03WPY,idsse,train stress,live,81460,0.7222,0.9794,0.0009,0.0091,0.2844
+J03WQQ,idsse,normal,dead,57993,0.4924,0.0079,0.1202,0.9949,0.9975
+J03WQQ,idsse,normal,live,84352,0.7067,0.9756,0.0012,0.0140,0.3031
+J03WQQ,idsse,stressed,dead,57993,0.5675,0.8680,0.3395,0.0908,0.4840
+J03WQQ,idsse,stressed,live,84352,0.7067,0.9771,0.0012,0.0124,0.3020
+J03WQQ,idsse,train stress,dead,57993,0.5562,0.8660,0.3332,0.0974,0.4980
+J03WQQ,idsse,train stress,live,84352,0.7067,0.9770,0.0012,0.0124,0.3020
+J03WR9,idsse,normal,dead,61494,0.4581,0.0067,0.3701,0.9918,0.9963
+J03WR9,idsse,normal,live,85316,0.7123,0.9677,0.0016,0.0219,0.3033
+J03WR9,idsse,stressed,dead,61494,0.4413,0.8753,0.3527,0.0783,0.5932
+J03WR9,idsse,stressed,live,85316,0.7123,0.9688,0.0016,0.0209,0.3026
+J03WR9,idsse,train stress,dead,61494,0.5623,0.8164,0.2486,0.1461,0.5199
+J03WR9,idsse,train stress,live,85316,0.7123,0.9688,0.0016,0.0209,0.3026
+metrica1,metrica,normal,dead,59065,0.0595,0.0822,0.0154,0.8731,0.9924
+metrica1,metrica,normal,live,85941,0.9100,0.9776,0.0159,0.0087,0.0978
+metrica1,metrica,stressed,dead,59065,0.4395,0.9022,0.3678,0.0660,0.5895
+metrica1,metrica,stressed,live,85941,0.9100,0.9811,0.0159,0.0087,0.0978
+metrica2,metrica,normal,dead,49971,0.0222,0.5410,0.0468,0.3897,0.9864
+metrica2,metrica,normal,live,91185,0.8591,0.9826,0.0029,0.0031,0.1436
+metrica2,metrica,stressed,dead,49971,0.4673,0.8793,0.4185,0.0876,0.5736
+metrica2,metrica,stressed,live,91185,0.8591,0.9860,0.0029,0.0031,0.1436
+metrica3,metrica,normal,dead,42173,0.0050,0.5000,0.2714,0.0000,0.9950
+metrica3,metrica,normal,live,101588,0.9077,0.9860,0.0030,0.0062,0.0980
+metrica3,metrica,stressed,dead,42173,0.5884,0.9194,0.5181,0.0441,0.4376
+metrica3,metrica,stressed,live,101588,0.9077,0.9895,0.0030,0.0062,0.0980

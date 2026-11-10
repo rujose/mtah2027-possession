@@ -1,0 +1,309 @@
+{
+ "folds": [
+  {
+   "match": "J03WMX",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.5722287047841307,
+   "base": 0.5790834312573442,
+   "macro_held_out": 0.9167700970048901,
+   "macro_base": 0.9175232236757771
+  },
+  {
+   "match": "J03WN1",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.5939120631341601,
+   "base": 0.5907344632768361,
+   "macro_held_out": 0.8874777851154899,
+   "macro_base": 0.8861528142168725
+  },
+  {
+   "match": "J03WOH",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.6614130434782608,
+   "base": 0.677384196185286,
+   "macro_held_out": 0.9180122501656002,
+   "macro_base": 0.9179935110673018
+  },
+  {
+   "match": "J03WOY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.6627737226277373,
+   "base": 0.6637785800240674,
+   "macro_held_out": 0.9070409451799494,
+   "macro_base": 0.903579523229738
+  },
+  {
+   "match": "J03WPY",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.6731070496083552,
+   "base": 0.6789610389610388,
+   "macro_held_out": 0.9216140151871537,
+   "macro_base": 0.9234259681429853
+  },
+  {
+   "match": "J03WQQ",
+   "source": "idsse",
+   "unseen": false,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 10.0
+   },
+   "held_out": 0.6406290956749674,
+   "base": 0.6436363636363636,
+   "macro_held_out": 0.9168416601415972,
+   "macro_base": 0.9153908560045392
+  },
+  {
+   "match": "J03WR9",
+   "source": "idsse",
+   "unseen": true,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.6555066079295153,
+   "base": 0.661764705882353,
+   "macro_held_out": 0.9311367509592489,
+   "macro_base": 0.9281190820433873
+  },
+  {
+   "match": "metrica1",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.7695976154992548,
+   "base": 0.7563421828908554,
+   "macro_held_out": 0.9308326732737284,
+   "macro_base": 0.9284069802628646
+  },
+  {
+   "match": "metrica2",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.7420000000000001,
+   "base": 0.7348837209302326,
+   "macro_held_out": 0.8971426067874534,
+   "macro_base": 0.8968810322350004
+  },
+  {
+   "match": "metrica3",
+   "source": "metrica",
+   "unseen": true,
+   "picked": {
+    "switch_team": 4.0,
+    "switch_dead": 25.0,
+    "min_possession": 20.0
+   },
+   "held_out": 0.7416549789621318,
+   "base": 0.7416666666666666,
+   "macro_held_out": 0.9286406572107473,
+   "macro_base": 0.9278941416397813
+  }
+ ],
+ "all": {
+  "held_out": 0.6712822881698512,
+  "base": 0.6728235349711043,
+  "better": 3,
+  "matches": 10
+ },
+ "macro": {
+  "held_out": 0.9155509441025858,
+  "base": 0.9145367132518247
+ },
+ "by_source": {
+  "idsse": {
+   "held_out": 0.6370814696053039,
+   "base": 0.6421918256033271,
+   "better": 1,
+   "matches": 7
+  },
+  "metrica": {
+   "held_out": 0.7510841981537956,
+   "base": 0.7442975234959182,
+   "better": 2,
+   "matches": 3
+  }
+ },
+ "unseen": {
+  "held_out": 0.7271898005977255,
+  "base": 0.7236643190925269,
+  "better": 2,
+  "matches": 4
+ },
+ "chosen": {
+  "switch_team": 4.0,
+  "switch_dead": 25.0,
+  "min_possession": 20.0
+ },
+ "checks": {
+  "mean": false,
+  "share": false,
+  "each_source": false,
+  "unseen": true
+ },
+ "passes": false,
+ "frames": [
+  {
+   "match": "J03WMX",
+   "log_loss": 0.1975716566735917,
+   "imp filled ball": 0.01785858401052498,
+   "imp ball": 1.1022198843960447,
+   "team_acc_seen_ballfill": 0.9195759694543345,
+   "team_acc_missing_ballfill": 0.8724354021804447,
+   "frame_acc_ballfill": 0.9227633643220728,
+   "team_acc_seen_robust": 0.9218636722462986,
+   "team_acc_missing_robust": 0.8747961198386127,
+   "frame_acc_robust": 0.9234415998136565
+  },
+  {
+   "match": "J03WN1",
+   "log_loss": 0.23758815197482913,
+   "imp filled ball": 0.02092789694821362,
+   "imp ball": 1.0432785820242678,
+   "team_acc_seen_ballfill": 0.8974429127643901,
+   "team_acc_missing_ballfill": 0.840763109960694,
+   "frame_acc_ballfill": 0.9088802706960251,
+   "team_acc_seen_robust": 0.8950857623908239,
+   "team_acc_missing_robust": 0.8382705397373215,
+   "frame_acc_robust": 0.9074180035461744
+  },
+  {
+   "match": "J03WOH",
+   "log_loss": 0.17934936297089973,
+   "imp filled ball": 0.0219717790157061,
+   "imp ball": 0.9887629785566803,
+   "team_acc_seen_ballfill": 0.9217683749486734,
+   "team_acc_missing_ballfill": 0.8780886453225651,
+   "frame_acc_ballfill": 0.927784336875246,
+   "team_acc_seen_robust": 0.9221203292728233,
+   "team_acc_missing_robust": 0.885732141140275,
+   "frame_acc_robust": 0.9271575786727302
+  },
+  {
+   "match": "J03WOY",
+   "log_loss": 0.23422642550650236,
+   "imp filled ball": 0.01894461471007497,
+   "imp ball": 1.0087149827951263,
+   "team_acc_seen_ballfill": 0.9167188099226934,
+   "team_acc_missing_ballfill": 0.8811651647160005,
+   "frame_acc_ballfill": 0.915270528147275,
+   "team_acc_seen_robust": 0.9159114304745373,
+   "team_acc_missing_robust": 0.878173727704446,
+   "frame_acc_robust": 0.9124922826514004
+  },
+  {
+   "match": "J03WPY",
+   "log_loss": 0.15939441837776355,
+   "imp filled ball": 0.009691768111829202,
+   "imp ball": 1.0417045003990761,
+   "team_acc_seen_ballfill": 0.9244696384093447,
+   "team_acc_missing_ballfill": 0.903420090342009,
+   "frame_acc_ballfill": 0.9364548494983278,
+   "team_acc_seen_robust": 0.9245898823327321,
+   "team_acc_missing_robust": 0.906087330608733,
+   "frame_acc_robust": 0.9365847986813578
+  },
+  {
+   "match": "J03WQQ",
+   "log_loss": 0.1983903085376434,
+   "imp filled ball": 0.016298197186639662,
+   "imp ball": 0.984025429446349,
+   "team_acc_seen_ballfill": 0.9246027695553061,
+   "team_acc_missing_ballfill": 0.8973015252248729,
+   "frame_acc_ballfill": 0.9229969440443991,
+   "team_acc_seen_robust": 0.9254363580687965,
+   "team_acc_missing_robust": 0.9017207665232695,
+   "frame_acc_robust": 0.9228002388562998
+  },
+  {
+   "match": "J03WR9",
+   "log_loss": 0.1631359846824175,
+   "imp filled ball": 0.015745529990155965,
+   "imp ball": 1.0585751131855874,
+   "team_acc_seen_ballfill": 0.9407489653780156,
+   "team_acc_missing_ballfill": 0.8949524619308958,
+   "frame_acc_ballfill": 0.9395613377835297,
+   "team_acc_seen_robust": 0.9406312035261263,
+   "team_acc_missing_robust": 0.8908943340805442,
+   "frame_acc_robust": 0.935767318302568
+  },
+  {
+   "match": "metrica1",
+   "log_loss": 0.33048738096096447,
+   "imp filled ball": 0.00728615045907538,
+   "imp ball": 1.4341280819447189,
+   "team_acc_seen_ballfill": 0.9471573027911057,
+   "team_acc_missing_ballfill": 0.7870139136639315,
+   "frame_acc_ballfill": 0.9312235355778382,
+   "team_acc_seen_robust": 0.9474797502966517,
+   "team_acc_missing_robust": 0.771435366868831,
+   "frame_acc_robust": 0.9309683737224667
+  },
+  {
+   "match": "metrica2",
+   "log_loss": 0.6960202137381398,
+   "imp filled ball": 0.018907505300220562,
+   "imp ball": 1.0043198743554016,
+   "team_acc_seen_ballfill": 0.9524529075053463,
+   "team_acc_missing_ballfill": 0.7521765694211089,
+   "frame_acc_ballfill": 0.8955340190994361,
+   "team_acc_seen_robust": 0.9517229898451807,
+   "team_acc_missing_robust": 0.7528639071330381,
+   "frame_acc_robust": 0.8954277536909518
+  },
+  {
+   "match": "metrica3",
+   "log_loss": 0.3082575681900816,
+   "imp filled ball": 0.016081516612051927,
+   "imp ball": 1.1303495223758735,
+   "team_acc_seen_ballfill": 0.9507829977628636,
+   "team_acc_missing_ballfill": 0.7946347834823672,
+   "frame_acc_ballfill": 0.925647428718498,
+   "team_acc_seen_robust": 0.9505647405467343,
+   "team_acc_missing_robust": 0.8065909775946951,
+   "frame_acc_robust": 0.9236232357871745
+  }
+ ],
+ "fill": "imputer"
+}

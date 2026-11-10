@@ -331,3 +331,23 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
 - **Open:** whether our seen ball is carried around in stoppages (robust's remaining exposure; a
   label-free check exists in lab/learned.md, not run); the gain on our match will be smaller than
   the bench's.
+
+### 2026-11-09: lab round 7, v13 and the stoppage switch
+
+- **What:** Jose asked for many new directions (new methods, more data, pretrained models), the best
+  kept. Seven builders ([lab.md](lab.md), round 7): hsmm, ballfill and ensemble discarded; the
+  temporal `average` start passed the bar on both sets; a first test on real tracking from an unseen
+  source (SkillCorner's 20 broadcast matches, MIT) put v12 below v11 (0.308 against 0.366), mostly
+  from stoppages where the ball stays tracked and moving, which the bench can't show.
+- **Rules fixed before they ran:** a robustness bar (no bench loss beyond 0.002, a stressed bench,
+  SkillCorner) and a switch bar (four parts). `augment` (robust retrained with SkillCorner-like
+  stoppage balls) failed the robustness bar on the normal bench (−0.0095) while taking SkillCorner
+  to 0.412; the switch between `average` and `augment` passed all four parts of its bar.
+- **Decision (Jose, "Yes, both"):** v13 = the `average` start with v12's post stages, plus the
+  switch to `augment`'s chain, decided per match from the tracking alone, its threshold fixed on
+  the bench. Nobody reads the switch's signal or branch on our match (`--show-branch` is Jose's, and
+  is never used to override it by hand).
+- **Result:** bench 0.716 held out (v12 0.703), IDSSE set 0.676 (v12 0.670); SkillCorner 0.408
+  (v12 0.308); the port reproduces the lab on every frame checked.
+- **Data:** PFF's terms forbid benchmarking use (limitations G8); SoccerTrack v2 needs a Hugging
+  Face account; SkillCorner is a judge and a source of stoppage balls for `augment`'s training.
