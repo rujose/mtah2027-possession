@@ -1,0 +1,102 @@
+{
+ "trial": 1015,
+ "table": [
+  {
+   "variant": "normal",
+   "A v14": 0.7241478033445945,
+   "B v13 (lab_gate)": 0.6938297934422021,
+   "B v13 (as deployed)": 0.68945,
+   "B v15": 0.723257,
+   "switch": 0.7241478033445945,
+   "picks B": 0,
+   "switch - better branch": 0.0,
+   "switch - A": 0.0,
+   "B v15 better than A on": 4
+  },
+  {
+   "variant": "p10",
+   "A v14": 0.7124213648269481,
+   "B v13 (lab_gate)": 0.6921165045210419,
+   "B v13 (as deployed)": 0.69205,
+   "B v15": 0.7255499999999999,
+   "switch": 0.7124213648269481,
+   "picks B": 0,
+   "switch - better branch": -0.01312863517305185,
+   "switch - A": 0.0,
+   "B v15 better than A on": 9
+  },
+  {
+   "variant": "p25",
+   "A v14": 0.6979311583464511,
+   "B v13 (lab_gate)": 0.6957528883340415,
+   "B v13 (as deployed)": 0.694918,
+   "B v15": 0.72886,
+   "switch": 0.7114980725424517,
+   "picks B": 5,
+   "switch - better branch": -0.017361927457548276,
+   "switch - A": 0.013566914196000535,
+   "B v15 better than A on": 10
+  },
+  {
+   "variant": "p50",
+   "A v14": 0.6698742962081761,
+   "B v13 (lab_gate)": 0.6982571112386028,
+   "B v13 (as deployed)": 0.6957659999999999,
+   "B v15": 0.7318619999999999,
+   "switch": 0.7318619999999999,
+   "picks B": 10,
+   "switch - better branch": 0.0,
+   "switch - A": 0.061987703791823834,
+   "B v15 better than A on": 10
+  },
+  {
+   "variant": "stressed",
+   "A v14": 0.6107326369724722,
+   "B v13 (lab_gate)": 0.7057476696039309,
+   "B v13 (as deployed)": 0.7019300000000002,
+   "B v15": 0.73786,
+   "switch": 0.73786,
+   "picks B": 10,
+   "switch - better branch": 0.0,
+   "switch - A": 0.1271273630275278,
+   "B v15 better than A on": 10
+  }
+ ],
+ "skillcorner": {
+  "A v14": 0.3196015,
+  "B v15": 0.40853799999999996,
+  "gain": 0.0889365,
+  "better": 20,
+  "picks B": 20
+ },
+ "threshold_rule_all": 0.04851429090736768,
+ "threshold_left_out": [
+  -Infinity,
+  0.05784402384986445,
+  0.050921896617357645,
+  0.04964820804700804,
+  0.06518577543038617,
+  -Infinity,
+  0.05136799642360752,
+  -Infinity,
+  0.04587431427446372,
+  -Infinity
+ ],
+ "mean_b_minus_a": {
+  "normal": -0.0008908033445943708,
+  "p10": 0.013128635173051828,
+  "p25": 0.030928841653548887,
+  "p50": 0.061987703791823986,
+  "stressed": 0.12712736302752786
+ },
+ "checks": {
+  "part 1 (normal: A everywhere or no loss beyond 0.002)": true,
+  "part 2 (stressed: B on 9+, gain +0.02)": true,
+  "part 3 (partial: within 0.005 of the better branch)": {
+   "p10": false,
+   "p25": false,
+   "p50": true
+  },
+  "part 4 (SkillCorner: +0.02, 15/20 better)": true
+ }
+}

@@ -8,11 +8,18 @@ how to run it, what has been checked, and where it could still break.
 ```bash
 python3.14 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # Python 3.14.7
 # the organisers' data in data/tactical/ (and data/broadcast/), as DATA.md describes
-.venv/bin/python -m possession.v13        # writes evaluation/results/v13.csv; prints its SHA-256
-.venv/bin/python evaluation/validate_submission.py evaluation/results/v13.csv
+.venv/bin/python -m possession.v15        # writes evaluation/results/v15.csv; prints its SHA-256
+.venv/bin/python evaluation/validate_submission.py evaluation/results/v15.csv
 ```
 
-**v13 (since 2026-11-09)**: expected SHA-256 of `evaluation/results/v13.csv` (bench set `all`, macOS arm64):
+**v15 (since 2026-11-14)**: expected SHA-256 of `evaluation/results/v15.csv` (bench set `all`, macOS arm64):
+`209a2081beae40b1a7971fa958f87e7ca495536eee673af10a37df87069b7f5e` (twice the same at the default threads, and
+the same with `OMP_NUM_THREADS=1`; format check passes). v15 is v14 with a new
+branch B ([v15](models/v15-branch-b.md)); branch B reads `possession/models/v15_b_all.joblib` (its GRU run in float64,
+as v13's). v14's file was v13's (below): the switch takes branch B on our match, where v14 changed nothing. Not yet
+tried from a clean clone or on Linux.
+
+**v13 (2026-11-09 to 11-14; v14 gave the same file)**: expected SHA-256 of `evaluation/results/v13.csv` (bench set `all`, macOS arm64):
 `3efbef53e4394c318815fa33d8284af9ab6f675667c09008dfdba2e51a54a7c4` (twice the same at the default threads, and
 the same with `OMP_NUM_THREADS=1`; format check passes).
 v13 adds a GRU in PyTorch, run in **float64** like PathCRF (float32 against float64 changed 0 letters on four

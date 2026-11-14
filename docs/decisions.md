@@ -351,3 +351,30 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   (v12 0.308); the port reproduces the lab on every frame checked.
 - **Data:** PFF's terms forbid benchmarking use (limitations G8); SoccerTrack v2 needs a Hugging
   Face account; SkillCorner is a judge and a source of stoppage balls for `augment`'s training.
+
+### 2026-11-12: Metrica's owner convention, a nested search, and v14
+
+- **What:** Jose took the 5 days to the deadline for hard, ambitious work. The answer key reads Metrica's corrected
+  tracking's owner field, so: what does "owning" mean there ([owner-rule.md](owner-rule.md)), and a nested random
+  search of v13's settings on Metrica's 3 games ([search-metrica.md](search-metrica.md)).
+- **Rule fixed before the confirmation ran:** Metrica's 3 games are the main judge; DFL's 7 a guard (at most −0.005).
+- **Found:** Metrica's convention counts deliberate one-touch play but not deflections, and v13 already sits close
+  to it; across 2,000 trials two settings help every Metrica game (the GRU weighted 0.8, snap and move off).
+- **Decision (Jose, "Yes, build v14"):** v14 = v13 with those two settings on branch A. Bench 0.7241 against 0.7162
+  (8/10), Metrica +0.016, DFL +0.005; the port reproduces the lab on every frame; the switch passes its bar with it.
+- **Our match:** v14's file is v13's (same SHA-256), so the switch takes branch B there and v14's gain doesn't reach
+  the file. Learned from the equal hashes, not from `--show-branch`; the switch is never overridden by hand.
+
+### 2026-11-14: lab round 8, branch B, and v15
+
+- **What:** v14's equal hash showed our match runs branch B, which had never been tuned. Jose: "Yes, improve B".
+  Round 8 ([lab/branch-b.md](lab/branch-b.md)): a GRU trained the way `augment` was (`gru_b`), B's start with it,
+  and a nested random search of 1,500 settings of B's whole chain on the stressed benches.
+- **Rules fixed before anything was scored:** B's bench (25 %, 50 %, fully stressed); the B bar (+0.005, 7/10
+  better, no variant down more than 0.002, SkillCorner no loss beyond 0.005); the switch's bar rerun, threshold
+  unchanged.
+- **Found:** search trial 1015 (0.92 `gru_b`, snap and move off, post stages trained on stressed copies) +0.0353 on
+  B's bench, 10/10 (nested +0.033, 10/10); SkillCorner +0.0008. The switch keeps parts 1, 2 and 4; part 3 fails at
+  10 % and 25 % because B got better. The threshold stays at 0.1445: lowering it doesn't change our file.
+- **Decision (Jose, "Yes, adopt v15"):** v15 = v14 with trial 1015 as branch B ([v15](models/v15-branch-b.md)).
+- **Kept in mind:** the gain is on a synthetic ball; on SkillCorner's real one it's about zero.

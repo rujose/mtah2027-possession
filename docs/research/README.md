@@ -223,3 +223,41 @@ limits above), PFF (after the organisers answer).
 - **PFF's frame rate** (29.97 fps, read from a kloppy test fixture), its total size, and the names of
   its foul fields: unverified.
 - **SkillCorner's possession labels:** whether they're made by people is unknown.
+
+## Data search, 2026-11-10: player-only and possession-only sources
+
+Jose's idea: with players' positions from other matches, possession could be labelled by hand (allowed on other
+games in any amount, RULES.md, if the technical document says what, how, by whom and how much). Sources not
+covered before, or covered without checking these points:
+
+| source | what it has | licence / access | for us |
+|---|---|---|---|
+| **SoccerTrack v2** (10 university matches, ~900 min) | fixed 4K panoramic video (BePro cameras, like a tactical camera); **every player of both teams, every frame**, from BePro's provider tracking (`raw/<match>_tracker_box_data.xml` → pitch metres); **ball actions by hand with the acting team** (pass, drive, header, out, throw-in, free kick, shot, tackle, goal…); a ball track **reconstructed between those events, not measured** | **CC BY 4.0**, code MIT; Hugging Face, gated (accept conditions with an account); 145 GB in all, mostly video; the annotations are a small part | **the one that fits.** Possession can be derived from the team-tagged actions (last team to act; "Out" to the restart is dead), then checked by hand against the video. A test first (as SkillCorner), training later. The ball is reconstructed, so its "seen" pattern is not a tracker's |
+| **Signality / Hammarby** (3 Allsvenskan games) | automatic optical tracking + video (not synced); the format has a per-frame `state` and ball `team`, i.e. possession per frame | no licence ("please be responsible"); hosted on an Uppsala course page; Signality now belongs to Spiideo | promising (an automatic tracker like Metrica's, possession per frame), but rights unclear: ask before using |
+| **SoccerNet-GAR** (64 World Cup 2022 matches) | PFF's broadcast tracking (players + 3D ball, 30 fps, refined by hand), group-activity labels | SoccerNet NDA; licence "other"; the data is PFF's | PFF's terms forbid benchmarking use (limitations G8), so the same block |
+| **Alfheim / Tromsø IL** (3 home matches, 2013) | panoramic video + ZXY sensor positions of **Tromsø's players only**, no ball | free for research, citation required | one team only: our models need both |
+| **SoccerMon** | GPS of two women's teams' players, in their own sessions and matches | CC BY 4.0 | one team at a time, no ball: no |
+| **TeamTrack** | short full-pitch clips with bounding boxes (soccer, basketball, handball) | unverified | clips, no possession: no |
+| **Event-only sets** (StatsBomb, Wyscout CC BY 4.0, Impect 306 Bundesliga 2023/24 matches, FOOTPASS CC BY-NC) | who has the ball, event by event | as listed | no tracking, so they can neither train nor test a tracking model: priors only (possession and stoppage lengths) |
+| **StatsBomb open data, now [hudl/open-data](https://github.com/hudl/open-data)** (rechecked 2026-11-12) | events with a possession id and team, lineups, and 360 freeze frames (the visible players' positions at each event moment only) for 12 of 80 competition-seasons; La Liga up to 2020/21, mostly Barcelona's matches | StatsBomb's terms: credit StatsBomb and use its logo; the user agreement in `LICENSE.pdf` (no commercial use, per the 2026-10-30 check) | no continuous tracking: snapshots at events can't feed a model that reads seconds of movement. And any Barcelona–Athletic match in it must never be used: data about our match is forbidden |
+| **SkillCorner open data** (rechecked 2026-11-12) | the same 20 A-League matches we use; nothing new since 2026-09-14 | MIT | already in use: a judge, and stoppage balls for `augment` |
+
+Searches: [SoccerTrack v2](https://atomscott.github.io/SoccerTrack-v2/) and its
+[dataset card](https://huggingface.co/datasets/atomscott/soccertrack-v2); [SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR);
+[open-football map](https://github.com/withqwerty/open-football) (Alfheim, SoccerMon, Impect); Metrica's sample-data
+README (Signality / Hammarby).
+
+### Paid data (checked 2026-11-12)
+
+- **The rules allow it in principle** ("a commercial API" is on RULES.md's list), but "the organisers can access and
+  inspect it" and "if your approach depends on something you cannot share, ask before you build on it". Paid
+  tracking licences usually forbid redistribution, and our public repo must regenerate the CSV from committed
+  models trained on it: ask the organisers before buying anything.
+- **The professional trackers** (Second Spectrum, now Genius Sports; TRACAB; Hawk-Eye; Stats Perform; SkillCorner,
+  now Sportradar) sell to clubs, leagues and media under contracts with no public per-match price; academic access is
+  by request. Gradient Sports (formerly PFF) gives its 2022 World Cup data for free, but its terms forbid
+  benchmarking (G8).
+- **Metrica's own plans** (PlayBase Advanced €80, Nexus Pro €150 a month, free trial) list "Automatic Tracking", but no
+  tracking export. Metrica's tracker on other matches would carry the same artefacts as ours, which no other source
+  does; Metrica runs the challenge, so that's a question for them, asked publicly.
+- **Not for Phase 1:** quotes and contracts take longer than the days left before 2026-11-17.

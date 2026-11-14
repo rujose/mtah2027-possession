@@ -20,6 +20,9 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [convention-audit.md](convention-audit.md) | Whether v12 answers the organisers' definition of possession, measured on the bench's rules-following labels |
 | [inside-v12.md](inside-v12.md) | How v12 works stage by stage, what each stage fixes and breaks, where the score is lost, and the leads to try |
 | [reproduce.md](reproduce.md) | How to regenerate our CSV byte for byte, what has been checked, and what could still break it |
+| [owner-rule.md](owner-rule.md) | What "owning the ball" means in Metrica's corrected tracking (the answer key's source), read from its sample games, and where v13 stands against it |
+| [search-metrica.md](search-metrica.md) | A nested search of v13's settings on Metrica's convention: holding out a match against a half, what 2,000 trials agree on, and the confirmed candidate |
+| [lab/branch-b.md](lab/branch-b.md) | Lab round 8: branch B (the chain our match runs) rebuilt with a GRU trained on stressed copies and a nested search; v15's source |
 | [field.md](field.md) | How we compare with other teams' public repos: which numbers can be compared, where we stand, ideas they use |
 
 ## Conventions
@@ -49,6 +52,8 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v11](models/v11-touch-line.md) | v10 + each change of team moved onto the new team's seen touch | built 2026-11-03 | Jose's run | **0.571** held-out against v9's 0.561, better on **10/10** (IDSSE only 7/7); moved changes within 0.2 s of the truth 31 % → 70 % | Jose's run |
 | [v12](models/v12-lab-chain.md) | the lab's chain: a learned per-frame model (robust to the frozen dead-time ball) decoded, then short possessions at clear touches, a check on each possession, and each change of team on the best touch (`idsse`: recall and dead in place of timing) | built 2026-11-04 | Jose's run | **0.703** held-out against v11's 0.573 (**+0.131**), better on **10/10**; IDSSE set 0.670 against 0.563, 7/7; the port gives the lab's letters on every frame of two bench matches | Jose's run |
 | [v13](models/v13-temporal.md) | v12 with a temporal start (a small bidirectional GRU's P averaged with robust's), and a switch: where the tracking's ball moves through what the players say are stoppages, a start retrained for that (`augment`) | built 2026-11-09 | Jose's run | **0.716** held-out against v12's 0.703 (+0.013), better on 8/10; IDSSE set 0.676 against 0.670, 5/7; the switch keeps every normal bench match on the temporal start; SkillCorner 0.408 against v12's 0.308; the port gives the lab's letters on every frame | Jose's run |
+| [v14](models/v14-search.md) | v13 with branch A's start weighing the GRU 0.8 and v9's snap and v11's move off, found by a nested search on Metrica's convention | built 2026-11-12 | same file as v13: the switch takes branch B on our match | **0.724** held-out against v13's 0.716 (+0.008), better on 8/10; Metrica +0.016 (3/3); the switch passes its bar with it; the port gives the lab's letters on every frame | same as v13 |
+| [v15](models/v15-branch-b.md) | v14 with a new branch B (the chain the switch takes on our match): the start weighs a GRU trained on stressed copies 0.92, snap and move off, post stages trained on stressed copies, found by a nested search | built 2026-11-14 | Jose's run | branch B **0.733** on B's bench (25 %, 50 %, stressed) against v14's 0.698 (+0.035, 10/10; nested +0.033); normal bench unchanged (A); SkillCorner 0.409 (+0.001); the port gives the lab's letters | Jose's run |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -80,6 +85,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v11                # writes evaluation/results/v11.csv (v10, team changes on the touch); Jose runs it
 .venv/bin/python -m possession.v12                # writes evaluation/results/v12.csv (the lab's chain); prints only the path and SHA-256
 .venv/bin/python -m possession.v13                # writes evaluation/results/v13.csv (temporal start + stoppage switch); path and SHA-256 only
+.venv/bin/python -m possession.v14                # writes evaluation/results/v14.csv (v13, branch A re-weighted); path and SHA-256 only
+.venv/bin/python -m possession.v15                # writes evaluation/results/v15.csv (v14, branch B rebuilt); path and SHA-256 only
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -112,6 +119,10 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.train_v13               # v13's models -> possession/models/v13_<set>.joblib (--switch: branch B)
 .venv/bin/python -m bench.check_v13               # v13's port gives the lab's letters on bench matches
 .venv/bin/python -m bench.check_v13_switch        # v13's switch and branch B against the lab, on SkillCorner
+.venv/bin/python -m bench.train_v14               # v14's models -> possession/models/v14_all.joblib
+.venv/bin/python -m bench.check_v14               # v14's port gives the lab's letters on bench matches
+.venv/bin/python -m bench.train_v15               # v15's branch B -> possession/models/v15_b_all.joblib
+.venv/bin/python -m bench.check_v15 port          # v15's port gives the lab's letters (then: skillcorner)
 .venv/bin/python -m bench.transfer_check --ours   # label-free checks of v12 on our match: PASS / NEAR / WARN (Jose)
 # the same stages with --set idsse (and touch_timing): the IDSSE-only twins (bench/chain.py)
 .venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)

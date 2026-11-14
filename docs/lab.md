@@ -310,6 +310,38 @@ Jose: many subagents, new approaches, more data, better data, pretrained models;
   days to adapt), retraining PathCRF (3–5 days), MS-TCN++ or ASRF (temporal convolutions: the GRU covers that
   direction). None fits before the freeze on 2026-11-12.
 
+### Round 8 (2026-11-12 to 11-14): branch B, the chain our match runs
+
+v14 (branch A re-weighted after a nested search on Metrica's convention, [search-metrica.md](search-metrica.md))
+gave our match the same file as v13: the switch sends our match to branch B, so B sets our score, and B had never
+been tuned. One builder, one page: [lab/branch-b.md](lab/branch-b.md).
+
+- **Fixed before anything was scored:** B's bench (the 25 %, 50 % and fully stressed variants, where the switch
+  picks B); the B bar (+0.005 or more on B's bench, 7 of 10 better; no variant down more than 0.002; SkillCorner
+  no loss beyond 0.005); then the switch's four-part bar rerun with the new B, threshold unchanged.
+- **Three tries:** `gru_b` (lab_temporal's GRU trained the way `augment` was: each match as it is and under the
+  training stress), `mix_b` (its P averaged with `augment`'s), and a nested random search of 1,500 settings of
+  B's start, decoder, snap and move, post stages and their training data.
+
+| candidate | B's bench (as it deploys) | better on | SkillCorner | verdict |
+|---|---|---|---|---|
+| B as built (v13, v14) | 0.6975 | | 0.4077 | |
+| `gru_b`, B's other settings | +0.0296 | 9/10 | −0.0014 | passes |
+| `mix_b`, B's other settings | +0.0282 | 10/10 | +0.0069 | passes |
+| the search, nested (each match's pick made on the other 9) | **+0.0334** | **10/10** | | |
+| [**search trial 1015**](lab/branch-b.md) (the best on all 10: 0.92 `gru_b`, snap and move off, post stages trained on stressed copies) | **+0.0353** | **10/10** | +0.0008 (11/20) | **passes the B bar**; the switch: parts 1, 2, 4 pass, part 3 fails at 10 % and 25 % (B got better, the threshold now keeps A where B wins) |
+
+**Adopted (Jose, 2026-11-14, "Yes, adopt v15"): v15 = v14 with trial 1015 as branch B**
+([v15](models/v15-branch-b.md)); the threshold stays at 0.1445.
+
+- **The network is most of it** (+0.028 to +0.030 alone); the search's settings add about +0.006. What the search
+  agrees on: weight the network (rank correlation +0.85) and drop snap and move (79 of the top 100), as v14 found
+  for A.
+- **B is now close to A on the normal bench** (0.7233 against 0.7241; v13's B 0.6894), so being on B costs little
+  even where the ball isn't stressed.
+- **The gain rests on a synthetic ball.** On SkillCorner's real stoppage balls the new B is level with the old
+  (+0.0008); the bench's case is carried by Metrica's 3 games (+0.023 to +0.073).
+
 ### Where the lab stands
 
 | | `all` held out | vs v11 | `idsse` held out | vs v11 |
@@ -320,6 +352,11 @@ Jose: many subagents, new approaches, more data, better data, pretrained models;
 | round 3 (learned → …) | 0.7019 | +0.129 | 0.6642 | +0.102 |
 | round 4 (robust → …): v12 | 0.7033 | +0.131 | 0.6699 | +0.107 |
 | **round 7 (average → …): v13** (the switch picks this branch on every normal bench match) | **0.7162** | **+0.144** | **0.6760** | **+0.114** |
+| v14 (A: the GRU weighted 0.8, snap and move off; [search-metrica.md](search-metrica.md)) | 0.7241 | +0.151 | v13's | |
+
+Branch B, the chain the switch takes where the ball moves through stoppages (and on our match), is scored on B's
+bench (25 %, 50 % and fully stressed), each match's stage models trained without it: v13's and v14's B 0.6975;
+**round 8: v15's B 0.7329** (+0.035, 10/10; nested +0.033). On the normal bench v15's B is 0.7233.
 
 All of it is leave-one-match-out on 10 (or 7) bench matches, every stage judged against the chain
 without it. Two things flatter it: several candidates' design choices were explored on all 10

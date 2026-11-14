@@ -1,0 +1,677 @@
+{
+ "games": {
+  "metrica1": {
+   "possessions_events": 354,
+   "ball_within_m": {
+    "0.01": 0.022801964697587152,
+    "0.05": 0.1312547055941298,
+    "0.1": 0.2670148308376256,
+    "0.3": 0.5325238715537125
+   },
+   "holds": {
+    "holds": 174,
+    "ball_to_holder_median_m": 0.11384587775915292,
+    "ball_to_holder_p90_m": 0.20879318495916974,
+    "bend_ball_median_m": 1.0443335712011677,
+    "bend_holder_median_m": 0.8718198707627196,
+    "holder_bends_1m_more_share": 0.0
+   },
+   "touch_rule": [
+    {
+     "r": 0.2,
+     "k": 1,
+     "spell_f1": 0.8103401360544218,
+     "possessions": 381,
+     "frames_agree": 0.9524092109703168
+    },
+    {
+     "r": 0.2,
+     "k": 3,
+     "spell_f1": 0.6375838926174496,
+     "possessions": 242,
+     "frames_agree": 0.8871551413178809
+    },
+    {
+     "r": 0.2,
+     "k": 5,
+     "spell_f1": 0.6134715025906736,
+     "possessions": 225,
+     "frames_agree": 0.8807903096310259
+    },
+    {
+     "r": 0.2,
+     "k": 8,
+     "spell_f1": 0.5727598566308244,
+     "possessions": 204,
+     "frames_agree": 0.8749840006516099
+    },
+    {
+     "r": 0.2,
+     "k": 12,
+     "spell_f1": 0.5556363636363636,
+     "possessions": 196,
+     "frames_agree": 0.8676533901164752
+    },
+    {
+     "r": 0.2,
+     "k": 25,
+     "spell_f1": 0.49132075471698117,
+     "possessions": 176,
+     "frames_agree": 0.8359688623590603
+    },
+    {
+     "r": 0.3,
+     "k": 1,
+     "spell_f1": 0.7807792207792208,
+     "possessions": 416,
+     "frames_agree": 0.9529095542290641
+    },
+    {
+     "r": 0.3,
+     "k": 3,
+     "spell_f1": 0.6752827140549273,
+     "possessions": 265,
+     "frames_agree": 0.9063427234963521
+    },
+    {
+     "r": 0.3,
+     "k": 5,
+     "spell_f1": 0.6502529510961214,
+     "possessions": 239,
+     "frames_agree": 0.8960216892984723
+    },
+    {
+     "r": 0.3,
+     "k": 8,
+     "spell_f1": 0.5903743315508022,
+     "possessions": 207,
+     "frames_agree": 0.8856657474313774
+    },
+    {
+     "r": 0.3,
+     "k": 12,
+     "spell_f1": 0.5874776386404295,
+     "possessions": 205,
+     "frames_agree": 0.8820935292817166
+    },
+    {
+     "r": 0.3,
+     "k": 25,
+     "spell_f1": 0.5455882352941177,
+     "possessions": 190,
+     "frames_agree": 0.8689449738774275
+    },
+    {
+     "r": 0.5,
+     "k": 1,
+     "spell_f1": 0.6956937799043063,
+     "possessions": 482,
+     "frames_agree": 0.9394817374710557
+    },
+    {
+     "r": 0.5,
+     "k": 3,
+     "spell_f1": 0.7236959761549924,
+     "possessions": 317,
+     "frames_agree": 0.9205268730873506
+    },
+    {
+     "r": 0.5,
+     "k": 5,
+     "spell_f1": 0.6760655737704917,
+     "possessions": 256,
+     "frames_agree": 0.9025494234416634
+    },
+    {
+     "r": 0.5,
+     "k": 8,
+     "spell_f1": 0.6070175438596491,
+     "possessions": 216,
+     "frames_agree": 0.888853981219674
+    },
+    {
+     "r": 0.5,
+     "k": 12,
+     "spell_f1": 0.5953818827708703,
+     "possessions": 209,
+     "frames_agree": 0.8861079112414331
+    },
+    {
+     "r": 0.5,
+     "k": 25,
+     "spell_f1": 0.5497247706422018,
+     "possessions": 191,
+     "frames_agree": 0.8712721518250893
+    }
+   ],
+   "confirmed_rule": [
+    {
+     "r": 0.2,
+     "hold": 5,
+     "spell_f1": 0.6894039735099338,
+     "possessions": 250
+    },
+    {
+     "r": 0.2,
+     "hold": 10,
+     "spell_f1": 0.6529209621993127,
+     "possessions": 228
+    },
+    {
+     "r": 0.2,
+     "hold": 25,
+     "spell_f1": 0.6415357766143106,
+     "possessions": 219
+    },
+    {
+     "r": 0.3,
+     "hold": 5,
+     "spell_f1": 0.7274478330658106,
+     "possessions": 269
+    },
+    {
+     "r": 0.3,
+     "hold": 10,
+     "spell_f1": 0.6931552587646077,
+     "possessions": 245
+    },
+    {
+     "r": 0.3,
+     "hold": 25,
+     "spell_f1": 0.6829103214890017,
+     "possessions": 237
+    },
+    {
+     "r": 0.5,
+     "hold": 5,
+     "spell_f1": 0.7360248447204969,
+     "possessions": 290
+    },
+    {
+     "r": 0.5,
+     "hold": 10,
+     "spell_f1": 0.6991816693944353,
+     "possessions": 257
+    },
+    {
+     "r": 0.5,
+     "hold": 25,
+     "spell_f1": 0.693687707641196,
+     "possessions": 248
+    }
+   ]
+  },
+  "metrica2": {
+   "possessions_events": 318,
+   "ball_within_m": {
+    "0.01": 0.013779168137499544,
+    "0.05": 0.10983165556948621,
+    "0.1": 0.2382262364125473,
+    "0.3": 0.5084172215256899
+   },
+   "holds": {
+    "holds": 184,
+    "ball_to_holder_median_m": 0.11761371849514474,
+    "ball_to_holder_p90_m": 0.20329761114854603,
+    "bend_ball_median_m": 0.8572311661632728,
+    "bend_holder_median_m": 0.8308799095366819,
+    "holder_bends_1m_more_share": 0.0
+   },
+   "touch_rule": [
+    {
+     "r": 0.2,
+     "k": 1,
+     "spell_f1": 0.7468571428571429,
+     "possessions": 382,
+     "frames_agree": 0.9522509184624665
+    },
+    {
+     "r": 0.2,
+     "k": 3,
+     "spell_f1": 0.6217311233885819,
+     "possessions": 225,
+     "frames_agree": 0.8542304107035148
+    },
+    {
+     "r": 0.2,
+     "k": 5,
+     "spell_f1": 0.6015267175572518,
+     "possessions": 206,
+     "frames_agree": 0.8518286998958162
+    },
+    {
+     "r": 0.2,
+     "k": 8,
+     "spell_f1": 0.5905138339920948,
+     "possessions": 188,
+     "frames_agree": 0.8477161813894829
+    },
+    {
+     "r": 0.2,
+     "k": 12,
+     "spell_f1": 0.5827655310621243,
+     "possessions": 181,
+     "frames_agree": 0.8439874979437407
+    },
+    {
+     "r": 0.2,
+     "k": 25,
+     "spell_f1": 0.5389121338912134,
+     "possessions": 160,
+     "frames_agree": 0.8272522893019685
+    },
+    {
+     "r": 0.3,
+     "k": 1,
+     "spell_f1": 0.7102702702702703,
+     "possessions": 422,
+     "frames_agree": 0.9616713275209738
+    },
+    {
+     "r": 0.3,
+     "k": 3,
+     "spell_f1": 0.656695652173913,
+     "possessions": 257,
+     "frames_agree": 0.883489609036574
+    },
+    {
+     "r": 0.3,
+     "k": 5,
+     "spell_f1": 0.6279329608938548,
+     "possessions": 219,
+     "frames_agree": 0.857564292372649
+    },
+    {
+     "r": 0.3,
+     "k": 8,
+     "spell_f1": 0.6204238921001928,
+     "possessions": 201,
+     "frames_agree": 0.8550529144047815
+    },
+    {
+     "r": 0.3,
+     "k": 12,
+     "spell_f1": 0.6047058823529412,
+     "possessions": 192,
+     "frames_agree": 0.8509513626144651
+    },
+    {
+     "r": 0.3,
+     "k": 25,
+     "spell_f1": 0.5691991786447639,
+     "possessions": 169,
+     "frames_agree": 0.8392937434885124
+    },
+    {
+     "r": 0.5,
+     "k": 1,
+     "spell_f1": 0.6223792697290931,
+     "possessions": 531,
+     "frames_agree": 0.9485661018807918
+    },
+    {
+     "r": 0.5,
+     "k": 3,
+     "spell_f1": 0.6947030497592296,
+     "possessions": 305,
+     "frames_agree": 0.896989636453364
+    },
+    {
+     "r": 0.5,
+     "k": 5,
+     "spell_f1": 0.6731531531531532,
+     "possessions": 237,
+     "frames_agree": 0.8852662170313099
+    },
+    {
+     "r": 0.5,
+     "k": 8,
+     "spell_f1": 0.6358778625954198,
+     "possessions": 206,
+     "frames_agree": 0.8565663212151121
+    },
+    {
+     "r": 0.5,
+     "k": 12,
+     "spell_f1": 0.6203125,
+     "possessions": 194,
+     "frames_agree": 0.8544716784558863
+    },
+    {
+     "r": 0.5,
+     "k": 25,
+     "spell_f1": 0.5836734693877551,
+     "possessions": 172,
+     "frames_agree": 0.8420134890607007
+    }
+   ],
+   "confirmed_rule": [
+    {
+     "r": 0.2,
+     "hold": 5,
+     "spell_f1": 0.6912408759124087,
+     "possessions": 230
+    },
+    {
+     "r": 0.2,
+     "hold": 10,
+     "spell_f1": 0.6981132075471697,
+     "possessions": 212
+    },
+    {
+     "r": 0.2,
+     "hold": 25,
+     "spell_f1": 0.7024761904761905,
+     "possessions": 207
+    },
+    {
+     "r": 0.3,
+     "hold": 5,
+     "spell_f1": 0.7270175438596491,
+     "possessions": 252
+    },
+    {
+     "r": 0.3,
+     "hold": 10,
+     "spell_f1": 0.7362637362637362,
+     "possessions": 228
+    },
+    {
+     "r": 0.3,
+     "hold": 25,
+     "spell_f1": 0.7404096834264432,
+     "possessions": 219
+    },
+    {
+     "r": 0.5,
+     "hold": 5,
+     "spell_f1": 0.7440414507772021,
+     "possessions": 261
+    },
+    {
+     "r": 0.5,
+     "hold": 10,
+     "spell_f1": 0.7424408014571948,
+     "possessions": 231
+    },
+    {
+     "r": 0.5,
+     "hold": 25,
+     "spell_f1": 0.7415896487985212,
+     "possessions": 223
+    }
+   ]
+  },
+  "metrica3": {
+   "possessions_events": 381,
+   "ball_within_m": {
+    "0.01": 0.008355628730191397,
+    "0.05": 0.07162996501337723,
+    "0.1": 0.15628730191397408,
+    "0.3": 0.31929409343486315
+   },
+   "touch_rule": [
+    {
+     "r": 0.2,
+     "k": 1,
+     "spell_f1": 0.7666251556662516,
+     "possessions": 422,
+     "frames_agree": 0.9343426388943576
+    },
+    {
+     "r": 0.2,
+     "k": 3,
+     "spell_f1": 0.545928338762215,
+     "possessions": 233,
+     "frames_agree": 0.862680631570658
+    },
+    {
+     "r": 0.2,
+     "k": 5,
+     "spell_f1": 0.5155405405405405,
+     "possessions": 211,
+     "frames_agree": 0.8454246564554869
+    },
+    {
+     "r": 0.2,
+     "k": 8,
+     "spell_f1": 0.4609929078014184,
+     "possessions": 183,
+     "frames_agree": 0.8171142260896956
+    },
+    {
+     "r": 0.2,
+     "k": 12,
+     "spell_f1": 0.4478260869565217,
+     "possessions": 171,
+     "frames_agree": 0.8150864275308107
+    },
+    {
+     "r": 0.2,
+     "k": 25,
+     "spell_f1": 0.38555133079847903,
+     "possessions": 145,
+     "frames_agree": 0.7665373863054692
+    },
+    {
+     "r": 0.3,
+     "k": 1,
+     "spell_f1": 0.7446153846153847,
+     "possessions": 464,
+     "frames_agree": 0.931182816868134
+    },
+    {
+     "r": 0.3,
+     "k": 3,
+     "spell_f1": 0.6113671274961596,
+     "possessions": 270,
+     "frames_agree": 0.8792770799700752
+    },
+    {
+     "r": 0.3,
+     "k": 5,
+     "spell_f1": 0.5532894736842106,
+     "possessions": 227,
+     "frames_agree": 0.8582214434775761
+    },
+    {
+     "r": 0.3,
+     "k": 8,
+     "spell_f1": 0.5103918228279387,
+     "possessions": 206,
+     "frames_agree": 0.8417726503130291
+    },
+    {
+     "r": 0.3,
+     "k": 12,
+     "spell_f1": 0.4764912280701754,
+     "possessions": 189,
+     "frames_agree": 0.8186990589439698
+    },
+    {
+     "r": 0.3,
+     "k": 25,
+     "spell_f1": 0.41113172541743975,
+     "possessions": 158,
+     "frames_agree": 0.799346379493641
+    },
+    {
+     "r": 0.5,
+     "k": 1,
+     "spell_f1": 0.671713985278654,
+     "possessions": 570,
+     "frames_agree": 0.9326692128991613
+    },
+    {
+     "r": 0.5,
+     "k": 3,
+     "spell_f1": 0.6994736842105264,
+     "possessions": 379,
+     "frames_agree": 0.9271469071150136
+    },
+    {
+     "r": 0.5,
+     "k": 5,
+     "spell_f1": 0.6024922118380063,
+     "possessions": 261,
+     "frames_agree": 0.8785584911603733
+    },
+    {
+     "r": 0.5,
+     "k": 8,
+     "spell_f1": 0.5579119086460033,
+     "possessions": 232,
+     "frames_agree": 0.8605445525062015
+    },
+    {
+     "r": 0.5,
+     "k": 12,
+     "spell_f1": 0.5427609427609428,
+     "possessions": 213,
+     "frames_agree": 0.8617356380674883
+    },
+    {
+     "r": 0.5,
+     "k": 25,
+     "spell_f1": 0.44249084249084253,
+     "possessions": 165,
+     "frames_agree": 0.8165826672441627
+    }
+   ],
+   "confirmed_rule": [
+    {
+     "r": 0.2,
+     "hold": 5,
+     "spell_f1": 0.6762360446570972,
+     "possessions": 246
+    },
+    {
+     "r": 0.2,
+     "hold": 10,
+     "spell_f1": 0.6688311688311688,
+     "possessions": 235
+    },
+    {
+     "r": 0.2,
+     "hold": 25,
+     "spell_f1": 0.6681967213114755,
+     "possessions": 229
+    },
+    {
+     "r": 0.3,
+     "hold": 5,
+     "spell_f1": 0.7056661562021441,
+     "possessions": 272
+    },
+    {
+     "r": 0.3,
+     "hold": 10,
+     "spell_f1": 0.7021943573667712,
+     "possessions": 257
+    },
+    {
+     "r": 0.3,
+     "hold": 25,
+     "spell_f1": 0.6942307692307692,
+     "possessions": 243
+    },
+    {
+     "r": 0.5,
+     "hold": 5,
+     "spell_f1": 0.716642547033285,
+     "possessions": 310
+    },
+    {
+     "r": 0.5,
+     "hold": 10,
+     "spell_f1": 0.7111111111111111,
+     "possessions": 276
+    },
+    {
+     "r": 0.5,
+     "hold": 25,
+     "spell_f1": 0.7032761310452418,
+     "possessions": 260
+    }
+   ]
+  }
+ },
+ "v13": {
+  "J03WMX": {
+   "spell_f1": 0.6269636576787807,
+   "possessions_true": 511,
+   "possessions_v13": 342,
+   "under_2s_true": 191,
+   "under_2s_v13": 54
+  },
+  "J03WN1": {
+   "spell_f1": 0.6391061452513966,
+   "possessions_true": 500,
+   "possessions_v13": 395,
+   "under_2s_true": 171,
+   "under_2s_v13": 89
+  },
+  "J03WOH": {
+   "spell_f1": 0.7063711911357341,
+   "possessions_true": 402,
+   "possessions_v13": 320,
+   "under_2s_true": 110,
+   "under_2s_v13": 64
+  },
+  "J03WOY": {
+   "spell_f1": 0.6886446886446886,
+   "possessions_true": 456,
+   "possessions_v13": 363,
+   "under_2s_true": 128,
+   "under_2s_v13": 69
+  },
+  "J03WPY": {
+   "spell_f1": 0.710077519379845,
+   "possessions_true": 421,
+   "possessions_v13": 353,
+   "under_2s_true": 124,
+   "under_2s_v13": 73
+  },
+  "J03WQQ": {
+   "spell_f1": 0.6689564068692205,
+   "possessions_true": 401,
+   "possessions_v13": 356,
+   "under_2s_true": 101,
+   "under_2s_v13": 59
+  },
+  "J03WR9": {
+   "spell_f1": 0.6951683748169839,
+   "possessions_true": 370,
+   "possessions_v13": 313,
+   "under_2s_true": 94,
+   "under_2s_v13": 47
+  },
+  "metrica1": {
+   "spell_f1": 0.8146627565982405,
+   "possessions_true": 354,
+   "possessions_v13": 328,
+   "under_2s_true": 68,
+   "under_2s_v13": 60,
+   "spell_f1_against_touch_rule": 0.7119887165021156,
+   "possessions_touch_rule": 381
+  },
+  "metrica2": {
+   "spell_f1": 0.7954911433172303,
+   "possessions_true": 318,
+   "possessions_v13": 303,
+   "under_2s_true": 69,
+   "under_2s_v13": 58,
+   "spell_f1_against_touch_rule": 0.6505109489051095,
+   "possessions_touch_rule": 382
+  },
+  "metrica3": {
+   "spell_f1": 0.8163265306122449,
+   "possessions_true": 381,
+   "possessions_v13": 354,
+   "under_2s_true": 87,
+   "under_2s_v13": 64,
+   "spell_f1_against_touch_rule": 0.6917525773195876,
+   "possessions_touch_rule": 422
+  }
+ }
+}

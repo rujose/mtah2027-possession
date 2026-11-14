@@ -1,0 +1,207 @@
+{
+ "w_gru": 0.8,
+ "snap": false,
+ "which": "all",
+ "scores": {
+  "v13": {
+   "J03WMX": 0.62696,
+   "J03WN1": 0.63911,
+   "J03WOH": 0.70637,
+   "J03WOY": 0.68864,
+   "J03WPY": 0.71008,
+   "J03WQQ": 0.66896,
+   "J03WR9": 0.69517,
+   "metrica1": 0.81466,
+   "metrica2": 0.79549,
+   "metrica3": 0.81633
+  },
+  "candidate": {
+   "J03WMX": 0.62857,
+   "J03WN1": 0.64045,
+   "J03WOH": 0.70111,
+   "J03WOY": 0.67718,
+   "J03WPY": 0.71717,
+   "J03WQQ": 0.69855,
+   "J03WR9": 0.70509,
+   "metrica1": 0.84189,
+   "metrica2": 0.79871,
+   "metrica3": 0.83275
+  },
+  "gain": {
+   "J03WMX": 0.00161,
+   "J03WN1": 0.00134,
+   "J03WOH": -0.00526,
+   "J03WOY": -0.01146,
+   "J03WPY": 0.00709,
+   "J03WQQ": 0.02959,
+   "J03WR9": 0.00993,
+   "metrica1": 0.02723,
+   "metrica2": 0.00321,
+   "metrica3": 0.01643
+  }
+ },
+ "against_v13": {
+  "folds": [
+   {
+    "match": "J03WMX",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6285714285714284,
+    "base": 0.6269636576787807,
+    "macro_held_out": 0.9276714570667339,
+    "macro_base": 0.9267585660507028
+   },
+   {
+    "match": "J03WN1",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6404494382022472,
+    "base": 0.6391061452513966,
+    "macro_held_out": 0.8919112485974651,
+    "macro_base": 0.8959784339350009
+   },
+   {
+    "match": "J03WOH",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7011111111111111,
+    "base": 0.7063711911357341,
+    "macro_held_out": 0.9240825846408542,
+    "macro_base": 0.9247500460751348
+   },
+   {
+    "match": "J03WOY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.6771844660194175,
+    "base": 0.6886446886446886,
+    "macro_held_out": 0.9089139332869363,
+    "macro_base": 0.9101241669970873
+   },
+   {
+    "match": "J03WPY",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7171690694626475,
+    "base": 0.710077519379845,
+    "macro_held_out": 0.9282516779709923,
+    "macro_base": 0.9269513590405469
+   },
+   {
+    "match": "J03WQQ",
+    "source": "idsse",
+    "unseen": false,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.698546895640687,
+    "base": 0.6689564068692205,
+    "macro_held_out": 0.9263381087305697,
+    "macro_base": 0.9210436944387398
+   },
+   {
+    "match": "J03WR9",
+    "source": "idsse",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7050946142649199,
+    "base": 0.6951683748169839,
+    "macro_held_out": 0.9395974900201473,
+    "macro_base": 0.935646332107921
+   },
+   {
+    "match": "metrica1",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.841893830703013,
+    "base": 0.8146627565982405,
+    "macro_held_out": 0.9390288003902426,
+    "macro_base": 0.9374669615106059
+   },
+   {
+    "match": "metrica2",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.7987055016181229,
+    "base": 0.7954911433172303,
+    "macro_held_out": 0.9069156948135317,
+    "macro_base": 0.9071967914007436
+   },
+   {
+    "match": "metrica3",
+    "source": "metrica",
+    "unseen": true,
+    "picked": {
+     "setting": "chain"
+    },
+    "held_out": 0.832751677852349,
+    "base": 0.8163265306122449,
+    "macro_held_out": 0.9385301646180918,
+    "macro_base": 0.9361440167361518
+   }
+  ],
+  "all": {
+   "held_out": 0.7241478033445945,
+   "base": 0.7161768414304366,
+   "better": 8,
+   "matches": 10
+  },
+  "macro": {
+   "held_out": 0.9231241160135566,
+   "base": 0.9222060368292636
+  },
+  "by_source": {
+   "idsse": {
+    "held_out": 0.6811610033246369,
+    "base": 0.6764697119680927,
+    "better": 5,
+    "matches": 7
+   },
+   "metrica": {
+    "held_out": 0.824450336724495,
+    "base": 0.8088268101759052,
+    "better": 3,
+    "matches": 3
+   }
+  },
+  "unseen": {
+   "held_out": 0.7946114061096012,
+   "base": 0.780412201336175,
+   "better": 4,
+   "matches": 4
+  },
+  "chosen": {
+   "setting": "chain"
+  },
+  "checks": {
+   "mean": true,
+   "share": true,
+   "each_source": true,
+   "unseen": true
+  },
+  "passes": true
+ }
+}

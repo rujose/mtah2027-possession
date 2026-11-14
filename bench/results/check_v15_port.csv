@@ -1,0 +1,7 @@
+match,variant,dtype,p_max_abs_diff,frames_differing,spell_f1,lab_spell_f1
+J03WR9,stressed,float32,0.000000,0,0.725473,0.725473
+J03WR9,stressed,float64,0.001000,1,0.725473,0.725473
+metrica1,p50,float32,0.000000,0,0.832712,0.832712
+metrica1,p50,float64,0.001000,0,0.832712,0.832712
+J03WOH,p25,float32,0.000000,0,0.714859,0.714859
+J03WOH,p25,float64,0.001000,0,0.714859,0.714859
