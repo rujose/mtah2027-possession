@@ -449,3 +449,18 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   after the scores that Metrica's 3 outweigh both written bars, on 3 matches that W4's training leaned toward.
 - **Next phase:** a network leaning toward Metrica's games still gains on Metrica's 3 with the merge on; whether that
   holds on more Metrica-tracked matches, and training it together with the merge, is open.
+
+### 2026-11-16: the public repository
+
+- **What:** our repository is a new GitHub repo holding this branch's full history (the organisers' commits and
+  ours) as `main`. It starts **private** so a teammate can run the reproduction on Linux, and goes public before
+  the form is sent. The root README is now ours (install, data, the command, the expected SHA-256, the external
+  data and credits); the organisers' README is kept unchanged as `ORGANISERS-README.md`, at the root so its links
+  still work.
+- **Why the full history:** the dated commits and this log are the evidence that every choice came from the bench;
+  squashing would drop it. **Why not a GitHub fork:** a fork of a public repo is public from the first push.
+- **Checked before the first push:** a fresh clone of 26347ab with a fresh environment and only the organisers'
+  data (no video) gives v17's SHA-256 `d7b159c5…ec04` and passes the validator. Nothing in the history is under
+  `data/` (beyond its README), no CSV but the organisers' baselines, no image or video, no secret; the only numbers
+  about our match are aggregates ([data.md](data.md), `bench/damage_stats.json`).
+- **Decision (Jose, "Yes, go ahead").**
