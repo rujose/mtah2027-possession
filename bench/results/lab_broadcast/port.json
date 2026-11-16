@@ -1,0 +1,59 @@
+{
+ "match": "J03WR9",
+ "shifts": [
+  {
+   "true": -500,
+   "found": [
+    -500,
+    0.8110969794979492,
+    33.756060606076744
+   ]
+  },
+  {
+   "true": -2500,
+   "found": [
+    -2500,
+    0.8479412263040182,
+    31.64688174871346
+   ]
+  }
+ ],
+ "M": {
+  "merge_identical": true,
+  "files_home_first": {
+   "status": "merged",
+   "same_slots": true,
+   "slot_frames_differ": 0,
+   "max_abs_diff_m": 1.52587890625e-05
+  },
+  "files_away_first": {
+   "status": "merged",
+   "same_slots": true,
+   "slot_frames_differ": 0,
+   "max_abs_diff_m": 1.52587890625e-05
+  }
+ },
+ "M2": {
+  "merge_identical": true,
+  "files_home_first": {
+   "status": "merged",
+   "same_slots": true,
+   "slot_frames_differ": 0,
+   "max_abs_diff_m": 1.52587890625e-05
+  },
+  "files_away_first": {
+   "status": "merged",
+   "same_slots": true,
+   "slot_frames_differ": 0,
+   "max_abs_diff_m": 1.52587890625e-05
+  }
+ },
+ "missing_file": {
+  "status": "fallback-missing",
+  "unchanged": true
+ },
+ "unrelated_ball": {
+  "status": "fallback-alignment",
+  "unchanged": true
+ }
+}

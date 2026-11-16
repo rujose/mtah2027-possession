@@ -1,0 +1,60 @@
+{
+ "candidate": "W4",
+ "a": {
+  "metrica_vs_v15": 0.052495555555555594,
+  "metrica_ok": true,
+  "metrica_better": 3,
+  "metrica_better_ok": true,
+  "dfl_vs_v15": 0.0010209523809524557,
+  "dfl_ok": true,
+  "worst_variant_vs_v15": 0.01517,
+  "variants_ok": true,
+  "skillcorner_vs_v15": 0.002787999999999993,
+  "skillcorner_ok": true,
+  "passes": true
+ },
+ "b": {
+  "metrica_vs_netmet5": 0.012461111111111145,
+  "metrica_ok": true,
+  "dfl_vs_netmet5": -0.001690476190476147,
+  "dfl_ok": true,
+  "bench_vs_netmet5": 0.0025550000000000407,
+  "bench_ok": true,
+  "passes": true
+ },
+ "passes": true,
+ "full_B_bar_information": {
+  "gain": 0.016463333333333396,
+  "better": 7,
+  "per_variant": {
+   "p25": 0.01517,
+   "p50": 0.01583,
+   "stressed": 0.01839
+  },
+  "per_source": {
+   "idsse": 0.0010209523809524557,
+   "metrica": 0.052495555555555594
+  },
+  "parts": {
+   "gain": true,
+   "better": true,
+   "variants": true,
+   "sources": true,
+   "skillcorner": true
+  },
+  "passes": true
+ },
+ "skillcorner": {
+  "candidate": 0.41132599999999997,
+  "netmet5": 0.4089630000000001,
+  "v15": 0.40853799999999996,
+  "vs_v15": 0.002787999999999993,
+  "vs_v15_better": 14,
+  "vs_netmet5": 0.0023629999999999983,
+  "vs_netmet5_better": 10,
+  "even10_vs_v15": 0.0015210000000000002,
+  "odd10_vs_v15": 0.004054999999999987,
+  "even10_vs_netmet5": 0.0031939999999999968,
+  "odd10_vs_netmet5": 0.001532
+ }
+}

@@ -342,6 +342,43 @@ been tuned. One builder, one page: [lab/branch-b.md](lab/branch-b.md).
 - **The gain rests on a synthetic ball.** On SkillCorner's real stoppage balls the new B is level with the old
   (+0.0008); the bench's case is carried by Metrica's 3 games (+0.023 to +0.073).
 
+### Round 9 (2026-11-14): cleaning the tracking before the program reads it
+
+Jose: try many kinds and amounts of cleaning and find the best, recording what doesn't help. One page, fixed
+before anything was scored: [lab/cleaning.md](lab/cleaning.md). Measured on the robust trees retrained per
+cleaning (P2) and PathCRF's accuracy (P1), leave one match out.
+
+| | P2 gain | better on |
+|---|---|---|
+| the ceiling: every missing player at his true position | +0.0241 | 10/10 |
+| only the missing players within 15 m of the true ball | **+0.0216** | 10/10 |
+| perfect joins with straight-line fills | −0.0035 | 4/10 |
+| the true ball across gaps of 3 s or less | −0.0083 | 2/10 |
+| 24 real join/fill settings (best → worst) | −0.0032 → −0.0084 | 2-5 |
+| the registered judge on them (held out) | −0.0098 | 3/10 |
+
+**Nothing passed; v15 stays the upload.** Nine tenths of the ceiling is where the missing players near the ball
+really were, and no fill built from the tracking recovers any of it. That points to a source that sees around the
+ball (the broadcast tracking) as a next-phase build, not to cleaning.
+
+### Tracking errors (2026-11-15): what wrong teams would cost branch B
+
+Jose saw players drawn in the wrong team's colour (the keeper too) and players placed absurdly. The bench's damage
+never does that, so errors were injected into its tracking at fixed rates, every model kept as v15 trained it:
+[lab/tracking-errors.md](lab/tracking-errors.md). B's bench (0.7329 without errors):
+
+| errors | B's bench | drop |
+|---|---|---|
+| 1 % of outfield frames in the wrong team | 0.7146 | −0.018 |
+| 3 % | 0.6921 | −0.041 |
+| 10 % | 0.5946 | −0.138 |
+| each keeper in the wrong team ~10 % of the time (v8's repair on) | 0.7199 | −0.013 |
+| 3 % of outfield frames moved 10-20 m | 0.7188 | −0.014 |
+
+Every setting loses on all 10 matches, mostly where the wrong player is near the ball; v8's keeper repair saves a
+fifth. Jose sees it rarely on our match (a few seconds here and there), under 0.005 at these costs: **nothing is
+built for this submission**; wrong teams near the ball are a next-phase item.
+
 ### Where the lab stands
 
 | | `all` held out | vs v11 | `idsse` held out | vs v11 |

@@ -1,0 +1,10 @@
+{
+ "recipe": "netmet5",
+ "tables": "data/external/lab_netmet/ens4/search_b/tables_trial1015.joblib",
+ "identical": {
+  "short": true,
+  "segments": true,
+  "timing": true
+ },
+ "seconds": 38.43996715545654
+}

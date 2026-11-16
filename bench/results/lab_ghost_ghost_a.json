@@ -1,0 +1,77 @@
+{
+ "variant": "ghost_a",
+ "columns": 119,
+ "matches": {
+  "J03WMX": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.5930394431554523,
+   "macro_f1": 0.9186190357270837,
+   "logloss": 0.2018980369771376
+  },
+  "J03WN1": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.5954954954954955,
+   "macro_f1": 0.8852435461366089,
+   "logloss": 0.23902687656250504
+  },
+  "J03WOH": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6614343707713127,
+   "macro_f1": 0.9156526095021137,
+   "logloss": 0.18275556972155244
+  },
+  "J03WOY": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6613718411552346,
+   "macro_f1": 0.9003657632840504,
+   "logloss": 0.23419703748013307
+  },
+  "J03WPY": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6869791666666668,
+   "macro_f1": 0.9264325960164581,
+   "logloss": 0.15957362420362775
+  },
+  "J03WQQ": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6582345191040844,
+   "macro_f1": 0.9164433169424182,
+   "logloss": 0.20090852378359048
+  },
+  "J03WR9": {
+   "source": "idsse",
+   "unseen": true,
+   "spell_f1": 0.6603174603174602,
+   "macro_f1": 0.9272830895062745,
+   "logloss": 0.17420663258129773
+  },
+  "metrica1": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7572474377745241,
+   "macro_f1": 0.9287741348859555,
+   "logloss": 0.2383881285860423
+  },
+  "metrica2": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7304918032786887,
+   "macro_f1": 0.8970450708077836,
+   "logloss": 0.3956467783341365
+  },
+  "metrica3": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7482993197278911,
+   "macro_f1": 0.9278781328911213,
+   "logloss": 0.24230337099600113
+  }
+ },
+ "minutes": 10.13402175505956
+}

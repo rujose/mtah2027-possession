@@ -88,7 +88,9 @@ def load(m, which="all"):
     pred = {k: (v.astype(str) if k in ("v4", "v6", "v7") else v) for k, v in pred.items()}
     return types.SimpleNamespace(
         id=m, source=sets.source(m), unseen=m in UNSEEN, halves=halves, pitch=tuple(float(x) for x in f["pitch"]),
-        frames=len(f["truth"]), track={"players": f["players"], "ball": f["ball"], "team": f["team"]},
+        frames=len(f["truth"]), track={"players": f["players"], "ball": f["ball"], "team": f["team"],
+                                       # a cleaned cache (bench/lab_clean.py build-lab) keeps the delivered players too
+                                       **{k: f[k] for k in ("players_raw", "team_raw") if k in f}},
         truth=f["truth"], truth_letters=LETTERS[f["truth"]], v7=pred["v7"], v9=f["v9"].astype(str),
         v11=f["v11"].astype(str), pred=pred)
 

@@ -1,0 +1,55 @@
+{
+ "bench": 0.7333143333333334,
+ "v15": 0.7328606666666666,
+ "gain": 0.00045366666666670776,
+ "better": 6,
+ "per_match": {
+  "J03WMX": 0.00453,
+  "J03WN1": -0.00595,
+  "J03WOH": -0.0097,
+  "J03WOY": 0.00289,
+  "J03WPY": -0.0077,
+  "J03WQQ": 0.01068,
+  "J03WR9": 0.00618,
+  "metrica1": -0.00586,
+  "metrica2": 0.00587,
+  "metrica3": 0.00361
+ },
+ "per_variant": {
+  "p25": 4e-05,
+  "p50": 9e-05,
+  "stressed": 0.00122
+ },
+ "per_source": {
+  "idsse": 0.0001309523809524617,
+  "metrica": 0.0012066666666666153
+ },
+ "trial0_check": 0.0,
+ "skillcorner": 0.4080855,
+ "skillcorner_gain": -0.0004525000000000057,
+ "skillcorner_better": 10,
+ "parts": {
+  "gain": false,
+  "better": false,
+  "variants": true,
+  "sources": true,
+  "skillcorner": true
+ },
+ "passes": false,
+ "metrica_rule": {
+  "metrica": 0.0012066666666666153,
+  "metrica_better": 2,
+  "dfl": 0.0001309523809524617,
+  "passes": false
+ },
+ "switch_table": {
+  "normal": {
+   "candidate": 0.7239009999999999,
+   "v15": 0.723257
+  },
+  "p10": {
+   "candidate": 0.725633,
+   "v15": 0.7255499999999999
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "candidates": [
+  "ghost_den"
+ ],
+ "folds": [
+  {
+   "match": "J03WMX",
+   "picked": "ghost_den",
+   "held_out": 0.5822843822843823,
+   "base": 0.5822843822843823,
+   "logloss": 0.2019663176664928,
+   "base_logloss": 0.20058369684336338
+  },
+  {
+   "match": "J03WN1",
+   "picked": "ghost_den",
+   "held_out": 0.608833522083805,
+   "base": 0.591186440677966,
+   "logloss": 0.23636030944001798,
+   "base_logloss": 0.23388830512495432
+  },
+  {
+   "match": "J03WOH",
+   "picked": "ghost_den",
+   "held_out": 0.6596774193548387,
+   "base": 0.6841677943166442,
+   "logloss": 0.1812218182366955,
+   "base_logloss": 0.18218737299143756
+  },
+  {
+   "match": "J03WOY",
+   "picked": "ghost_den",
+   "held_out": 0.6578313253012049,
+   "base": 0.6637785800240674,
+   "logloss": 0.23557996714373472,
+   "base_logloss": 0.23525541281220416
+  },
+  {
+   "match": "J03WPY",
+   "picked": "ghost_den",
+   "held_out": 0.6796320630749015,
+   "base": 0.6789610389610388,
+   "logloss": 0.16058945319991352,
+   "base_logloss": 0.162531050600102
+  },
+  {
+   "match": "J03WQQ",
+   "picked": "ghost_den",
+   "held_out": 0.6558746736292428,
+   "base": 0.6436363636363636,
+   "logloss": 0.1984276453886707,
+   "base_logloss": 0.2006575279330314
+  },
+  {
+   "match": "J03WR9",
+   "picked": "ghost_den",
+   "held_out": 0.6699564586357039,
+   "base": 0.661764705882353,
+   "logloss": 0.17315921027594194,
+   "base_logloss": 0.17456395516571743
+  },
+  {
+   "match": "metrica1",
+   "picked": "ghost_den",
+   "held_out": 0.7606461086637297,
+   "base": 0.7563421828908554,
+   "logloss": 0.23789610760695976,
+   "base_logloss": 0.23738277645039782
+  },
+  {
+   "match": "metrica2",
+   "picked": "ghost_den",
+   "held_out": 0.7381642512077293,
+   "base": 0.7348837209302326,
+   "logloss": 0.395497772385225,
+   "base_logloss": 0.39662194667544104
+  },
+  {
+   "match": "metrica3",
+   "picked": "ghost_den",
+   "held_out": 0.7291208791208791,
+   "base": 0.7497237569060774,
+   "logloss": 0.24387119938914972,
+   "base_logloss": 0.2419247670817577
+  }
+ ],
+ "gain": -0.0004707883153563408,
+ "better": 6,
+ "worse": 3,
+ "metrica": -0.004339473911609086,
+ "idsse": 0.001187219797323407,
+ "logloss": -0.00010270109456051723,
+ "chosen_on_all": "ghost_den",
+ "passes": false
+}

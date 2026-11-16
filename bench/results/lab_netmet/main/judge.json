@@ -1,0 +1,46 @@
+{
+ "bench": 0.7458803333333333,
+ "v15": 0.7328606666666666,
+ "gain": 0.013019666666666718,
+ "better": 8,
+ "per_match": {
+  "J03WMX": 0.00687,
+  "J03WN1": 0.00714,
+  "J03WOH": -0.01518,
+  "J03WOY": 0.01856,
+  "J03WPY": -0.00752,
+  "J03WQQ": 0.00592,
+  "J03WR9": 0.01709,
+  "metrica1": 0.01541,
+  "metrica2": 0.05008,
+  "metrica3": 0.03183
+ },
+ "per_variant": {
+  "p25": 0.01079,
+  "p50": 0.01198,
+  "stressed": 0.01629
+ },
+ "per_source": {
+  "idsse": 0.00469666666666673,
+  "metrica": 0.032440000000000024
+ },
+ "trial0_check": 0.0,
+ "skillcorner": 0.40681600000000007,
+ "skillcorner_gain": -0.0017219999999999957,
+ "skillcorner_better": 7,
+ "parts": {
+  "gain": true,
+  "better": true,
+  "variants": true,
+  "sources": true,
+  "skillcorner": true
+ },
+ "passes": true,
+ "metrica_rule": {
+  "metrica": 0.032440000000000024,
+  "metrica_better": 3,
+  "dfl": 0.00469666666666673,
+  "passes": true
+ },
+ "noise_rule": "pending: seed noise 0.0035 >= 0.003; needs the same recipe with seed 1"
+}

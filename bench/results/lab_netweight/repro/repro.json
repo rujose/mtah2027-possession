@@ -1,0 +1,30 @@
+{
+ "fold": "metrica1",
+ "weights_max_abs_diff": 0.0,
+ "weights_same_keys": true,
+ "p_normal": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "p_p10": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "p_p25": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "p_p50": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "p_stressed": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "p_train": {
+  "max_abs_diff": 0.0,
+  "identical": true
+ },
+ "pass": true
+}

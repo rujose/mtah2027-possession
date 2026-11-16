@@ -378,3 +378,74 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   10 % and 25 % because B got better. The threshold stays at 0.1445: lowering it doesn't change our file.
 - **Decision (Jose, "Yes, adopt v15"):** v15 = v14 with trial 1015 as branch B ([v15](models/v15-branch-b.md)).
 - **Kept in mind:** the gain is on a synthetic ball; on SkillCorner's real one it's about zero.
+
+### 2026-11-14: lab round 9, cleaning the tracking: nothing kept
+
+- **What:** no tracking cleaner is adopted; v15 stays the upload ([lab/cleaning.md](lab/cleaning.md)).
+- **Why:** every real cleaner lost on the bench (24 join/fill settings −0.003 to −0.008; the registered
+  leave-one-out judge −0.0098, 3 of 10), and even perfect joins with straight-line fills lost (−0.0035). The
+  ceiling (+0.024, 10/10) is almost all the true positions of missing players within 15 m of the ball (+0.022),
+  which the tracking itself can't supply.
+- **Rules out:** joins, fills, ball interpolation and smoothing of the delivered tracking for this submission.
+  Leaves open, for a next phase: filling near-ball players from the broadcast tracking.
+
+### 2026-11-15: tracking errors: measured, nothing built
+
+- **What:** Jose saw players in the wrong team's colour (the keeper too) and players placed absurdly on our match.
+  Errors of that kind were injected into B's bench at fixed rates ([lab/tracking-errors.md](lab/tracking-errors.md)).
+- **Found:** they cost B on all 10 matches: about −0.018 per 1 % of outfield frames in the wrong team (−0.0005 per
+  half-minute of one player), −0.013 for each keeper wrong ~10 % of the time (v8's repair saves a fifth), −0.014
+  for 3 % of frames misplaced by 10-20 m. The loss sits near the ball.
+- **Decision (Jose, "Rare, a few seconds"):** at that rate it costs under 0.005, so nothing is built before Nov 17;
+  v15 stays the upload. The rate was Jose's estimate from watching; nothing was counted or labelled on our match.
+- **Next phase:** wrong teams near the ball, beside the missing players near the ball (round 9). The harness
+  (`bench/lab_trackerr.py`) is the test a fix would have to pass.
+
+### 2026-11-15: the two-day push, and v16
+
+- **What:** Jose, with two days left: "if there is a moment to make a difference i think is now". Three tracks
+  ([lab/push.md](lab/push.md)): v16 from the night's `netmet5`; B's network leaning harder on Metrica's games; the
+  broadcast tracking's players near the ball. Jose: "Yes, all three".
+- **Decided with it:** Metrica's 3 sample games may train the network we deploy (until now: v4 and v6's training,
+  checking and choosing settings). They ship with no licence file; Metrica publishes them and runs the challenge.
+- **v16 built** ([models/v16-netmet.md](models/v16-netmet.md)): v15 with branch B's GRU P replaced by `netmet5`'s, four
+  networks (seeds 0-3) of gru_b's recipe trained on all 10 bench matches, averaged; B's post stages retrained on that
+  chain. The nets retrain bit-identical, the port gives the lab's letters (0 frames), SkillCorner 0.4090 reproduced.
+- **Why it goes in without the B bar:** it fails only "7 of 10" (6/10; DFL's 7 +0.003, within seed noise) and passes
+  the Metrica rule (Metrica's 3 +0.040, 3/3, each scored by networks that never saw it), the precedent of v14. Our
+  match is Metrica's tracker under Metrica's convention, and the switch sends it to branch B.
+- **Decision (Jose, "Yes, adopt v16"):** v16 is the upload; its file on our match differs from v15's (SHA-256
+  `90599088…0523c` against `209a2081…7b5e`). Track 2 may still replace its network if it passes its bar.
+
+
+### 2026-11-15: v17, the broadcast's players near the ball
+
+- **What:** track 3 of the push ([lab/push/broadcast.md](lab/push/broadcast.md)) simulated our match's broadcast
+  tracking on the bench from docs/data.md's statistics only, merged its players that the tactical tracking lacks, and
+  judged v16's branch B on the merged tracking without retraining: realistic simulation +0.0081 (rule M, fixed before
+  any score) and +0.0076 (M2: M plus "a team never has more than 11"), both 8/10 with every variant and both sources
+  up; pessimistic −0.0018 / −0.0010 (M) and −0.0005 / +0.0007 (M2). Retraining B on merged data was worse.
+- **Decision (Jose, "Yes, with M2"):** v17 = v16 with the broadcast merged into what branch B reads, rule M2
+  ([models/v17-broadcast.md](models/v17-broadcast.md)); the switch reads the delivered tracking, so it takes v16's
+  branch; any failure falls back to v16's file. M2's cap was chosen after the pessimistic run, which the page says.
+- **Not taken up:** track 3's suggestion that Jose check the broadcast video for tracked referees and pick M or M2 from
+  that: choosing a rule from what the provided video shows comes close to tuning on it, and M2 is safe on both
+  pessimistic draws without that look.
+- **Grey zone E grows:** the simulation's settings come from data.md's statistics of our broadcast set (no labels, no
+  video), as the bench's damage came from our tactical tracking ([limitations.md](limitations.md)).
+
+### 2026-11-16: track 2's W4 not adopted; v17 stays the upload
+
+- **What:** track 2 of the push ([lab/push/netweight.md](lab/push/netweight.md)) finished with **W4**: B's network
+  trained with Metrica's training matches at loss weight 4, seeds 0-3 averaged. It passes the bar written before any
+  score: against `netmet5` (v16's network), Metrica's 3 +0.0125 (3/3), DFL's 7 −0.0017 (limit −0.003), B's bench
+  +0.0026.
+- **Checked under v17's merge** before asking (planned at 21:30): judged by the bar track 3 wrote for v16 + merge, W4
+  with the merge passes the realistic simulation (+0.0051, 8/10) but **fails the pessimistic floor** (−0.0032 against
+  −0.002; DFL −0.0079). Against v17 as it is, W4 + merge is level on B's bench (−0.0000 / −0.0002), +0.012 / +0.018
+  on Metrica's 3 and −0.005 / −0.008 on DFL's 7, past the 0.003 its own bar allowed. W4's gain and the merge's
+  overlap ([lab/push.md](lab/push.md), 04:15).
+- **Decision (Jose, "Keep v17"):** v17 stays the upload with `netmet5`; no v18. Choosing W4 would have meant deciding
+  after the scores that Metrica's 3 outweigh both written bars, on 3 matches that W4's training leaned toward.
+- **Next phase:** a network leaning toward Metrica's games still gains on Metrica's 3 with the merge on; whether that
+  holds on more Metrica-tracked matches, and training it together with the merge, is open.

@@ -1,0 +1,96 @@
+{
+ "candidates": [
+  "ghost_a",
+  "ghost_b"
+ ],
+ "folds": [
+  {
+   "match": "J03WMX",
+   "picked": "ghost_b",
+   "held_out": 0.577570093457944,
+   "base": 0.5822843822843823,
+   "logloss": 0.20135312136715816,
+   "base_logloss": 0.20058369684336338
+  },
+  {
+   "match": "J03WN1",
+   "picked": "ghost_a",
+   "held_out": 0.5954954954954955,
+   "base": 0.591186440677966,
+   "logloss": 0.23902687656250504,
+   "base_logloss": 0.23388830512495432
+  },
+  {
+   "match": "J03WOH",
+   "picked": "ghost_a",
+   "held_out": 0.6614343707713127,
+   "base": 0.6841677943166442,
+   "logloss": 0.18275556972155244,
+   "base_logloss": 0.18218737299143756
+  },
+  {
+   "match": "J03WOY",
+   "picked": "ghost_a",
+   "held_out": 0.6613718411552346,
+   "base": 0.6637785800240674,
+   "logloss": 0.23419703748013307,
+   "base_logloss": 0.23525541281220416
+  },
+  {
+   "match": "J03WPY",
+   "picked": "ghost_a",
+   "held_out": 0.6869791666666668,
+   "base": 0.6789610389610388,
+   "logloss": 0.15957362420362775,
+   "base_logloss": 0.162531050600102
+  },
+  {
+   "match": "J03WQQ",
+   "picked": "ghost_a",
+   "held_out": 0.6582345191040844,
+   "base": 0.6436363636363636,
+   "logloss": 0.20090852378359048,
+   "base_logloss": 0.2006575279330314
+  },
+  {
+   "match": "J03WR9",
+   "picked": "ghost_a",
+   "held_out": 0.6603174603174602,
+   "base": 0.661764705882353,
+   "logloss": 0.17420663258129773,
+   "base_logloss": 0.17456395516571743
+  },
+  {
+   "match": "metrica1",
+   "picked": "ghost_a",
+   "held_out": 0.7572474377745241,
+   "base": 0.7563421828908554,
+   "logloss": 0.2383881285860423,
+   "base_logloss": 0.23738277645039782
+  },
+  {
+   "match": "metrica2",
+   "picked": "ghost_a",
+   "held_out": 0.7304918032786887,
+   "base": 0.7348837209302326,
+   "logloss": 0.3956467783341365,
+   "base_logloss": 0.39662194667544104
+  },
+  {
+   "match": "metrica3",
+   "picked": "ghost_b",
+   "held_out": 0.7263301500682129,
+   "base": 0.7497237569060774,
+   "logloss": 0.24526543680319096,
+   "base_logloss": 0.2419247670817577
+  }
+ ],
+ "gain": -0.003125662842035681,
+ "better": 4,
+ "worse": 6,
+ "metrica": -0.008960089868579916,
+ "idsse": -0.0006251941163738664,
+ "logloss": 0.0005724917744827585,
+ "chosen_on_all": "ghost_a",
+ "passes": false
+}

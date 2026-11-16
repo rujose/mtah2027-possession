@@ -1,0 +1,90 @@
+{
+ "match": "J03WR9",
+ "variant": "stressed",
+ "rule": {
+  "register": true,
+  "gate": 1.5,
+  "r_same": 2.5,
+  "r_other": 1.5,
+  "cap": 11
+ },
+ "v16_branch": "B",
+ "no_broadcast": {
+  "status": "off",
+  "branch": "B",
+  "frames_differ_v16": 0
+ },
+ "missing_file": {
+  "status": "fallback-missing",
+  "branch": "B",
+  "frames_differ_v16": 0
+ },
+ "alignment": [
+  {
+   "true": -500,
+   "found": -501,
+   "rms_m": 4.8966993678189965,
+   "next_best_m": 34.73002768774344
+  },
+  {
+   "true": -2500,
+   "found": -2501,
+   "rms_m": 6.9396664828154915,
+   "next_best_m": 33.38234555314272
+  }
+ ],
+ "harness_merge": {
+  "found_shifts": {
+   "pieces": 1377,
+   "appended_slots": 0,
+   "dropped_frames": 0,
+   "added_slot_frames": 73521,
+   "registered_frames": 89662
+  },
+  "as_scored": {
+   "pieces": 1362,
+   "appended_slots": 0,
+   "dropped_frames": 0,
+   "added_slot_frames": 73517,
+   "registered_frames": 89664
+  }
+ },
+ "files_away_first": {
+  "same_slots": true,
+  "slot_frames_differ": 0,
+  "max_abs_diff_m": 0.0,
+  "status": "merged",
+  "vs_as_scored": {
+   "same_slots": true,
+   "slot_frames_differ": 74928,
+   "max_abs_diff_m": 43.981475830078125
+  }
+ },
+ "files_home_first": {
+  "same_slots": true,
+  "slot_frames_differ": 0,
+  "max_abs_diff_m": 0.0,
+  "status": "merged",
+  "vs_as_scored": {
+   "same_slots": true,
+   "slot_frames_differ": 74928,
+   "max_abs_diff_m": 43.981475830078125
+  }
+ },
+ "predict_files": {
+  "status": "merged",
+  "branch": "B",
+  "branch_as_v16": true,
+  "frames_differ_b_merged": 0
+ },
+ "b_fallback": {
+  "status": "fallback-missing",
+  "frames_differ_delivered_b": 0
+ },
+ "b_letters_differ": {
+  "frames": 1131,
+  "share": 0.007703782414124282
+ },
+ "delivered_unchanged": true,
+ "passes": true
+}

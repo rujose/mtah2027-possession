@@ -1,0 +1,13 @@
+{
+ "used": [
+  "J03WN1",
+  "metrica1"
+ ],
+ "weights_max_abs_diff": 0.0,
+ "loss_plain": [
+  0.4416148373678726
+ ],
+ "loss_weighted_line": [
+  0.44161483032645543
+ ]
+}

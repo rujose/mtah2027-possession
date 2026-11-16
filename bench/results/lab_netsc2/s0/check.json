@@ -1,0 +1,60 @@
+{
+ "loss_check": {
+  "mixed_got": 1.1627615690231323,
+  "mixed_hand": 1.1627615771565947,
+  "mixed_abs_diff": 8.133462348069997e-09,
+  "frames": 16,
+  "no_sc_frames_same_call": true,
+  "dead_frames_equal_3way": 0.0
+ },
+ "empty_max_abs_diff": 0.0,
+ "empty_history": [
+  [
+   0.4181553337361243
+  ],
+  [
+   0.4181553337361243
+  ]
+ ],
+ "netsc_max_abs_diff": 0.0,
+ "netsc_history": [
+  [
+   0.4137384835726966
+  ],
+  [
+   0.4137384835726966
+  ]
+ ],
+ "binary_vs_3way_max_abs_diff": 0.026144564151763916,
+ "binary_history": [
+  0.36531312598807364
+ ],
+ "binary_parts": [
+  {
+   "dfl_3way_in_mixed": 0.39256873438533724,
+   "sc_2way": 0.24754000944128046,
+   "sc_frames": 44243
+  }
+ ],
+ "recoded_first_match": {
+  "match": "1874553",
+  "segments": 4,
+  "frames": 301404,
+  "three_way_counts": {
+   "0": 80679,
+   "1": 80679,
+   "2": 59854,
+   "3": 80192
+  },
+  "two_way_counts": {
+   "3": 80192,
+   "10": 59854,
+   "11": 161358
+  },
+  "dead_kept": true,
+  "live_kept": true,
+  "ignored_kept": true,
+  "inputs_same": true
+ },
+ "pass": true
+}

@@ -1,0 +1,56 @@
+{
+ "match": "J03WR9",
+ "variant": "stressed",
+ "rule": {
+  "register": true,
+  "gate": 1.5,
+  "r_same": 2.5,
+  "r_other": 1.5,
+  "cap": 11
+ },
+ "v16_branch": "B",
+ "no_broadcast": {
+  "status": "off",
+  "branch": "B",
+  "frames_differ_v16": 0
+ },
+ "missing_file": {
+  "status": "fallback-missing",
+  "branch": "B",
+  "frames_differ_v16": 0
+ },
+ "harness_merge": {
+  "pieces": 1362,
+  "appended_slots": 0,
+  "dropped_frames": 0,
+  "added_slot_frames": 73517,
+  "registered_frames": 89664
+ },
+ "files_away_first": {
+  "same_slots": true,
+  "slot_frames_differ": 74928,
+  "max_abs_diff_m": 43.981475830078125,
+  "status": "merged"
+ },
+ "files_home_first": {
+  "same_slots": true,
+  "slot_frames_differ": 74928,
+  "max_abs_diff_m": 43.981475830078125,
+  "status": "merged"
+ },
+ "predict_files": {
+  "status": "merged",
+  "branch": "B",
+  "branch_as_v16": true
+ },
+ "b_fallback": {
+  "status": "fallback-missing",
+  "frames_differ_delivered_b": 0
+ },
+ "b_letters_differ": {
+  "frames": 1131,
+  "share": 0.007703782414124282
+ },
+ "delivered_unchanged": true,
+ "passes": false
+}

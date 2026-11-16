@@ -9,11 +9,13 @@ browser needs to seek in a 5 GB video whose index (the "moov" box) sits at the e
 """
 
 import argparse
+import errno
 import http.server
 import json
 import os
 import re
 import sys
+import time
 
 from possession.data import ROOT
 from games import asset_paths
@@ -22,7 +24,8 @@ from games import asset_paths
 PORT = 8765
 STATIC = os.path.join(ROOT, "viewer", "static")
 CACHE = os.path.join(ROOT, "viewer", "cache")
-CHUNK = 1 << 20  # bytes per write while streaming the video
+CHUNK = 1 << 18  # bytes per write while streaming the video
+RETRIES = 200     # a full send buffer (macOS: errno 55, ENOBUFS) is waited out, 10 ms at a time
 # Notes Jose writes while watching. For understanding only: no model code reads this file, and it is
 # gitignored (RULES.md forbids hand labels on this match for any purpose).
 NOTES = os.path.join(ROOT, "viewer", "notes", "notes.json")
@@ -105,10 +108,28 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     data = handle.read(min(CHUNK, remaining))
                     if not data:
                         break
-                    self.wfile.write(data)
+                    self.write_patiently(data)
                     remaining -= len(data)
             except (BrokenPipeError, ConnectionResetError):
                 pass  # the browser cancels range requests all the time while seeking
+            except OSError as error:
+                if error.errno != errno.ENOBUFS:
+                    raise
+                sys.stderr.write("video: the send buffer stayed full; the browser will ask again\n")
+
+    def write_patiently(self, data):
+        """Send every byte of `data`, waiting out a momentarily full socket buffer instead of dropping the request.
+        socket.send reports how much went out, so nothing is sent twice (sendall can fail halfway without saying)."""
+        view, waits = memoryview(data), 0
+        while view:
+            try:
+                view = view[self.connection.send(view):]
+                waits = 0
+            except OSError as error:
+                waits += 1
+                if error.errno != errno.ENOBUFS or waits >= RETRIES:
+                    raise
+                time.sleep(0.01)
 
     def log_message(self, fmt, *args):
         if not self.path.startswith("/video.mp4"):

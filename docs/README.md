@@ -23,7 +23,10 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [owner-rule.md](owner-rule.md) | What "owning the ball" means in Metrica's corrected tracking (the answer key's source), read from its sample games, and where v13 stands against it |
 | [search-metrica.md](search-metrica.md) | A nested search of v13's settings on Metrica's convention: holding out a match against a half, what 2,000 trials agree on, and the confirmed candidate |
 | [lab/branch-b.md](lab/branch-b.md) | Lab round 8: branch B (the chain our match runs) rebuilt with a GRU trained on stressed copies and a nested search; v15's source |
-| [field.md](field.md) | How we compare with other teams' public repos: which numbers can be compared, where we stand, ideas they use |
+| [lab/cleaning.md](lab/cleaning.md) | Lab round 9: cleaning the tracking (joins, fills, ball, smoothing) before the models read it; the ceilings, the grid, nothing kept |
+| [lab/night.md](lab/night.md) | The night of 2026-11-14 to 11-15: new ideas proposed and tried by agents, their bars and results |
+| [lab/tracking-errors.md](lab/tracking-errors.md) | How much wrong teams, a wrong keeper and misplaced players would cost v15's branch B, injected into the bench (a sensitivity measurement; nothing built) |
+| [field.md](field.md) | How we compare with other teams' public repos (as of 2026-11-14): which numbers can be compared, where we stand on Metrica's and DFL's matches, rule problems, ideas they use |
 
 ## Conventions
 
@@ -54,6 +57,8 @@ so that any team member, or a reviewer, can follow it without having been in the
 | [v13](models/v13-temporal.md) | v12 with a temporal start (a small bidirectional GRU's P averaged with robust's), and a switch: where the tracking's ball moves through what the players say are stoppages, a start retrained for that (`augment`) | built 2026-11-09 | Jose's run | **0.716** held-out against v12's 0.703 (+0.013), better on 8/10; IDSSE set 0.676 against 0.670, 5/7; the switch keeps every normal bench match on the temporal start; SkillCorner 0.408 against v12's 0.308; the port gives the lab's letters on every frame | Jose's run |
 | [v14](models/v14-search.md) | v13 with branch A's start weighing the GRU 0.8 and v9's snap and v11's move off, found by a nested search on Metrica's convention | built 2026-11-12 | same file as v13: the switch takes branch B on our match | **0.724** held-out against v13's 0.716 (+0.008), better on 8/10; Metrica +0.016 (3/3); the switch passes its bar with it; the port gives the lab's letters on every frame | same as v13 |
 | [v15](models/v15-branch-b.md) | v14 with a new branch B (the chain the switch takes on our match): the start weighs a GRU trained on stressed copies 0.92, snap and move off, post stages trained on stressed copies, found by a nested search | built 2026-11-14 | Jose's run | branch B **0.733** on B's bench (25 %, 50 %, stressed) against v14's 0.698 (+0.035, 10/10; nested +0.033); normal bench unchanged (A); SkillCorner 0.409 (+0.001); the port gives the lab's letters | Jose's run |
+| [v16](models/v16-netmet.md) | v15 with branch B's network trained on Metrica's 3 sample games too: four GRUs (seeds 0-3) on all 10 bench matches, their P averaged (the night's `netmet5`); everything else v15's | built 2026-11-15, the upload until v17 | Jose's run | branch B **0.747** on B's bench against v15's 0.733 (+0.014, 6/10): Metrica's 3 **+0.040 (3/3)**, DFL's 7 +0.003; fails the B bar's 7 of 10, passes the Metrica rule (as v14); SkillCorner 0.409 (+0.000); the port gives the lab's letters | Jose's run |
+| [v17](models/v17-broadcast.md) | v16 with the broadcast tracking's players that the tactical tracking lacks merged into what branch B reads (rule M2: registered, guarded, at most 11 a team); the switch, branch A and every model v16's; falls back to v16 exactly | built 2026-11-15, **the upload** (Jose: "Yes, with M2") | Jose's run | branch B on B's bench with a broadcast simulated from data.md's numbers: **+0.0076** over v16 (8/10, every variant and both sources up); pessimistic simulation −0.0005 and +0.0007; SkillCorner: v16's (no broadcast) | Jose's run |
 | floor: `baseline_smooth50` | nearest player + majority vote ±2 s | organisers' | 594 possessions, mean 7.2 s; spellF1 **0.2433** | 0.217 ± 0.018 (448 / 437) | macroF1 0.62, spellF1 0.33 |
 
 ## Data from other matches
@@ -87,6 +92,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m possession.v13                # writes evaluation/results/v13.csv (temporal start + stoppage switch); path and SHA-256 only
 .venv/bin/python -m possession.v14                # writes evaluation/results/v14.csv (v13, branch A re-weighted); path and SHA-256 only
 .venv/bin/python -m possession.v15                # writes evaluation/results/v15.csv (v14, branch B rebuilt); path and SHA-256 only
+.venv/bin/python -m possession.v16                # writes evaluation/results/v16.csv (v15, B's network with Metrica's games)
+.venv/bin/python -m possession.v17                # writes evaluation/results/v17.csv (v16, B reads the broadcast's players too): the upload
 .venv/bin/python evaluation/validate_submission.py evaluation/results/v1.csv
 .venv/bin/python evaluation/run_evaluation.py     # public 5 minutes, check only
 
@@ -123,6 +130,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # exac
 .venv/bin/python -m bench.check_v14               # v14's port gives the lab's letters on bench matches
 .venv/bin/python -m bench.train_v15               # v15's branch B -> possession/models/v15_b_all.joblib
 .venv/bin/python -m bench.check_v15 port          # v15's port gives the lab's letters (then: skillcorner)
+.venv/bin/python -m bench.train_v16               # v16's branch B (four nets + post stages) -> possession/models/v16_b_all.joblib
+.venv/bin/python -m bench.check_v16 port          # v16's port gives the lab's letters (then: skillcorner, switch)
+.venv/bin/python -m bench.check_v17               # v17's glue on a bench match with a simulated broadcast written as files
 .venv/bin/python -m bench.transfer_check --ours   # label-free checks of v12 on our match: PASS / NEAR / WARN (Jose)
 # the same stages with --set idsse (and touch_timing): the IDSSE-only twins (bench/chain.py)
 .venv/bin/python -m viewer.build_bench_cache      # the viewer's bench matches (after eval_pathcrf)

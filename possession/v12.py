@@ -42,9 +42,13 @@ SWAP = np.array([1, 0, 2])          # H <-> A on P's columns, as the robust mode
 PATHCRF_FLOAT64 = True
 
 
-def inputs(tracking, halves, pitch, which):
+def inputs(tracking, halves, pitch, which, clean=None):
     """(the repaired tracking, the inputs the lab's stages read): as bench/eval_pathcrf.py builds them,
-    with the models trained on every bench match of the set."""
+    with the models trained on every bench match of the set.
+
+    clean (lab round 9, docs/lab/cleaning.md): a function of the repaired tracking. Given, a third value is
+    returned, (the cleaned tracking, the inputs with PathCRF's P and v7's cost from it); everything else
+    reads the tracking as delivered either way."""
     fixed, _ = repair.repair(tracking, halves, pitch)                                   # v8
     clues = v1.compute_clues(fixed, [], halves, pitch)                                 # no Smart Tagging
     base = v1.build_costs(dict(clues, stopped=np.zeros_like(clues["stopped"]), active=np.zeros_like(clues["active"])))
@@ -65,7 +69,13 @@ def inputs(tracking, halves, pitch, which):
     pred = {"p_dead": p_dead, "p_start": p_start, "p_pathcrf": p_pathcrf, "v6_cost": v6_cost.astype(np.float32),
             "v7_cost": v7_cost(v6_cost, p_pathcrf, missing, pc["weight"], pc["where"]).astype(np.float32),
             "restart_clue": restart.restart_belief(p_start, p_dead, halves, int(r["carry"] * FPS))}
-    return fixed, pred
+    if clean is None:
+        return fixed, pred
+    cleaned = clean(fixed)
+    p_clean = pathcrf_adapter.p_home(pathcrf, cleaned, halves, pitch, live)    # already float64 if PATHCRF_FLOAT64
+    pred_clean = dict(pred, p_pathcrf=p_clean, v7_cost=v7_cost(v6_cost, p_clean, np.isnan(cleaned["ball"][:, 0]), pc["weight"],
+                                                               pc["where"]).astype(np.float32))
+    return fixed, pred, (cleaned, pred_clean)
 
 
 def as_match(track, pred, halves, pitch, name="ours"):

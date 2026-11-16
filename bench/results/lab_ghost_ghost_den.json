@@ -1,0 +1,77 @@
+{
+ "variant": "ghost_den",
+ "columns": 125,
+ "matches": {
+  "J03WMX": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.5822843822843823,
+   "macro_f1": 0.9192424805376637,
+   "logloss": 0.2019663176664928
+  },
+  "J03WN1": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.608833522083805,
+   "macro_f1": 0.8883199977966204,
+   "logloss": 0.23636030944001798
+  },
+  "J03WOH": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6596774193548387,
+   "macro_f1": 0.9180804390629439,
+   "logloss": 0.1812218182366955
+  },
+  "J03WOY": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6578313253012049,
+   "macro_f1": 0.9028082289607594,
+   "logloss": 0.23557996714373472
+  },
+  "J03WPY": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6796320630749015,
+   "macro_f1": 0.927902143645316,
+   "logloss": 0.16058945319991352
+  },
+  "J03WQQ": {
+   "source": "idsse",
+   "unseen": false,
+   "spell_f1": 0.6558746736292428,
+   "macro_f1": 0.9166955012118448,
+   "logloss": 0.1984276453886707
+  },
+  "J03WR9": {
+   "source": "idsse",
+   "unseen": true,
+   "spell_f1": 0.6699564586357039,
+   "macro_f1": 0.9308176424981673,
+   "logloss": 0.17315921027594194
+  },
+  "metrica1": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7606461086637297,
+   "macro_f1": 0.928852651885185,
+   "logloss": 0.23789610760695976
+  },
+  "metrica2": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7381642512077293,
+   "macro_f1": 0.8982918658314264,
+   "logloss": 0.395497772385225
+  },
+  "metrica3": {
+   "source": "metrica",
+   "unseen": true,
+   "spell_f1": 0.7291208791208791,
+   "macro_f1": 0.9266163383922167,
+   "logloss": 0.24387119938914972
+  }
+ },
+ "minutes": 24.684870902697245
+}

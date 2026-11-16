@@ -1,0 +1,42 @@
+{
+ "bench": 0.739736,
+ "v15": 0.7328606666666666,
+ "gain": 0.006875333333333356,
+ "better": 6,
+ "per_match": {
+  "J03WMX": -0.00359,
+  "J03WN1": 0.01212,
+  "J03WOH": -0.02324,
+  "J03WOY": 0.00802,
+  "J03WPY": -0.02065,
+  "J03WQQ": -0.0001,
+  "J03WR9": 0.00965,
+  "metrica1": 0.02915,
+  "metrica2": 0.03504,
+  "metrica3": 0.02234
+ },
+ "per_variant": {
+  "p25": 0.00456,
+  "p50": 0.00508,
+  "stressed": 0.01099
+ },
+ "per_source": {
+  "idsse": -0.002539523809523777,
+  "metrica": 0.028843333333333332
+ },
+ "trial0_check": 0.0,
+ "parts": {
+  "gain": true,
+  "better": false,
+  "variants": true,
+  "sources": false,
+  "skillcorner": null
+ },
+ "passes": false,
+ "metrica_rule": {
+  "metrica": 0.028843333333333332,
+  "metrica_better": 3,
+  "dfl": -0.002539523809523777,
+  "passes": false
+ }
+}

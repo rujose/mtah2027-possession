@@ -75,7 +75,7 @@ frames 184,439–190,198). Everything else is the tracking as delivered.
 ## The bench matches (added 2026-10-30)
 
 The header's title is a **match picker**: our match, plus the 10 bench matches (7 IDSSE, 3 Metrica
-samples). A bench match opens at `http://localhost:8765/?match=<id>`.
+samples), each also with a stressed-ball entry (below, "The latest versions"). A bench match opens at `http://localhost:8765/?match=<id>`.
 
 - **No video:** those matches have none. The page runs on its own clock, and play, pause, jump,
   slow-down before a change and notes all work as before.
@@ -107,6 +107,33 @@ restart needed.
 at IoU 0.3, in the team's colour), and **v12: P(dead), v12: P(home)** (the robust model before the
 decoder). The stage and error chips start unchecked. Leave only an error lane on and N / P walk
 through the failures. Build: `python -m bench.train_v12 --oof-only`, then `viewer.build_bench_cache`.
+
+## The latest versions (added 2026-11-15)
+
+Every bench match has lanes for the latest versions, newest on top:
+
+| lane | what it is |
+|---|---|
+| **v15** | what v15 outputs: the stoppage switch picks branch A or B per match from the match's own signal (threshold 0.1445). On the normal bench it picks A on all 10; with the stressed ball, B on all 10 |
+| **netmet5 · B (candidate)** | the night of 2026-11-14's near miss, **not adopted**: branch B with Metrica's 3 games added to its network's training, 4 seeds averaged, trial 1015's settings ([lab/night.md](lab/night.md)) |
+| **v15 · B** | v15's branch B (search trial 1015), the chain our match runs |
+| **v15 · A (= v14)** | v15's branch A, unchanged since v14 |
+| **errors: v15 missed / spurious** | v15's failures at IoU 0.3, as v12's error lanes (unchecked by default) |
+
+All are out of fold (each match's models trained without it), and each lane scores what the lab recorded (v15's B
+0.7379 on the stressed bench, `netmet5` 0.7525; v15 0.7241 on the normal bench).
+
+**Each match now has a second entry, `<match>-stressed`** ("· stressed ball (v15 runs branch B)" in the picker):
+the same damaged tracking with the fully stressed ball, real SkillCorner stoppage balls pasted into the dead time
+(`bench/lab_carried.py`). That's the bench variant where the switch takes branch B, as it does on our match, so it's
+where to watch B and `netmet5` work. It carries only the lanes computed on its own ball (truth, the floor, v1, v3 and
+the four above), and the clues v1, v9 and v11 read from the tracking.
+
+**On our match** (`--models`), v13, v14 and v15 are among the lanes, one per CSV in `evaluation/results/`.
+`netmet5` was never run on our match, so it has no lane there.
+
+**Build:** `python -m bench.viewer_letters v15 --variant normal` (and `--variant stressed`, and the same with
+`netmet5`; one process each, ~1 min), then `python -m viewer.build_bench_cache` (~4 min, ~970 MB).
 
 ## Watching changes closely
 

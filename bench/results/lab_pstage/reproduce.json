@@ -1,0 +1,44 @@
+{
+ "R1": true,
+ "R1_tables": {
+  "short": {
+   "J03WMX~train": true,
+   "J03WN1~train": true,
+   "J03WOH~train": true,
+   "J03WOY~train": true,
+   "J03WPY~train": true,
+   "J03WQQ~train": true,
+   "J03WR9~train": true,
+   "metrica1~train": true,
+   "metrica2~train": true,
+   "metrica3~train": true
+  },
+  "segments": {
+   "J03WMX~train": true,
+   "J03WN1~train": true,
+   "J03WOH~train": true,
+   "J03WOY~train": true,
+   "J03WPY~train": true,
+   "J03WQQ~train": true,
+   "J03WR9~train": true,
+   "metrica1~train": true,
+   "metrica2~train": true,
+   "metrica3~train": true
+  },
+  "timing": {
+   "J03WMX~train": true,
+   "J03WN1~train": true,
+   "J03WOH~train": true,
+   "J03WOY~train": true,
+   "J03WPY~train": true,
+   "J03WQQ~train": true,
+   "J03WR9~train": true,
+   "metrica1~train": true,
+   "metrica2~train": true,
+   "metrica3~train": true
+  }
+ },
+ "R2": true,
+ "max_diff": 0.0,
+ "b_bench": 0.7328612727608061
+}

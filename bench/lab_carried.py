@@ -345,8 +345,11 @@ def stressed_ball(m, seed):
 def ball_costs(match, ball, which):
     """v6's and v7's costs on a new ball, as bench/eval_pathcrf.py made them (v1's clues without tags, stopped and
     active zeroed; v4's P(dead), v6's restart P and PathCRF's P as they are)."""
-    n, slots = match.track["players"].shape[:2]
-    track = {**match.track, "ball": ball, "speed": np.zeros((n, slots), np.float32)}
+    # v1's clues read the players as delivered, also where the lab cache holds cleaned ones (bench/lab_clean.py)
+    players = match.track.get("players_raw", match.track["players"])
+    team = match.track.get("team_raw", match.track["team"])
+    n, slots = players.shape[:2]
+    track = {**match.track, "players": players, "team": team, "ball": ball, "speed": np.zeros((n, slots), np.float32)}
     clues = v1.compute_clues(track, [], match.halves, match.pitch)
     base = v1.build_costs(dict(clues, stopped=np.zeros_like(clues["stopped"]), active=np.zeros_like(clues["active"])))
     d, r, pc = chain.dead_ball(which), chain.restart(which), chain.pathcrf(which)
@@ -716,7 +719,12 @@ def sc_prepare(ids=None):
         started = time.time()
         data = skillcorner.load(m)
         halves, pitch = data["halves"], data["pitch"]
-        fixed, pred = v12.inputs(skillcorner.tracking(data), halves, pitch, "all")
+        if os.environ.get("MTAH_LAB_CLEAN"):     # lab round 9: PathCRF and the features read the cleaned tracking
+            from bench import lab_clean
+            _, _, (fixed, pred) = v12.inputs(skillcorner.tracking(data), halves, pitch, "all",
+                                             clean=lab_clean.cleaner(os.environ["MTAH_LAB_CLEAN"], halves))
+        else:
+            fixed, pred = v12.inputs(skillcorner.tracking(data), halves, pitch, "all")
         match = v12.as_match(fixed, pred, halves, pitch, "skillcorner_{}".format(m))
         b = lab_robust.blanked(match)
         touches, passes = v11.seen_touches(b.track, v11.SETTINGS["all"]["dv"]), v9.seen_passes(b.track)

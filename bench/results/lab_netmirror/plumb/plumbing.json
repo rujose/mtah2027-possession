@@ -1,0 +1,17 @@
+{
+ "confirm": {
+  "units": 60,
+  "missing": 0,
+  "max_abs_diff": 0.0,
+  "pass": true
+ },
+ "bench_trial0": 0.6975374499341063,
+ "bench_trial1015": 0.7328612727608061,
+ "skillcorner": {
+  "units": 40,
+  "missing": 0,
+  "max_abs_diff": 0.0,
+  "pass": true
+ },
+ "pass": true
+}

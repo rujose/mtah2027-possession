@@ -1,0 +1,144 @@
+{
+ "about": "v17's merge (M2) on W4's B against v16's B (netmet5), no retrain; B's bench (each match the mean of p25, p50, stressed). Coordinator, 2026-11-16 04:15 (docs/lab/push.md).",
+ "absolute": {
+  "off_v16": {
+   "bench": 0.746768,
+   "metrica3": 0.858164,
+   "dfl7": 0.699027
+  },
+  "central_M2_v16": {
+   "bench": 0.754384,
+   "metrica3": 0.87005,
+   "dfl7": 0.704812
+  },
+  "pessimistic_M2_v16": {
+   "bench": 0.746298,
+   "metrica3": 0.860114,
+   "dfl7": 0.69752
+  },
+  "off_w4": {
+   "bench": 0.749324,
+   "metrica3": 0.870627,
+   "dfl7": 0.697337
+  },
+  "central_M2_w4": {
+   "bench": 0.754382,
+   "metrica3": 0.881936,
+   "dfl7": 0.699716
+  },
+  "pessimistic_M2_w4": {
+   "bench": 0.746129,
+   "metrica3": 0.878425,
+   "dfl7": 0.689431
+  }
+ },
+ "w4_minus_v16": {
+  "off": {
+   "bench": 0.002556,
+   "better": 5,
+   "metrica3": 0.012463,
+   "metrica_better": 3,
+   "dfl7": -0.00169,
+   "dfl_better": 2,
+   "per_variant": {
+    "p25": 0.001125,
+    "p50": 0.002807,
+    "stressed": 0.003735
+   },
+   "per_match": {
+    "J03WMX": -7e-05,
+    "J03WN1": -0.00014,
+    "J03WOH": -0.01394,
+    "J03WOY": 0.00685,
+    "J03WPY": -0.00229,
+    "J03WQQ": 0.00319,
+    "J03WR9": -0.00544,
+    "metrica1": 0.00229,
+    "metrica2": 0.01885,
+    "metrica3": 0.01625
+   }
+  },
+  "central_M2": {
+   "bench": -2e-06,
+   "better": 6,
+   "metrica3": 0.011886,
+   "metrica_better": 3,
+   "dfl7": -0.005096,
+   "dfl_better": 3,
+   "per_variant": {
+    "p25": -0.001578,
+    "p50": 0.000865,
+    "stressed": 0.000707
+   },
+   "per_match": {
+    "J03WMX": 0.00217,
+    "J03WN1": -0.01667,
+    "J03WOH": -0.00703,
+    "J03WOY": 0.00054,
+    "J03WPY": 0.00018,
+    "J03WQQ": -0.00297,
+    "J03WR9": -0.01189,
+    "metrica1": 0.00512,
+    "metrica2": 0.0069,
+    "metrica3": 0.02364
+   }
+  },
+  "pessimistic_M2": {
+   "bench": -0.000169,
+   "better": 3,
+   "metrica3": 0.01831,
+   "metrica_better": 3,
+   "dfl7": -0.008089,
+   "dfl_better": 0,
+   "per_variant": {
+    "p25": -0.001127,
+    "p50": -9.7e-05,
+    "stressed": 0.000717
+   },
+   "per_match": {
+    "J03WMX": -0.00094,
+    "J03WN1": -0.01952,
+    "J03WOH": -0.01322,
+    "J03WOY": -0.00072,
+    "J03WPY": -0.00695,
+    "J03WQQ": -0.00459,
+    "J03WR9": -0.01067,
+    "metrica1": 0.01125,
+    "metrica2": 0.01709,
+    "metrica3": 0.02658
+   }
+  }
+ },
+ "merge_gain": {
+  "central_M2_w4": {
+   "gain": 0.005058,
+   "better": 8,
+   "dfl7": 0.002379,
+   "metrica3": 0.011309
+  },
+  "pessimistic_M2_w4": {
+   "gain": -0.003195,
+   "better": 4,
+   "dfl7": -0.007906,
+   "metrica3": 0.007798
+  },
+  "central_M2_v16": {
+   "gain": 0.007615,
+   "better": 8,
+   "dfl7": 0.005785,
+   "metrica3": 0.011886
+  },
+  "pessimistic_M2_v16": {
+   "gain": -0.00047,
+   "better": 6,
+   "dfl7": -0.001508,
+   "metrica3": 0.00195
+  }
+ },
+ "merge_bar_on_w4": {
+  "1_central_gain_ge_0.005_and_7of10": true,
+  "2_no_variant_down_gt_0.002": true,
+  "3_neither_source_down": true,
+  "4_pessimistic_ge_-0.002": false
+ }
+}

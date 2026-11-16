@@ -1,0 +1,2628 @@
+{
+ "reproduction": {
+  "units": 30,
+  "max_abs_diff": 4.817518248212416e-06
+ },
+ "settings": [
+  {
+   "setting": "none",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7328612727608061,
+   "b_bench_none": 0.7328612727608061,
+   "drop": 0.0,
+   "better": 0,
+   "worse": 0,
+   "per_variant": {
+    "p25": 0.0,
+    "p50": 0.0,
+    "stressed": 0.0
+   },
+   "per_source": {
+    "idsse": 0.0,
+    "metrica": 0.0
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6253808288976844,
+     "none": 0.6253808288976844,
+     "d": 0.0
+    },
+    "J03WN1": {
+     "score": 0.6691364018595206,
+     "none": 0.6691364018595206,
+     "d": 0.0
+    },
+    "J03WOH": {
+     "score": 0.7198618563160776,
+     "none": 0.7198618563160776,
+     "d": 0.0
+    },
+    "J03WOY": {
+     "score": 0.6941837677226917,
+     "none": 0.6941837677226917,
+     "d": 0.0
+    },
+    "J03WPY": {
+     "score": 0.758906425106804,
+     "none": 0.758906425106804,
+     "d": 0.0
+    },
+    "J03WQQ": {
+     "score": 0.6939231688471779,
+     "none": 0.6939231688471779,
+     "d": 0.0
+    },
+    "J03WR9": {
+     "score": 0.712822493162041,
+     "none": 0.712822493162041,
+     "d": 0.0
+    },
+    "metrica1": {
+     "score": 0.8346101536518765,
+     "none": 0.8346101536518765,
+     "d": 0.0
+    },
+    "metrica2": {
+     "score": 0.7965226263098604,
+     "none": 0.7965226263098604,
+     "d": 0.0
+    },
+    "metrica3": {
+     "score": 0.823265005734327,
+     "none": 0.823265005734327,
+     "d": 0.0
+    }
+   },
+   "zones": null,
+   "affected_share": 0.0,
+   "appended_slots": 0,
+   "repair": {
+    "flipped_pieces": 0,
+    "flipped_frames": 0,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": null,
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "T1",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7145661402681545,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.01829513249265158,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.01843200293506465,
+    "p50": -0.017905062504216817,
+    "stressed": -0.018548332038673267
+   },
+   "per_source": {
+    "idsse": -0.014468924176403627,
+    "metrica": -0.02722295189723013
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6153313840155945,
+     "none": 0.6253808288976844,
+     "d": -0.010049444882089883
+    },
+    "J03WN1": {
+     "score": 0.6677897865276708,
+     "none": 0.6691364018595206,
+     "d": -0.0013466153318496543
+    },
+    "J03WOH": {
+     "score": 0.7121100580625838,
+     "none": 0.7198618563160776,
+     "d": -0.0077517982534937024
+    },
+    "J03WOY": {
+     "score": 0.6809462205864714,
+     "none": 0.6941837677226917,
+     "d": -0.013237547136220348
+    },
+    "J03WPY": {
+     "score": 0.7355819271289027,
+     "none": 0.758906425106804,
+     "d": -0.02332449797790111
+    },
+    "J03WQQ": {
+     "score": 0.6761197615219117,
+     "none": 0.6939231688471779,
+     "d": -0.017803407325266234
+    },
+    "J03WR9": {
+     "score": 0.6850533348340365,
+     "none": 0.712822493162041,
+     "d": -0.027769158328004456
+    },
+    "metrica1": {
+     "score": 0.7979505352426469,
+     "none": 0.8346101536518765,
+     "d": -0.03665961840922949
+    },
+    "metrica2": {
+     "score": 0.7685871603624896,
+     "none": 0.7965226263098604,
+     "d": -0.027935465947370803
+    },
+    "metrica3": {
+     "score": 0.806191234399237,
+     "none": 0.823265005734327,
+     "d": -0.0170737713350901
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 200646,
+     "right_none": 183562,
+     "right": 171201,
+     "changed": 20603,
+     "right_to_wrong": 16166,
+     "wrong_to_right": 3805,
+     "ll_frames": 200646,
+     "logloss_none": 49866.41444396973,
+     "logloss": 65254.58116149902
+    },
+    "far": {
+     "frames": 558123,
+     "right_none": 520417,
+     "right": 518455,
+     "changed": 7953,
+     "right_to_wrong": 4700,
+     "wrong_to_right": 2738,
+     "ll_frames": 558123,
+     "logloss_none": 132201.5813140869,
+     "logloss": 134067.97076416016
+    },
+    "none": {
+     "frames": 3538932,
+     "right_none": 3302931,
+     "right": 3301812,
+     "changed": 1855,
+     "right_to_wrong": 1480,
+     "wrong_to_right": 361,
+     "ll_frames": 3538932,
+     "logloss_none": 739409.0505065918,
+     "logloss": 740377.6933135986
+    }
+   },
+   "affected_share": 0.010285677174547135,
+   "appended_slots": 19,
+   "repair": {
+    "flipped_pieces": 149,
+    "flipped_frames": 271457,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 27219,
+       "pieces": 9,
+       "share": 0.01007961410175748
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 9,
+      "flipped_frames": 27219,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 25749,
+       "pieces": 22,
+       "share": 0.010292819090782992
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 22,
+      "flipped_frames": 25749,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 25691,
+       "pieces": 7,
+       "share": 0.0101361201515506
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 7,
+      "flipped_frames": 25691,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 26476,
+       "pieces": 15,
+       "share": 0.010015899995346897
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 15,
+      "flipped_frames": 26476,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 29914,
+       "pieces": 20,
+       "share": 0.011012328772166204
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 20,
+      "flipped_frames": 29914,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 26839,
+       "pieces": 12,
+       "share": 0.010392755468403916
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 12,
+      "flipped_frames": 26839,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 27288,
+       "pieces": 5,
+       "share": 0.010047760738986144
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 5,
+      "flipped_frames": 27288,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 27292,
+       "pieces": 23,
+       "share": 0.010103807253180115
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 23,
+      "flipped_frames": 27292,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 27323,
+       "pieces": 18,
+       "share": 0.010472081093760062
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 18,
+      "flipped_frames": 27323,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 27666,
+       "pieces": 18,
+       "share": 0.010297371687624804
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 18,
+      "flipped_frames": 27666,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "T3",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.6920938100933811,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.04076746266742505,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.03931022435328964,
+    "p50": -0.04057962287332012,
+    "stressed": -0.042412540775665385
+   },
+   "per_source": {
+    "idsse": -0.028644352749098347,
+    "metrica": -0.06905471914352068
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6141645241331082,
+     "none": 0.6253808288976844,
+     "d": -0.01121630476457621
+    },
+    "J03WN1": {
+     "score": 0.6457030168213928,
+     "none": 0.6691364018595206,
+     "d": -0.02343338503812779
+    },
+    "J03WOH": {
+     "score": 0.6928189897315468,
+     "none": 0.7198618563160776,
+     "d": -0.027042866584530884
+    },
+    "J03WOY": {
+     "score": 0.6717453311217417,
+     "none": 0.6941837677226917,
+     "d": -0.022438436600949796
+    },
+    "J03WPY": {
+     "score": 0.7015864598524018,
+     "none": 0.758906425106804,
+     "d": -0.05731996525440212
+    },
+    "J03WQQ": {
+     "score": 0.6489186709424043,
+     "none": 0.6939231688471779,
+     "d": -0.04500449790477368
+    },
+    "J03WR9": {
+     "score": 0.6987674800657131,
+     "none": 0.712822493162041,
+     "d": -0.01405501309632795
+    },
+    "metrica1": {
+     "score": 0.7495749480474432,
+     "none": 0.8346101536518765,
+     "d": -0.0850352056044333
+    },
+    "metrica2": {
+     "score": 0.7393038354187228,
+     "none": 0.7965226263098604,
+     "d": -0.057218790891137496
+    },
+    "metrica3": {
+     "score": 0.7583548447993359,
+     "none": 0.823265005734327,
+     "d": -0.06491016093499125
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 554730,
+     "right_none": 509872,
+     "right": 477002,
+     "changed": 50109,
+     "right_to_wrong": 40815,
+     "wrong_to_right": 7945,
+     "ll_frames": 554730,
+     "logloss_none": 122807.81930541992,
+     "logloss": 175998.07411193848
+    },
+    "far": {
+     "frames": 1362510,
+     "right_none": 1293856,
+     "right": 1291184,
+     "changed": 20445,
+     "right_to_wrong": 11026,
+     "wrong_to_right": 8354,
+     "ll_frames": 1362510,
+     "logloss_none": 218069.26416015625,
+     "logloss": 226319.8706817627
+    },
+    "none": {
+     "frames": 2380461,
+     "right_none": 2203182,
+     "right": 2202895,
+     "changed": 2726,
+     "right_to_wrong": 1391,
+     "wrong_to_right": 1104,
+     "ll_frames": 2380461,
+     "logloss_none": 580599.9627990723,
+     "logloss": 580794.6149902344
+    }
+   },
+   "affected_share": 0.0301644286691431,
+   "appended_slots": 33,
+   "repair": {
+    "flipped_pieces": 327,
+    "flipped_frames": 796092,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 81136,
+       "pieces": 44,
+       "share": 0.030045907996627166
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 44,
+      "flipped_frames": 81136,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 75150,
+       "pieces": 30,
+       "share": 0.030040209509974828
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 30,
+      "flipped_frames": 75150,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 76052,
+       "pieces": 26,
+       "share": 0.03000553539238357
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 26,
+      "flipped_frames": 76052,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 79783,
+       "pieces": 23,
+       "share": 0.030181996877502698
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 23,
+      "flipped_frames": 79783,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 83185,
+       "pieces": 42,
+       "share": 0.03062313862782128
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 42,
+      "flipped_frames": 83185,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 79177,
+       "pieces": 33,
+       "share": 0.03065938372226301
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 33,
+      "flipped_frames": 79177,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 81476,
+       "pieces": 31,
+       "share": 0.03000041607921559
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 31,
+      "flipped_frames": 81476,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 81058,
+       "pieces": 33,
+       "share": 0.030008588902545572
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 33,
+      "flipped_frames": 81058,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 78388,
+       "pieces": 10,
+       "share": 0.030043754081823505
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 10,
+      "flipped_frames": 78388,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 80687,
+       "pieces": 55,
+       "share": 0.030031953638378607
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 55,
+      "flipped_frames": 80687,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "T10",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.594648609200441,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.13821266356036502,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.13626917374381525,
+    "p50": -0.13769574968952042,
+    "stressed": -0.1406730672477594
+   },
+   "per_source": {
+    "idsse": -0.11255212102525058,
+    "metrica": -0.19808726280896538
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.5391635836483357,
+     "none": 0.6253808288976844,
+     "d": -0.08621724524934866
+    },
+    "J03WN1": {
+     "score": 0.5537084026508134,
+     "none": 0.6691364018595206,
+     "d": -0.11542799920870705
+    },
+    "J03WOH": {
+     "score": 0.6172868825526633,
+     "none": 0.7198618563160776,
+     "d": -0.10257497376341433
+    },
+    "J03WOY": {
+     "score": 0.6180037815625593,
+     "none": 0.6941837677226917,
+     "d": -0.07617998616013229
+    },
+    "J03WPY": {
+     "score": 0.6008444223786785,
+     "none": 0.758906425106804,
+     "d": -0.15806200272812534
+    },
+    "J03WQQ": {
+     "score": 0.5787712776182831,
+     "none": 0.6939231688471779,
+     "d": -0.11515189122889495
+    },
+    "J03WR9": {
+     "score": 0.5785717443239095,
+     "none": 0.712822493162041,
+     "d": -0.1342507488381315
+    },
+    "metrica1": {
+     "score": 0.6558771439302257,
+     "none": 0.8346101536518765,
+     "d": -0.1787330097216507
+    },
+    "metrica2": {
+     "score": 0.5559036913147153,
+     "none": 0.7965226263098604,
+     "d": -0.24061893499514506
+    },
+    "metrica3": {
+     "score": 0.6483551620242268,
+     "none": 0.823265005734327,
+     "d": -0.17490984371010032
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 1445781,
+     "right_none": 1343029,
+     "right": 1217359,
+     "changed": 170753,
+     "right_to_wrong": 146589,
+     "wrong_to_right": 20919,
+     "ll_frames": 1445781,
+     "logloss_none": 293044.1149902344,
+     "logloss": 497003.94921875
+    },
+    "far": {
+     "frames": 2321133,
+     "right_none": 2175290,
+     "right": 2160083,
+     "changed": 48566,
+     "right_to_wrong": 30457,
+     "wrong_to_right": 15250,
+     "ll_frames": 2321133,
+     "logloss_none": 483999.06315612793,
+     "logloss": 522534.8267669678
+    },
+    "none": {
+     "frames": 530787,
+     "right_none": 488591,
+     "right": 488424,
+     "changed": 1579,
+     "right_to_wrong": 853,
+     "wrong_to_right": 686,
+     "ll_frames": 530787,
+     "logloss_none": 144433.86811828613,
+     "logloss": 145400.32307434082
+    }
+   },
+   "affected_share": 0.10081450459439065,
+   "appended_slots": 55,
+   "repair": {
+    "flipped_pieces": 1159,
+    "flipped_frames": 2660671,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 270147,
+       "pieces": 123,
+       "share": 0.10003958671323258
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 123,
+      "flipped_frames": 270147,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 264358,
+       "pieces": 99,
+       "share": 0.10567358224401764
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 99,
+      "flipped_frames": 264358,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 253469,
+       "pieces": 137,
+       "share": 0.10000359031152463
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 137,
+      "flipped_frames": 253469,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 264349,
+       "pieces": 132,
+       "share": 0.1000035182002552
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 132,
+      "flipped_frames": 264349,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 272068,
+       "pieces": 125,
+       "share": 0.10015719276545146
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 125,
+      "flipped_frames": 272068,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 259744,
+       "pieces": 101,
+       "share": 0.1005795997013714
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 101,
+      "flipped_frames": 259744,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 273602,
+       "pieces": 108,
+       "share": 0.1007434562338056
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 108,
+      "flipped_frames": 273602,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 270116,
+       "pieces": 125,
+       "share": 0.1
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 125,
+      "flipped_frames": 270116,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 264118,
+       "pieces": 101,
+       "share": 0.10122845640382534
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 101,
+      "flipped_frames": 264118,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 268700,
+       "pieces": 108,
+       "share": 0.10001097999222096
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 108,
+      "flipped_frames": 268700,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "K10",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7199120964253485,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.012949176335457608,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.013821956931906354,
+    "p50": -0.012791304317773367,
+    "stressed": -0.012234267756693108
+   },
+   "per_source": {
+    "idsse": -0.012413801002853138,
+    "metrica": -0.01419838544486804
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6205387839281111,
+     "none": 0.6253808288976844,
+     "d": -0.004842044969573263
+    },
+    "J03WN1": {
+     "score": 0.6590151124913837,
+     "none": 0.6691364018595206,
+     "d": -0.010121289368136796
+    },
+    "J03WOH": {
+     "score": 0.7027448199755124,
+     "none": 0.7198618563160776,
+     "d": -0.017117036340565273
+    },
+    "J03WOY": {
+     "score": 0.6737859128822984,
+     "none": 0.6941837677226917,
+     "d": -0.02039785484039321
+    },
+    "J03WPY": {
+     "score": 0.7483849297802786,
+     "none": 0.758906425106804,
+     "d": -0.010521495326525243
+    },
+    "J03WQQ": {
+     "score": 0.6764266869567375,
+     "none": 0.6939231688471779,
+     "d": -0.017496481890440434
+    },
+    "J03WR9": {
+     "score": 0.7064220888777033,
+     "none": 0.712822493162041,
+     "d": -0.006400404284337746
+    },
+    "metrica1": {
+     "score": 0.8186061277581579,
+     "none": 0.8346101536518765,
+     "d": -0.016004025893718483
+    },
+    "metrica2": {
+     "score": 0.7758865396546556,
+     "none": 0.7965226263098604,
+     "d": -0.02063608665520474
+    },
+    "metrica3": {
+     "score": 0.8173099619486462,
+     "none": 0.823265005734327,
+     "d": -0.005955043785680902
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 101568,
+     "right_none": 97393,
+     "right": 88723,
+     "changed": 10457,
+     "right_to_wrong": 9293,
+     "wrong_to_right": 623,
+     "ll_frames": 101568,
+     "logloss_none": 15979.213928222656,
+     "logloss": 31811.461944580078
+    },
+    "far": {
+     "frames": 711678,
+     "right_none": 661945,
+     "right": 654277,
+     "changed": 18025,
+     "right_to_wrong": 12234,
+     "wrong_to_right": 4566,
+     "ll_frames": 711678,
+     "logloss_none": 158252.77713012695,
+     "logloss": 171838.56106567383
+    },
+    "none": {
+     "frames": 3484455,
+     "right_none": 3247572,
+     "right": 3247422,
+     "changed": 1178,
+     "right_to_wrong": 627,
+     "wrong_to_right": 477,
+     "ll_frames": 3484455,
+     "logloss_none": 747245.0552062988,
+     "logloss": 747704.3145446777
+    }
+   },
+   "affected_share": 0.11141426279790953,
+   "appended_slots": 20,
+   "repair": {
+    "flipped_pieces": 157,
+    "flipped_frames": 296221,
+    "undone_pieces": 12,
+    "undone_frames": 46903,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": {
+    "flipped_pieces": 157,
+    "flipped_frames": 296221,
+    "undone_pieces": 15,
+    "undone_frames": 48102,
+    "other_repairs": 0
+   },
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "keeper 7": {
+       "eligible_frames": 135603,
+       "affected_frames": 13605,
+       "pieces": 11,
+       "share": 0.10032963872480698
+      },
+      "keeper 9": {
+       "eligible_frames": 135349,
+       "affected_frames": 15174,
+       "pieces": 7,
+       "share": 0.11211017443793453
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 18,
+      "flipped_frames": 28779,
+      "undone_pieces": 1,
+      "undone_frames": 3899,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "keeper 5": {
+       "eligible_frames": 132055,
+       "affected_frames": 15387,
+       "pieces": 5,
+       "share": 0.11651963197152701
+      },
+      "keeper 8": {
+       "eligible_frames": 133507,
+       "affected_frames": 13763,
+       "pieces": 8,
+       "share": 0.1030882275835724
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 13,
+      "flipped_frames": 29150,
+      "undone_pieces": 1,
+      "undone_frames": 1725,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "keeper 15": {
+       "eligible_frames": 126922,
+       "affected_frames": 14234,
+       "pieces": 4,
+       "share": 0.11214761822221522
+      },
+      "keeper 27": {
+       "eligible_frames": 123361,
+       "affected_frames": 12390,
+       "pieces": 8,
+       "share": 0.10043692901322136
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 12,
+      "flipped_frames": 26624,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "keeper 10": {
+       "eligible_frames": 134732,
+       "affected_frames": 14247,
+       "pieces": 6,
+       "share": 0.1057432532731645
+      },
+      "keeper 16": {
+       "eligible_frames": 133318,
+       "affected_frames": 13985,
+       "pieces": 14,
+       "share": 0.10489956344979673
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 20,
+      "flipped_frames": 28232,
+      "undone_pieces": 1,
+      "undone_frames": 750,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "keeper 6": {
+       "eligible_frames": 132706,
+       "affected_frames": 13264,
+       "pieces": 8,
+       "share": 0.09995026600153724
+      },
+      "keeper 14": {
+       "eligible_frames": 136593,
+       "affected_frames": 14759,
+       "pieces": 8,
+       "share": 0.10805092501079851
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 16,
+      "flipped_frames": 28023,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "keeper 11": {
+       "eligible_frames": 131271,
+       "affected_frames": 14827,
+       "pieces": 3,
+       "share": 0.11294954712007983
+      },
+      "keeper 13": {
+       "eligible_frames": 132308,
+       "affected_frames": 13793,
+       "pieces": 5,
+       "share": 0.1042491761647066
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 8,
+      "flipped_frames": 28620,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133667,
+       "affected_frames": 17193,
+       "pieces": 3,
+       "share": 0.1286256143999641
+      },
+      "keeper 16": {
+       "eligible_frames": 138523,
+       "affected_frames": 15291,
+       "pieces": 6,
+       "share": 0.11038600088072018
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 9,
+      "flipped_frames": 32484,
+      "undone_pieces": 1,
+      "undone_frames": 14545,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133059,
+       "affected_frames": 13501,
+       "pieces": 11,
+       "share": 0.1014662668440316
+      },
+      "keeper 14": {
+       "eligible_frames": 136254,
+       "affected_frames": 20509,
+       "pieces": 6,
+       "share": 0.15052035169609698
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 17,
+      "flipped_frames": 34010,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133930,
+       "affected_frames": 13569,
+       "pieces": 13,
+       "share": 0.10131411931606063
+      },
+      "keeper 14": {
+       "eligible_frames": 130940,
+       "affected_frames": 13097,
+       "pieces": 12,
+       "share": 0.1000229112570643
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 25,
+      "flipped_frames": 26666,
+      "undone_pieces": 2,
+      "undone_frames": 661,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 132945,
+       "affected_frames": 20140,
+       "pieces": 7,
+       "share": 0.15149121817292865
+      },
+      "keeper 17": {
+       "eligible_frames": 131692,
+       "affected_frames": 13493,
+       "pieces": 12,
+       "share": 0.1024587674270267
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 19,
+      "flipped_frames": 33633,
+      "undone_pieces": 6,
+      "undone_frames": 25323,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "G3",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7188117198654583,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.014049552895347737,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.014583467974905007,
+    "p50": -0.01401075150587645,
+    "stressed": -0.013554439205261748
+   },
+   "per_source": {
+    "idsse": -0.01611692850820416,
+    "metrica": -0.009225676465349405
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.5980840761764981,
+     "none": 0.6253808288976844,
+     "d": -0.027296752721186295
+    },
+    "J03WN1": {
+     "score": 0.657114274999106,
+     "none": 0.6691364018595206,
+     "d": -0.012022126860414447
+    },
+    "J03WOH": {
+     "score": 0.7016572875548369,
+     "none": 0.7198618563160776,
+     "d": -0.01820456876124062
+    },
+    "J03WOY": {
+     "score": 0.6845621008565553,
+     "none": 0.6941837677226917,
+     "d": -0.009621666866136377
+    },
+    "J03WPY": {
+     "score": 0.746389800717533,
+     "none": 0.758906425106804,
+     "d": -0.012516624389270778
+    },
+    "J03WQQ": {
+     "score": 0.6806083152131199,
+     "none": 0.6939231688471779,
+     "d": -0.013314853634058007
+    },
+    "J03WR9": {
+     "score": 0.6929805868369184,
+     "none": 0.712822493162041,
+     "d": -0.019841906325122616
+    },
+    "metrica1": {
+     "score": 0.8222424242424241,
+     "none": 0.8346101536518765,
+     "d": -0.012367729409452336
+    },
+    "metrica2": {
+     "score": 0.7907674288460838,
+     "none": 0.7965226263098604,
+     "d": -0.005755197463776618
+    },
+    "metrica3": {
+     "score": 0.8137109032115077,
+     "none": 0.823265005734327,
+     "d": -0.00955410252281926
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 549117,
+     "right_none": 508116,
+     "right": 499760,
+     "changed": 20704,
+     "right_to_wrong": 14288,
+     "wrong_to_right": 5932,
+     "ll_frames": 549117,
+     "logloss_none": 114435.78034973145,
+     "logloss": 131782.7356414795
+    },
+    "far": {
+     "frames": 1411743,
+     "right_none": 1330524,
+     "right": 1327835,
+     "changed": 16197,
+     "right_to_wrong": 8823,
+     "wrong_to_right": 6134,
+     "ll_frames": 1411743,
+     "logloss_none": 270782.55291748047,
+     "logloss": 279534.4761199951
+    },
+    "none": {
+     "frames": 2336841,
+     "right_none": 2168270,
+     "right": 2168143,
+     "changed": 1838,
+     "right_to_wrong": 890,
+     "wrong_to_right": 763,
+     "ll_frames": 2336841,
+     "logloss_none": 536258.7129974365,
+     "logloss": 536304.2807769775
+    }
+   },
+   "affected_share": 0.03054098576570222,
+   "appended_slots": 0,
+   "repair": {
+    "flipped_pieces": 0,
+    "flipped_frames": 0,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 81873,
+       "pieces": 20,
+       "share": 0.030318830425555315
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 75056,
+       "pieces": 45,
+       "share": 0.030002634264546517
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 76058,
+       "pieces": 46,
+       "share": 0.03000790263075145
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 83571,
+       "pieces": 32,
+       "share": 0.03161500145456774
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 84627,
+       "pieces": 27,
+       "share": 0.031153986327542602
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 79907,
+       "pieces": 23,
+       "share": 0.030942058616705233
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 81659,
+       "pieces": 33,
+       "share": 0.03006779881943966
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 81586,
+       "pieces": 50,
+       "share": 0.030204060477720684
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 81082,
+       "pieces": 34,
+       "share": 0.0310762829573712
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 80611,
+       "pieces": 24,
+       "share": 0.03000366620079242
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 0,
+      "flipped_frames": 0,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "K10nr",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7168041152963811,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.01605715746442502,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.01674298833339919,
+    "p50": -0.01569924365774126,
+    "stressed": -0.015729240402134616
+   },
+   "per_source": {
+    "idsse": -0.014262131088120198,
+    "metrica": -0.020245552342469608
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6163149503544855,
+     "none": 0.6253808288976844,
+     "d": -0.009065878543198883
+    },
+    "J03WN1": {
+     "score": 0.6590151124913837,
+     "none": 0.6691364018595206,
+     "d": -0.010121289368136796
+    },
+    "J03WOH": {
+     "score": 0.7027448199755124,
+     "none": 0.7198618563160776,
+     "d": -0.017117036340565273
+    },
+    "J03WOY": {
+     "score": 0.6737859128822984,
+     "none": 0.6941837677226917,
+     "d": -0.02039785484039321
+    },
+    "J03WPY": {
+     "score": 0.7483849297802786,
+     "none": 0.758906425106804,
+     "d": -0.010521495326525243
+    },
+    "J03WQQ": {
+     "score": 0.6764266869567375,
+     "none": 0.6939231688471779,
+     "d": -0.017496481890440434
+    },
+    "J03WR9": {
+     "score": 0.6977076118544595,
+     "none": 0.712822493162041,
+     "d": -0.01511488130758154
+    },
+    "metrica1": {
+     "score": 0.8186061277581579,
+     "none": 0.8346101536518765,
+     "d": -0.016004025893718483
+    },
+    "metrica2": {
+     "score": 0.7729592516982066,
+     "none": 0.7965226263098604,
+     "d": -0.02356337461165377
+    },
+    "metrica3": {
+     "score": 0.8020957492122905,
+     "none": 0.823265005734327,
+     "d": -0.021169256522036568
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 101568,
+     "right_none": 97393,
+     "right": 87171,
+     "changed": 12126,
+     "right_to_wrong": 10894,
+     "wrong_to_right": 672,
+     "ll_frames": 101568,
+     "logloss_none": 15979.213928222656,
+     "logloss": 33982.32423400879
+    },
+    "far": {
+     "frames": 711678,
+     "right_none": 661945,
+     "right": 652931,
+     "changed": 22308,
+     "right_to_wrong": 14562,
+     "wrong_to_right": 5548,
+     "ll_frames": 711678,
+     "logloss_none": 158252.77713012695,
+     "logloss": 172290.25804138184
+    },
+    "none": {
+     "frames": 3484455,
+     "right_none": 3247572,
+     "right": 3247397,
+     "changed": 1203,
+     "right_to_wrong": 652,
+     "wrong_to_right": 477,
+     "ll_frames": 3484455,
+     "logloss_none": 747245.0552062988,
+     "logloss": 747695.7052764893
+    }
+   },
+   "affected_share": 0.11141426279790953,
+   "appended_slots": 20,
+   "repair": {
+    "flipped_pieces": 157,
+    "flipped_frames": 296221,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": {
+    "flipped_pieces": 157,
+    "flipped_frames": 296221,
+    "undone_pieces": 15,
+    "undone_frames": 48102,
+    "other_repairs": 0
+   },
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "keeper 7": {
+       "eligible_frames": 135603,
+       "affected_frames": 13605,
+       "pieces": 11,
+       "share": 0.10032963872480698
+      },
+      "keeper 9": {
+       "eligible_frames": 135349,
+       "affected_frames": 15174,
+       "pieces": 7,
+       "share": 0.11211017443793453
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 18,
+      "flipped_frames": 28779,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "keeper 5": {
+       "eligible_frames": 132055,
+       "affected_frames": 15387,
+       "pieces": 5,
+       "share": 0.11651963197152701
+      },
+      "keeper 8": {
+       "eligible_frames": 133507,
+       "affected_frames": 13763,
+       "pieces": 8,
+       "share": 0.1030882275835724
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 13,
+      "flipped_frames": 29150,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "keeper 15": {
+       "eligible_frames": 126922,
+       "affected_frames": 14234,
+       "pieces": 4,
+       "share": 0.11214761822221522
+      },
+      "keeper 27": {
+       "eligible_frames": 123361,
+       "affected_frames": 12390,
+       "pieces": 8,
+       "share": 0.10043692901322136
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 12,
+      "flipped_frames": 26624,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "keeper 10": {
+       "eligible_frames": 134732,
+       "affected_frames": 14247,
+       "pieces": 6,
+       "share": 0.1057432532731645
+      },
+      "keeper 16": {
+       "eligible_frames": 133318,
+       "affected_frames": 13985,
+       "pieces": 14,
+       "share": 0.10489956344979673
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 20,
+      "flipped_frames": 28232,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "keeper 6": {
+       "eligible_frames": 132706,
+       "affected_frames": 13264,
+       "pieces": 8,
+       "share": 0.09995026600153724
+      },
+      "keeper 14": {
+       "eligible_frames": 136593,
+       "affected_frames": 14759,
+       "pieces": 8,
+       "share": 0.10805092501079851
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 16,
+      "flipped_frames": 28023,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "keeper 11": {
+       "eligible_frames": 131271,
+       "affected_frames": 14827,
+       "pieces": 3,
+       "share": 0.11294954712007983
+      },
+      "keeper 13": {
+       "eligible_frames": 132308,
+       "affected_frames": 13793,
+       "pieces": 5,
+       "share": 0.1042491761647066
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 8,
+      "flipped_frames": 28620,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133667,
+       "affected_frames": 17193,
+       "pieces": 3,
+       "share": 0.1286256143999641
+      },
+      "keeper 16": {
+       "eligible_frames": 138523,
+       "affected_frames": 15291,
+       "pieces": 6,
+       "share": 0.11038600088072018
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 9,
+      "flipped_frames": 32484,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133059,
+       "affected_frames": 13501,
+       "pieces": 11,
+       "share": 0.1014662668440316
+      },
+      "keeper 14": {
+       "eligible_frames": 136254,
+       "affected_frames": 20509,
+       "pieces": 6,
+       "share": 0.15052035169609698
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 17,
+      "flipped_frames": 34010,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 133930,
+       "affected_frames": 13569,
+       "pieces": 13,
+       "share": 0.10131411931606063
+      },
+      "keeper 14": {
+       "eligible_frames": 130940,
+       "affected_frames": 13097,
+       "pieces": 12,
+       "share": 0.1000229112570643
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 25,
+      "flipped_frames": 26666,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "keeper 0": {
+       "eligible_frames": 132945,
+       "affected_frames": 20140,
+       "pieces": 7,
+       "share": 0.15149121817292865
+      },
+      "keeper 17": {
+       "eligible_frames": 131692,
+       "affected_frames": 13493,
+       "pieces": 12,
+       "share": 0.1024587674270267
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 19,
+      "flipped_frames": 33633,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "T1b",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.7149214121349975,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.017939860625808542,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.018426489568054448,
+    "p50": -0.018518109112334057,
+    "stressed": -0.01687498319703712
+   },
+   "per_source": {
+    "idsse": -0.017605530541761203,
+    "metrica": -0.01871996415525233
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6171308369805444,
+     "none": 0.6253808288976844,
+     "d": -0.008249991917140043
+    },
+    "J03WN1": {
+     "score": 0.6457423068280151,
+     "none": 0.6691364018595206,
+     "d": -0.023394095031505396
+    },
+    "J03WOH": {
+     "score": 0.6989754708148129,
+     "none": 0.7198618563160776,
+     "d": -0.020886385501264648
+    },
+    "J03WOY": {
+     "score": 0.6918658465350891,
+     "none": 0.6941837677226917,
+     "d": -0.002317921187602471
+    },
+    "J03WPY": {
+     "score": 0.7204226387975737,
+     "none": 0.758906425106804,
+     "d": -0.03848378630923003
+    },
+    "J03WQQ": {
+     "score": 0.6733753879720719,
+     "none": 0.6939231688471779,
+     "d": -0.02054778087510604
+    },
+    "J03WR9": {
+     "score": 0.7034637401915612,
+     "none": 0.712822493162041,
+     "d": -0.009358752970479797
+    },
+    "metrica1": {
+     "score": 0.8252872405403376,
+     "none": 0.8346101536518765,
+     "d": -0.009322913111538877
+    },
+    "metrica2": {
+     "score": 0.7760764077540244,
+     "none": 0.7965226263098604,
+     "d": -0.02044621855583591
+    },
+    "metrica3": {
+     "score": 0.7968742449359448,
+     "none": 0.823265005734327,
+     "d": -0.026390760798382207
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 179940,
+     "right_none": 168159,
+     "right": 154987,
+     "changed": 18760,
+     "right_to_wrong": 15897,
+     "wrong_to_right": 2725,
+     "ll_frames": 179940,
+     "logloss_none": 32997.86392211914,
+     "logloss": 52891.26319885254
+    },
+    "far": {
+     "frames": 557535,
+     "right_none": 525363,
+     "right": 523910,
+     "changed": 7421,
+     "right_to_wrong": 4215,
+     "wrong_to_right": 2762,
+     "ll_frames": 557535,
+     "logloss_none": 113245.82772827148,
+     "logloss": 118503.28106689453
+    },
+    "none": {
+     "frames": 3560226,
+     "right_none": 3313388,
+     "right": 3313376,
+     "changed": 839,
+     "right_to_wrong": 415,
+     "wrong_to_right": 403,
+     "ll_frames": 3560226,
+     "logloss_none": 775233.3546142578,
+     "logloss": 774959.8747253418
+    }
+   },
+   "affected_share": 0.010335768589484864,
+   "appended_slots": 22,
+   "repair": {
+    "flipped_pieces": 129,
+    "flipped_frames": 272779,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 28609,
+       "pieces": 13,
+       "share": 0.010594352468392658
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 13,
+      "flipped_frames": 28609,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 25122,
+       "pieces": 15,
+       "share": 0.010042184209043082
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 15,
+      "flipped_frames": 25122,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 25349,
+       "pieces": 16,
+       "share": 0.010001187564581222
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 16,
+      "flipped_frames": 25349,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 26973,
+       "pieces": 5,
+       "share": 0.010203915643393709
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 5,
+      "flipped_frames": 26973,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 27154,
+       "pieces": 16,
+       "share": 0.00999628185730431
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 16,
+      "flipped_frames": 27154,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 25853,
+       "pieces": 19,
+       "share": 0.010010950747965515
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 19,
+      "flipped_frames": 25853,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 27241,
+       "pieces": 19,
+       "share": 0.010030454789311109
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 19,
+      "flipped_frames": 27241,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 27027,
+       "pieces": 8,
+       "share": 0.010005701254275941
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 8,
+      "flipped_frames": 27027,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 32537,
+       "pieces": 8,
+       "share": 0.012470449897436998
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 8,
+      "flipped_frames": 32537,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 26914,
+       "pieces": 10,
+       "share": 0.010017474936771993
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 10,
+      "flipped_frames": 26914,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  },
+  {
+   "setting": "T3b",
+   "units": 30,
+   "matches": 10,
+   "b_bench": 0.6874093740834298,
+   "b_bench_none": 0.7328612727608061,
+   "drop": -0.04545189867737638,
+   "better": 0,
+   "worse": 10,
+   "per_variant": {
+    "p25": -0.043888602596822514,
+    "p50": -0.045642490822147594,
+    "stressed": -0.04682460261315904
+   },
+   "per_source": {
+    "idsse": -0.0367300300044684,
+    "metrica": -0.06580292558082833
+   },
+   "per_match": {
+    "J03WMX": {
+     "score": 0.6057211451976697,
+     "none": 0.6253808288976844,
+     "d": -0.019659683700014696
+    },
+    "J03WN1": {
+     "score": 0.6385511732744721,
+     "none": 0.6691364018595206,
+     "d": -0.030585228585048457
+    },
+    "J03WOH": {
+     "score": 0.7002165139122282,
+     "none": 0.7198618563160776,
+     "d": -0.01964534240384948
+    },
+    "J03WOY": {
+     "score": 0.6735757488998813,
+     "none": 0.6941837677226917,
+     "d": -0.02060801882281038
+    },
+    "J03WPY": {
+     "score": 0.701596352619858,
+     "none": 0.758906425106804,
+     "d": -0.05731007248694586
+    },
+    "J03WQQ": {
+     "score": 0.6491166324670127,
+     "none": 0.6939231688471779,
+     "d": -0.044806536380165296
+    },
+    "J03WR9": {
+     "score": 0.6483271655095963,
+     "none": 0.712822493162041,
+     "d": -0.06449532765244466
+    },
+    "metrica1": {
+     "score": 0.7775264481011724,
+     "none": 0.8346101536518765,
+     "d": -0.05708370555070408
+    },
+    "metrica2": {
+     "score": 0.7378109643420739,
+     "none": 0.7965226263098604,
+     "d": -0.058711661967786356
+    },
+    "metrica3": {
+     "score": 0.7416515965103326,
+     "none": 0.823265005734327,
+     "d": -0.08161340922399456
+    }
+   },
+   "zones": {
+    "near": {
+     "frames": 538902,
+     "right_none": 497827,
+     "right": 465568,
+     "changed": 50113,
+     "right_to_wrong": 40534,
+     "wrong_to_right": 8275,
+     "ll_frames": 538902,
+     "logloss_none": 118327.1707611084,
+     "logloss": 169794.04107666016
+    },
+    "far": {
+     "frames": 1302459,
+     "right_none": 1219999,
+     "right": 1215326,
+     "changed": 20857,
+     "right_to_wrong": 12071,
+     "wrong_to_right": 7398,
+     "ll_frames": 1302459,
+     "logloss_none": 276157.18630981445,
+     "logloss": 287566.66667175293
+    },
+    "none": {
+     "frames": 2456340,
+     "right_none": 2289084,
+     "right": 2288607,
+     "changed": 2460,
+     "right_to_wrong": 1394,
+     "wrong_to_right": 917,
+     "ll_frames": 2456340,
+     "logloss_none": 526992.6891937256,
+     "logloss": 528081.1979675293
+    }
+   },
+   "affected_share": 0.03032940447900609,
+   "appended_slots": 32,
+   "repair": {
+    "flipped_pieces": 362,
+    "flipped_frames": 800446,
+    "undone_pieces": 0,
+    "undone_frames": 0,
+    "other_repairs": 0
+   },
+   "repair_stressed_ball": null,
+   "per_match_corruption": {
+    "J03WMX": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2700401,
+       "affected_frames": 84575,
+       "pieces": 27,
+       "share": 0.03131942255983463
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 27,
+      "flipped_frames": 84575,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WN1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2501647,
+       "affected_frames": 75046,
+       "pieces": 27,
+       "share": 0.02999863689801159
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 27,
+      "flipped_frames": 75046,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOH": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2534599,
+       "affected_frames": 76163,
+       "pieces": 37,
+       "share": 0.03004932930218942
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 37,
+      "flipped_frames": 76163,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WOY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2643397,
+       "affected_frames": 82372,
+       "pieces": 36,
+       "share": 0.03116141843241859
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 36,
+      "flipped_frames": 82372,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WPY": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2716410,
+       "affected_frames": 81535,
+       "pieces": 38,
+       "share": 0.030015719276545148
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 38,
+      "flipped_frames": 81535,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WQQ": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2582472,
+       "affected_frames": 77495,
+       "pieces": 36,
+       "share": 0.0300080697873975
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 36,
+      "flipped_frames": 77495,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "J03WR9": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2715829,
+       "affected_frames": 81560,
+       "pieces": 18,
+       "share": 0.030031345861613525
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 18,
+      "flipped_frames": 81560,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica1": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2701160,
+       "affected_frames": 82240,
+       "pieces": 43,
+       "share": 0.03044617867878985
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 43,
+      "flipped_frames": 82240,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica2": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2609128,
+       "affected_frames": 78861,
+       "pieces": 50,
+       "share": 0.030225040703254113
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 50,
+      "flipped_frames": 78861,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    },
+    "metrica3": {
+     "groups": {
+      "outfield": {
+       "eligible_frames": 2686705,
+       "affected_frames": 80599,
+       "pieces": 50,
+       "share": 0.029999199763278812
+      }
+     },
+     "repair_undid": {
+      "flipped_pieces": 50,
+      "flipped_frames": 80599,
+      "undone_pieces": 0,
+      "undone_frames": 0,
+      "other_repairs": 0
+     }
+    }
+   }
+  }
+ ]
+}

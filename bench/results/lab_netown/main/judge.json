@@ -1,0 +1,56 @@
+{
+ "bench": 0.736461,
+ "v15": 0.7328606666666666,
+ "gain": 0.003600333333333372,
+ "better": 7,
+ "per_match": {
+  "J03WMX": 0.00321,
+  "J03WN1": 0.00563,
+  "J03WOH": -0.00377,
+  "J03WOY": -0.00323,
+  "J03WPY": -0.0115,
+  "J03WQQ": 0.00078,
+  "J03WR9": 0.0176,
+  "metrica1": 0.00816,
+  "metrica2": 0.0137,
+  "metrica3": 0.00541
+ },
+ "per_variant": {
+  "p25": 0.00365,
+  "p50": 0.00333,
+  "stressed": 0.00383
+ },
+ "per_source": {
+  "idsse": 0.0012476190476191165,
+  "metrica": 0.009089999999999968
+ },
+ "trial0_check": 0.0,
+ "skillcorner": 0.405409,
+ "skillcorner_gain": -0.0031289999999999985,
+ "skillcorner_better": 6,
+ "parts": {
+  "gain": false,
+  "better": true,
+  "variants": true,
+  "sources": true,
+  "skillcorner": true
+ },
+ "passes": false,
+ "metrica_rule": {
+  "metrica": 0.009089999999999968,
+  "metrica_better": 3,
+  "dfl": 0.0012476190476191165,
+  "passes": false
+ },
+ "noise_rule": "pending: seed noise 0.0035 >= 0.003; needs the same recipe with seed 1",
+ "switch_table": {
+  "normal": {
+   "candidate": 0.727478,
+   "v15": 0.723257
+  },
+  "p10": {
+   "candidate": 0.7306860000000001,
+   "v15": 0.7255499999999999
+  }
+ }
+}
