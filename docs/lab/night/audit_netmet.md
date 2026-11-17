@@ -82,7 +82,7 @@ the candidate.
 - **Same trial 1015.** `search_b.every_trial()[1015]`: w_gru 0.9152, f_dead 0.9095, switch prices 2.817 / 48.70,
   minimum 7, snap off, short 0.340, segments 0.910 / 0.661, timing 0.450, post stages on the stressed copies. It comes
   from the code that wrote the reference: `search_b.py` was last changed 11-13 19:00, and the reference CSV was
-  written at 11-13 19:05. The reference CSV is tracked in git at `2e9f52e` and is unmodified.
+  written at 11-13 19:05. The reference CSV is tracked in git at `3cce485` and is unmodified.
 - **Same pipeline, only the GRU P swapped.** `lab_netmirror.use` (`lab_netmirror.py:83-108`) points only
   `lab_branch_b.CACHE`, `search_b.CACHE` and the training-stress P path at the mirror. A search of `bench/` and
   `possession/` finds no other reader of B's GRU P. The plumbing check passed exactly: with `gru_b`'s P, 60 bench
