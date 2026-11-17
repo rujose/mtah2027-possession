@@ -52,7 +52,7 @@ and the validator (pass/fail only). 11-17: the technical document; submission by
   is done.
 - 11:52 **track 1 done**: v16 built and checked ([v16](../models/v16-netmet.md)): the four nets retrain bit-identical,
   the port gives 0 differing frames (float32 and float64), SkillCorner 0.4090 reproduced per match to 5e-6; on our
-  match three runs give SHA-256 `90599088…0523c`; v15's file unchanged (`209a2081…7b5e`). Not the upload. Tracks 2 and
+  match three runs give SHA-256 `90599088…0523c`; v15's file unchanged (`209a2081…7f5e`). Not the upload. Tracks 2 and
   3 back to 2 slots.
 - 12:10 **v16 adopted as the upload** (Jose: "Yes, adopt v16"); track 2 may still replace its network. A clean copy
   (fresh clone + the working tree's changes + v16's files, only the organisers' data) gives v16's SHA-256; the

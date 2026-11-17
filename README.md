@@ -19,7 +19,7 @@ python3.14 -m venv .venv
 ```
 
 **2. Add the organisers' data** to `data/`, with the names it arrives with ([data/README.md](data/README.md)), or
-point `MTAH_DATA_DIR` at it. v17 reads these files and nothing else from the bundle (the videos are not read):
+point `MTAH_DATA_DIR` at it. v17 reads all of these files except the tactical homography, and none of the videos:
 
 ```
 data/tactical/   BAR-ATH_tactical_atd.xml, _atd.txt, _homography.csv, _smart_tagging.xml
@@ -39,7 +39,7 @@ data/broadcast/  BAR-ATH_broadcast_atd.xml, _atd.txt, _homography.csv
 d7b159c5bc392abd0240f5d2d16a893c26694b5d7ab3cb8bb5dafa4dec69ec04
 ```
 
-Our submitted `<team_name>.csv` is this file, renamed as [SUBMISSION.md](SUBMISSION.md) asks.
+Our submitted `Fire.csv` (team Fire) is this file, renamed as [SUBMISSION.md](SUBMISSION.md) asks.
 
 - **Run time:** about 4 minutes on a laptop (macOS, Apple silicon).
 - **Network:** pip, and on the first run PathCRF's pretrained weights, downloaded once from the pinned upstream commit

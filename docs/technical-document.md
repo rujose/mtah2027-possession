@@ -1,6 +1,6 @@
-# <team name>: ball possession from automatic tracking
+# Fire: ball possession from automatic tracking
 
-More than a Hack 2027, Phase 1. Technical document for our submission `<team name>.csv`.
+More than a Hack 2027, Phase 1. Technical document for our submission `Fire.csv`.
 
 - **The file** comes from model **v17**. The repository regenerates it byte for byte from the organisers' data
   (SHA-256 `d7b159c5bc392abd0240f5d2d16a893c26694b5d7ab3cb8bb5dafa4dec69ec04`, section 7).

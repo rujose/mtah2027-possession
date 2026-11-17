@@ -415,7 +415,7 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   the Metrica rule (Metrica's 3 +0.040, 3/3, each scored by networks that never saw it), the precedent of v14. Our
   match is Metrica's tracker under Metrica's convention, and the switch sends it to branch B.
 - **Decision (Jose, "Yes, adopt v16"):** v16 is the upload; its file on our match differs from v15's (SHA-256
-  `90599088…0523c` against `209a2081…7b5e`). Track 2 may still replace its network if it passes its bar.
+  `90599088…0523c` against `209a2081…7f5e`). Track 2 may still replace its network if it passes its bar.
 
 
 ### 2026-11-15: v17, the broadcast's players near the ball

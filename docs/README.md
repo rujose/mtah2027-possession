@@ -6,7 +6,8 @@ so that any team member, or a reviewer, can follow it without having been in the
 | page | what it answers |
 |---|---|
 | [technical-document.md](technical-document.md) | **The submission's technical document** (the upload, approved 2026-11-16, 5 pages as PDF): the approach, assets used and dropped, training data, possession rules, limitations, what touched the provided game, reproduction |
-| [explained.md](explained.md) | **Start here if you're new:** every term in plain words, and what has been done, with the numbers to judge it |
+| [explained-in-depth.md](explained-in-depth.md) | **The whole process, explained in depth** (2026-11-16, ~13,000 words): the task from zero, the rules and the line we walk, the bench, v1 to v17, every lab round, v17 step by step with each concept explained, every decision, a glossary |
+| [explained.md](explained.md) | **Start here if you're new:** every term in plain words, and what has been done, with the numbers to judge it (the short version; it stops at v12) |
 | [challenge.md](challenge.md) | What is the task, how is it scored, what are the rules and dates? |
 | [limitations.md](limitations.md) | Every limit we work under, what's allowed but not obvious, grey zones to ask about, traps |
 | [research/](research/) | What models, data and advice exist for this problem, and what we take from it |
@@ -66,12 +67,19 @@ so that any team member, or a reviewer, can follow it without having been in the
 
 - **IDSSE**: Bassek, M., Rein, R., Weber, H., Memmert, D. (2025). An integrated dataset of
   spatiotemporal and event data in elite soccer. *Scientific Data* 12, 195.
-  https://doi.org/10.1038/s41597-025-04505-y. Figshare article 28196177, licence CC BY 4.0. Used
-  for the [bench](bench.md) only: never as an input to the submission.
+  https://doi.org/10.1038/s41597-025-04505-y. Figshare article 28196177, licence CC BY 4.0. The
+  [bench](bench.md)'s 7 DFL matches, and the training data of every model we learned (v4 on); PathCRF's
+  authors trained its weights on 6 of these 7 matches.
 - **Metrica Sports sample data**: three anonymised matches, tracking and events,
   github.com/metrica-sports/sample-data (no licence file; the README asks users to acknowledge the
-  source). Used for the [convention check](convention-check.md) and as the bench's second set: never
-  as an input to the submission.
+  source). The [convention check](convention-check.md), the bench's second set, and training data for
+  the dead-ball and restart models, the post stages and branch B's GRUs (v16).
+- **SkillCorner open data**: 20 A-League 2024-25 matches, github.com/SkillCorner/opendata, MIT. A test on
+  real tracking ([lab/skillcorner.md](lab/skillcorner.md)); the moving ball inside the stoppages of the 10
+  even-indexed matches is put into training copies of the bench ([lab/carried.md](lab/carried.md)).
+- None of this data is in the repository, and none of it comes from the provided game. The
+  [technical document](technical-document.md)'s section 3 lists who labelled each set, how much there is,
+  and what it trains.
 
 ## Reproduce
 
