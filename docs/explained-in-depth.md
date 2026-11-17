@@ -171,7 +171,7 @@ overrode that reading. Our audit found five items ([limitations.md](limitations.
 
 | item | what had happened | what we did |
 |---|---|---|
-| **A** | provided data reached an AI service: Claude saw screenshots of the viewer with the video, printed tracking values, our labels and statistics of the match | from then on Claude runs nothing on the match whose output it reads, beyond file paths, SHA-256 hashes, row counts and pass/fail format checks. Disclosed in the technical document |
+| **A** | provided data reached an AI service: Claude saw single-frame screenshots of the viewer (with the video), taken while we built and tested it, printed tracking values, our labels and statistics of the match | from then on Claude runs nothing on the match whose output it reads, beyond file paths, SHA-256 hashes, row counts and pass/fail format checks. Disclosed in the technical document |
 | **B** | our output was checked against the video: v2's whistle changes watched, v5's whistle weight came from watching two frames, v9's idea came from seeing late restarts | the whistle (v2, v5) removed in v10. v9's rule rests on the bench's truth and its window was chosen on the bench only (and its "snap" is switched off in the branch our match runs since v15) |
 | **C** | two settings had been calibrated on this match: the whistle detector (on its audio) and a set-piece window (on three tags and the public window) | **both removed in v10** |
 | **D** | Metrica's sample data has no licence file | used as its README asks, credited. From 2026-11-15 it also trains the network our match runs (Jose's decision) |

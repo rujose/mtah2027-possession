@@ -167,7 +167,7 @@ on its labels or video; it is what makes the bench resemble our match.
 
 **Before the clarification of 2026-11-03,** under our earlier reading of the rules:
 - **An AI service saw provided data.** We developed with an AI coding assistant (Claude). In the first days it
-  saw screenshots of our viewer with the video, printed tracking values, our labels and statistics of the match.
+  saw single-frame screenshots of our viewer, taken while we built and tested it, printed tracking values, our labels and statistics of the match.
   Since the clarification it runs nothing on the match whose output it reads, beyond file paths, SHA-256 hashes,
   row counts and pass/fail format checks. No LLM produces or reads labels in the pipeline.
 - **Two settings had been set on this match:** the whistle detector, on its audio, and a set-piece window, on
