@@ -18,7 +18,7 @@ python3.14 -m venv .venv && .venv/bin/pip install -r requirements-team.txt   # P
 reads ([v17](models/v17-broadcast.md)); **it reads the broadcast set too** (`data/broadcast/`: the `_atd.xml`,
 `_atd.txt` and `_homography.csv`; not the video). Without them it falls back to v16 and writes v16's file
 (`90599088…0523c`), so a missing broadcast folder shows as v16's SHA-256. No new model file. **Clean copy
-(2026-11-15):** a fresh `git clone` of commit 3cce485 with the working tree's changed files and v16's and v17's new
+(2026-11-15):** a fresh `git clone` of commit f17aa87 with the working tree's changed files and v16's and v17's new
 files copied in (`possession/v16.py`, `v17.py`, `broadcast_merge.py`, `models/v16_b_all.joblib`), and only the
 organisers' data (tactical and broadcast, no video) and PathCRF's weights in `data/`, gives the same SHA-256, and
 `validate_submission.py` passes. Not yet tried on Linux.
@@ -27,7 +27,7 @@ organisers' data (tactical and broadcast, no video) and PathCRF's weights in `da
 `90599088419d812cbb341168b27ff0ff767549b75c8dfa12a51de290ccc0523c` (three runs the same: twice with
 `OMP_NUM_THREADS=2`, once with 1). v16 is v15 with branch B's network replaced by four GRUs trained on Metrica's
 sample games too ([v16](models/v16-netmet.md)); branch B reads `possession/models/v16_b_all.joblib` (3.4 MB, the
-four networks run in float64). **Clean copy (2026-11-15):** a fresh `git clone` of commit 3cce485 with the working
+four networks run in float64). **Clean copy (2026-11-15):** a fresh `git clone` of commit f17aa87 with the working
 tree's changed files and v16's two new files copied in, and only the organisers' data and PathCRF's weights in
 `data/`, gives the same SHA-256, and `validate_submission.py` passes. Not yet tried on Linux.
 
@@ -36,7 +36,7 @@ tree's changed files and v16's two new files copied in, and only the organisers'
 the same with `OMP_NUM_THREADS=1`; format check passes). v15 is v14 with a new
 branch B ([v15](models/v15-branch-b.md)); branch B reads `possession/models/v15_b_all.joblib` (its GRU run in float64,
 as v13's). v14's file was v13's (below): the switch takes branch B on our match, where v14 changed nothing.
-**Clean clone (2026-11-14):** a fresh `git clone` of commit 3cce485 with only the organisers' data and PathCRF's
+**Clean clone (2026-11-14):** a fresh `git clone` of commit f17aa87 with only the organisers' data and PathCRF's
 weights in `data/` (the same Python environment) gives the same SHA-256, and the format check passes (199,319 rows).
 Not yet tried on Linux.
 

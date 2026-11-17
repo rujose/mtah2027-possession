@@ -85,7 +85,7 @@ expected a B-path status on a match that took A: both were the check's mistakes;
 `glue_J03WR9_*_first.json`.)
 
 **Our match:** `python -m possession.v17` three times (2 threads twice, 1 once): `d7b159c5…ec04` each time. A clean
-copy (fresh clone of 3cce485 + the working tree's changes + `possession/v16.py`, `v17.py`, `broadcast_merge.py`,
+copy (fresh clone of f17aa87 + the working tree's changes + `possession/v16.py`, `v17.py`, `broadcast_merge.py`,
 `models/v16_b_all.joblib`; in `data/` only the organisers' tactical and broadcast files without video, and PathCRF's
 weights) gives the same; `validate_submission.py` passes (pass/fail only). Nothing else of our match was looked at:
 not the merge's status, not the shifts found, not the branch.

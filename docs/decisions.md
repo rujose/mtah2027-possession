@@ -459,7 +459,7 @@ Newest at the bottom. Each entry: what was decided, why, and what it rules out.
   still work.
 - **Why the full history:** the dated commits and this log are the evidence that every choice came from the bench;
   squashing would drop it. **Why not a GitHub fork:** a fork of a public repo is public from the first push.
-- **Checked before the first push:** a fresh clone of e8e4e86 with a fresh environment and only the organisers'
+- **Checked before the first push:** a fresh clone of 4a0d17e with a fresh environment and only the organisers'
   data (no video) gives v17's SHA-256 `d7b159c5…ec04` and passes the validator. Nothing in the history is under
   `data/` (beyond its README), no CSV but the organisers' baselines, no image or video, no secret; the only numbers
   about our match are aggregates ([data.md](data.md), `bench/damage_stats.json`).
