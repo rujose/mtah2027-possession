@@ -2,9 +2,59 @@
 
 | | |
 |---|---|
-| **as of** | 2026-11-14 (surveys 2026-11-08 in [lab.md](lab.md) round 6, 2026-11-10, and this one) |
+| **as of** | **2026-11-17 for the update just below**; 2026-11-14 for every section after it (surveys 2026-11-08 in [lab.md](lab.md) round 6, 2026-11-10, 11-14) |
 | **how** | the challenge repo's 293 forks listed with `gh api` (263 on 11-10); the 61 pushed since 2026-11-10 read on every branch with recent commits: READMEs, technical documents, experiment logs, commit messages. **No data, weights or prediction files downloaded; no file holding labels or predictions for our match opened** (two teams' files holding labels for our match skipped on purpose) |
 | **answer** | on the external tests that can be compared, **we are still at or near the top of what's public, not clearly ahead**. The closest new entry is TEKAB2 (Metrica 0.805, level with our 0.809–0.825). Nobody new reports a SkillCorner number |
+
+## Update 2026-11-17: the repos going public on the last day
+
+**How:** the challenge repo's forks (308, against 293 on 11-14), of which 88 were pushed since 11-14, plus GitHub's
+repo and code search for standalone repos (not forks) about the challenge: 372 candidates in all. Every README was
+fetched and sorted by script; the 106 with real signals (the 21 known teams, re-read for changes, and 85 new ones)
+were read by four agents through `gh api`: READMEs, technical documents, results docs and commit messages since
+11-14. No data, weights or prediction files opened; three repos that commit a BAR-ATH prediction CSV were skipped.
+
+| | count |
+|---|---|
+| candidate repos seen | **372** (367 with a README) |
+| README just the organisers', unchanged | 116 |
+| the team's own README | 251 |
+| ...quoting a score of some kind | **140** |
+| read in depth | 106 |
+| ...an external held-out score with provider labels, nothing merged, damaged tracking (our kind of test) | **41** |
+| ...an external score on an easier or different protocol (merged or control labels, no damage, other metric) | 52 |
+| ...a model but no external score / rules or empty | 9 / 4 |
+| built like us (a learned per-frame model on external labels + a sequence decoder + external held-out tests) | **74 of 106**: the field has converged on our recipe |
+| a clear rules problem seen (training on the match's pseudo-labels, fitting or choosing on the public window, choosing on statistics of their own predictions, labels drawn on the video) | at least 20 |
+
+**The fair comparisons, updated:**
+
+| test | ours | best public entries on a similar test |
+|---|---|---|
+| **IDSSE/DFL, provider flags, nothing merged, held out, damaged** | **0.676-0.681** | **DIMACodm 0.723** (5 folds by game; decoder searched on the held-out predictions; damage with 25-55 % ball loss and a moving dead ball in 70 % of stoppages); **XHS 0.704** [0.687-0.720] (noise calibrated to the tracking's label-free statistics); MikolajEkiert 0.671; OsamaQ05 0.690 and bueno ~0.69 (label rule not verified); AndriesDKock and Opus-Operandi 0.642; Tailors 0.616; the rest 0.43-0.60 |
+| **Metrica's 3 games, held out** | **0.809-0.825** (held-out estimate ≈0.817) | TEKAB2 0.805 (main branch; its final entry is now a `clean-trees` branch at 0.674 on its own bench, PFF dropped); XHS 0.802 with noise (their relabel with 1 s of control, 0.834 without noise); DIMACodm 0.780; AndriesDKock 0.723; Lobos 0.719; Barca-Hackathon 0.714-0.721; the rest 0.46-0.70 |
+| **two sources together** (mean of the DFL and Metrica means) | ≈**0.753** | DIMACodm **0.752** (0.725 before its decoder search) |
+| **SkillCorner's 20 matches** | 0.408-0.409 | XHS 0.390 (the one protocol that looks like ours); higher numbers (BYTZ 0.671 with its decoder tuned on the same matches, Camp Nou Limits 0.635, Anfield 0.609 with 3 s labels, Mastaadmi 0.528 averaged over 4 conventions) use other label rules |
+
+On easier labels the numbers run higher and can't be ranked against ours: Camp Nou Limits (Bundesliga 0.774, Metrica
+0.831, folded labels), High Octane (DFL 0.782, Metrica 0.806, 2 s control), FCB-Hacks (Metrica 0.768), Rushilkr77
+(0.718, spells under 2 s absorbed), ZesterJ (0.714, under 3 s merged), Pompeu-Data-Team (0.678, 5 s merge).
+
+**What it means:**
+- **We are in the top group, not alone at the top.** Two new entries match us on our kind of test: DIMACodm (level
+  over both sources, better on DFL, worse on Metrica) and XHS (better on DFL, level on Metrica and SkillCorner).
+  On Metrica's games, the answer key's convention, nobody public is above us on our kind of test (higher numbers
+  there use relabelled or folded labels).
+- **Our DFL number is no longer the best public one** (0.723 and 0.704 against our 0.676-0.681), though their
+  damage models differ from ours and DIMACodm's decoder was searched on its held-out predictions.
+- **Most honest numbers sit far lower:** DFL provider flags unmerged cluster at 0.49-0.62.
+- **Moving dead balls are no longer ours alone:** DIMACodm (70 % of stoppages), MRH2818 (a simulated stoppage ball,
+  +0.024), Spyyy004 and danieltyukov handle them; nobody else merges the broadcast tracking near the ball the way
+  v17 does (Subject47, DSBA and AndriesDKock merge broadcast tracking more simply).
+- **Ideas for the next phase** (v17 is frozen): frames near a change of team weighted 3× in training (Gegen-Regress,
+  +0.016); live spells under 4 s weighted 2× (Ryu2804, +0.014); a fix for referees tracked as players (BYTZ,
+  +0.0075; our merge's main risk); the real gap layout replayed as damage (HalaNJU); a switch cost driven by a
+  turnover classifier (ROCN).
 
 ## Why most numbers can't be compared
 
@@ -72,9 +122,10 @@ organisers' job, and a reading of someone else's repo can be wrong.
 - the video watched to accept or reject a candidate, or labels drawn on the provided match by hand;
 - training on pseudo-labels of the provided match (self-training);
 - choosing or fitting on the public window, or keeping a change only if the public window improves;
-- damage or candidates chosen from statistics of the team's own predictions on the provided match.
+- damage or candidates chosen from statistics of the team's own predictions on the provided match;
+- a team's own predictions for the provided match committed to its public repo.
 
-On 11-14 about 12 teams showed one of these. Ours stay audited and documented
+On 11-14 about 12 teams showed one of these; on 11-17 at least 20. Ours stay audited and documented
 ([limitations.md](limitations.md), section 0). Our damage uses gap statistics of our match's tracking (no labels),
 a grey zone that other entries share.
 
