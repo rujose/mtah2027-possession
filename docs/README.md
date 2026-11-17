@@ -5,6 +5,7 @@ so that any team member, or a reviewer, can follow it without having been in the
 
 | page | what it answers |
 |---|---|
+| [technical-document.md](technical-document.md) | **The submission's technical document** (the upload, approved 2026-11-16, 5 pages as PDF): the approach, assets used and dropped, training data, possession rules, limitations, what touched the provided game, reproduction |
 | [explained.md](explained.md) | **Start here if you're new:** every term in plain words, and what has been done, with the numbers to judge it |
 | [challenge.md](challenge.md) | What is the task, how is it scored, what are the rules and dates? |
 | [limitations.md](limitations.md) | Every limit we work under, what's allowed but not obvious, grey zones to ask about, traps |

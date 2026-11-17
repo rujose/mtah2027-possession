@@ -60,7 +60,8 @@ Where the provided game still shaped a choice without labels (the bench's damage
 statistics of our tracking), it is listed in the audit at the top of [docs/limitations.md](docs/limitations.md),
 with what happened before the organisers' clarification of 2026-11-03 and what we changed after it.
 
-The method, version by version, with every setting and where it comes from, is in [docs/](docs/README.md):
+The short version is our technical document, [docs/technical-document.md](docs/technical-document.md). The method,
+version by version, with every setting and where it comes from, is in [docs/](docs/README.md):
 start at [docs/explained.md](docs/explained.md); v17 is [docs/models/v17-broadcast.md](docs/models/v17-broadcast.md),
 and each earlier version has its own page in [docs/models/](docs/models/). Every decision, with its date and reason,
 is in [docs/decisions.md](docs/decisions.md).

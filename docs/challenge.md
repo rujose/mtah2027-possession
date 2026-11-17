@@ -84,7 +84,7 @@ free, but `X` across a change of possession drags the old team forward.
 |---|---|
 | Nov 10 | every team member registered with the same team name (teams of 3–5) |
 | Nov 14 | organisers email the submission form |
-| **Nov 17, 23:59 CET** | submit `<team_name>.csv`, public repo URL, technical document (`<team_name>.pdf` or `.md`) |
+| **Nov 17, 23:59 CET** (the organisers' email with the form) | submit `<team_name>.csv`, public repo URL, technical document (`<team_name>.pdf` or `.md`) |
 | before Nov 26 | results; the top 20 teams go to the Innovation Challenge |
 
 There is no live leaderboard: nobody knows their real score until the results.

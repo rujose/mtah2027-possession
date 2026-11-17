@@ -265,4 +265,4 @@ pipeline works.
   - register 3–5 team members by **Nov 10**;
   - decide where our public repository lives;
   - write the technical document (these pages are its raw material);
-  - submit by **Nov 17, 23:59 CET**.
+  - submit by **Nov 17, 23:59 CET** (the organisers' email with the form).

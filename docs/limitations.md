@@ -76,7 +76,7 @@ external data, never on the ground truth or the provided video.
 | 9 | **Match data never goes to a third-party cloud LLM** | OVERVIEW.md, FAQ.md (T&C §8) | Sending videos, datasets "or any extracts thereof" to a hosted LLM. Our working reading is in [decisions.md](decisions.md) (2026-10-30): inspecting is fine, and no LLM ever labels frames. Another team quotes T&C §18 as also forbidding sharing with third parties without written permission (#22, not yet answered), so cloud compute is out too unless the organisers say otherwise. |
 | 10 | **External data licences** | #16 | CC BY data (IDSSE, for example) must be cited in the README and the technical document. Other sets have their own terms (see [research/](research/)). |
 | 11 | **Team of 3 to 5**, all registered under the same team name **by Nov 10** | RULES.md, OVERVIEW.md | A team of fewer than 3 is not eligible for the Innovation Challenge or the final pitch. |
-| 12 | **Submission format** | SUBMISSION.md | Exactly 199,319 rows; `<team_name>.csv` + `<team_name>.pdf`/`.md`; one Google Form response per team (editable until the deadline); a Google account. **Nov 17, 23:59 CET.** |
+| 12 | **Submission format** | SUBMISSION.md | Exactly 199,319 rows; `<team_name>.csv` + `<team_name>.pdf`/`.md`; one Google Form response per team (editable until the deadline); a Google account. **Nov 17, 23:59 CET** (the organisers' email with the form; SUBMISSION.md gives only the date). |
 
 ## 2. Practical limits
 

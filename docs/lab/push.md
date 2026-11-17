@@ -26,7 +26,7 @@ them and runs the challenge.
 | **3. broadcast** | broadcast-tracked players near the ball merged into the tactical tracking; simulated on the bench from documented statistics only | v15's B (the B bar) plus robustness | [push/broadcast.md](push/broadcast.md) | screen 11-15 evening; judge 11-16 09:00; stop **11-16 12:00** |
 
 **Then:** 11-16 afternoon, the winner goes into v16 on Jose's go-ahead; the final run, the Linux byte-for-byte check
-and the validator (pass/fail only). 11-17: the technical document; submission by 23:59 CET (17:59 machine clock).
+and the validator (pass/fail only). 11-17: the technical document; submission by 23:59 CET (17:59 machine clock; the hour is from the organisers' email with the form).
 
 ## Rules for every track (the night's, unchanged)
 
